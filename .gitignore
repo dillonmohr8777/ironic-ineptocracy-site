@@ -8,3 +8,6 @@ build/
 .vercel/
 .playwright-mcp/
 *.log
+
+# Local recovery work area
+/recovery/
