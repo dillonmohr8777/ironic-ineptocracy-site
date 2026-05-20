@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "ironicineptocracy.com" }],
+      "destination": "https://www.ironicineptocracy.com/$1",
+      "permanent": true
+    }
+  ]
+}
