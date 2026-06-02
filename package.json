@@ -1,0 +1,10 @@
+{
+  "name": "ironic-ineptocracy-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Static production build for the live Ironic Ineptocracy website.",
+  "scripts": {
+    "build": "node scripts/vercel-static-build.mjs"
+  }
+}
