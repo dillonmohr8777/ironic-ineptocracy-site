@@ -1,8 +1,21 @@
 {
+  "redirects": [
+    { "source": "/characters/abigail", "destination": "/characters/avigail", "permanent": true },
+    { "source": "/ask", "destination": "/characters", "permanent": true },
+    { "source": "/quiz", "destination": "/book", "permanent": true },
+    { "source": "/quiz/:path*", "destination": "/book", "permanent": true },
+    { "source": "/characters/newman", "destination": "/characters", "permanent": true },
+    { "source": "/blog/the-file-opens", "destination": "/dispatches/the-file-opens", "permanent": true },
+    { "source": "/blogs/the-file-opens", "destination": "/dispatches/the-file-opens", "permanent": true },
+    { "source": "/essays/the-file-opens", "destination": "/dispatches/the-file-opens", "permanent": true },
+    { "source": "/blog", "destination": "/dispatches", "permanent": true },
+    { "source": "/blogs", "destination": "/dispatches", "permanent": true },
+    { "source": "/essays", "destination": "/dispatches", "permanent": true },
+    { "source": "/blog/:path*", "destination": "/dispatches", "permanent": true },
+    { "source": "/blogs/:path*", "destination": "/dispatches", "permanent": true },
+    { "source": "/essays/:path*", "destination": "/dispatches", "permanent": true }
+  ],
   "rewrites": [
-    {
-      "source": "/((?!assets/|images/|favicon.svg|robots.txt|sitemap.xml).*)",
-      "destination": "/index.html"
-    }
+    { "source": "/:path*", "destination": "/index.html" }
   ]
 }

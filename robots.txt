@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /ask
+Disallow: /quiz
+Disallow: /characters/newman
+
+Sitemap: https://ironicineptocracy.com/sitemap.xml
