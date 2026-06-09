@@ -1,0 +1,30 @@
+; Engine configuration file.
+; Godot 4.2+
+
+config_version=5
+
+[application]
+
+config/name="The Ironic Ineptocracy: The File Opens"
+config/description="A satirical creature-collector RPG in the world of The Ironic Ineptocracy by Dillon Mohr."
+run/main_scene="res://scenes/Title.tscn"
+config/features=PackedStringArray("4.2")
+config/icon="res://icon.svg"
+
+[autoload]
+
+DataStore="*res://scripts/data_store.gd"
+Game="*res://scripts/game.gd"
+Party="*res://scripts/party.gd"
+SaveSystem="*res://scripts/save_system.gd"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.063, 0.063, 0.078, 1)

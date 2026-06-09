@@ -1,0 +1,18 @@
+{
+  "affinities": {
+    "MONEY":   { "name": "Money",   "color": "#8a8a4a", "flavor": "Donor rooms, debt, dependency, the invoice." },
+    "WAR":     { "name": "War",     "color": "#b3241f", "flavor": "The Draft Machine, emergency speed, selection." },
+    "MEMORY":  { "name": "Memory",  "color": "#c9c9cf", "flavor": "Revision, redaction, the corrected record." },
+    "MEDIA":   { "name": "Media",   "color": "#3d6e8f", "flavor": "Slogans, spectacle, polished concern." },
+    "OFFICE":  { "name": "Office",  "color": "#cfc4a2", "flavor": "Procedure, doctrine, protected failure." },
+    "WITNESS": { "name": "Witness", "color": "#e0a33c", "flavor": "Receipts, checksums, testimony, the network." }
+  },
+  "chart": {
+    "MONEY":   { "WAR": 2.0, "MEDIA": 2.0, "OFFICE": 2.0, "WITNESS": 0.5 },
+    "WAR":     { "MONEY": 0.5, "MEDIA": 0.5, "OFFICE": 2.0, "WITNESS": 2.0 },
+    "MEMORY":  { "MEDIA": 2.0, "OFFICE": 2.0, "WITNESS": 0.5 },
+    "MEDIA":   { "MONEY": 0.5, "WAR": 2.0, "MEMORY": 0.5, "WITNESS": 2.0 },
+    "OFFICE":  { "MONEY": 0.5, "WITNESS": 2.0 },
+    "WITNESS": { "MONEY": 2.0, "WAR": 0.5, "MEMORY": 2.0, "MEDIA": 2.0 }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "paper_cut": {
+    "name": "Paper Cut", "type": "WITNESS", "kind": "attack",
+    "power": 40, "accuracy": 100,
+    "desc": "A small, stubborn fact draws blood."
+  },
+  "follow_receipts": {
+    "name": "Follow The Receipts", "type": "WITNESS", "kind": "attack",
+    "power": 60, "accuracy": 100, "ignore_def_buffs": true,
+    "desc": "Ignores the target's Insulation buffs. Follow the receipts before you follow the speeches."
+  },
+  "cross_reference": {
+    "name": "Cross-Reference", "type": "WITNESS", "kind": "heal",
+    "percent": 0.5,
+    "desc": "Two records that match restore Resolve. Friendship is the checksum."
+  },
+  "one_call": {
+    "name": "One Call", "type": "WITNESS", "kind": "attack",
+    "power": 30, "accuracy": 100, "priority": true,
+    "desc": "Always moves first. A burner phone and the instinct to help before the paperwork can forbid it."
+  },
+  "signal_jam": {
+    "name": "Signal Jam", "type": "WITNESS", "kind": "status", "accuracy": 100,
+    "stat_changes": [
+      { "target": "target", "stat": "pressure", "stages": -1 },
+      { "target": "target", "stat": "tempo", "stages": -1 }
+    ],
+    "desc": "Breaking signals without breaking people."
+  },
+  "hot_meal": {
+    "name": "Hot Meal", "type": "WITNESS", "kind": "heal",
+    "percent": 0.5,
+    "desc": "A front desk, a room key, a hot meal. Sometimes safety is not a grand event."
+  },
+  "static_burst": {
+    "name": "Static Burst", "type": "MEDIA", "kind": "attack",
+    "power": 40, "accuracy": 100,
+    "desc": "Broadcast noise arriving before the facts can stand up."
+  },
+  "repetition": {
+    "name": "Repetition", "type": "MEDIA", "kind": "attack",
+    "power": 30, "accuracy": 100, "ramp": 15, "ramp_max": 90,
+    "desc": "Grows stronger each consecutive use. It only has to be repeated by people with enough reach."
+  },
+  "stay_on_message": {
+    "name": "Stay On Message", "type": "MEDIA", "kind": "status", "accuracy": 999,
+    "stat_changes": [ { "target": "self", "stat": "insulation", "stages": 1 } ],
+    "desc": "Raises own Insulation. The phrase has handlers."
+  },
+  "reasonable_tone": {
+    "name": "Reasonable Tone", "type": "MEDIA", "kind": "status", "accuracy": 100,
+    "stat_changes": [ { "target": "target", "stat": "pressure", "stages": -2 } ],
+    "desc": "Sharply lowers the target's Pressure. It asks you to relax. That is the dangerous part."
+  },
+  "news_dump": {
+    "name": "News Dump", "type": "MEDIA", "kind": "attack",
+    "power": 65, "accuracy": 95,
+    "desc": "The public version, delivered all at once, on a Friday."
+  },
+  "redact": {
+    "name": "Redact", "type": "MEMORY", "kind": "attack",
+    "power": 50, "accuracy": 100,
+    "desc": "A black bar where the name should be."
+  },
+  "revision": {
+    "name": "Revision", "type": "MEMORY", "kind": "attack",
+    "power": 45, "accuracy": 100,
+    "on_hit_stat": { "target": "target", "stat": "pressure", "stages": -1, "chance": 0.3 },
+    "desc": "May lower the target's Pressure. First the event. Then the story. Then the memory."
+  },
+  "clean_archive": {
+    "name": "Clean Archive", "type": "MEMORY", "kind": "attack",
+    "power": 70, "accuracy": 100, "clear_stages": true,
+    "desc": "Removes all stat changes from both sides. The archive is clean because someone got there first."
+  },
+  "invoice_due": {
+    "name": "Invoice Due", "type": "MONEY", "kind": "attack",
+    "power": 55, "accuracy": 100,
+    "desc": "The bill always arrives. Just never upstairs."
+  },
+  "clause": {
+    "name": "Clause", "type": "MONEY", "kind": "attack",
+    "power": 50, "accuracy": 999,
+    "desc": "Never misses. Nobody reads it until it has already applied."
+  },
+  "make_departure_expensive": {
+    "name": "Make Departure Expensive", "type": "MONEY", "kind": "status", "accuracy": 100,
+    "stat_changes": [ { "target": "target", "stat": "tempo", "stages": -2 } ],
+    "desc": "Sharply lowers the target's Tempo. Step three of the private logic."
+  },
+  "cigar_meeting": {
+    "name": "1 P.M. Cigar", "type": "MONEY", "kind": "status", "accuracy": 999,
+    "stat_changes": [ { "target": "self", "stat": "pressure", "stages": 2 } ],
+    "desc": "Sharply raises own Pressure. Class War 1 is not a theory. It is being scheduled."
+  },
+  "selected_stamp": {
+    "name": "Selected Stamp", "type": "WAR", "kind": "attack",
+    "power": 50, "accuracy": 100,
+    "on_hit_stat": { "target": "target", "stat": "insulation", "stages": -1, "chance": 1.0 },
+    "desc": "Lowers the target's Insulation. The country calls it service. The file calls it selection."
+  },
+  "emergency_speed": {
+    "name": "Emergency Speed", "type": "WAR", "kind": "status", "accuracy": 999,
+    "stat_changes": [ { "target": "self", "stat": "tempo", "stages": 2 } ],
+    "desc": "Sharply raises own Tempo. The clock is loud enough to make questions look like delays."
+  },
+  "processing": {
+    "name": "Processing", "type": "WAR", "kind": "attack",
+    "power": 65, "accuracy": 95,
+    "desc": "It does not ask who is guilty. It asks who can be processed."
+  },
+  "faulty_by_design": {
+    "name": "Faulty By Design", "type": "WAR", "kind": "attack",
+    "power": 95, "accuracy": 90, "recoil": 0.25,
+    "desc": "Heavy damage with recoil. The cost is always shared downward."
+  },
+  "authorization": {
+    "name": "Authorization", "type": "OFFICE", "kind": "attack",
+    "power": 60, "accuracy": 999,
+    "desc": "Never misses. The memo does not explain the plot. It authorizes it."
+  },
+  "fail_upward": {
+    "name": "Fail Upward", "type": "OFFICE", "kind": "status", "accuracy": 999,
+    "stat_changes": [
+      { "target": "self", "stat": "pressure", "stages": 1 },
+      { "target": "self", "stat": "insulation", "stages": 1 }
+    ],
+    "desc": "Raises own Pressure and Insulation. Consequence slides off and becomes promotion."
+  },
+  "procedure": {
+    "name": "Procedure", "type": "OFFICE", "kind": "attack",
+    "power": 45, "accuracy": 100,
+    "desc": "Delay converted into survival, then into a weapon."
+  }
+}
