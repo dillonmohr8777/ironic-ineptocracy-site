@@ -1,0 +1,708 @@
+<title>VA Claims Portal Wireframes</title>
+<style>
+  :root{
+    --ground:#ffffff;
+    --panel:#f5f5f5;
+    --fill:#e9e9e9;
+    --line:#cccccc;
+    --line2:#999999;
+    --ink:#333333;
+    --ink2:#666666;
+    --active:#eef1f4;
+    --activeline:#9fb0c2;
+    --radius:4px;
+    --gap:16px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--ground);
+    line-height:1.45;
+    font-size:14px;
+  }
+  a{color:inherit;}
+  button{font-family:inherit;font-size:inherit;cursor:pointer;}
+
+  /* ---- Wireframe primitives ---- */
+  .wf-btn{
+    border:1px solid var(--line2);
+    background:var(--fill);
+    color:var(--ink);
+    padding:7px 14px;
+    border-radius:var(--radius);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    white-space:nowrap;
+  }
+  .wf-btn:hover{background:#dcdcdc;}
+  .wf-btn.primary{background:#cfcfcf;border-color:#777;font-weight:600;}
+  .wf-btn.ghost{background:#fff;}
+  .wf-btn:focus-visible,a:focus-visible,.nav-item:focus-visible,.row:focus-visible{
+    outline:2px solid var(--activeline);outline-offset:2px;
+  }
+  .wf-input{
+    border:1px solid var(--line);
+    background:#fff;
+    padding:8px 10px;
+    border-radius:var(--radius);
+    width:100%;
+    color:var(--ink);
+  }
+  .wf-input::placeholder{color:#aaa;}
+  .pill{
+    display:inline-block;
+    border:1px solid var(--line2);
+    border-radius:999px;
+    padding:2px 10px;
+    font-size:11px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    background:#fff;
+    color:var(--ink2);
+    white-space:nowrap;
+  }
+  .pill.solid{background:var(--fill);color:var(--ink);}
+  .pill.strong{border-color:#555;color:#222;font-weight:600;}
+  .pill.dashed{border-style:dashed;}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--ink2);
+    margin:0 0 4px;
+  }
+  .imgbox{
+    border:1px solid var(--line);
+    background:repeating-linear-gradient(45deg,#fafafa,#fafafa 8px,#f0f0f0 8px,#f0f0f0 16px);
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+    color:#bbb;
+    border-radius:var(--radius);
+  }
+  .imgbox::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(to top right,transparent calc(50% - 1px),#ddd,transparent calc(50% + 1px)),
+               linear-gradient(to top left,transparent calc(50% - 1px),#ddd,transparent calc(50% + 1px));}
+  .imgbox span{position:relative;font-size:12px;}
+  .panel{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:#fff;
+    padding:16px;
+  }
+  .panel.muted{background:var(--panel);}
+  .panel-title{
+    font-size:13px;font-weight:600;margin:0 0 12px;
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+  }
+  table{border-collapse:collapse;width:100%;font-size:13px;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);font-weight:600;background:var(--panel);}
+  td.num,th.num{font-variant-numeric:tabular-nums;}
+  tr.row{cursor:pointer;}
+  tr.row:hover td{background:#f7f7f7;}
+
+  /* ---- App shell ---- */
+  .banner{
+    background:#ededed;border-bottom:1px solid var(--line);
+    color:var(--ink2);font-size:12px;padding:7px 16px;text-align:center;
+  }
+  .banner strong{color:var(--ink);}
+  .shell{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 33px);}
+  .sidebar{
+    border-right:1px solid var(--line);
+    background:var(--panel);
+    padding:16px 12px;
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .logo{
+    border:1px dashed var(--line2);border-radius:var(--radius);
+    padding:14px 10px;text-align:center;letter-spacing:.18em;font-size:13px;color:var(--ink2);
+    margin-bottom:8px;background:#fff;
+  }
+  .nav-group-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#aaa;margin:12px 6px 2px;}
+  .nav-item{
+    display:flex;align-items:center;gap:10px;
+    border:1px solid transparent;background:none;width:100%;text-align:left;
+    padding:9px 10px;border-radius:var(--radius);color:var(--ink);
+  }
+  .nav-item:hover{background:#ececec;}
+  .nav-item.active{background:var(--active);border-color:var(--activeline);font-weight:600;}
+  .nav-dot{width:14px;height:14px;border:1px solid var(--line2);border-radius:3px;background:#fff;flex:none;}
+  .nav-item.active .nav-dot{background:var(--ink2);}
+  .sidebar-foot{margin-top:auto;border-top:1px solid var(--line);padding-top:12px;font-size:12px;color:var(--ink2);}
+
+  .main{display:flex;flex-direction:column;min-width:0;}
+  .topbar{
+    border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:14px;
+    padding:10px 20px;background:#fff;position:sticky;top:0;z-index:5;
+  }
+  .topbar .search{flex:1;max-width:380px;}
+  .topbar .spacer{flex:1;}
+  .avatar{width:30px;height:30px;border-radius:50%;border:1px solid var(--line2);background:var(--fill);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink2);}
+  .crumb{font-size:12px;color:var(--ink2);}
+
+  .content{padding:24px;max-width:var(--maxw);width:100%;margin:0 auto;}
+  .screen-head{margin-bottom:18px;}
+  .screen-head h1{font-size:20px;margin:0 0 4px;}
+  .screen-head .caption{color:var(--ink2);font-size:13px;margin:0;max-width:70ch;}
+
+  .grid{display:grid;gap:var(--gap);}
+  .kpis{grid-template-columns:repeat(5,1fr);}
+  .kpi .big{font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;}
+  .kpi .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);}
+  .cols-2{grid-template-columns:1fr 1fr;}
+  .cols-3{grid-template-columns:2fr 1fr;}
+  .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px;}
+  .toolbar .grow{flex:1;min-width:160px;}
+
+  .activity-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;}
+  .activity-list li{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;align-items:flex-start;}
+  .activity-list li:last-child{border-bottom:none;}
+  .activity-list .dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--line2);margin-top:5px;flex:none;background:#fff;}
+  .activity-list .t{color:#aaa;font-size:12px;margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums;}
+
+  /* Payment watch */
+  .pw-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .pw-group{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);}
+  .pw-group > header{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .pw-group > header h2{font-size:15px;margin:0;}
+  .pw-group .body{padding:14px;display:flex;flex-direction:column;gap:12px;}
+  .client-card{
+    border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:12px;cursor:pointer;
+    display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start;
+  }
+  .client-card:hover{border-color:var(--line2);background:#fcfcfc;}
+  .client-card .name{font-weight:600;}
+  .client-card .meta{font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums;}
+  .daycount{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1;}
+  .daycount small{display:block;font-size:10px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);}
+  .card-actions{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;border-top:1px dashed var(--line);padding-top:10px;margin-top:2px;}
+  .timer{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);border-radius:var(--radius);padding:5px 10px;font-variant-numeric:tabular-nums;background:#fff;font-size:13px;}
+  .timer .ic{width:0;height:0;border-left:8px solid var(--ink2);border-top:5px solid transparent;border-bottom:5px solid transparent;}
+  .timer.running .ic{border:none;width:8px;height:8px;background:var(--ink2);border-radius:1px;}
+
+  /* timeline */
+  .timeline{list-style:none;margin:0;padding:0;}
+  .timeline li{position:relative;padding:0 0 18px 26px;}
+  .timeline li:last-child{padding-bottom:0;}
+  .timeline li::before{content:"";position:absolute;left:5px;top:3px;width:11px;height:11px;border-radius:50%;border:1px solid var(--line2);background:#fff;}
+  .timeline li::after{content:"";position:absolute;left:10px;top:14px;bottom:-3px;width:1px;background:var(--line);}
+  .timeline li:last-child::after{display:none;}
+  .timeline li.done::before{background:var(--ink2);}
+  .timeline li.current::before{background:#fff;border-color:#333;box-shadow:0 0 0 3px #e5e5e5;}
+  .timeline .te{font-weight:600;}
+  .timeline .td{font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums;}
+
+  /* charts */
+  .chart{height:180px;border-left:1px solid var(--line2);border-bottom:1px solid var(--line2);position:relative;padding:0;display:flex;align-items:flex-end;gap:10px;}
+  .chart .bar{flex:1;background:var(--fill);border:1px solid var(--line2);border-bottom:none;}
+  .chart .grid-y{position:absolute;left:0;right:0;border-top:1px dashed #e2e2e2;}
+  .linechart{height:180px;border-left:1px solid var(--line2);border-bottom:1px solid var(--line2);position:relative;}
+
+  .pager{display:flex;gap:6px;align-items:center;justify-content:flex-end;margin-top:14px;font-size:13px;}
+  .pager .wf-btn{padding:5px 10px;}
+
+  .screen{display:none;}
+  .screen.active{display:block;animation:fade .15s ease;}
+  @keyframes fade{from{opacity:.4;}to{opacity:1;}}
+  @media (prefers-reduced-motion:reduce){.screen.active{animation:none;}}
+
+  /* Login screen replaces the shell */
+  .login-wrap{min-height:calc(100vh - 33px);display:flex;align-items:center;justify-content:center;background:var(--panel);padding:24px;}
+  .login-card{width:360px;max-width:100%;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
+  .login-card .logo{margin:0 auto 18px;width:140px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-size:12px;color:var(--ink2);margin-bottom:5px;}
+  .login-foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:12px;}
+
+  /* screen index */
+  .index-bar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:8px 20px;border-bottom:1px solid var(--line);background:var(--panel);font-size:12px;}
+  .index-bar .lbl{color:var(--ink2);text-transform:uppercase;letter-spacing:.08em;font-size:10px;margin-right:4px;}
+  .index-bar button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:3px 11px;font-size:12px;color:var(--ink);}
+  .index-bar button:hover{background:#ececec;}
+
+  .hide{display:none !important;}
+  .two-up{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);}
+  .stack{display:flex;flex-direction:column;gap:var(--gap);}
+  .inline{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .label-sm{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);}
+
+  @media(max-width:900px){
+    .shell{grid-template-columns:1fr;}
+    .sidebar{flex-direction:row;flex-wrap:wrap;align-items:center;}
+    .sidebar-foot{display:none;}
+    .kpis{grid-template-columns:repeat(2,1fr);}
+    .pw-cols,.cols-2,.cols-3,.two-up{grid-template-columns:1fr;}
+  }
+  .tablewrap{overflow-x:auto;}
+</style>
+
+<div class="banner">
+  <strong>Wireframe — concept draft.</strong>
+  To be matched to the <em>vace-platform-ui-demo</em> portal once reference screens are available.
+</div>
+
+<!-- ============ LOGIN SCREEN (no shell) ============ -->
+<section id="screen-login" class="screen active" aria-label="Sign in">
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="logo">[ VACE ]</div>
+      <p class="eyebrow" style="text-align:center">VA Claims Portal</p>
+      <div class="field">
+        <label for="lg-email">Email</label>
+        <input id="lg-email" class="wf-input" type="email" placeholder="name@agency.example" value="dana.ops@agency.example">
+      </div>
+      <div class="field">
+        <label for="lg-pass">Password</label>
+        <input id="lg-pass" class="wf-input" type="password" placeholder="••••••••" value="password">
+      </div>
+      <button class="wf-btn primary" style="width:100%;justify-content:center" onclick="enterApp()">Sign in</button>
+      <div class="login-foot">
+        <label class="inline" style="font-size:12px;color:var(--ink2)"><input type="checkbox" checked> Remember me</label>
+        <a href="#" onclick="return false">Forgot password?</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APP SHELL ============ -->
+<div id="app" class="hide">
+  <div class="index-bar">
+    <span class="lbl">Screen index</span>
+    <button onclick="go('dashboard')">Dashboard</button>
+    <button onclick="go('paymentwatch')">Payment Watch</button>
+    <button onclick="go('clients')">Clients</button>
+    <button onclick="go('client-detail')">Client Detail</button>
+    <button onclick="go('reports')">Reports</button>
+    <button onclick="go('admin')">Admin / Settings</button>
+    <button onclick="signOut()" style="margin-left:auto">Back to Login</button>
+  </div>
+
+  <div class="shell">
+    <!-- SIDEBAR -->
+    <nav class="sidebar" aria-label="Primary">
+      <div class="logo">[ VACE ]</div>
+      <button class="nav-item active" data-nav="dashboard" onclick="go('dashboard')"><span class="nav-dot"></span>Dashboard</button>
+      <div class="nav-group-label">Caseload</div>
+      <button class="nav-item" data-nav="paymentwatch" onclick="go('paymentwatch')"><span class="nav-dot"></span>Payment Watch</button>
+      <button class="nav-item" data-nav="clients" onclick="go('clients')"><span class="nav-dot"></span>Clients</button>
+      <div class="nav-group-label">Insight</div>
+      <button class="nav-item" data-nav="reports" onclick="go('reports')"><span class="nav-dot"></span>Reports</button>
+      <div class="nav-group-label">System</div>
+      <button class="nav-item" data-nav="admin" onclick="go('admin')"><span class="nav-dot"></span>Admin / Settings</button>
+      <div class="sidebar-foot">
+        <div class="inline"><span class="avatar">DM</span> Dana M.<br><span class="label-sm">Agent</span></div>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <div class="main">
+      <div class="topbar">
+        <span class="crumb" id="crumb">Dashboard</span>
+        <div class="search"><input class="wf-input" type="search" placeholder="Search clients, claim IDs…"></div>
+        <div class="spacer"></div>
+        <button class="wf-btn ghost" title="Notifications">◻ Alerts</button>
+        <span class="avatar">DM</span>
+      </div>
+
+      <div class="content">
+
+        <!-- DASHBOARD -->
+        <section id="screen-dashboard" class="screen active" aria-label="Dashboard overview">
+          <div class="screen-head">
+            <h1>Dashboard</h1>
+            <p class="caption">Daily operating picture for the agency — caseload health, what's in Payment Watch right now, and recent case activity.</p>
+          </div>
+          <div class="grid kpis" style="margin-bottom:20px">
+            <div class="panel kpi"><div class="lbl">Active Clients</div><div class="big">248</div></div>
+            <div class="panel kpi"><div class="lbl">In Payment Watch</div><div class="big">63</div></div>
+            <div class="panel kpi"><div class="lbl">60–120 Days</div><div class="big">41</div></div>
+            <div class="panel kpi"><div class="lbl">121+ Days</div><div class="big">22</div></div>
+            <div class="panel kpi"><div class="lbl">Paid This Month</div><div class="big">17</div></div>
+          </div>
+          <div class="grid cols-3">
+            <div class="panel">
+              <div class="panel-title">Payment Watch summary
+                <button class="wf-btn ghost" onclick="go('paymentwatch')">Open Payment Watch →</button>
+              </div>
+              <div class="two-up">
+                <div class="panel muted">
+                  <p class="eyebrow">60–120 Days Post C&amp;P</p>
+                  <div class="big" style="font-size:30px;font-weight:600">41</div>
+                  <p class="meta" style="color:var(--ink2);font-size:12px">clients awaiting decision · 9 timers running</p>
+                </div>
+                <div class="panel muted">
+                  <p class="eyebrow">121+ Days Post C&amp;P</p>
+                  <div class="big" style="font-size:30px;font-weight:600">22</div>
+                  <p class="meta" style="color:var(--ink2);font-size:12px">clients overdue · escalate review</p>
+                </div>
+              </div>
+              <div class="inline" style="margin-top:14px">
+                <span class="pill strong">14 Awaiting Decision</span>
+                <span class="pill">31 Pending</span>
+                <span class="pill solid">18 Paid (cleared this cycle)</span>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-title">Quick actions</div>
+              <div class="stack">
+                <button class="wf-btn primary" onclick="go('paymentwatch')">+ Start a timer</button>
+                <button class="wf-btn" onclick="go('clients')">View all clients</button>
+                <button class="wf-btn" onclick="go('client-detail')">Open a case</button>
+                <button class="wf-btn" onclick="go('reports')">Run a report</button>
+              </div>
+            </div>
+          </div>
+          <div class="panel" style="margin-top:20px">
+            <div class="panel-title">Recent activity</div>
+            <ul class="activity-list">
+              <li><span class="dot"></span><div><strong>John D.</strong> · VC-1042 — marked <strong>Paid</strong> by Dana M.<span class="t">2h ago</span></div></li>
+              <li><span class="dot"></span><div>Timer started for <strong>Maria S.</strong> · VC-1088 (Day 0)<span class="t">5h ago</span></div></li>
+              <li><span class="dot"></span><div><strong>Robert K.</strong> · VC-0991 crossed into <strong>121+ days</strong><span class="t">Yesterday</span></div></li>
+              <li><span class="dot"></span><div>C&amp;P exam recorded for <strong>Aisha T.</strong> · VC-1101<span class="t">Yesterday</span></div></li>
+              <li><span class="dot"></span><div>Note added to <strong>James P.</strong> · VC-1003<span class="t">2d ago</span></div></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- PAYMENT WATCH -->
+        <section id="screen-paymentwatch" class="screen" aria-label="Payment Watch">
+          <div class="screen-head">
+            <h1>Payment Watch</h1>
+            <p class="caption">Tracks clients after their C&amp;P exam in two day-count groups. Start a manual timer when the exam is complete, watch the day counter, and mark a case Paid once the VA decision/payment lands.</p>
+          </div>
+          <div class="toolbar">
+            <div class="grow"><input class="wf-input" type="search" placeholder="Search name or claim ID…"></div>
+            <select class="wf-input" style="width:auto"><option>All statuses</option><option>Pending</option><option>Awaiting Decision</option><option>Paid</option></select>
+            <select class="wf-input" style="width:auto"><option>Assigned: Anyone</option><option>Dana M.</option><option>Luis R.</option></select>
+            <button class="wf-btn primary" onclick="alert('Wireframe: opens Start Timer dialog — pick a client and begin the manual post-C&amp;P timer.')">＋ Start Timer</button>
+          </div>
+          <div class="pw-cols">
+            <!-- Group 1 -->
+            <div class="pw-group">
+              <header>
+                <h2>60–120 Days Post C&amp;P</h2>
+                <span class="pill strong">41 clients</span>
+              </header>
+              <div class="body">
+                <article class="client-card" onclick="go('client-detail')" tabindex="0">
+                  <div>
+                    <div class="name">John D.</div>
+                    <div class="meta">VC-1042 · C&amp;P exam 2026-03-29</div>
+                    <div class="inline" style="margin-top:6px"><span class="pill">Awaiting Decision</span></div>
+                  </div>
+                  <div style="text-align:right"><div class="daycount">87<small>Day</small></div></div>
+                  <div class="card-actions" onclick="event.stopPropagation()">
+                    <button class="timer running"><span class="ic"></span>02:13:40 · Stop</button>
+                    <button class="wf-btn ghost">Mark Paid</button>
+                  </div>
+                </article>
+                <article class="client-card" onclick="go('client-detail')" tabindex="0">
+                  <div>
+                    <div class="name">Maria S.</div>
+                    <div class="meta">VC-1088 · C&amp;P exam 2026-04-22</div>
+                    <div class="inline" style="margin-top:6px"><span class="pill dashed">Pending</span></div>
+                  </div>
+                  <div style="text-align:right"><div class="daycount">63<small>Day</small></div></div>
+                  <div class="card-actions" onclick="event.stopPropagation()">
+                    <button class="timer"><span class="ic"></span>Start timer</button>
+                    <button class="wf-btn ghost">Mark Paid</button>
+                  </div>
+                </article>
+                <article class="client-card" onclick="go('client-detail')" tabindex="0">
+                  <div>
+                    <div class="name">Aisha T.</div>
+                    <div class="meta">VC-1101 · C&amp;P exam 2026-03-08</div>
+                    <div class="inline" style="margin-top:6px"><span class="pill">Awaiting Decision</span></div>
+                  </div>
+                  <div style="text-align:right"><div class="daycount">108<small>Day</small></div></div>
+                  <div class="card-actions" onclick="event.stopPropagation()">
+                    <button class="timer running"><span class="ic"></span>00:41:09 · Stop</button>
+                    <button class="wf-btn ghost">Mark Paid</button>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <!-- Group 2 -->
+            <div class="pw-group">
+              <header>
+                <h2>121+ Days Post C&amp;P</h2>
+                <span class="pill strong">22 clients</span>
+              </header>
+              <div class="body">
+                <article class="client-card" onclick="go('client-detail')" tabindex="0">
+                  <div>
+                    <div class="name">Robert K.</div>
+                    <div class="meta">VC-0991 · C&amp;P exam 2026-01-30</div>
+                    <div class="inline" style="margin-top:6px"><span class="pill strong">Overdue · Awaiting Decision</span></div>
+                  </div>
+                  <div style="text-align:right"><div class="daycount">145<small>Day</small></div></div>
+                  <div class="card-actions" onclick="event.stopPropagation()">
+                    <button class="timer running"><span class="ic"></span>13:50:22 · Stop</button>
+                    <button class="wf-btn ghost">Mark Paid</button>
+                  </div>
+                </article>
+                <article class="client-card" onclick="go('client-detail')" tabindex="0">
+                  <div>
+                    <div class="name">James P.</div>
+                    <div class="meta">VC-1003 · C&amp;P exam 2026-01-12</div>
+                    <div class="inline" style="margin-top:6px"><span class="pill solid">Paid</span></div>
+                  </div>
+                  <div style="text-align:right"><div class="daycount">163<small>Day</small></div></div>
+                  <div class="card-actions" onclick="event.stopPropagation()">
+                    <button class="timer"><span class="ic"></span>Timer stopped</button>
+                    <button class="wf-btn">✓ Paid</button>
+                  </div>
+                </article>
+                <article class="client-card" onclick="go('client-detail')" tabindex="0">
+                  <div>
+                    <div class="name">Linda W.</div>
+                    <div class="meta">VC-0974 · C&amp;P exam 2025-12-20</div>
+                    <div class="inline" style="margin-top:6px"><span class="pill dashed">Pending</span></div>
+                  </div>
+                  <div style="text-align:right"><div class="daycount">186<small>Day</small></div></div>
+                  <div class="card-actions" onclick="event.stopPropagation()">
+                    <button class="timer"><span class="ic"></span>Start timer</button>
+                    <button class="wf-btn ghost">Mark Paid</button>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CLIENTS -->
+        <section id="screen-clients" class="screen" aria-label="Clients">
+          <div class="screen-head">
+            <h1>Clients</h1>
+            <p class="caption">Every client in the agency caseload. Search, filter, and open a row to view the full case. Payment status and days-since-exam surface at a glance.</p>
+          </div>
+          <div class="toolbar">
+            <div class="grow"><input class="wf-input" type="search" placeholder="Search clients…"></div>
+            <select class="wf-input" style="width:auto"><option>Status: All</option><option>Awaiting Decision</option><option>Pending</option><option>Paid</option></select>
+            <select class="wf-input" style="width:auto"><option>Payment: All</option><option>Unpaid</option><option>Paid</option></select>
+            <button class="wf-btn">Filters</button>
+            <button class="wf-btn primary" style="margin-left:auto">＋ Add Client</button>
+          </div>
+          <div class="panel" style="padding:0">
+            <div class="tablewrap">
+            <table>
+              <thead><tr>
+                <th>Name</th><th>Claim ID</th><th>Status</th><th>C&amp;P Exam</th><th class="num">Days Since</th><th>Payment</th><th>Assigned To</th>
+              </tr></thead>
+              <tbody>
+                <tr class="row" tabindex="0" onclick="go('client-detail')"><td>John D.</td><td class="num">VC-1042</td><td><span class="pill">Awaiting Decision</span></td><td class="num">2026-03-29</td><td class="num">87</td><td><span class="pill dashed">Unpaid</span></td><td>Dana M.</td></tr>
+                <tr class="row" tabindex="0" onclick="go('client-detail')"><td>Maria S.</td><td class="num">VC-1088</td><td><span class="pill dashed">Pending</span></td><td class="num">2026-04-22</td><td class="num">63</td><td><span class="pill dashed">Unpaid</span></td><td>Luis R.</td></tr>
+                <tr class="row" tabindex="0" onclick="go('client-detail')"><td>Robert K.</td><td class="num">VC-0991</td><td><span class="pill strong">Overdue</span></td><td class="num">2026-01-30</td><td class="num">145</td><td><span class="pill dashed">Unpaid</span></td><td>Dana M.</td></tr>
+                <tr class="row" tabindex="0" onclick="go('client-detail')"><td>James P.</td><td class="num">VC-1003</td><td><span class="pill solid">Paid</span></td><td class="num">2026-01-12</td><td class="num">163</td><td><span class="pill solid">Paid</span></td><td>Luis R.</td></tr>
+                <tr class="row" tabindex="0" onclick="go('client-detail')"><td>Aisha T.</td><td class="num">VC-1101</td><td><span class="pill">Awaiting Decision</span></td><td class="num">2026-03-08</td><td class="num">108</td><td><span class="pill dashed">Unpaid</span></td><td>Dana M.</td></tr>
+                <tr class="row" tabindex="0" onclick="go('client-detail')"><td>Linda W.</td><td class="num">VC-0974</td><td><span class="pill dashed">Pending</span></td><td class="num">2025-12-20</td><td class="num">186</td><td><span class="pill dashed">Unpaid</span></td><td>Priya N.</td></tr>
+                <tr class="row" tabindex="0" onclick="go('client-detail')"><td>Carlos M.</td><td class="num">VC-1057</td><td><span class="pill solid">Paid</span></td><td class="num">2026-02-14</td><td class="num">130</td><td><span class="pill solid">Paid</span></td><td>Luis R.</td></tr>
+                <tr class="row" tabindex="0" onclick="go('client-detail')"><td>Susan B.</td><td class="num">VC-1120</td><td><span class="pill dashed">Pending</span></td><td class="num">2026-05-02</td><td class="num">53</td><td><span class="pill dashed">Unpaid</span></td><td>Dana M.</td></tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+          <div class="pager">
+            <span style="margin-right:auto;color:var(--ink2)">Showing 1–8 of 248</span>
+            <button class="wf-btn ghost">‹ Prev</button>
+            <button class="wf-btn">1</button><button class="wf-btn ghost">2</button><button class="wf-btn ghost">3</button>
+            <button class="wf-btn ghost">Next ›</button>
+          </div>
+        </section>
+
+        <!-- CLIENT DETAIL -->
+        <section id="screen-client-detail" class="screen" aria-label="Client detail">
+          <div class="screen-head inline" style="justify-content:space-between;align-items:flex-start">
+            <div>
+              <p class="crumb"><a href="#" onclick="go('clients');return false">Clients</a> / VC-1042</p>
+              <h1 style="margin:2px 0 4px">John D. <span class="pill strong" style="vertical-align:middle">Awaiting Decision</span></h1>
+              <p class="caption">Single case view — claim facts, the post-exam timeline, Payment Watch controls, notes, documents, and assigned staff.</p>
+            </div>
+            <div class="inline"><button class="wf-btn ghost" onclick="go('clients')">← Back</button><button class="wf-btn">Edit</button></div>
+          </div>
+          <div class="grid cols-3">
+            <div class="stack">
+              <div class="panel">
+                <div class="panel-title">Timeline</div>
+                <ul class="timeline">
+                  <li class="done"><div class="te">Claim filed</div><div class="td">2026-02-10</div></li>
+                  <li class="done"><div class="te">C&amp;P exam completed</div><div class="td">2026-03-29 · timer started</div></li>
+                  <li class="current"><div class="te">Awaiting VA decision</div><div class="td">Day 87 · in 60–120 group</div></li>
+                  <li><div class="te">Decision issued</div><div class="td">— pending —</div></li>
+                  <li><div class="te">Payment received</div><div class="td">— pending —</div></li>
+                </ul>
+              </div>
+              <div class="panel">
+                <div class="panel-title">Notes &amp; activity <button class="wf-btn ghost">＋ Add note</button></div>
+                <ul class="activity-list">
+                  <li><span class="dot"></span><div>Called VA regional office — case in review queue.<span class="t">2d ago · Dana M.</span></div></li>
+                  <li><span class="dot"></span><div>Uploaded updated DBQ form.<span class="t">5d ago · Luis R.</span></div></li>
+                  <li><span class="dot"></span><div>Timer started after C&amp;P exam.<span class="t">2026-03-29 · Dana M.</span></div></li>
+                </ul>
+              </div>
+            </div>
+            <div class="stack">
+              <div class="panel">
+                <div class="panel-title">Payment Watch</div>
+                <div class="inline" style="justify-content:space-between"><span class="label-sm">Day counter</span><span class="daycount" style="font-size:18px">Day 87</span></div>
+                <div class="inline" style="margin:12px 0"><button class="timer running"><span class="ic"></span>02:13:40 · Stop</button></div>
+                <div class="inline" style="justify-content:space-between"><span class="label-sm">Payment status</span><span class="pill dashed">Unpaid</span></div>
+                <button class="wf-btn primary" style="width:100%;justify-content:center;margin-top:12px">Mark Paid</button>
+              </div>
+              <div class="panel">
+                <div class="panel-title">Claim info</div>
+                <table>
+                  <tr><th style="background:none;text-transform:none;letter-spacing:0">Claim type</th><td>Disability compensation</td></tr>
+                  <tr><th style="background:none;text-transform:none;letter-spacing:0">Filing date</th><td class="num">2026-02-10</td></tr>
+                  <tr><th style="background:none;text-transform:none;letter-spacing:0">C&amp;P exam</th><td class="num">2026-03-29</td></tr>
+                  <tr><th style="background:none;text-transform:none;letter-spacing:0">Claim ID</th><td class="num">VC-1042</td></tr>
+                </table>
+              </div>
+              <div class="panel">
+                <div class="panel-title">Documents</div>
+                <ul class="activity-list">
+                  <li><span class="dot"></span><div>Form 21-526EZ.pdf<span class="t">1.2 MB</span></div></li>
+                  <li><span class="dot"></span><div>DBQ_knee.pdf<span class="t">0.8 MB</span></div></li>
+                  <li><span class="dot"></span><div>C&amp;P_exam_summary.pdf<span class="t">0.4 MB</span></div></li>
+                </ul>
+                <button class="wf-btn ghost" style="margin-top:10px">＋ Upload</button>
+              </div>
+              <div class="panel">
+                <div class="panel-title">Assigned staff</div>
+                <div class="inline"><span class="avatar">DM</span> Dana M. <span class="label-sm">· Agent (lead)</span></div>
+                <div class="inline" style="margin-top:8px"><span class="avatar">LR</span> Luis R. <span class="label-sm">· Agent</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- REPORTS -->
+        <section id="screen-reports" class="screen" aria-label="Reports and analytics">
+          <div class="screen-head">
+            <h1>Reports &amp; Analytics</h1>
+            <p class="caption">Trends across the caseload — how long cases take to reach payment and how the pipeline is distributed by status.</p>
+          </div>
+          <div class="toolbar">
+            <select class="wf-input" style="width:auto"><option>Last 90 days</option><option>Last 30 days</option><option>This year</option></select>
+            <button class="wf-btn">Export CSV</button>
+          </div>
+          <div class="grid cols-2">
+            <div class="panel">
+              <div class="panel-title">Clients by status</div>
+              <div class="chart">
+                <div class="grid-y" style="bottom:25%"></div><div class="grid-y" style="bottom:50%"></div><div class="grid-y" style="bottom:75%"></div>
+                <div class="bar" style="height:55%"></div><div class="bar" style="height:80%"></div><div class="bar" style="height:35%"></div><div class="bar" style="height:60%"></div><div class="bar" style="height:25%"></div>
+              </div>
+              <div class="inline" style="justify-content:space-around;margin-top:6px;color:var(--ink2);font-size:11px"><span>Pending</span><span>Awaiting</span><span>Overdue</span><span>Paid</span><span>Closed</span></div>
+            </div>
+            <div class="panel">
+              <div class="panel-title">Avg days to payment (trend)</div>
+              <div class="linechart">
+                <svg viewBox="0 0 300 160" preserveAspectRatio="none" width="100%" height="100%" aria-hidden="true">
+                  <polyline points="0,120 50,100 100,110 150,80 200,90 250,60 300,70" fill="none" stroke="#999" stroke-width="2"/>
+                  <line x1="0" y1="40" x2="300" y2="40" stroke="#e2e2e2" stroke-dasharray="3 3"/>
+                  <line x1="0" y1="80" x2="300" y2="80" stroke="#e2e2e2" stroke-dasharray="3 3"/>
+                  <line x1="0" y1="120" x2="300" y2="120" stroke="#e2e2e2" stroke-dasharray="3 3"/>
+                  <circle cx="300" cy="70" r="3.5" fill="#333"/>
+                </svg>
+              </div>
+              <div class="inline" style="justify-content:space-between;margin-top:6px;color:var(--ink2);font-size:11px"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span></div>
+            </div>
+          </div>
+          <div class="panel" style="margin-top:20px">
+            <div class="panel-title">Summary</div>
+            <div class="tablewrap">
+            <table>
+              <thead><tr><th>Metric</th><th class="num">Value</th><th class="num">Δ vs prev</th></tr></thead>
+              <tbody>
+                <tr><td>Avg days to payment</td><td class="num">112</td><td class="num">−6</td></tr>
+                <tr><td>Clients in 60–120 group</td><td class="num">41</td><td class="num">+3</td></tr>
+                <tr><td>Clients in 121+ group</td><td class="num">22</td><td class="num">−2</td></tr>
+                <tr><td>Paid this month</td><td class="num">17</td><td class="num">+4</td></tr>
+                <tr><td>Overdue (no decision)</td><td class="num">8</td><td class="num">+1</td></tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ADMIN -->
+        <section id="screen-admin" class="screen" aria-label="Admin and settings">
+          <div class="screen-head">
+            <h1>Admin / Settings</h1>
+            <p class="caption">Manage who can access the portal and what they can do, plus organization and notification preferences.</p>
+          </div>
+          <div class="grid cols-3">
+            <div class="panel" style="padding:0">
+              <div class="panel-title" style="padding:16px 16px 0">User management <button class="wf-btn primary">＋ Invite user</button></div>
+              <div class="tablewrap" style="padding:12px 4px 0">
+              <table>
+                <thead><tr><th>Name</th><th>Role</th><th>Email</th><th>Status</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td>Dana M.</td><td><span class="pill strong">Admin</span></td><td>dana.ops@agency.example</td><td><span class="pill solid">Active</span></td><td><button class="wf-btn ghost">Edit</button></td></tr>
+                  <tr><td>Luis R.</td><td><span class="pill">Agent</span></td><td>luis.r@agency.example</td><td><span class="pill solid">Active</span></td><td><button class="wf-btn ghost">Edit</button></td></tr>
+                  <tr><td>Priya N.</td><td><span class="pill">Agent</span></td><td>priya.n@agency.example</td><td><span class="pill solid">Active</span></td><td><button class="wf-btn ghost">Edit</button></td></tr>
+                  <tr><td>Tom H.</td><td><span class="pill dashed">Viewer</span></td><td>tom.h@agency.example</td><td><span class="pill dashed">Invited</span></td><td><button class="wf-btn ghost">Edit</button></td></tr>
+                </tbody>
+              </table>
+              </div>
+              <p class="caption" style="padding:0 16px 16px">Roles map to access: <strong>Admin</strong> (full + user management), <strong>Agent</strong> (caseload + Payment Watch), <strong>Viewer</strong> (read-only).</p>
+            </div>
+            <div class="stack">
+              <div class="panel">
+                <div class="panel-title">Organization</div>
+                <div class="field"><label class="label-sm">Agency name</label><input class="wf-input" value="Example VA Claims Agency"></div>
+                <div class="field"><label class="label-sm">Time zone</label><select class="wf-input"><option>America/Chicago</option><option>America/New_York</option></select></div>
+              </div>
+              <div class="panel">
+                <div class="panel-title">Notification preferences</div>
+                <label class="inline" style="margin-bottom:8px"><input type="checkbox" checked> Alert when a client crosses into 121+ days</label>
+                <label class="inline" style="margin-bottom:8px"><input type="checkbox" checked> Daily Payment Watch digest</label>
+                <label class="inline"><input type="checkbox"> Email when a case is marked Paid</label>
+                <button class="wf-btn primary" style="margin-top:14px">Save settings</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var titles = {
+    dashboard:"Dashboard", paymentwatch:"Payment Watch", clients:"Clients",
+    "client-detail":"Client Detail", reports:"Reports & Analytics", admin:"Admin / Settings"
+  };
+  function go(name){
+    document.querySelectorAll('#app .screen').forEach(function(s){ s.classList.remove('active'); });
+    var target = document.getElementById('screen-'+name);
+    if(target) target.classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(function(n){
+      n.classList.toggle('active', n.getAttribute('data-nav')===name);
+    });
+    var crumb = document.getElementById('crumb');
+    if(crumb && titles[name]) crumb.textContent = titles[name];
+    window.scrollTo(0,0);
+  }
+  function enterApp(){
+    document.getElementById('screen-login').classList.remove('active');
+    document.getElementById('app').classList.remove('hide');
+    go('dashboard');
+  }
+  function signOut(){
+    document.getElementById('app').classList.add('hide');
+    document.getElementById('screen-login').classList.add('active');
+    window.scrollTo(0,0);
+  }
+  // keyboard activation for clickable rows/cards
+  document.addEventListener('keydown', function(e){
+    if((e.key==='Enter'||e.key===' ') && e.target.matches('tr.row, .client-card')){
+      e.preventDefault(); e.target.click();
+    }
+  });
+</script>
