@@ -42,6 +42,13 @@ click a client row to open the Client Detail screen; the top-bar **Ask AI**,
 7. **Advisors & Coaches** — advisor cards (Donnie 94 / Darious 120) + Add New Advisor placeholder.
 8. **Settings** — notification thresholds per stage, admin email, Save Settings.
 
+## PDF export
+
+A multi-page PDF (`portal-wireframes.pdf`, one screen per page, dark theme
+preserved) is exported from `portal-wireframes.html` using Puppeteer (headless
+Chromium at 1440×900 @2x, full-page screenshot per screen) assembled into a
+single 8-page PDF with `img2pdf`.
+
 ## Provenance: matched vs reconstructed
 
 - **Matched from reference screenshots:** Login, Alerts, AI Assistant, Advisors, Settings.
