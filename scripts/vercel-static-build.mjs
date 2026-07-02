@@ -10,6 +10,8 @@ const excluded = new Set([
   "dist",
   "node_modules",
   "scripts",
+  "api",
+  "README-DEPLOY.md",
   "package.json",
   "package-lock.json"
 ]);
