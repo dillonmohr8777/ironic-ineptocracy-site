@@ -32,6 +32,10 @@
     <link rel="stylesheet" href="/assets/css/site.css" />
     <script defer src="/assets/js/site.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
+  <meta name="ga4-measurement-id" content="REPLACE-WITH-GA4-ID">
+    <meta name="google-site-verification" content="REPLACE-WITH-GSC-TOKEN">
+    <meta name="meta-pixel-id" content="REPLACE-WITH-PIXEL-ID">
+    <script defer src="/assets/site-analytics.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -62,7 +66,15 @@
     </header>
 
     <main id="main">
-      <section class="hero" aria-labelledby="home-title">
+      <section class="hero hero--home" aria-labelledby="home-title">
+        <div class="hero__backdrop" aria-hidden="true">
+          <picture>
+            <source type="image/avif" srcset="/images/control-room-orange-county-1024.avif" />
+            <source type="image/webp" srcset="/images/control-room-orange-county-1024.webp" />
+            <img src="/images/control-room-orange-county.png" alt="" width="1680" height="944" fetchpriority="high" decoding="async" />
+          </picture>
+        </div>
+        <span class="hero__stamp" aria-hidden="true">Case 017 &middot; File Open</span>
         <div class="container">
           <p class="kicker kicker--signal">The Ironic</p>
           <h1 id="home-title">Ineptocracy</h1>
