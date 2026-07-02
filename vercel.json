@@ -13,9 +13,21 @@
     { "source": "/essays", "destination": "/dispatches", "permanent": true },
     { "source": "/blog/:path*", "destination": "/dispatches", "permanent": true },
     { "source": "/blogs/:path*", "destination": "/dispatches", "permanent": true },
-    { "source": "/essays/:path*", "destination": "/dispatches", "permanent": true }
+    { "source": "/essays/:path*", "destination": "/dispatches", "permanent": true },
+    { "source": "/newsletter", "destination": "/dossier", "permanent": true }
   ],
-  "rewrites": [
-    { "source": "/:path*", "destination": "/index.html" }
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800" }
+      ]
+    }
   ]
 }
