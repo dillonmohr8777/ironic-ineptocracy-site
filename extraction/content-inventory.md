@@ -1,0 +1,724 @@
+# String inventory — strings ≥25 chars from the prettified bundles
+
+Generated with `grep -oE '"[^"]{25,}"' <bundle> | sort -u`. Status legend:
+- `PLACED:<page>` — appears verbatim in the named content file(s) in /tmp/extract/content/
+- `DROPPED:library-internals` — React/scheduler/DOM-event/CSS-prop/error-message internals of the framework
+- `DROPPED:css-classname` — CSS class/selector/id strings
+- `DROPPED:responsive-attr` — media-query / `sizes` attribute strings
+- `DROPPED:svg-path` / `DROPPED:svg-attr` — SVG geometry/animation data (decorative portrait fallbacks)
+- `DROPPED:analytics` — Vercel Analytics plumbing
+- `DROPPED:build-internals` — Vite chunk paths
+- `DROPPED:seo-metadata` — <head> titles/descriptions/JSON-LD (excluded per instructions; head data lives in HTML shells)
+- `DROPPED:admin-tool` — /admin/* console UI copy
+- `DROPPED:social-generator` — social-content production bank: captions, image/video prompts, motion scripts, continuity locks, generated-scene headlines (rendered only on /admin/social-content)
+- `REVIEW` — uncertain
+
+## index.pretty.js
+
+- " && e.ownerDocument.readyState !== " — **DROPPED:library-internals**
+- " && i.rel.toLowerCase() === " — **DROPPED:library-internals**
+- " && t !== null && typeof t.then == " — **DROPPED:library-internals**
+- " + t.charCodeAt(0).toString(16) + " — **DROPPED:library-internals**
+- " 36 · four continents · one very bad year" — **PLACED:_global**
+- " ? document : void 0)), typeof e > " — **DROPPED:library-internals**
+- " Check the address and try again." — **PLACED:_global**
+- " The control room has your address. " — **PLACED:_global**
+- " follows a brilliant kid through 36 chapters of friends, money, pressure, and public lies that keep getting bigger." — **PLACED:home**
+- " for the full message or use the non-minified dev environment for full errors and additional helpful warnings." — **DROPPED:library-internals**
+- "' + ft(a.imageSrcSet) + '" — **DROPPED:library-internals**
+- "(max-width: 900px) 100vw, 50vw" — **DROPPED:responsive-attr**
+- "(max-width: 900px) 92vw, 38vw" — **PLACED:book,character-alec-daheim,character-avigail**
+- "(max-width: 900px) 92vw, 42vw" — **PLACED:characters-index**
+- "(max-width: 900px) 92vw, 44vw" — **PLACED:dispatches**
+- "(max-width: 900px) 92vw, 48vw" — **PLACED:press**
+- "(prefers-reduced-motion: reduce)" — **DROPPED:responsive-attr**
+- ") throw Error(u(527, Lf, " — **DROPPED:library-internals**
+- "). If you meant to render a collection of children, use an array instead." — **DROPPED:library-internals**
+- ", String(d + 1).padStart(2, " — **DROPPED:library-internals**
+- ", { children: String(d + 1).padStart(2, " — **DROPPED:library-internals**
+- ", { children: r.characterNames.join(" — **DROPPED:library-internals**
+- ", { children: r.sequence.join(" — **DROPPED:library-internals**
+- ", { children: r.text.join(" — **DROPPED:library-internals**
+- "./ScrollTrigger-BrDuEirF.js" — **DROPPED:build-internals**
+- ".cinematic-hero h1, .launch-hero__copy h1, .launch-copy-panel h1, .press-copy h1, .essays-hero h1, .essay-detail h1, .dispatches-hero h1, .dispatch-detail h1, .garnier-dossier-copy h1" — **DROPPED:css-classname**
+- ".depth-frame img, .image-frame img" — **DROPPED:css-classname**
+- ".ineptocracy-orbit__object" — **DROPPED:css-classname**
+- ".investigation-section .texture-backdrop img" — **DROPPED:css-classname**
+- ".liquid-glass-card, .blood-gradient-border" — **DROPPED:css-classname**
+- "/_vercel/insights/script.js" — **PLACED:_global**
+- "/characters/darnell-covington" — **PLACED:character-darnell-covington**
+- "/dispatches/the-file-opens" — **PLACED:_global,dispatch-the-file-opens,dispatches**
+- "/images/characters/alec.png" — **PLACED:character-alec-daheim,characters-index**
+- "/images/characters/avigail.png" — **PLACED:character-avigail,characters-index**
+- "/images/characters/darnell.png" — **PLACED:character-darnell-covington,characters-index**
+- "/images/characters/garnier.png" — **PLACED:character-dijon-garnier,characters-index**
+- "/images/characters/javon.png" — **PLACED:character-javon-whitfield,characters-index**
+- "/images/characters/leah.png" — **PLACED:character-leah,characters-index**
+- "/images/characters/mcnulty.png" — **PLACED:character-ronald-mcnulty,characters-index**
+- "/images/characters/sabrina.png" — **PLACED:character-sabrina,characters-index**
+- "/images/control-room-orange-county.png" — **PLACED:dossier**
+- "/images/hero-ineptocracy.png" — **PLACED:book,home**
+- "/images/investigation-map.png" — **PLACED:home**
+- "/images/social/continuity/darnell-javon-approved.png" — **DROPPED:social-generator**
+- "/images/social/continuity/mcnulty-approved.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/alec-garnier-mansion-confrontation-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/alec-garnier-mansion-confrontation-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/alec-garnier-mansion-confrontation-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/boston-protest-darnell-javon-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/boston-protest-darnell-javon-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/boston-protest-darnell-javon-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/garnier-dossier-file-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/garnier-dossier-file-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/garnier-dossier-file-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/garnier-mansion-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/garnier-mansion-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/garnier-mansion-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/mcnulty-white-house-protest-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/mcnulty-white-house-protest-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/mcnulty-white-house-protest-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/memory-economy-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/memory-economy-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/memory-economy-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/philadelphia-tracked-by-alec-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/philadelphia-tracked-by-alec-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/philadelphia-tracked-by-alec-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-alec-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-alec-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-alec-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-darnell-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-darnell-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-darnell-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-garnier-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-garnier-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-garnier-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-javon-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-javon-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-javon-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-mcnulty-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-mcnulty-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/portrait-mcnulty-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/virginia-apartment-feed.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/virginia-apartment-story.mp4" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/final/virginia-apartment-story.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/alec-garnier-mansion-confrontation.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/boston-protest-darnell-javon.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/garnier-dossier-file.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/garnier-mansion.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/mcnulty-white-house-protest.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/memory-economy.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/philadelphia-tracked-by-alec.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/portrait-alec.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/portrait-darnell.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/portrait-garnier.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/portrait-javon.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/portrait-mcnulty.png" — **DROPPED:social-generator**
+- "/images/social/generated-scenes/raw/virginia-apartment.png" — **DROPPED:social-generator**
+- "/images/social/month-one/drop-01-the-file-opens-feed.png" — **DROPPED:social-generator**
+- "/images/social/month-one/drop-01-the-file-opens-story.png" — **DROPPED:social-generator**
+- "/images/social/month-one/drop-02-who-gets-spent-feed.png" — **DROPPED:social-generator**
+- "/images/social/month-one/drop-02-who-gets-spent-story.png" — **DROPPED:social-generator**
+- "/images/social/month-one/drop-03-the-memory-economy-feed.png" — **DROPPED:social-generator**
+- "/images/social/month-one/drop-03-the-memory-economy-story.png" — **DROPPED:social-generator**
+- "/images/social/month-one/drop-04-the-garnier-position-feed.png" — **DROPPED:social-generator**
+- "/images/social/month-one/drop-04-the-garnier-position-story.png" — **DROPPED:social-generator**
+- "/images/story/essays-dossier-desk.png" — **PLACED:dispatch-the-file-opens,dispatches**
+- "/images/story/javon-darnell-alec-capitol-trio.png" — **PLACED:book,reader-guide**
+- "/images/story/press-kit-desk.png" — **PLACED:press**
+- "/images/story/supporting-cast-dossier.png" — **PLACED:character-mark,characters-index**
+- "/lead-magnets/garnier-dossier.md" — **PLACED:_global,dossier**
+- "/videos/body-melt-crt-final.mp4" — **PLACED:home**
+- "0.009 0.022; 0.011 0.028; 0.009 0.022" — **DROPPED:svg-attr**
+- "01. The door. A first look at the world and the diagnosis behind the title." — **PLACED:dispatch-the-file-opens**
+- "02. The machine. A dispatch on selection, sacrifice, and the policies that decide who can be spent." — **PLACED:dispatch-the-file-opens**
+- "03. The edited memory. A dispatch on what power does after the damage is done." — **PLACED:dispatch-the-file-opens**
+- "04. The man above the hill. A dossier fragment on Garnier, ownership, and the architecture of influence." — **PLACED:dispatch-the-file-opens**
+- "A WEAPON WITH A CONSCIENCE ARRIVING LATE." — **DROPPED:social-generator**
+- "A billionaire mansion at night above a distant city, windows glowing like server racks, storm clouds, long empty driveway, surveillance grid barely visible, political thriller realism, 16:9" — **DROPPED:social-generator**
+- "A black desk. One folder. Redacted label. No hands visible. The file looks placed by someone who left fast." — **PLACED:dispatches**
+- "A black file, a buried vessel, and the nerve to pilot people through a silence that could kill them." — **PLACED:character-leah,characters-index**
+- "A brilliant young man enters a country where donor money, draft pressure, surveillance language, and public incompetence keep tightening around him." — **PLACED:press**
+- "A campaign usually sells a promise. In this lane, the promise is safety, strength, and restored order. The product underneath is obedience. Citizens are invited to feel that compliance is participation, and participation is identity. Once that identity hardens, the people who resist the campaign do not merely disagree. They seem to threaten the group story." — **PLACED:dispatches**
+- "A cinematic political thriller about bureaucracy, charisma, collapse, and the private files behind a manufactured democracy." — **PLACED:press**
+- "A classified reader file from The Ironic Ineptocracy, built around Dijon Garnier, private power, financial dependencies, and the machinery behind the novel." — **DROPPED:seo-metadata**
+- "A classified reader file from the world of The Ironic Ineptocracy." — **PLACED:dossier**
+- "A coming of age story in a country that keeps mistaking protected failure for leadership." — **PLACED:press**
+- "A coming of age story inside an apparatus that calls its appetite order" — **PLACED:press**
+- "A coming of age story inside the apparatus that calls its appetite order." — **PLACED:home**
+- "A coming of age thriller inside a country where failure is not an accident. It is policy with better lighting." — **PLACED:book**
+- "A conversation about NeuroClick, convenience, compliance, and the business model of forgetting." — **PLACED:press**
+- "A country does not have to make everyone believe the same false story. It only has to make the real story feel exhausting to keep. Once citizens are tired, distracted, and surrounded by official language, memory becomes a private burden instead of a shared civic tool. The person who remembers becomes the difficult person in the room." — **PLACED:dispatches**
+- "A country losing the plot" — **PLACED:press**
+- "A dark investigation desk with files, red string, memory diagrams, and institutional silhouettes." — **PLACED:dispatches**
+- "A dark press kit desk with redacted files, a microphone, manuscript pages, and sealed envelopes." — **PLACED:press**
+- "A dark surveillance control room with abstract financial maps, campaign podium silhouettes, redacted files, and a quiet wall of monitors, cinematic, restrained, black glass, crimson accents, no cyberpunk neon, 16:9" — **DROPPED:social-generator**
+- "A darkly satirical novel where donor rooms, draft papers, memory technology, and media language become the machinery of suspense." — **PLACED:press**
+- "A direct look at the book's sharpest premise: brilliance becomes dangerous when power needs bodies." — **PLACED:dispatches**
+- "A disciplined weapon with green eyes, an empty column, and a conscience arriving later than it should." — **PLACED:character-alec-daheim,characters-index**
+- "A draft notice is never just paper." — **DROPPED:social-generator**
+- "A first dispatch from the world of The Ironic Ineptocracy. The dossier begins with power, memory, money, and the men who keep failing upward." — **DROPPED:seo-metadata**
+- "A first dispatch from the world of The Ironic Ineptocracy." — **PLACED:dispatch-the-file-opens**
+- "A glass archive wall with dates disappearing from a timeline, newspaper fragments, neural circuit shadow, campaign poster torn in half, dark political satire, no real politicians, 16:9" — **DROPPED:social-generator**
+- "A government form emerging from an old printer, fluorescent light, black redactions, one red SELECTED stamp, institutional dread, realistic, 4:5" — **DROPPED:social-generator**
+- "A government form sliding out of a printer under fluorescent light. The key fields are blacked out. One red stamp reads SELECTED." — **PLACED:dispatches**
+- "A hand wipes text from glass." — **DROPPED:social-generator**
+- "A major public myth says that merit protects people. If you are smart enough, polished enough, useful enough, or exceptional enough, the system will recognize you fairly. The Ironic Ineptocracy does not let that myth pass unchallenged. It asks what happens when merit becomes another way to identify who can be extracted." — **PLACED:dispatches**
+- "A mansion at night above the city. The windows glow like servers. The driveway looks too empty." — **PLACED:dispatches**
+- "A mansion in a thriller can become an easy symbol if it is only treated as wealth. The more useful reading is architectural. The rooms decide who gets close, who waits outside, who sees the view, and who has to climb. Space becomes a script. Before anyone speaks, the building has already ranked the room." — **PLACED:dispatches**
+- "A new headline replaces the old one." — **DROPPED:social-generator**
+- "A private class that writes the rules and never lives by them." — **PLACED:book**
+- "A prosthetic arm, a bad attitude, and a basement built for breaking signals without breaking people." — **PLACED:character-mark,characters-index**
+- "A quiet confrontation outside the architecture of influence." — **DROPPED:social-generator**
+- "A reading lane on why obedience becomes easier when people are trained to lose the record." — **PLACED:dispatches**
+- "A satirical thriller can show that transaction without pausing the story for a lecture. It can put a slogan next to a private meeting, a patriotic phrase next to a financial route, and a public speech next to the person expected to absorb the cost. The reader begins to see the campaign around the event." — **PLACED:dispatches**
+- "A scanner line crosses a sealed folder." — **DROPPED:social-generator**
+- "A sealed classified dossier on a black desk, stamped GARNIER DOSSIER in dark red ink, aged paper, redacted financial documents, muted gold paper clips, shallow cinematic light, no hands, no real logos, dark political thriller, 16:9" — **DROPPED:social-generator**
+- "A sealed manila profile marked SUBJECT: DIJON GARNIER, luxury watch, bank card, campaign check, intelligence memo, noir desk light, high detail, 16:9" — **DROPPED:social-generator**
+- "A spoiler safe lane on friendship, ambition, race, and the moment public promise becomes useful to the wrong people." — **PLACED:press**
+- "A spoiler-safe reader and book club guide for The Ironic Ineptocracy, with themes, discussion lanes, and launch-reader prompts." — **DROPPED:seo-metadata**
+- "A spoiler-safe world file for The Ironic Ineptocracy, mapping Darnell, Javon, Dijon Garnier, NeuroClick, donor power, memory, media, war, and institutional collapse." — **DROPPED:seo-metadata**
+- "A timeline pinned under glass. Certain years have been erased so cleanly the page looks designed that way." — **PLACED:dispatches**
+- "A visual essay on private rooms, hidden calendars, and the architecture of power." — **PLACED:dispatches**
+- "A young Black scholar seen from behind in a stone university corridor, cold institutional lighting, a faint redacted file projection on the wall, pressure, intelligence, surveillance, no text, 16:9" — **DROPPED:social-generator**
+- "ACCESS GRANTED. The first file is queued." — **PLACED:_global**
+- "About the Book | The Ironic Ineptocracy" — **DROPPED:seo-metadata**
+- "Access first. Dependence second. Ownership after that." — **PLACED:dossier**
+- "Alec Daheim begins as an instrument of surveillance and force. His official shape is deliberate, physical, trained, and useful to men who prefer obedience with excellent posture." — **PLACED:character-alec-daheim**
+- "Alec Daheim moves near the machinery with the exhausted calm of someone who has seen too many official stories rot from the inside." — **PLACED:dispatch-the-file-opens**
+- "Alec forces the reader to ask whether a person who served the machine can outlive the damage he carried for it." — **PLACED:character-alec-daheim**
+- "Alec moves through the intelligence layer where friendship, threat, and duty keep changing uniforms." — **PLACED:world**
+- "Alec shows up early and lingers. Friend, threat, witness. The file keeps him close." — **PLACED:home**
+- "America had another one waiting." — **PLACED:home**
+- "Analog, restrained, no trailer voice, no explosions, no fake blockbuster energy." — **DROPPED:social-generator**
+- "And above them, sometimes directly, sometimes only through pressure, there is Dijon Garnier." — **PLACED:dispatch-the-file-opens**
+- "Appears early, stays long." — **PLACED:home**
+- "Approved character references" — **DROPPED:social-generator**
+- "Ask for a review copy, preferred format, deadline, and whether the review must stay spoiler free before publication." — **PLACED:press**
+- "August release planned. Launch list is collecting reviewers, podcasters, booksellers, educators, and early readers." — **PLACED:press**
+- "Avigail enters through hospitality, which matters because the novel rarely treats safety as a grand event. Sometimes safety is a front desk, a room key, a hot meal, a doctor called before anyone asks permission, and a woman deciding that the frightened person in front of her is still human." — **PLACED:character-avigail**
+- "Avigail widens the story beyond American power without making the international sections feel abstract. She brings local knowledge, moral hesitation, and a complicated friendship history into a plot that powerful men keep trying to reduce to logistics." — **PLACED:character-avigail**
+- "Avigail's brunette dossier belongs to the book's human network, the unofficial geography of people who keep one another alive while institutions are busy manufacturing their own excuses." — **PLACED:character-avigail**
+- "BankIt, Tecca, NeuroClick, and the interfaces that make dependence feel efficient." — **PLACED:world**
+- "Be sure to enable Web Analytics for your project and deploy again. See https://vercel.com/docs/analytics/quickstart for more information." — **DROPPED:analytics**
+- "Big ambition, bigger trouble, and a machine hungry enough to chew through both." — **PLACED:home**
+- "Bios, summaries, Q and A, podcast angles" — **DROPPED:admin-tool**
+- "Black Intellect As Threat names one of the sharpest tensions in The Ironic Ineptocracy. The danger is not brilliance by itself. The danger is brilliance that refuses to become useful on command. Darnell and Javon are not threatening because they lack discipline or promise. They are threatening because they can read the system that wants to read them first." — **PLACED:dispatches**
+- "Black Intellect As Threat" — **PLACED:dispatches**
+- "Black intellect under institutional pressure" — **PLACED:character-darnell-covington**
+- "Black intellect · file BI 01" — **PLACED:character-darnell-covington,characters-index**
+- "Blue eyes returned from gray, a Midwestern accent under fire, and a gun hand that knows obedience can be manufactured." — **PLACED:character-sabrina,characters-index**
+- "Book facts / release status" — **PLACED:press**
+- "Booksellers and libraries" — **PLACED:press**
+- "Brilliance Under Inspection" — **PLACED:dispatches**
+- "Build a serious early-reader coalition before release through reviews, interviews, guest essays, and the dossier list." — **PLACED:press**
+- "Building a political thriller like a classified dossier." — **PLACED:press**
+- "Bureaucracy is scarier than a supervillain because it already knows your address." — **PLACED:press**
+- "CIA field file · blonde dossier" — **PLACED:character-sabrina,characters-index**
+- "CRT plate · body melt final / 017" — **PLACED:home**
+- "CRT-corrupted moving portrait of Javon, Darnell, and Alec before the Capitol." — **PLACED:home**
+- "Cabin file · interference systems" — **PLACED:character-mark,characters-index**
+- "Characters | The Ironic Ineptocracy" — **DROPPED:seo-metadata**
+- "Closest ally, hardest test." — **PLACED:home**
+- "Crisis Language Wants Speed" — **PLACED:dispatches**
+- "DARNELL SPEAKS. JAVON WATCHES THE ROOM." — **DROPPED:social-generator**
+- "Dark political thriller, satirical fiction, contemporary political fiction, literary thriller, and book club discussion fiction." — **PLACED:press**
+- "Darnell Covington can see the life he wants. Javon Whitfield sees danger gathering around the room. Dijon Garnier sees a country that can be bought, routed, and corrected. The novel follows the pressure as ambition becomes evidence and the official story keeps changing." — **PLACED:press**
+- "Darnell Covington enters the novel with the kind of mind schools like to advertise and governments like to inventory. He is disciplined, observant, private, and young enough to believe that extraordinary work might still buy an honest future." — **PLACED:character-darnell-covington**
+- "Darnell Covington enters the story with a mind sharp enough to open doors and a country eager to decide what that mind is for." — **PLACED:world**
+- "Darnell Covington sees patterns before the adults around him finish naming the problem. That should be a gift. In another country, maybe another century, maybe another version of America, it would be. In this world, intelligence makes him visible. Visibility makes him useful. Usefulness makes him vulnerable." — **PLACED:dispatch-the-file-opens**
+- "Darnell and Javon do not move through the story as abstract citizens. They move through systems built by people who often experience consequences at a distance. The mansion makes that distance physical. It lets the reader feel how decisions can be made from a place that is protected from the immediate human result." — **PLACED:dispatches**
+- "Darnell begins as a brilliant kid with a future large enough to make adults comfortable. Then the file starts changing. Schools, donors, agencies, media language, financial incentives, and patriotic scripts begin to move around him with a confidence that feels too polished to be accidental." — **PLACED:press**
+- "Darnell can see the life he wants. Javon sees the danger sooner. Alec keeps showing up where the file gets strange. The adults with power keep making every exit smaller." — **PLACED:home**
+- "Darnell carries the moral voltage of the story. Through him, the novel moves from private ambition into donor politics, militarized language, bureaucratic euphemism, and the ugly habit powerful men have of calling extraction opportunity." — **PLACED:character-darnell-covington**
+- "Darnell earns the door and learns who owns the hallway." — **PLACED:book**
+- "Darnell gives the argument a body. Memory lives in who spoke, who looked away, who offered help, who profited from silence, and who had to keep the first version alone. Once that ledger gets disputed, a person can start doubting his own reading of the world." — **PLACED:dispatches**
+- "Darnell is never written as a clean emblem. He is nervous, proud, funny in quiet flashes, frightened when he should be, and smarter than the rooms that presume they can classify him. The book keeps returning him to personhood while the country around him keeps trying to turn him into usable material." — **PLACED:character-darnell-covington**
+- "Darnell sees the pattern before the room finishes pretending there is no pattern." — **DROPPED:social-generator**
+- "Darnell under institutional light" — **DROPPED:social-generator**
+- "Darnell wears glasses, has short natural hair, a slim build, and alert public-speaker energy. Javon is much taller, broad-shouldered, short-haired, serious, and protective beside him. Both use the black protest-clothing language from the Boston reference." — **DROPPED:social-generator**
+- "Darnell, Javon, and Alec standing before the Capitol under a fire lit sky." — **PLACED:book**
+- "Darnell, Javon, and promise under pressure" — **PLACED:press**
+- "DetermineComponentFrameRoot" — **DROPPED:library-internals**
+- "Dijon Garnier built a form of power that does not need applause. It needs access. The first file traces his public mask, private logic, financial dependencies, and the machinery surrounding The Ironic Ineptocracy." — **PLACED:_global**
+- "Dijon Garnier does not move like a politician. He moves like infrastructure. Open the first reader file from The Ironic Ineptocracy and enter the machinery behind the novel." — **PLACED:dispatch-the-file-opens**
+- "Dijon Garnier is most dangerous when he looks less like a villain and more like infrastructure: money, access, influence, memory, and consequence avoidance." — **PLACED:press**
+- "Dijon Garnier is wealth after it stops requesting access and starts behaving like jurisdiction. He has money, infrastructure, politicians, and enough contempt to mistake manipulation for vision." — **PLACED:character-dijon-garnier**
+- "Dijon Garnier moves like infrastructure. Send the first file to this address." — **PLACED:_global**
+- "Dispatches | The Ironic Ineptocracy" — **DROPPED:seo-metadata**
+- "Dispatches, long posts, email hooks" — **DROPPED:admin-tool**
+- "Donor rooms, private funding, ownership pressure, favors that look like civic rescue." — **PLACED:world**
+- "Draft papers, service language, emergency speed, and bodies converted into national symbolism." — **PLACED:world**
+- "Drop by drop social production board" — **DROPPED:social-generator**
+- "Drop copy, visual prompts, and motion scripts" — **DROPPED:admin-tool**
+- "Each angle can support a guest essay, podcast segment, newsletter interview, or book blog feature. The soft backlink target is the Garnier Dossier, because it captures readers instead of sending them to a dead end." — **PLACED:press**
+- "Each stop makes the file heavier." — **PLACED:home**
+- "Elite failure as thriller fuel" — **PLACED:press**
+- "Enter The Ironic Ineptocracy, Dillon Mohr's satirical thriller about ambition, power, friendship, propaganda, and the machinery built around survival." — **DROPPED:seo-metadata**
+- "Eventually, they'll stop protesting, one way or another." — **DROPPED:social-generator**
+- "Every character gets a file, not the whole website." — **PLACED:characters-index**
+- "Every stop makes Darnell pay a little more. The slogans get louder. The screens get cleaner. Obedience starts sounding like civic duty." — **PLACED:home**
+- "Everyone keeps calling the system broken because that is easier than admitting parts of it work exactly as intended." — **PLACED:dispatch-the-file-opens**
+- "Everyone keeps calling the system broken because that is easier than admitting parts of it work." — **DROPPED:social-generator**
+- "Everything a reviewer, podcaster, bookstore, or guest editor needs first." — **PLACED:press**
+- "Evidence board connecting MONEY, WAR, MEMORY, MEDIA, OFFICE, and GARNIER, red string, ledger fragments, old paper, dark room, one desk lamp, cinematic realism, 16:9" — **DROPPED:social-generator**
+- "Evidence drops from The Ironic Ineptocracy, beginning with The File Opens and The Garnier Dossier." — **DROPPED:seo-metadata**
+- "FIRST THE EVENT. THEN THE STORY. THEN THE MEMORY." — **DROPPED:social-generator**
+- "Failure becomes authority" — **PLACED:world**
+- "Featured social image assets" — **DROPPED:social-generator**
+- "File D 09 · Langley route" — **PLACED:character-alec-daheim,characters-index**
+- "Five pitches built to earn relevant backlinks." — **PLACED:press**
+- "Follow the receipts before you follow the speeches." — **PLACED:world**
+- "For launch readers, the memory economy is a spoiler safe way to talk about the book's central fear. You can discuss the machinery of revision without naming the final turns. You can ask why a society rewards forgetting, why language keeps getting polished after harm, and why the people with the most to lose are often told to be reasonable." — **PLACED:dispatches**
+- "For launch readers, this essay offers a spoiler safe lens. Watch how rooms behave. Watch who enters first, who owns the silence, who gets interrupted, and who has to translate danger into language the room will respect. The physical setting often tells the truth before the dialogue does." — **PLACED:dispatches**
+- "Four evidence drops. One open file." — **PLACED:dispatches**
+- "Four fictional supporting characters shown as classified dossier portraits." — **PLACED:characters-index**
+- "Future dispatches from the control room" — **PLACED:_global**
+- "GARNIER MEASURES THE WEAPON HE PAID FOR." — **DROPPED:social-generator**
+- "Garnier Dossier access form" — **PLACED:_global**
+- "Garnier does not need the throne. He owns the room around it." — **PLACED:dispatch-the-file-opens,dispatches**
+- "Garnier does not need to rule in public. He buys routes, installs dependencies, and lets institutions call the result stability." — **PLACED:world**
+- "Garnier is not loud in the way weak men are loud. He does not need the room to chant his name. He needs the room to depend on him before it realizes he owns the door." — **PLACED:dispatch-the-file-opens**
+- "Garnier pulls the story uphill into rooms where consequences are discussed by people who have already insulated themselves from consequence." — **PLACED:character-dijon-garnier**
+- "Garnier's interest in forgetting is therefore practical. Agreement is fragile because people can change their minds. Forgetting is stronger because it removes the material people need in order to disagree. The novel keeps that idea in the foreground without turning the story into a manual. Readers see the pressure through rooms, relationships, and choices." — **PLACED:dispatches**
+- "Garnier's world benefits from that feeling. The novel uses spaces around him to show how money can become atmosphere. People do not always need to be ordered into silence. Sometimes they enter a room where silence has already been designed as the easiest behavior." — **PLACED:dispatches**
+- "Generated social creative" — **DROPPED:social-generator**
+- "HE DOES NOT ASK FOR POWER." — **DROPPED:social-generator**
+- "HE DOES NOT NEED THE THRONE." — **DROPPED:social-generator**
+- "HE OWNS THE ROOM AROUND IT." — **DROPPED:social-generator**
+- "He also lets the book examine Black masculinity without flattening it into posture. Strength, fear, tenderness, profanity, loyalty, and political intuition sit in the same body. The result is not a sidekick. It is another intelligence moving beside Darnell under a different set of assumptions." — **PLACED:character-javon-whitfield**
+- "He is not the cartoon billionaire who wants applause. He wants arrangement. Votes, memory, testimony, markets, bodies, and fear all become materials in the same private construction project." — **PLACED:character-dijon-garnier**
+- "He lives in spectacle, grievance, and repetition. The country keeps waiting for depth where there is only instinct, branding, and a room full of people willing to launder impulse into doctrine." — **PLACED:character-ronald-mcnulty**
+- "Her connection to Leah gives the thriller one of its sharpest routes. Access does not arrive as a clean official channel. It arrives through memory, trust, fear, and the kind of old bond that survives long enough to become dangerous." — **PLACED:character-avigail**
+- "Her father left memory, protocols, contacts, encrypted routes, and the sort of buried contingency that only makes sense when loyalty has already become morally insufficient." — **PLACED:character-leah**
+- "Her friendship with Avigail gives the story a private counter history beneath the geopolitical noise. The public conflict has flags, speeches, borders, and military language. Leah's part of the story has old trust, coded messages, and the awful intimacy of asking someone to come quiet with ghosts." — **PLACED:character-leah**
+- "Her intelligence is practical rather than ornamental. She reads posture, fear, injury, danger, and timing. She knows when a lie is being told for survival and when a silence is protecting someone who has already been spent by larger forces." — **PLACED:character-avigail**
+- "Her presence carries the horror of control at the bodily level. The novel can talk about propaganda, public memory, and state violence, but Sabrina makes the question more invasive. What happens when command is no longer merely political and begins to move through the nervous system?" — **PLACED:character-sabrina**
+- "Hilarious. Horrifying. And uncomfortably on point." — **PLACED:book**
+- "His intelligence is both gift and liability. The more accurately he reads the pattern, the more inconvenient he becomes to the people who need the pattern to remain ordinary. That friction gives the satire its bite and the thriller its pulse." — **PLACED:character-darnell-covington**
+- "His presence lets the book study incompetence as an ecosystem rather than a personality defect. One reckless man is dangerous. A protected reckless man is government." — **PLACED:character-ronald-mcnulty**
+- "His route complicates the thriller by making loyalty expensive. He knows too much, has done too much, and still has to decide what kind of man remains after the mission stops sounding clean." — **PLACED:character-alec-daheim**
+- "Hold for source and approval." — **DROPPED:admin-tool**
+- "How To Read This Before Release" — **PLACED:dispatches**
+- "How a political satire can turn donor rooms, bad incentives, and public collapse into narrative suspense." — **PLACED:press**
+- "How does Darnell's promise become a trap before he names the system?" — **PLACED:reader-guide**
+- "How does the book turn spectacle into evidence?" — **PLACED:dispatches**
+- "How does wealth make secrecy feel normal?" — **PLACED:dispatches**
+- "How slogans, crisis language, and paid attention turn state violence into a product launch." — **PLACED:dispatches**
+- "How spy fiction changes when the enemy is capital, media, and institutional decay." — **PLACED:press**
+- "INTELLIGENCE MADE HIM VISIBLE." — **DROPPED:social-generator**
+- "In The Ironic Ineptocracy, private architecture matters because public outcomes often begin in places that do not look public. The mansion matters because it teaches readers how to look at power before power announces itself." — **PLACED:dispatches**
+- "Incompetence becomes policy when nobody pays the price." — **PLACED:_global**
+- "Ineptocracy is not a theory. It is the operating system." — **PLACED:_global**
+- "Ineptocracy warning signals" — **PLACED:_global**
+- "Inside the novel's world, that speed matters because Darnell and Javon are young enough to be turned into symbols by people who do not have to live inside the symbols. Their promise, friendship, intelligence, and future can be simplified into public material. The marketing machine does not need to understand them. It needs them to be usable." — **PLACED:dispatches**
+- "Introduce the Draft Machine without overexplaining plot." — **PLACED:dispatches**
+- "Introduce the memory-control theme as the intellectual hook." — **PLACED:dispatches**
+- "Introduce the site as a living dossier, not a book brochure." — **PLACED:dispatches**
+- "Introducing Dijon Garnier" — **DROPPED:social-generator**
+- "Introducing Ronald McNulty" — **DROPPED:social-generator**
+- "It also gives book clubs and reviewers a concrete frame. Watch what the story treats as evidence. Watch who has permission to describe events. Watch who is asked to move on, and who gets to profit from that movement. Those questions reveal the political shape of the novel without flattening it into a slogan." — **PLACED:dispatches**
+- "It comes through damaged. Watermarked. Half redacted. Names missing where the money should be. Dates broken out of sequence. A signature at the bottom from someone who either knew too much or understood too late that knowing was not protection." — **PLACED:dispatch-the-file-opens**
+- "It starts with a school file. Then come the pressure points, the favors, and the people Darnell can barely afford to lose." — **PLACED:home**
+- "It will release evidence." — **PLACED:dispatch-the-file-opens**
+- "Javon Whitfield is Darnell's counterweight and witness. He is enormous, hilarious, intellectually restless, and built with the kind of charisma that can make danger feel briefly survivable." — **PLACED:character-javon-whitfield**
+- "Javon Whitfield sees danger with a different instrument. Less faith. Less patience. A sharper sense for the moment when an institution stops pretending it was built for you." — **PLACED:dispatch-the-file-opens**
+- "Javon complicates that pressure because friendship is one of the few places where memory can still be tested. A friend remembers the version of you that a system has no use for. That kind of witness can become dangerous when the surrounding machine needs a cleaner story." — **PLACED:dispatches**
+- "Javon prevents the story from isolating brilliance inside one exceptional figure. Friendship gives the novel a second witness and a second standard. Darnell is measured by institutions, grades, ambition, and public usefulness, but Javon sees the person underneath the file." — **PLACED:dispatches**
+- "Javon reads people faster than Darnell reads systems. Their friendship becomes one of the few records the machine cannot easily rewrite." — **PLACED:world**
+- "Javon reads the room when Darnell reacts. Once the world tilts, he becomes the person Darnell trusts most." — **PLACED:home**
+- "Javon remembers Darnell before Darnell becomes a file. That memory matters because propaganda loves isolation. A person is easier to revise when nobody nearby can contradict the revision." — **PLACED:character-javon-whitfield**
+- "Keep Garnier indirect. The mansion, ledger, and empty driveway do the first round of talking." — **DROPPED:social-generator**
+- "Keshet file · brunette dossier" — **PLACED:character-leah,characters-index**
+- "Lead with the damaged file. The social angle is the public story losing pages." — **DROPPED:social-generator**
+- "Leah Atar carries the novel's secret architecture into view. She is not introduced to soften the story. She arrives with access, grief, technical inheritance, and a hatred of living inside a country where flags can make captivity sound noble." — **PLACED:character-leah**
+- "Leah gives the escape plot its technical spine and its emotional bruise. The Keshet is not a gadget for spectacle. It is inherited disobedience, a vessel built for the moment when official channels become a trap." — **PLACED:character-leah**
+- "Leah's brunette dossier is colder than Avigail's because her knowledge is colder. She knows what doors open. She knows what opening them costs. She knows that escape can still feel like betrayal when the shore behind you is home." — **PLACED:character-leah**
+- "Long-form dispatches that make the book easier to discover, quote, cite, and talk about without spoiling the ending." — **PLACED:dispatches**
+- "Make America obedient again" — **PLACED:home**
+- "Make Dijon Garnier the month-one villain asset." — **PLACED:dispatches**
+- "Make the record feel clean in the wrong way. Erasure should look designed, not messy." — **DROPPED:social-generator**
+- "Mamilla file · brunette dossier" — **PLACED:character-avigail,characters-index**
+- "Mansions, offices, classrooms, control rooms, and every private space where public consequences begin." — **PLACED:world**
+- "Manufactured consent, targeted bodies, and a war sold as civic duty." — **PLACED:book**
+- "Mark is what survival looks like after official employment curdles into private preparation. He does not arrive with polish. He arrives with locks, equipment, suspicion, and a cabin that refuses to be only a cabin." — **PLACED:character-mark**
+- "Mark turns resistance into engineering. His spoiler safe function is practical and unnerving: when the state learns to control bodies through signals, somebody has to learn how to interrupt the signal." — **PLACED:character-mark**
+- "McNulty gives elite failure a public mouth. He makes absurdity audible, then watches institutions behave as if the sound has become law." — **PLACED:character-ronald-mcnulty**
+- "McNulty wants power with applause. Garnier wants disasters he can bill. The agencies keep their voices calm while Darnell gets routed through rooms he never entered." — **PLACED:home**
+- "Merit Is Not The Same As Freedom" — **PLACED:dispatches**
+- "Modern political thrillers need financial villains; bureaucracy is scarier than a supervillain; the billionaire antagonist as a system." — **PLACED:press**
+- "Money moves. Policy follows. Memory gets corrected." — **PLACED:dossier**
+- "Names missing where the money should be." — **PLACED:dispatch-the-file-opens**
+- "NeuroClick And The Comfort Of Forgetting" — **PLACED:dispatches**
+- "NeuroClick matters because it turns an old political habit into a product. Institutions have always tried to rename damage, bury records, and move attention somewhere cleaner. The fictional technology makes that impulse feel sleek. It gives forgetting a user interface and a business model." — **PLACED:dispatches**
+- "NeuroClick turns memory into infrastructure and forgetting into power." — **PLACED:book**
+- "No noise. No filler. Only dispatches from the world of the book and the road to release." — **PLACED:dispatch-the-file-opens**
+- "No spam. No filler. Dispatches only." — **PLACED:_global,dossier**
+- "Not a chase. A pressure field." — **DROPPED:social-generator**
+- "Not through a polished gate. Through a leak." — **PLACED:dispatch-the-file-opens**
+- "Objects are not valid as a React child (found: " — **DROPPED:library-internals**
+- "Older fictional American president with silver-white side-parted hair, broad older face, heavy-lidded suspicious eyes, dark navy suit, white shirt, red tie, stiff confidence, and protected executive posture." — **DROPPED:social-generator**
+- "Open the Garnier Dossier before the rest of the map moves." — **PLACED:world**
+- "Open the character files for Darnell Covington, Javon Whitfield, Ronald McNulty, Dijon Garnier, Alec Daheim, Avigail, Sabrina, Leah, and Mark." — **DROPPED:seo-metadata**
+- "Order, competence, generosity, civic language." — **PLACED:dossier**
+- "Piercing green eyes, a burner phone, and the rare instinct to help before the paperwork can forbid it." — **PLACED:character-avigail,characters-index**
+- "Please check if any ad blockers are enabled and try again." — **DROPPED:analytics**
+- "Policy without consequence" — **PLACED:_global**
+- "Political fiction, satire, institutional failure, billionaire power, debut authorship, and why the book is built like a dossier." — **PLACED:press**
+- "Power does not only want the event. It wants the version of the event people are allowed to keep." — **PLACED:dispatch-the-file-opens,dispatches**
+- "Power moves first. Blame shows up late." — **PLACED:home**
+- "Power outruns accountability" — **PLACED:_global**
+- "Power rarely arrives under its own name. It arrives as funding, access, debt, security, convenience, policy, and memory. The Garnier Dossier is the first reader file from The Ironic Ineptocracy: a controlled look at the billionaire presence behind the book's political and financial machinery." — **PLACED:dossier**
+- "President · back in office" — **PLACED:character-ronald-mcnulty,characters-index**
+- "Press Kit | The Ironic Ineptocracy" — **DROPPED:seo-metadata**
+- "Press and reviewer information for The Ironic Ineptocracy by Dillon Mohr, including launch status, book facts, interview angles, and review-copy routing." — **DROPPED:seo-metadata**
+- "Private Website Console | The Ironic Ineptocracy" — **DROPPED:admin-tool**
+- "Private capital with a cigar, a mansion, a technological alibi, and a brutal appetite for controllable memory." — **PLACED:character-dijon-garnier,characters-index**
+- "Private content console for The Ironic Ineptocracy." — **DROPPED:admin-tool**
+- "Promise becomes paperwork" — **PLACED:world**
+- "Protected failure at the fence line." — **DROPPED:social-generator**
+- "Protection becomes pressure" — **PLACED:world**
+- "Public downloads are staged but not final. Cover files, author photos, one sheet copy, approved pull quotes, ISBN, page count, price, and finalized retail links should be added only after final asset approval." — **PLACED:press**
+- "Public records, revised stories, corrected language, and the cost of remembering alone." — **PLACED:world**
+- "Public statement replaces private note." — **DROPPED:social-generator**
+- "QB · Rosedale, Mississippi" — **PLACED:character-javon-whitfield,characters-index**
+- "Questions for book clubs, classrooms, and launch readers." — **PLACED:reader-guide**
+- "React.Children.only expected to receive a single React element child." — **DROPPED:library-internals**
+- "Read Avigail as a character of thresholds. Doors, elevators, rooms, ports, vehicles, and borders matter around her because she understands that survival is often decided in the passage between one controlled space and another." — **PLACED:character-avigail**
+- "Read Leah as the character who understands that a route home can still be a wound. She moves people across water, but the book never lets movement become an easy absolution." — **PLACED:character-leah**
+- "Read every compliment from power twice. Ask whether it honors the mind in front of it or prepares that mind for use." — **PLACED:dispatches**
+- "Read every private room as a public clue. Track who is protected by the architecture and who has to carry the consequence." — **PLACED:dispatches**
+- "Read the novel with a memory ledger beside you. Mark the first version of each story before the public version arrives." — **PLACED:dispatches**
+- "Read the public language like campaign copy. Track the promise on the surface and the obedience it asks for underneath." — **PLACED:dispatches**
+- "Read the spoiler-safe launch brief for The Ironic Ineptocracy, a political satire and thriller about young promise colliding with institutional power." — **DROPPED:seo-metadata**
+- "Reader Guide | The Ironic Ineptocracy" — **DROPPED:seo-metadata**
+- "Reading Without Flattening The Pain" — **PLACED:dispatches**
+- "Reality television ego with executive power and a talent for making collapse sound procedural." — **PLACED:character-ronald-mcnulty,characters-index**
+- "Receive the next briefing" — **PLACED:dispatches**
+- "Recognition becomes action" — **PLACED:_global**
+- "Redactions slide across the page." — **DROPPED:social-generator**
+- "Removed Page | The Ironic Ineptocracy" — **DROPPED:seo-metadata**
+- "Review copy, podcast, bookstore, educator, and press requests should route through the dossier request flow until a dedicated public press inbox is published." — **PLACED:press**
+- "Ronald McNulty is not frightening because he is brilliant. He is frightening because the machinery around him keeps translating appetite into policy." — **PLACED:character-ronald-mcnulty**
+- "Route through voice and spoiler review." — **DROPPED:admin-tool**
+- "Sabrina helps the novel move from institutional coercion into neurological coercion without turning the idea into sterile science fiction. Her body has been made into evidence, and she still insists on remaining a person inside the evidence." — **PLACED:character-sabrina**
+- "Sabrina is not a decorative blonde in the corner of a violent story. She is field trained, profane, suspicious, and intimate with the kind of work that leaves people alive but altered." — **PLACED:character-sabrina**
+- "Satirical political thriller, dark political fiction, and coming of age novel" — **PLACED:press**
+- "Scene art is generated clean. The finished posts add type through the site renderer so the typography stays sharp and consistent." — **DROPPED:admin-tool**
+- "Secrecy That Feels Polite" — **PLACED:dispatches**
+- "Seventeen, mathematically adroit, Harvard bound, and suddenly legible to people who confuse promise with property." — **PLACED:character-darnell-covington,characters-index**
+- "She changes the texture of the group because she understands the field from inside the field. Darnell and Javon are learning the machinery while running from it. Sabrina has already lived inside a version of that machinery and knows what it costs to return from it." — **PLACED:character-sabrina**
+- "She is also funny in the same hard weather as Alec. Their history gives her scenes a strange charge: affection buried under procedure, old danger under banter, and tenderness trying not to look obvious while everyone else is staring." — **PLACED:character-sabrina**
+- "Shelter with a signal running through it." — **DROPPED:social-generator**
+- "Six engines move beneath the story." — **PLACED:world**
+- "Six foot five, 242 pounds, state title gravity, and a mind nobody gets to reduce to muscle." — **PLACED:character-javon-whitfield,characters-index**
+- "Slogans, spectacle, polished concern, and the public version that arrives before the truth can stand up." — **PLACED:world**
+- "Smart kid. Bad year. Donor money, draft papers, and a government that did not lose the plot. It authored the plot, notarized the damage, and asked him to acquiesce while the invoice found his name." — **PLACED:_global,home**
+- "Some systems do not fail people by accident." — **DROPPED:social-generator**
+- "Speeches are the front door. Darnell starts watching the rooms behind them." — **PLACED:home**
+- "Spoiler free short description" — **PLACED:press**
+- "Spoiler safe positioning, release status, interview angles, quote-ready copy, reviewer routing, and guest-post framing for coverage of The Ironic Ineptocracy." — **PLACED:press**
+- "Spoiler safe pulls awaiting approval" — **DROPPED:admin-tool**
+- "Start with Darnell and Javon. Their friendship is the human checksum against the official story." — **PLACED:world**
+- "THE MANSION IS NOT A HOUSE. IT IS A POSITION." — **DROPPED:social-generator**
+- "THE ROOM DOES NOT FEEL SAFE." — **DROPPED:social-generator**
+- "THE ROOM MISSES THE MIND." — **DROPPED:social-generator**
+- "THEY KNOW ALEC IS TRACKING THEM." — **DROPPED:social-generator**
+- "TRANSMISSION FAILED. Check the address and try again." — **PLACED:_global**
+- "Tecca · GAN PAC · class war architect" — **PLACED:character-dijon-garnier,characters-index**
+- "Technology as memory control" — **PLACED:press**
+- "That approach keeps the article away from major plot spoilers. You do not need the ending to see the pattern. Watch which words get repeated. Watch which costs are renamed. Watch who is allowed to be complicated, and who has to become simple for the story the powerful want to tell." — **PLACED:dispatches**
+- "That distinction matters. A society can praise intelligence while punishing independent thought. It can celebrate achievement when achievement flatters the institution, then become suspicious when the same mind notices the institution's contradictions. The novel sits inside that pressure and lets the reader feel how quickly admiration can turn into surveillance." — **PLACED:dispatches**
+- "That is how wealth can make secrecy feel normal. It surrounds concealment with hospitality, taste, and procedure. The room is polished enough to let bad ideas sound serious. Good lighting can make rot look administrative." — **PLACED:dispatches**
+- "That is the cruel turn this essay wants readers to notice. Recognition is not protection. Being seen by power can open doors, but it can also place a person inside a plan written by someone else. The novel's thriller energy comes from that double meaning of visibility." — **PLACED:dispatches**
+- "That is the right way to enter The Ironic Ineptocracy." — **PLACED:dispatch-the-file-opens**
+- "That is where the book's satire earns its edge. Comedy can expose the stupidity of power without making the cost feel light. The laughter does not soften the stakes. It shows how absurd the machinery becomes when it tries to explain away what it is doing to actual people." — **PLACED:dispatches**
+- "That is where the first file begins." — **PLACED:dispatch-the-file-opens**
+- "That is where the satire sharpens. The absurdity is not that leaders say ridiculous things. The absurdity is that enough institutions agree to behave as if the ridiculous thing is serious because it serves a purpose. War becomes a brand environment. Everyone knows the colors, phrases, villains, heroes, and expected emotional response." — **PLACED:dispatches**
+- "That is why this essay lane begins with memory rather than technology. The book treats forgetting as infrastructure. It has incentives, products, spokespeople, and beneficiaries. The public loses the argument before it notices the terms have changed." — **PLACED:dispatches**
+- "That kind of knowing has political weight. Systems prefer individuals they can classify alone. Friendship interferes with that isolation. It carries jokes, memory, loyalty, doubt, and pressure that cannot be fully translated into an administrative category. In a book about control, friendship becomes evidence that the person is larger than the label." — **PLACED:dispatches**
+- "The Draft Machine. A dispatch from The Ironic Ineptocracy." — **DROPPED:social-generator**
+- "The File Opens | The Ironic Ineptocracy" — **DROPPED:seo-metadata**
+- "The Garnier Dossier is the entry point into the machinery behind The Ironic Ineptocracy. It is a classified reader file built around the billionaire presence at the center of the novel's financial and political architecture: his public mask, his private logic, his dependencies, his associates, his timeline, his method." — **PLACED:dispatch-the-file-opens**
+- "The Garnier Dossier | The Ironic Ineptocracy" — **PLACED:newsletter**
+- "The Garnier Dossier, a spoiler safe classified-style lead magnet for early readers." — **PLACED:press**
+- "The Hill Changes The View" — **PLACED:dispatches**
+- "The Ironic Ineptocracy begins where the official story starts losing pages." — **DROPPED:social-generator**
+- "The Ironic Ineptocracy blends political satire, conspiracy pressure, institutional critique, and coming of age stakes. Its threat is not a single cartoon tyrant. Its threat is a protected class of people who fail upward, rename the damage, and leave everyone else holding the receipt." — **PLACED:press**
+- "The Ironic Ineptocracy is a satirical political thriller about brilliance, friendship, private money, public failure, and the machinery that turns incompetence into authority." — **PLACED:press**
+- "The Ironic Ineptocracy keeps that pattern spoiler safe by showing the machinery around the spectacle. It tracks how attention gets bought, how phrases travel, and how elite failure can be wrapped in noble sound. The joke is bitter because the marketing is not especially brilliant. It only has to be repeated by people with enough reach." — **PLACED:dispatches**
+- "The Ironic Ineptocracy moves through campuses, donor rooms, agencies, media loops, memory technology, private mansions, and public rituals that keep asking Darnell Covington to mistake control for order." — **PLACED:world**
+- "The Ironic Ineptocracy | A Satirical Thriller by Dillon Mohr" — **DROPPED:seo-metadata**
+- "The Ironic Ineptocracy. Open the Garnier Dossier." — **DROPPED:social-generator**
+- "The Mansion Above The Hill is a visual way into one of the book's quietest arguments. Power does not only live in speeches, offices, and official documents. It lives in rooms where people can gather without being interrupted by the people affected by the gathering." — **PLACED:dispatches**
+- "The Mansion Above The Hill" — **PLACED:dispatches**
+- "The Memory Economy is not about nostalgia. It is about power deciding which facts get to survive long enough to matter. In The Ironic Ineptocracy, the threat is not only that people lie. The deeper threat is that the public can be trained to accept a new record before the old one has even cooled." — **PLACED:dispatches**
+- "The archive is clean because someone got there first." — **DROPPED:social-generator**
+- "The argument must be a React element, but you passed " — **DROPPED:library-internals**
+- "The billionaire antagonist as a system" — **PLACED:press**
+- "The billionaire antagonist as a system, not a person." — **PLACED:press**
+- "The book is interested in the moment when a population stops asking whether a policy is wise and starts asking whether refusing it would look disloyal. That shift is marketing work. It changes the customer's self image. It tells people that support is courage, hesitation is weakness, and sacrifice is proof that the campaign is working." — **PLACED:dispatches**
+- "The book keeps him unstable because that is where his tension lives. Proximity can mean danger, protection, guilt, or design. Alec often occupies all four possibilities before anyone in the room is ready to name one." — **PLACED:character-alec-daheim**
+- "The book treats capital, bureaucracy, media, and private rooms as engines of suspense instead of background furniture." — **PLACED:press**
+- "The book's world is built from systems that look respectable from a distance and predatory up close. Read them together and the title stops behaving like a joke." — **PLACED:world**
+- "The character system now lives under /characters only. Each name below opens an indexable dedicated page, while the original homepage and launch pages stay intact." — **PLACED:characters-index**
+- "The country calls it service. The file calls it selection." — **PLACED:book**
+- "The cruelty of his position is that his excellence does not protect him. It makes him easier to locate. Perfect scores, institutional polish, and Ivy League proximity become coordinates inside a larger apparatus of race, class, surveillance, and national appetite." — **PLACED:character-darnell-covington**
+- "The dossier gives readers the first controlled look at Dijon Garnier, private power, financial dependencies, public language, and the machinery surrounding the novel." — **PLACED:world**
+- "The draft pressure in the novel sharpens that question. Without giving away the larger plot, the story treats civic language as something that can praise a young person's promise while reaching for his future. The same qualities that make Darnell visible can also make him easier to target." — **PLACED:dispatches**
+- "The file was never supposed to open cleanly." — **PLACED:dispatch-the-file-opens**
+- "The final weapon is not force. It is revision." — **PLACED:book**
+- "The first file is already open." — **PLACED:dispatch-the-file-opens**
+- "The first month is built like a leak. Each dispatch opens one piece of the machinery behind The Ironic Ineptocracy without giving the ending away." — **PLACED:dispatches**
+- "The first month opens with four drops:" — **PLACED:dispatch-the-file-opens**
+- "The first public dispatch from The Ironic Ineptocracy, a dark political satire about power, memory, money, and the machinery of elite failure." — **DROPPED:seo-metadata**
+- "The language of emergency always wants to hurry the room. Speed is useful because it makes moral questions look like delays. If the clock is loud enough, people who ask for evidence can be treated as obstacles. That is the marketing genius of permanent crisis. It converts scrutiny into bad manners." — **PLACED:dispatches**
+- "The machine breaks people before anyone names the villain." — **PLACED:home**
+- "The machine does not ask who is guilty. It asks who can be processed." — **PLACED:dispatch-the-file-opens,dispatches**
+- "The mansion above the hill" — **DROPPED:social-generator**
+- "The map is not geography. It is pressure." — **PLACED:world**
+- "The moment promise becomes public." — **DROPPED:social-generator**
+- "The most dangerous promise in that kind of tool is not that it can erase a fact. The dangerous promise is that it can make erasure feel merciful. If the record is painful, confusing, or socially expensive, then a system can sell relief as progress. A public that wants relief can become easier to manage than a public that wants truth." — **PLACED:dispatches**
+- "The most dangerous record is the corrected one." — **DROPPED:social-generator**
+- "The most effective secrecy rarely announces that it is hiding something. It behaves like etiquette. Certain doors are not opened because it would be rude. Certain questions are not asked because the host has been generous. Certain absences are not noted because everyone understands the social cost of noticing." — **PLACED:dispatches**
+- "The most useful question for this essay is not whether the fictional public is fooled. The better question is what they are being trained to overlook. Marketing works by arranging attention. It makes one thing vivid and another thing peripheral. A reader can follow the novel by tracking what each campaign wants to make emotionally unavailable." — **PLACED:dispatches**
+- "The novel also understands that propaganda does not always sound like shouting. Sometimes it sounds like common sense. Sometimes it sounds like concern. Sometimes it sounds like a responsible adult explaining that the options are limited. That tone can be more dangerous than open cruelty because it asks readers to relax." — **PLACED:dispatches**
+- "The novel uses their friendship as a checksum against public amnesia. It asks readers to notice how quickly a social order can turn a person from promising to inconvenient. The shift does not need a dramatic announcement. It can happen through forms, favors, invitations, headlines, and the quiet correction of what everyone is allowed to remember." — **PLACED:dispatches**
+- "The people in charge are not confused. They are protected from consequence." — **PLACED:_global**
+- "The phrase above the hill matters because elevation changes what people can pretend not to see. From below, the mansion can look distant, almost unreal. From above, the public can look small, noisy, and manageable. That difference in view is a political fact inside the book's visual language." — **PLACED:dispatches**
+- "The public file becomes the argument engine." — **PLACED:dispatches**
+- "The public would rather understand him as a body. Quarterback frame, Mississippi dominance, impossible athletic promise. The novel refuses that cheap reading. Javon thinks fast, loves hard, interrogates what other people miss, and uses humor as reconnaissance before the room realizes it has been searched." — **PLACED:character-javon-whitfield**
+- "The reader action is simple. Keep a private list of the moments where the official story changes. Do not judge the change only by whether it sounds plausible. Judge it by who becomes safer after the change, who becomes easier to spend, and who is left carrying the original record alone." — **PLACED:dispatches**
+- "The reader action is to pause whenever the story moves indoors. Ask what the room is asking each character to accept. If the answer is comfort, access, or protection, ask who was kept outside so that comfort could feel natural." — **PLACED:dispatches**
+- "The reader action is to treat every slogan in the book as a receipt. Ask what it bought, who paid for it, and what would become visible if the phrase stopped working. That is where the thriller becomes a marketing audit of a collapsing public imagination." — **PLACED:dispatches**
+- "The reader action is to watch how praise operates. When the story compliments intelligence, ask whether the compliment grants freedom or demands service. When an institution notices brilliance, ask what it wants from the person it has noticed. That question opens the emotional core of the novel without spoiling the ending." — **PLACED:dispatches**
+- "The record becomes editable" — **PLACED:world**
+- "The satire lands because the arrangement is recognizable. Many public failures begin in private comfort. Many ugly policies are born in rooms where no one thinks of themselves as ugly. The mansion helps readers study that contradiction without needing the novel's final reveals." — **PLACED:dispatches**
+- "The story refuses to make that evidence sentimental. Friendship gets strained by fear, ambition, and survival. That makes it more valuable. The bond is a living test of what remains human when the surrounding world keeps asking for usable parts." — **PLACED:dispatches**
+- "The technology layer turns forgetting into convenience and correction into a civic service with a clean interface." — **PLACED:world**
+- "The title appears one word at a time: THE. FILE. OPENS." — **DROPPED:social-generator**
+- "The title lands like a joke until it starts sounding like a diagnosis. People at the top keep failing upward, and everyone else gets the bill." — **PLACED:home**
+- "The title of this essay is direct because the book's premise is direct. Power often wants talent, but it wants talent under supervision. It wants insight that improves the machine, not insight that questions the machine. Darnell's intelligence is therefore never just a gift. It is a test of who gets to define what the gift is for." — **PLACED:dispatches**
+- "The title sounds like a joke until the file starts reading like a diagnosis." — **PLACED:dispatch-the-file-opens,dispatches**
+- "The title starts as an insult and becomes a structure: people failing upward while the people below them inherit the invoice." — **PLACED:world**
+- "The warning signs are already everywhere." — **PLACED:_global**
+- "Theme conversion tracking ready to wire" — **DROPPED:admin-tool**
+- "These are production prompts for image and video generation. They are not final art, and they do not call an external model from the site." — **DROPPED:admin-tool**
+- "These are spoiler safe options for listings, introductions, podcast notes, author bios, and guest-post bylines." — **PLACED:press**
+- "These are the visual anchors for future generation. Prompts should preserve these faces, wardrobe signals, and body language before changing the scene." — **DROPPED:admin-tool**
+- "This article should not turn Darnell and Javon into lessons at the expense of their humanity. The point is not that they represent an issue and nothing more. The point is that the issue becomes legible because they are written as people with humor, fear, loyalty, talent, and contradiction." — **PLACED:dispatches**
+- "This book lives in the space between public failure and private design. The speeches do not match the ledgers. The slogans do not match the bodies. The rooms where the decisions happen are smaller than the consequences they create." — **PLACED:dispatch-the-file-opens**
+- "This gives reviewers a lane beyond premise. The novel uses image, movement, social space, and class pressure to build suspense. The mansion is a pressure instrument. It reminds readers that power can be beautiful and still be hostile." — **PLACED:dispatches**
+- "This is a work of fiction. Names, characters, places, and incidents are products of the author’s imagination." — **PLACED:_global**
+- "This is the entry point for dispatches, world notes, character files, and the road to release." — **PLACED:dossier**
+- "This is the working surface for the four evidence drops: captions, post formats, image prompts, motion scripts, and production notes grouped by drop." — **DROPPED:admin-tool**
+- "This page has been removed from the public crawl surface." — **DROPPED:seo-metadata**
+- "This private side is where excerpts, press material, dispatches, long-form pieces, and agent outputs get approved before anything public moves." — **DROPPED:admin-tool**
+- "This site will not behave like a normal author page." — **PLACED:dispatch-the-file-opens**
+- "This world file is spoiler safe. It gives readers the systems, character routes, and reading order without exposing the final turns." — **PLACED:world**
+- "Through him, the novel connects technology, donor money, crisis politics, racial calculation, and the business model of forgetting. The satire gets quieter around Garnier because quiet is how his power prefers to work." — **PLACED:character-dijon-garnier**
+- "Title appears: THE FILE OPENS." — **DROPPED:social-generator**
+- "Track Garnier by pressure, not appearances. His influence is usually visible through what other people suddenly need." — **PLACED:world**
+- "Treat every slogan as evidence. Ask what the phrase protects, who repeats it, and who becomes easier to spend." — **PLACED:world**
+- "Until those files are released, this page is the source for spoiler safe positioning, media angles, reviewer routing, and guest-post framing." — **PLACED:press**
+- "Use the SELECTED stamp, printer sound, and fluorescent hallway as the recurring texture." — **DROPPED:social-generator**
+- "Use the approved Darnell and Javon continuity from /images/social/continuity/darnell-javon-approved.png. Darnell keeps the glasses, slim scholar frame, and speaking intensity. Javon keeps the tall broad protective presence and serious scanning stare." — **DROPPED:social-generator**
+- "Use the approved Ronald McNulty continuity from /images/social/continuity/mcnulty-approved.png. Keep the same face structure, silver-white hair, dark suit, red tie, guarded half-smile, and state-power posture across every future scene." — **DROPPED:social-generator**
+- "Use the press update CTA to identify request type, outlet or organization, deadline, preferred format, and spoiler boundary needed for coverage." — **PLACED:press**
+- "Use these lines when space is tight." — **PLACED:press**
+- "Visuals and motion concepts" — **DROPPED:social-generator**
+- "War As Marketing begins with a blunt premise. Fear does not move through a country by itself. It gets named, staged, repeated, and sold. In The Ironic Ineptocracy, crisis language is not background noise. It is a delivery system that turns public anxiety into permission." — **PLACED:dispatches**
+- "Watch Javon whenever the official story gets too polished. His instincts often smell the lie before the lie has finished dressing itself." — **PLACED:character-javon-whitfield**
+- "Watch her scenes with Alec, Avigail, and Leah. Sabrina often exposes what people are too proud, too frightened, or too strategically polite to say aloud." — **PLACED:character-sabrina**
+- "Watch the distance between what the official file can say about Darnell and what his friends know about him. That distance is where the book stores much of its anger." — **PLACED:character-darnell-covington**
+- "Watch the rooms. The novel often tells the truth through who gets invited, who waits outside, and who owns the silence." — **PLACED:world**
+- "What can a room reveal about a country?" — **PLACED:dispatches**
+- "What does the draft say about merit?" — **PLACED:dispatches**
+- "What does the public lose before it notices?" — **PLACED:dispatches**
+- "What does the title make you expect about power, competence, and blame?" — **PLACED:reader-guide**
+- "What kind of victory is possible after memory itself becomes contested?" — **PLACED:reader-guide**
+- "What makes fear feel useful?" — **PLACED:dispatches**
+- "What power does after the damage is done." — **DROPPED:social-generator**
+- "When Javon jokes, the jokes are not filler. They are pressure valves, social tests, and sometimes mercy. When that humor vanishes, the reader knows the situation has moved past performance into consequence." — **PLACED:character-javon-whitfield**
+- "When does a campaign become policy?" — **PLACED:dispatches**
+- "Where does patriotism stop being language and start becoming coercion?" — **PLACED:reader-guide**
+- "Where does the story turn intelligence into survival?" — **PLACED:dispatches**
+- "Who benefits when memory becomes editable?" — **PLACED:dispatches**
+- "Why Darnell Makes The Idea Hurt" — **PLACED:dispatches**
+- "Why are Darnell and Javon targeted?" — **PLACED:dispatches**
+- "Why does Garnier prefer forgetting to agreement?" — **PLACED:dispatches**
+- "Why does the mansion matter before the final act?" — **PLACED:dispatches**
+- "Why modern political thrillers need financial villains" — **PLACED:press**
+- "Why modern political thrillers need financial villains, not cartoon tyrants." — **PLACED:press**
+- "Why the novel uses satire to make institutional absurdity readable without treating the human cost as a joke." — **PLACED:press**
+- "Window lights become server lights." — **DROPPED:social-generator**
+- "World File | The Ironic Ineptocracy" — **DROPPED:seo-metadata**
+- "^[:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD][:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$" — **DROPPED:library-internals**
+- "abort auxClick beforeToggle cancel canPlay canPlayThrough click close contextMenu copy cut drag dragEnd dragEnter dragExit dragLeave dragOver dragStart drop durationChange emptied encrypted ended error gotPointerCapture input invalid keyDown keyPress keyUp load loadedData loadedMetadata loadStart lostPointerCapture mouseDown mouseMove mouseOut mouseOver mouseUp paste pause play playing pointerCancel pointerDown pointerMove pointerOut pointerOver pointerUp progress rateChange reset resize seeked seeking stalled submit suspend timeUpdate touchCancel touchEnd touchStart volumeChange scroll toggle touchMove waiting wheel" — **DROPPED:library-internals**
+- "abort canplay canplaythrough durationchange emptied encrypted ended error loadeddata loadedmetadata loadstart pause play playing progress ratechange resize seeked seeking stalled suspend timeupdate volumechange waiting" — **DROPPED:library-internals**
+- "alec-garnier-mansion-confrontation" — **DROPPED:social-generator**
+- "ambition inside a rigged civic theater" — **PLACED:character-darnell-covington**
+- "animationIterationCount aspectRatio borderImageOutset borderImageSlice borderImageWidth boxFlex boxFlexGroup boxOrdinalGroup columnCount columns flex flexGrow flexPositive flexShrink flexNegative flexOrder gridArea gridRow gridRowEnd gridRowSpan gridRowStart gridColumn gridColumnEnd gridColumnSpan gridColumnStart fontWeight lineClamp lineHeight opacity order orphans scale tabSize widows zIndex zoom fillOpacity floodOpacity stopOpacity strokeDasharray strokeDashoffset strokeMiterlimit strokeOpacity strokeWidth MozAnimationIterationCount MozBoxFlex MozBoxFlexGroup MozLineClamp msAnimationIterationCount msFlex msZoom msFlexGrow msFlexNegative msFlexOrder msFlexPositive msFlexShrink msGridColumn msGridColumnSpan msGridRow msGridRowSpan WebkitAnimationIterationCount WebkitBoxFlex WebKitBoxFlexGroup WebkitBoxOrdinalGroup WebkitColumnCount WebkitColumns WebkitFlex WebkitFlexGrow WebkitFlexPositive WebkitFlexShrink WebkitLineClamp" — **DROPPED:library-internals**
+- "application/x-www-form-urlencoded;charset=UTF-8" — **PLACED:_global**
+- "assets/Characters-BTzE31Mh.js" — **DROPPED:build-internals**
+- "assets/Characters-CEhM_R9x.css" — **DROPPED:build-internals**
+- "athletic promise and extraction" — **PLACED:character-javon-whitfield**
+- "beforetoggle cancel close invalid load scroll scrollend toggle" — **DROPPED:library-internals**
+- "billboard billboard-right" — **DROPPED:css-classname**
+- "black-intellect-as-threat" — **PLACED:dispatches**
+- "book-hero-stack launch-reveal" — **DROPPED:css-classname**
+- "boston-protest-darnell-javon" — **DROPPED:social-generator**
+- "capitol-evidence__visual capitol-evidence__visual--video" — **PLACED:home**
+- "change click focusin focusout input keydown keyup selectionchange" — **DROPPED:library-internals**
+- "character-detail-copy launch-reveal" — **DROPPED:css-classname**
+- "character-detail-portrait launch-reveal" — **DROPPED:css-classname**
+- "color-interpolation-filters" — **DROPPED:css-classname**
+- "colorInterpolationFilters" — **DROPPED:library-internals**
+- "compositionend focusout keydown keypress keyup mousedown" — **DROPPED:library-internals**
+- "compositionstart focusout keydown keypress keyup mousedown" — **DROPPED:library-internals**
+- "compositionupdate focusout keydown keypress keyup mousedown" — **DROPPED:library-internals**
+- "continuity-reference-grid" — **DROPPED:css-classname**
+- "continuity-reference-section" — **DROPPED:css-classname**
+- "depth-frame depth-frame--book" — **PLACED:book**
+- "dispatch-detail launch-reveal" — **DROPPED:css-classname**
+- "dispatch-frame launch-reveal" — **DROPPED:css-classname**
+- "essay-detail launch-reveal" — **DROPPED:css-classname**
+- "essay-detail__reader-action" — **DROPPED:css-classname**
+- "externalResourcesRequired" — **DROPPED:library-internals**
+- "flag-backdrop__drip flag-backdrop__drip--ember" — **DROPPED:css-classname**
+- "focusout contextmenu dragend focusin keydown keyup mousedown mouseup selectionchange" — **DROPPED:library-internals**
+- "forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported" — **DROPPED:library-internals**
+- "friendship under surveillance" — **PLACED:character-leah**
+- "garnier-dossier-copy launch-reveal" — **DROPPED:css-classname**
+- "garnier-signup launch-reveal" — **DROPPED:css-classname**
+- "generated-creative-card__body" — **DROPPED:css-classname**
+- "generated-creative-section" — **DROPPED:css-classname**
+- "glyph-orientation-horizontal" — **DROPPED:css-classname**
+- "glyph-orientation-vertical" — **DROPPED:css-classname**
+- "glyphOrientationHorizontal" — **DROPPED:library-internals**
+- "http://www.w3.org/1998/Math/MathML" — **DROPPED:library-internals**
+- "http://www.w3.org/1999/xlink" — **DROPPED:library-internals**
+- "http://www.w3.org/2000/svg" — **DROPPED:library-internals**
+- "http://www.w3.org/XML/1998/namespace" — **DROPPED:library-internals**
+- "https://ironicineptocracy.com" — **PLACED:_global**
+- "https://react.dev/errors/" — **DROPPED:library-internals**
+- "https://schema.org/PreOrder" — **DROPPED:seo-metadata**
+- "https://va.vercel-scripts.com/v1/script.debug.js" — **PLACED:_global**
+- "https://www.goodreads.com/" — **PLACED:_global**
+- "image-frame image-frame--wide launch-reveal" — **DROPPED:css-classname**
+- "image-frame launch-reveal" — **DROPPED:css-classname**
+- "ineptocracy-dossier-endpoint" — **PLACED:_global**
+- "ineptocracy-newsletter-endpoint" — **PLACED:_global,newsletter**
+- "ineptocracy-orbit__object ineptocracy-orbit__object--pillar" — **DROPPED:css-classname**
+- "ineptocracy-orbit__object ineptocracy-orbit__object--seal" — **DROPPED:css-classname**
+- "ineptocracy-orbit__object ineptocracy-orbit__object--shard" — **DROPPED:css-classname**
+- "ineptocracy-orbit__object ineptocracy-orbit__object--slab" — **DROPPED:css-classname**
+- "javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')" — **DROPPED:library-internals**
+- "javascript:throw new Error('React has blocked a javascript: URL as a security precaution.')" — **DROPPED:library-internals**
+- "launch-band launch-band--three" — **PLACED:book**
+- "launch-hero launch-hero--book" — **PLACED:book**
+- "launch-hero__copy launch-reveal" — **DROPPED:css-classname**
+- "launch-page ineptocracy-page-shell" — **PLACED:_global**
+- "link[data-precedence],style[data-precedence]" — **DROPPED:css-classname**
+- "love under operational damage" — **PLACED:character-sabrina**
+- "mcnulty-white-house-protest" — **DROPPED:social-generator**
+- "mousedown mouseup touchcancel touchend touchstart auxclick dblclick pointercancel pointerdown pointerup dragend dragstart drop compositionend compositionstart keydown keypress keyup input textInput copy cut paste click change contextmenu reset" — **DROPPED:library-internals**
+- "philadelphia-tracked-by-alec" — **DROPPED:social-generator**
+- "react.memo_cache_sentinel" — **DROPPED:library-internals**
+- "react.transitional.element" — **DROPPED:library-internals**
+- "reader-guide launch-reveal" — **DROPPED:css-classname**
+- "social-content-hero launch-reveal" — **DROPPED:css-classname**
+- "social-content-side launch-reveal" — **DROPPED:css-classname**
+- "social-drop-lane launch-reveal" — **DROPPED:css-classname**
+- "suppressContentEditableWarning" — **DROPPED:library-internals**
+- "takes an object of state variables to update or a function which returns an object of state variables." — **DROPPED:library-internals**
+- "unstable_legacy-backwards" — **DROPPED:library-internals**
+- "visibility without protection" — **PLACED:character-darnell-covington**
+- "world-footer world-file-footer" — **PLACED:world**
+- "world-header world-file-header" — **PLACED:world**
+- "world-page world-file-page" — **PLACED:world**
+- "© The Ironic Ineptocracy. All rights reserved." — **PLACED:_global**
+- "“An electric fire occurred from a faulty battery, killing 32 workers.”" — **PLACED:home**
+- "“Just get it done, and the money is yours,” Garnier demanded." — **PLACED:home**
+- "“private government funding, no public disclosure.”" — **PLACED:home**
+
+## characters.pretty.js
+
+- " · Avigail · Sabrina · Leah · Mark · Newman" — **PLACED:character-avigail,character-leah,character-mark**
+- "(max-width: 620px) 90vw, (max-width: 1100px) 44vw, 260px" — **PLACED:characters-index**
+- "(prefers-reduced-motion: reduce)" — **DROPPED:responsive-attr**
+- "/images/characters/alec.png" — **PLACED:character-alec-daheim,characters-index**
+- "/images/characters/darnell.png" — **PLACED:character-darnell-covington,characters-index**
+- "/images/characters/garnier.png" — **PLACED:character-dijon-garnier,characters-index**
+- "/images/characters/javon.png" — **PLACED:character-javon-whitfield,characters-index**
+- "/images/characters/mcnulty.png" — **PLACED:character-ronald-mcnulty,characters-index**
+- "28th Amendment martial-law power · Congress war push" — **PLACED:character-ronald-mcnulty,characters-index**
+- "Black Intellect · file BI 01" — **PLACED:characters-index**
+- "Brand-new 2027 Porsche Macan, $702 in checking" — **PLACED:character-darnell-covington,characters-index**
+- "Cast files · early access roster" — **PLACED:characters-index**
+- "Cited in Darnell's column before chapter 31" — **PLACED:character-alec-daheim,characters-index**
+- "ENTERS DARNELL'S CHAPTER BEFORE THE FILE ADMITS WHAT IT IS TRACKING. ROUTE BENDS THROUGH CHICAGO. COLUMN REMAINS EMPTY. HELP OR HAZARD CANNOT BE RELEASED WITHOUT COMPROMISING THE OPERATION." — **PLACED:character-alec-daheim,characters-index**
+- "File D 09 · ATL / Chicago route" — **PLACED:character-alec-daheim,characters-index**
+- "Garnier money, defense contracts, ConnectIt ballot infrastructure" — **PLACED:character-ronald-mcnulty,characters-index**
+- "Harvard ballcap, hides the Philly bruise under hair" — **PLACED:character-darnell-covington,characters-index**
+- "M0 220 C 18 156 50 144 100 144 C 150 144 182 156 200 220 Z" — **DROPPED:svg-path**
+- "M0 42 L 12 10 C 16 2 28 0 56 0 C 84 0 96 2 100 10 L 112 42 Z" — **DROPPED:svg-path**
+- "M10 220 C 30 168 60 158 100 158 C 140 158 170 168 190 220 Z" — **DROPPED:svg-path**
+- "M100 100 L 92 124 L 108 124 Z" — **DROPPED:svg-path**
+- "M100 102 L 94 122 L 106 122 Z" — **DROPPED:svg-path**
+- "M100 104 L 96 118 L 104 118 Z" — **DROPPED:svg-path**
+- "M100 106 L 96 120 L 104 120 Z" — **DROPPED:svg-path**
+- "M134 126 C 138 118 132 110 138 102" — **DROPPED:svg-path**
+- "M136 124 C 142 116 136 106 144 96" — **DROPPED:svg-path**
+- "M14 220 C 30 162 60 152 100 152 C 140 152 170 162 186 220 Z" — **DROPPED:svg-path**
+- "M154 130 L 176 112 L 182 156" — **DROPPED:svg-path**
+- "M168 178 L 172 158 L 178 158 L 178 178" — **DROPPED:svg-path**
+- "M196 196 L 196 186 M 196 196 L 186 196" — **DROPPED:svg-path**
+- "M46 130 L 24 112 L 18 156" — **DROPPED:svg-path**
+- "M46 84 C 48 42 72 26 100 26 C 128 26 152 42 154 84" — **DROPPED:svg-path**
+- "M48 78 L 152 78 L 160 86 C 130 84 70 84 40 86 Z" — **DROPPED:svg-path**
+- "M52 68 C 64 50 86 44 100 44 C 118 44 138 50 150 68 L 152 78 C 144 76 130 74 100 74 C 70 74 56 76 48 78 Z" — **DROPPED:svg-path**
+- "M58 78 C 72 64 108 56 138 64" — **DROPPED:svg-path**
+- "M6 220 C 24 160 56 152 100 152 C 144 152 176 160 194 220 Z" — **DROPPED:svg-path**
+- "M62 158 L 84 184 L 100 168 L 116 184 L 138 158" — **DROPPED:svg-path**
+- "M68 64 C 86 56 110 56 132 68" — **DROPPED:svg-path**
+- "M70 118 C 78 132 88 138 100 138 C 112 138 122 132 130 118" — **DROPPED:svg-path**
+- "M70 160 L 90 188 L 100 174 L 110 188 L 130 160" — **DROPPED:svg-path**
+- "M74 88 L 96 86 M 104 86 L 126 88" — **DROPPED:svg-path**
+- "M74 90 L 92 86 M 108 86 L 126 90" — **DROPPED:svg-path**
+- "M74 92 L 92 88 M 108 88 L 126 92" — **DROPPED:svg-path**
+- "M76 162 L 100 188 L 124 162 M 88 168 L 112 168" — **DROPPED:svg-path**
+- "M76 168 L 100 184 L 124 168" — **DROPPED:svg-path**
+- "M76 92 L 92 88 M 108 88 L 124 92" — **DROPPED:svg-path**
+- "M76 92 L 96 90 M 104 90 L 124 92" — **DROPPED:svg-path**
+- "M8 220 C 22 156 50 148 100 148 C 150 148 178 156 192 220 Z" — **DROPPED:svg-path**
+- "M8 24 L 36 30 L 46 26 L 36 32 L 20 36 Z" — **DROPPED:svg-path**
+- "M82 150 L 84 130 L 116 130 L 118 150 Z" — **DROPPED:svg-path**
+- "M82 162 C 84 152 86 144 90 134 L 110 134 C 114 144 116 152 118 162 Z" — **DROPPED:svg-path**
+- "M86 130 Q 100 126 114 130" — **DROPPED:svg-path**
+- "M86 130 Q 100 132 114 128" — **DROPPED:svg-path**
+- "M86 156 L 86 134 L 114 134 L 114 156 Z" — **DROPPED:svg-path**
+- "M86 156 L 86 138 L 114 138 L 114 156 Z" — **DROPPED:svg-path**
+- "M88 126 Q 100 130 112 126" — **DROPPED:svg-path**
+- "M88 130 Q 100 132 112 130" — **DROPPED:svg-path**
+- "M88 154 L 88 132 L 112 132 L 112 154 Z" — **DROPPED:svg-path**
+- "M95 168 L 105 168 L 108 196 L 100 210 L 92 196 Z" — **DROPPED:svg-path**
+- "M97 104 L 92 122 L 108 122 L 103 104 Z" — **DROPPED:svg-path**
+- "MLK · Black Panthers · Fred Hampton" — **PLACED:character-javon-whitfield,characters-index**
+- "NET WORTH: $272.8 BILLION. GDP SHARE: 2.5%. TECCA CASUALTY LEDGER ACTIVE. 167 STEERED INCIDENTS. 119 DEAD. CLASS WAR 1 IS NOT A THEORY. IT IS BEING SCHEDULED OVER A 1 P.M. CIGAR." — **PLACED:character-dijon-garnier,characters-index**
+- "NeuroClick brain chip · marketed as 'cures paralysis'" — **PLACED:character-dijon-garnier,characters-index**
+- "President · back in office" — **PLACED:character-ronald-mcnulty,characters-index**
+- "QB · Rosedale, Mississippi" — **PLACED:character-javon-whitfield,characters-index**
+- "REALITY TELEVISION EGO ACQUIRES COMMAND AUTHORITY. SIX BANKRUPTCIES. TWO NONCONSECUTIVE TERMS. LEGAL GRAY ZONES CONVERTED INTO NATIONAL DOCTRINE. THE MEMO DOES NOT EXPLAIN THE PLOT. IT AUTHORIZES IT." — **PLACED:character-ronald-mcnulty,characters-index**
+- "Reveal depth held back for the book" — **PLACED:characters-index**
+- "Rosedale, Miss. · poorest city in the state" — **PLACED:character-javon-whitfield,characters-index**
+- "SUBJECT IS SEVENTEEN. PERFECT 1600 SAT. 4.9 GPA. FIRST BLACK STUDENT FROM THE SCHOOL TO REACH AN IVY. WALKS WEST 7TH ALONE UNTIL A GREEN-EYED ASSET ENTERS THE CROWD." — **PLACED:character-darnell-covington,characters-index**
+- "SUBJECT MEASURES 6'5, 242. CLOCKED 4.39. THIRD BLACK QB IN HARVARD HISTORY. WOULD HAVE BEEN MISSISSIPPI'S FIRST BLACK SENATOR SINCE 1881. HUMOR PRESENT. RAGE LOADING." — **PLACED:character-javon-whitfield,characters-index**
+- "Tecca x9R battery fire · 32 dead in Des Moines" — **PLACED:character-dijon-garnier,characters-index**
+- "Tecca · GAN PAC · Class War 1" — **PLACED:character-dijon-garnier,characters-index**
+- "Unsealed: insufficient signal" — **PLACED:character-alec-daheim,characters-index**
+- "White House / Executive Signal" — **PLACED:character-ronald-mcnulty,characters-index**
+- "char-photo-rig__treatment" — **DROPPED:css-classname**
+- "char-plane char-plane-back" — **DROPPED:css-classname**
+- "http://www.w3.org/2000/svg" — **DROPPED:library-internals**
+- "translate(150 156) rotate(180)" — **DROPPED:svg-attr**
+- "translate(18 56) rotate(-9)" — **DROPPED:svg-attr**
+- "translate(182 56) scale(-1 1) rotate(-9)" — **DROPPED:svg-attr**

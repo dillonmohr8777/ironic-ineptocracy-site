@@ -12,6 +12,7 @@ const excluded = new Set([
   "scripts",
   "api",
   "README-DEPLOY.md",
+  "extraction",
   "package.json",
   "package-lock.json"
 ]);
@@ -24,7 +25,22 @@ for await (const entry of await import("node:fs/promises").then((fs) => fs.opend
   await cp(join(root, entry.name), join(out, entry.name), { recursive: true });
 }
 
-for (const required of ["index.html", "characters/index.html", "world/index.html", "images/characters/darnell.png", "vercel.json"]) {
+for (const required of [
+  "index.html",
+  "characters/index.html",
+  "world/index.html",
+  "images/characters/darnell.png",
+  "vercel.json",
+  "assets/css/site.css",
+  "assets/js/site.js",
+  "404.html",
+  "book/index.html",
+  "dossier/index.html",
+  "dispatches/index.html",
+  "dispatches/the-file-opens/index.html",
+  "reader-guide/index.html",
+  "press/index.html"
+]) {
   if (!existsSync(join(out, required))) {
     throw new Error(`Static build missing required file: ${required}`);
   }
