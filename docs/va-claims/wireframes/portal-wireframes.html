@@ -1,0 +1,690 @@
+<title>VACE — Claims Edge Platform · Wireframes</title>
+<style>
+  :root{
+    --app-bg:#0A0E17;
+    --sidebar-bg:#0B1020;
+    --panel:#121A2B;
+    --panel-2:#161E30;
+    --line:#222c40;
+    --line-soft:#1a2335;
+    --ink:#E8ECF4;
+    --ink-mut:#8A93A8;
+    --ink-dim:#646d82;
+    --gold:#E0B64C;
+    --gold-2:#f0a93a;
+    --red:#e0524d;
+    --green:#38b27a;
+    --blue:#4d8ff0;
+    --purple:#9b7be0;
+    --radius:14px;
+    --radius-sm:10px;
+    --sidebar-w:260px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--app-bg);
+    color:var(--ink);
+    line-height:1.5;
+    font-size:14px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{margin:0;font-weight:800;letter-spacing:-0.01em;text-wrap:balance;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  input{font-family:inherit;}
+  ::selection{background:rgba(224,182,76,.3);}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px;}
+  .num{font-variant-numeric:tabular-nums;}
+
+  /* ---------- logo ---------- */
+  .logo-wm{
+    font-weight:800;font-size:26px;letter-spacing:.04em;line-height:1;
+    background:linear-gradient(95deg,var(--gold) 0%,var(--gold-2) 30%,#7fb0ff 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+  .logo-sub{font-size:9.5px;letter-spacing:.22em;color:var(--ink-dim);font-weight:700;margin-top:5px;text-transform:uppercase;}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:9px;font-weight:600;font-size:13px;white-space:nowrap;transition:filter .15s,background .15s;}
+  .btn svg{width:15px;height:15px;}
+  .btn-gold{background:var(--gold);color:#1a1407;font-weight:700;}
+  .btn-gold:hover{filter:brightness(1.07);}
+  .btn-ghost-gold{border:1px solid rgba(224,182,76,.55);color:var(--gold);background:transparent;}
+  .btn-ghost-gold:hover{background:rgba(224,182,76,.1);}
+  .btn-icon{width:38px;height:38px;padding:0;justify-content:center;border-radius:10px;border:1px solid var(--line);background:var(--panel);position:relative;}
+  .btn-icon:hover{background:var(--panel-2);}
+  .btn-icon .dot{position:absolute;top:8px;right:9px;width:7px;height:7px;border-radius:50%;background:var(--red);border:1.5px solid var(--panel);}
+
+  /* ---------- pills / badges ---------- */
+  .pill{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;line-height:1.4;}
+  .pill-amber{background:rgba(224,182,76,.15);color:var(--gold);}
+  .pill-red{background:rgba(224,82,77,.16);color:#f08a86;}
+  .pill-green{background:rgba(56,178,122,.15);color:#5fd49e;}
+  .pill-blue{background:rgba(77,143,240,.15);color:#7fb0ff;}
+  .pill-gray{background:rgba(138,147,168,.13);color:var(--ink-mut);}
+  .badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;font-size:11px;font-weight:800;line-height:1;}
+  .badge-amber{background:var(--gold);color:#1a1407;}
+  .badge-red{background:var(--red);color:#fff;}
+
+  /* ---------- card / panel ---------- */
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);}
+  .panel-pad{padding:20px;}
+  .muted{color:var(--ink-mut);}
+  .dim{color:var(--ink-dim);}
+  .caption{font-size:11.5px;color:var(--ink-dim);font-style:italic;}
+
+  /* ============ LOGIN ============ */
+  #screen-login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;
+    background:radial-gradient(1100px 600px at 50% -10%,rgba(224,182,76,.07),transparent 60%),var(--app-bg);}
+  .login-card{width:100%;max-width:380px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:34px 30px;}
+  .login-head{text-align:center;margin-bottom:26px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--ink-mut);text-transform:uppercase;margin-bottom:6px;}
+  .input{width:100%;background:var(--app-bg);border:1px solid var(--line);border-radius:10px;padding:11px 13px;color:var(--ink);font-size:14px;}
+  .input::placeholder{color:var(--ink-dim);}
+  .input:focus{border-color:rgba(224,182,76,.6);outline:none;}
+  .login-card .btn-gold{width:100%;justify-content:center;padding:12px;margin-top:6px;font-size:14px;}
+  .forgot{display:block;text-align:center;margin-top:16px;color:var(--ink-mut);font-size:13px;}
+  .forgot:hover{color:var(--gold);}
+  .login-note{text-align:center;margin-top:22px;font-size:11px;color:var(--ink-dim);}
+
+  /* ============ APP SHELL ============ */
+  #app{display:none;}
+  #app.show{display:block;}
+  .shell{display:flex;min-height:100vh;}
+  .sidebar{width:var(--sidebar-w);flex:0 0 var(--sidebar-w);background:var(--sidebar-bg);border-right:1px solid var(--line-soft);
+    position:fixed;top:0;bottom:0;left:0;display:flex;flex-direction:column;padding:22px 16px 16px;z-index:20;}
+  .sb-brand{padding:4px 8px 22px;border-bottom:1px solid var(--line-soft);margin-bottom:16px;}
+  .sb-sec{font-size:10px;letter-spacing:.18em;color:var(--ink-dim);font-weight:700;padding:14px 10px 8px;text-transform:uppercase;}
+  .nav-item{display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:10px;color:var(--ink-mut);font-weight:600;font-size:13.5px;width:100%;text-align:left;margin-bottom:2px;}
+  .nav-item svg{width:18px;height:18px;flex:0 0 18px;stroke-width:1.9;}
+  .nav-item:hover{background:rgba(255,255,255,.03);color:var(--ink);}
+  .nav-item.active{background:rgba(224,182,76,.12);color:var(--gold);}
+  .nav-item.active svg{color:var(--gold);}
+  .nav-item .nav-label{flex:1;}
+  .sb-foot{margin-top:auto;display:flex;align-items:center;gap:11px;padding:12px 10px 2px;border-top:1px solid var(--line-soft);}
+  .avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:0 0 36px;}
+  .avatar-gold{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#1a1407;}
+  .avatar-blue{background:linear-gradient(135deg,#4d8ff0,#3a6fd0);color:#fff;}
+  .avatar-green{background:linear-gradient(135deg,#38b27a,#2a8a5e);color:#fff;}
+
+  .main{flex:1;margin-left:var(--sidebar-w);min-width:0;display:flex;flex-direction:column;}
+  .topbar{position:sticky;top:0;z-index:15;background:rgba(10,14,23,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-soft);
+    display:flex;align-items:center;gap:16px;padding:13px 28px;}
+  .topbar h1{font-size:19px;}
+  .topbar .right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+  .search{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-width:230px;}
+  .search svg{width:15px;height:15px;color:var(--ink-dim);flex:0 0 15px;}
+  .search input{background:none;border:none;color:var(--ink);font-size:13px;width:100%;}
+  .search input::placeholder{color:var(--ink-dim);}
+  .search input:focus{outline:none;}
+  .content{padding:26px 28px 60px;max-width:1280px;width:100%;}
+  .screen{display:none;}
+  .screen.active{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion:reduce){.screen.active,#screen-login{animation:none!important;}}
+
+  .recon{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--gold);background:rgba(224,182,76,.1);border:1px solid rgba(224,182,76,.25);padding:4px 10px;border-radius:8px;margin-bottom:18px;font-style:italic;}
+
+  /* ---------- KPI ---------- */
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:20px;}
+  .kpi{padding:18px;}
+  .kpi .label{font-size:12px;color:var(--ink-mut);font-weight:600;margin-bottom:8px;}
+  .kpi .val{font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1;}
+  .kpi .sub{font-size:11.5px;margin-top:7px;}
+
+  /* ---------- pipeline ---------- */
+  .pipe-row{display:flex;align-items:center;gap:12px;margin-bottom:9px;}
+  .pipe-label{width:62px;flex:0 0 62px;font-size:12px;color:var(--ink-mut);font-weight:600;}
+  .pipe-track{flex:1;height:22px;background:var(--app-bg);border-radius:6px;overflow:hidden;border:1px solid var(--line-soft);}
+  .pipe-fill{height:100%;border-radius:6px;}
+  .pipe-count{width:34px;flex:0 0 34px;text-align:right;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;}
+
+  /* ---------- alert / activity items ---------- */
+  .alert-item{display:flex;gap:14px;padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);align-items:flex-start;}
+  .alert-item.lb-amber{border-left:3px solid var(--gold);}
+  .alert-item.lb-clock{border-left:3px solid var(--gold-2);}
+  .ico-box{width:40px;height:40px;flex:0 0 40px;border-radius:11px;display:flex;align-items:center;justify-content:center;}
+  .ico-box svg{width:20px;height:20px;}
+  .ico-amber{background:rgba(224,182,76,.15);color:var(--gold);}
+  .ico-clock{background:rgba(240,169,58,.13);color:var(--gold-2);}
+  .ico-green{background:rgba(56,178,122,.15);color:var(--green);}
+  .ico-blue{background:rgba(77,143,240,.15);color:var(--blue);}
+  .ico-purple{background:rgba(155,123,224,.15);color:var(--purple);}
+  .alert-body{flex:1;min-width:0;}
+  .alert-title{font-weight:700;font-size:14px;margin-bottom:3px;}
+  .alert-desc{font-size:12.5px;color:var(--ink-mut);line-height:1.5;}
+  .alert-time{font-size:11.5px;color:var(--ink-dim);white-space:nowrap;flex:0 0 auto;padding-top:2px;}
+
+  /* ---------- table ---------- */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);}
+  table{border-collapse:collapse;width:100%;min-width:840px;}
+  thead th{text-align:left;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);font-weight:700;padding:13px 16px;background:var(--panel-2);border-bottom:1px solid var(--line);}
+  tbody td{padding:13px 16px;border-bottom:1px solid var(--line-soft);font-size:13px;}
+  tbody tr{cursor:pointer;transition:background .12s;}
+  tbody tr:hover{background:rgba(255,255,255,.025);}
+  tbody tr:last-child td{border-bottom:none;}
+  .cell-name{font-weight:700;}
+  .ministep{display:flex;align-items:center;gap:8px;}
+  .mini-track{width:54px;height:5px;border-radius:3px;background:var(--app-bg);overflow:hidden;border:1px solid var(--line-soft);}
+  .mini-fill{height:100%;background:var(--gold);}
+
+  /* ---------- filter row ---------- */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+  .select,.filters .search{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 12px;color:var(--ink);font-size:13px;}
+  .select{cursor:pointer;}
+
+  /* ---------- pagination ---------- */
+  .pager{display:flex;align-items:center;justify-content:space-between;padding:14px 4px 0;font-size:12.5px;color:var(--ink-mut);}
+  .pager .pages{display:flex;gap:6px;}
+  .pager .pg{width:30px;height:30px;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+  .pager .pg.on{background:var(--gold);color:#1a1407;border-color:var(--gold);font-weight:700;}
+
+  /* ---------- step tracker (detail) ---------- */
+  .tracker{display:flex;gap:6px;margin:16px 0 8px;overflow-x:auto;padding-bottom:6px;}
+  .step{flex:1;min-width:48px;text-align:center;}
+  .step .dot{height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;border:1px solid var(--line);}
+  .step.done .dot{background:rgba(56,178,122,.18);color:var(--green);border-color:rgba(56,178,122,.4);}
+  .step.cur .dot{background:var(--gold);color:#1a1407;border-color:var(--gold);}
+  .step.up .dot{background:var(--app-bg);color:var(--ink-dim);}
+  .step .lbl{font-size:9.5px;color:var(--ink-dim);margin-top:5px;}
+  .stage-key{display:flex;gap:18px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-mut);margin-top:4px;}
+  .stage-key span b{color:var(--ink);}
+
+  /* ---------- timeline ---------- */
+  .tl{list-style:none;margin:0;padding:0;position:relative;}
+  .tl li{position:relative;padding:0 0 16px 22px;border-left:1px solid var(--line);margin-left:5px;}
+  .tl li:last-child{border-left-color:transparent;padding-bottom:0;}
+  .tl li::before{content:"";position:absolute;left:-5px;top:3px;width:9px;height:9px;border-radius:50%;background:var(--gold);border:2px solid var(--panel);}
+  .tl li.done::before{background:var(--green);}
+  .tl .t-title{font-weight:600;font-size:13px;}
+  .tl .t-meta{font-size:11.5px;color:var(--ink-dim);}
+
+  .doc-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-soft);font-size:13px;}
+  .doc-row:last-child{border-bottom:none;}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+  .panel-title{font-size:14px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .panel-title .pt-sub{font-weight:500;font-size:12px;color:var(--ink-mut);margin-left:auto;}
+
+  /* ---------- AI ---------- */
+  .ai-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .online{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--green);font-weight:600;margin-left:auto;}
+  .online .dotg{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(56,178,122,.7);}
+  .chat{min-height:260px;padding:22px;}
+  .bubble{display:flex;gap:12px;max-width:680px;}
+  .bubble .ai-av{width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:rgba(224,182,76,.15);color:var(--gold);display:flex;align-items:center;justify-content:center;}
+  .bubble .ai-av svg{width:18px;height:18px;}
+  .bubble .msg{background:var(--panel-2);border:1px solid var(--line);border-radius:4px 14px 14px 14px;padding:14px 16px;font-size:13.5px;line-height:1.6;}
+  .ai-input{display:flex;gap:10px;margin-top:16px;}
+  .ai-input .input{flex:1;}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px;}
+  .chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:8px 14px;font-size:12.5px;color:var(--ink-mut);font-weight:500;}
+  .chip:hover{border-color:rgba(224,182,76,.5);color:var(--gold);}
+
+  /* ---------- advisors ---------- */
+  .adv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;}
+  .adv-card{padding:22px;text-align:center;display:flex;flex-direction:column;align-items:center;}
+  .adv-card .avatar{width:60px;height:60px;font-size:22px;margin-bottom:14px;}
+  .adv-name{font-size:17px;font-weight:800;}
+  .adv-role{font-size:12px;color:var(--ink-mut);margin-bottom:16px;}
+  .adv-num{font-size:40px;font-weight:800;line-height:1;letter-spacing:-.02em;}
+  .adv-numlbl{font-size:11px;color:var(--ink-mut);text-transform:uppercase;letter-spacing:.08em;margin:6px 0 14px;}
+  .adv-add{border:1.5px dashed var(--line);background:transparent;border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--ink-mut);font-weight:600;min-height:230px;}
+  .adv-add:hover{border-color:rgba(224,182,76,.5);color:var(--gold);}
+  .adv-add svg{width:28px;height:28px;}
+
+  /* ---------- settings ---------- */
+  .set-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--line-soft);}
+  .set-row:last-child{border-bottom:none;}
+  .set-label{font-size:13.5px;font-weight:600;}
+  .set-input{display:flex;align-items:center;gap:8px;}
+  .set-input .input{width:80px;text-align:center;font-variant-numeric:tabular-nums;}
+  .field-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--ink-mut);text-transform:uppercase;margin-bottom:7px;display:block;}
+
+  /* ---------- footer note + fab ---------- */
+  .footnote{margin-top:34px;padding:14px 18px;border:1px dashed var(--line);border-radius:12px;font-size:11.5px;color:var(--ink-dim);background:rgba(255,255,255,.012);}
+  .fab{position:fixed;bottom:24px;right:24px;width:50px;height:50px;border-radius:50%;background:var(--gold);color:#1a1407;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(224,182,76,.3);z-index:30;}
+  .fab svg{width:22px;height:22px;}
+  .quick-actions{display:flex;gap:10px;margin-top:4px;}
+  .mini-adv{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line-soft);}
+  .mini-adv:last-child{border-bottom:none;}
+  .mini-adv .avatar{width:34px;height:34px;font-size:13px;}
+  .stack{display:flex;flex-direction:column;gap:14px;}
+  .row-between{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px;}
+</style>
+
+<!-- ===================== LOGIN ===================== -->
+<div id="screen-login">
+  <div class="login-card">
+    <div class="login-head">
+      <div class="logo-wm">VACE</div>
+      <div class="logo-sub">Claims Edge Platform</div>
+    </div>
+    <div class="field">
+      <label for="li-email">Email</label>
+      <input class="input" id="li-email" type="email" value="david@vaclaimsedge.com" placeholder="you@example.com">
+    </div>
+    <div class="field">
+      <label for="li-pass">Password</label>
+      <input class="input" id="li-pass" type="password" value="demo1234" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;">
+    </div>
+    <button class="btn btn-gold" id="signin">Sign In</button>
+    <a class="forgot" href="#">Forgot password?</a>
+    <div class="login-note">Demo wireframe — credentials are pre-filled. Click Sign In to enter the portal.</div>
+  </div>
+</div>
+
+<!-- ===================== APP ===================== -->
+<div id="app">
+  <div class="shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sb-brand">
+        <div class="logo-wm">VACE</div>
+        <div class="logo-sub">Claims Edge Platform</div>
+      </div>
+      <div class="sb-sec">Main</div>
+      <nav id="nav">
+        <button class="nav-item active" data-screen="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span class="nav-label">Dashboard</span>
+        </button>
+        <button class="nav-item" data-screen="clients">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="nav-label">All Clients</span>
+          <span class="badge badge-amber num">214</span>
+        </button>
+        <button class="nav-item" data-screen="alerts">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="nav-label">Alerts</span>
+          <span class="badge badge-red num">8</span>
+        </button>
+        <button class="nav-item" data-screen="ai">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+          <span class="nav-label">AI Assistant</span>
+        </button>
+      </nav>
+      <div class="sb-sec">Manage</div>
+      <nav>
+        <button class="nav-item" data-screen="advisors">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+          <span class="nav-label">Advisors</span>
+        </button>
+        <button class="nav-item" data-screen="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span class="nav-label">Settings</span>
+        </button>
+      </nav>
+      <div class="sb-foot">
+        <div class="avatar avatar-gold">D</div>
+        <div style="min-width:0;">
+          <div style="font-weight:700;font-size:13px;">David <span class="dim" style="font-weight:500;">(Admin)</span></div>
+          <div class="muted" style="font-size:11.5px;">Administrator</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+      <header class="topbar">
+        <h1 id="screen-title">Dashboard</h1>
+        <div class="right">
+          <div class="search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" placeholder="Search clients…">
+          </div>
+          <button class="btn btn-ghost-gold add-client">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>
+            Add Client
+          </button>
+          <button class="btn btn-gold go-ai">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+            Ask AI
+          </button>
+          <button class="btn-icon go-alerts" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="dot"></span>
+          </button>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <!-- ===== DASHBOARD ===== -->
+        <section class="screen active" id="dashboard">
+          <div class="recon">Reconstructed layout — confirm against demo</div>
+          <div class="kpi-grid">
+            <div class="kpi panel"><div class="label">Active Clients</div><div class="val num">214</div><div class="sub muted">Across 11 pipeline steps</div></div>
+            <div class="kpi panel"><div class="label">At Risk</div><div class="val num" style="color:var(--gold)">23</div><div class="sub"><span class="pill pill-amber">Watch closely</span></div></div>
+            <div class="kpi panel"><div class="label">Overdue</div><div class="val num" style="color:var(--red)">8</div><div class="sub"><span class="pill pill-red">Threshold exceeded</span></div></div>
+            <div class="kpi panel"><div class="label">Approaching Threshold</div><div class="val num">23</div><div class="sub muted">Within 7 days</div></div>
+            <div class="kpi panel"><div class="label">Completed (mo)</div><div class="val num" style="color:var(--green)">17</div><div class="sub muted">All 11 steps done</div></div>
+          </div>
+
+          <div class="grid-2" style="grid-template-columns:1.4fr 1fr;">
+            <div class="panel panel-pad">
+              <div class="panel-title">11-Step Pipeline <span class="pt-sub">Clients per step</span></div>
+              <div id="pipe"></div>
+            </div>
+            <div class="stack">
+              <div class="panel panel-pad">
+                <div class="panel-title">Recent Alerts <span class="pt-sub"><a href="#" class="go-alerts" style="color:var(--gold)">View all</a></span></div>
+                <div class="stack" id="dash-alerts"></div>
+              </div>
+              <div class="panel panel-pad">
+                <div class="panel-title">Advisors</div>
+                <div class="mini-adv"><div class="avatar avatar-blue">D</div><div style="flex:1"><div style="font-weight:700">Donnie</div><div class="muted" style="font-size:11.5px">Senior Advisor</div></div><div style="text-align:right"><div style="font-weight:800;font-size:18px" class="num">94</div><div class="muted" style="font-size:10.5px">clients</div></div></div>
+                <div class="mini-adv"><div class="avatar avatar-green">Da</div><div style="flex:1"><div style="font-weight:700">Darious</div><div class="muted" style="font-size:11.5px">Advisor</div></div><div style="text-align:right"><div style="font-weight:800;font-size:18px" class="num">120</div><div class="muted" style="font-size:10.5px">clients</div></div></div>
+              </div>
+              <div class="quick-actions">
+                <button class="btn btn-ghost-gold add-client"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>Add Client</button>
+                <button class="btn btn-gold go-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>Ask AI</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== ALL CLIENTS ===== -->
+        <section class="screen" id="clients">
+          <div class="recon">Reconstructed — confirm against demo</div>
+          <div class="row-between">
+            <div><h2 style="font-size:20px;display:inline">All Clients</h2> <span class="muted num" style="margin-left:8px">214 total</span></div>
+            <button class="btn btn-ghost-gold add-client"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>Add Client</button>
+          </div>
+          <div class="filters">
+            <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input placeholder="Search clients…"></div>
+            <select class="select"><option>All Steps (1–11)</option><option>Step 1</option><option>Step 2</option><option>Step 3</option><option>Step 4</option><option>Step 5</option><option>Step 6</option><option>Step 7</option><option>Step 8</option><option>Step 9</option><option>Step 10</option><option>Step 11</option></select>
+            <select class="select"><option>All Advisors</option><option>Donnie</option><option>Darious</option></select>
+            <select class="select"><option>All Statuses</option><option>On Track</option><option>At Risk</option><option>Overdue</option></select>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Client</th><th>Step</th><th>Days in Step</th><th>Advisor</th><th>Last Contact</th><th>Status</th><th>Payment</th></tr></thead>
+              <tbody id="client-rows"></tbody>
+            </table>
+          </div>
+          <div class="pager">
+            <span>Showing 1–10 of 214</span>
+            <div class="pages"><span class="pg">‹</span><span class="pg on">1</span><span class="pg">2</span><span class="pg">3</span><span class="pg">…</span><span class="pg">22</span><span class="pg">›</span></div>
+          </div>
+        </section>
+
+        <!-- ===== CLIENT DETAIL ===== -->
+        <section class="screen" id="detail">
+          <a href="#" class="go-clients muted" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;margin-bottom:14px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back to All Clients
+          </a>
+          <div class="recon">Reconstructed — confirm against demo</div>
+          <div class="panel panel-pad" style="margin-bottom:16px;">
+            <div class="row-between" style="margin-bottom:0;">
+              <div>
+                <h2 id="d-name" style="font-size:22px;">Bill Smith</h2>
+                <div style="display:flex;align-items:center;gap:14px;margin-top:8px;font-size:13px;flex-wrap:wrap;" class="muted">
+                  <span class="pill pill-red">At Risk</span>
+                  <span>Advisor: <b style="color:var(--ink)">Donnie</b></span>
+                  <span><b style="color:var(--ink)">Step 4 of 11</b></span>
+                </div>
+              </div>
+              <button class="btn btn-gold go-ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>Ask AI about Bill</button>
+            </div>
+            <div class="tracker" id="tracker"></div>
+            <div class="stage-key">
+              <span><b>Steps 1–3</b> Early</span><span><b>Steps 4–7</b> Mid</span><span><b>Steps 8–11</b> Final</span>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="panel panel-pad">
+              <div class="panel-title">Activity Timeline</div>
+              <ul class="tl">
+                <li class="done"><div class="t-title">Signed up — intake form completed</div><div class="t-meta">Jan 9, 2026</div></li>
+                <li class="done"><div class="t-title">Assigned to advisor Donnie</div><div class="t-meta">Jan 11, 2026 · Step 1</div></li>
+                <li class="done"><div class="t-title">Advanced through Step 2 → Step 3</div><div class="t-meta">Feb 2 – Feb 24, 2026</div></li>
+                <li class="done"><div class="t-title">Advanced to Step 4</div><div class="t-meta">Mar 23, 2026</div></li>
+                <li><div class="t-title">Current — awaiting client documentation</div><div class="t-meta">93 days in Step 4 · onus on client</div></li>
+              </ul>
+            </div>
+            <div class="stack">
+              <div class="panel panel-pad">
+                <div class="panel-title">Contact History</div>
+                <div class="doc-row"><span>Last contact</span><b>Mar 12, 2026</b></div>
+                <div class="doc-row"><span>Previous contact</span><span class="muted">Feb 28, 2026</span></div>
+                <div class="doc-row"><span class="pill pill-amber">93 days in Step 4</span><span class="muted" style="font-size:12px">Exceeds 60-day threshold</span></div>
+              </div>
+              <div class="panel panel-pad">
+                <div class="panel-title">Payment Milestones</div>
+                <div class="doc-row"><span>Initial payment logged</span><span class="pill pill-green">Paid · Jan 10</span></div>
+                <div class="doc-row"><span>Milestone 2</span><span class="pill pill-gray">Pending</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-top:16px;">
+            <div class="panel panel-pad">
+              <div class="panel-title">Documents</div>
+              <div class="doc-row"><span>Intake form</span><span class="pill pill-green">Received</span></div>
+              <div class="doc-row"><span>DD-214</span><span class="pill pill-green">Received</span></div>
+              <div class="doc-row"><span>Medical records (private)</span><span class="pill pill-amber">Awaiting client</span></div>
+              <div class="doc-row"><span>Nexus letter</span><span class="pill pill-gray">Not started</span></div>
+            </div>
+            <div class="panel panel-pad">
+              <div class="panel-title">Notes</div>
+              <p class="muted" style="font-size:13px;margin:0 0 10px;">Mar 12 — Reached out re: outstanding medical records. Client says provider is slow to release. Onus remains on client; followed up via email and text.</p>
+              <p class="muted" style="font-size:13px;margin:0;">Feb 28 — Confirmed Step 4 requirements with client. All clear to proceed once documents arrive.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== ALERTS ===== -->
+        <section class="screen" id="alerts">
+          <div class="row-between">
+            <h2 style="font-size:20px;">Alerts &amp; Notifications</h2>
+            <span class="muted num">8 unread</span>
+          </div>
+          <div class="stack" id="alert-list"></div>
+        </section>
+
+        <!-- ===== AI ASSISTANT ===== -->
+        <section class="screen" id="ai">
+          <div class="ai-head">
+            <h2 style="font-size:20px;display:flex;align-items:center;gap:9px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+              AI Assistant
+            </h2>
+            <span class="online"><span class="dotg"></span>Online</span>
+          </div>
+          <div class="panel chat">
+            <div class="bubble">
+              <div class="ai-av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg></div>
+              <div class="msg">Hi David. I have full visibility into your client database. You currently have <b style="color:var(--gold)">8</b> clients flagged as overdue and <b style="color:var(--gold)">23</b> approaching thresholds. What would you like to know?</div>
+            </div>
+          </div>
+          <div class="ai-input">
+            <input class="input" placeholder="Ask anything about your clients…">
+            <button class="btn btn-gold">Ask →</button>
+          </div>
+          <div class="chips">
+            <button class="chip">Which clients stuck 60+ days?</button>
+            <button class="chip">Summarize Bill Smith</button>
+            <button class="chip">Donnie's most at-risk client?</button>
+            <button class="chip">Waiting on us right now?</button>
+            <button class="chip">No contact 30+ days?</button>
+          </div>
+        </section>
+
+        <!-- ===== ADVISORS ===== -->
+        <section class="screen" id="advisors">
+          <div class="row-between">
+            <h2 style="font-size:20px;">Advisors &amp; Coaches</h2>
+            <button class="btn btn-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>Add Advisor</button>
+          </div>
+          <div class="adv-grid">
+            <div class="panel adv-card">
+              <div class="avatar avatar-blue">D</div>
+              <div class="adv-name">Donnie</div>
+              <div class="adv-role">Senior Advisor</div>
+              <div class="adv-num num">94</div>
+              <div class="adv-numlbl">Active Clients</div>
+              <span class="pill pill-red num">12 at risk</span>
+            </div>
+            <div class="panel adv-card">
+              <div class="avatar avatar-green">Da</div>
+              <div class="adv-name">Darious</div>
+              <div class="adv-role">Advisor</div>
+              <div class="adv-num num">120</div>
+              <div class="adv-numlbl">Active Clients</div>
+              <span class="pill pill-red num">11 at risk</span>
+            </div>
+            <button class="adv-add">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>
+              Add New Advisor
+            </button>
+          </div>
+        </section>
+
+        <!-- ===== SETTINGS ===== -->
+        <section class="screen" id="settings">
+          <h2 style="font-size:20px;margin-bottom:18px;">Settings</h2>
+          <div class="stack" style="max-width:640px;">
+            <div class="panel panel-pad">
+              <div class="panel-title" style="margin-bottom:4px;">Notification Thresholds</div>
+              <p class="muted" style="font-size:12.5px;margin:0 0 14px;">Set how many days before an alert fires per step.</p>
+              <div class="set-row"><span class="set-label">Steps 1–3 <span class="muted" style="font-weight:400">(Early stage)</span></span><div class="set-input"><input class="input" value="30"><span class="muted">days</span></div></div>
+              <div class="set-row"><span class="set-label">Steps 4–7 <span class="muted" style="font-weight:400">(Mid stage)</span></span><div class="set-input"><input class="input" value="45"><span class="muted">days</span></div></div>
+              <div class="set-row"><span class="set-label">Steps 8–11 <span class="muted" style="font-weight:400">(Final stage)</span></span><div class="set-input"><input class="input" value="60"><span class="muted">days</span></div></div>
+            </div>
+            <div class="panel panel-pad">
+              <div class="panel-title" style="margin-bottom:4px;">Email Notifications</div>
+              <p class="muted" style="font-size:12.5px;margin:0 0 14px;">Configure where alerts are sent.</p>
+              <label class="field-lbl" for="set-email">Admin Email</label>
+              <input class="input" id="set-email" value="david@vaclaimsedge.com">
+            </div>
+            <div><button class="btn btn-gold">Save Settings</button></div>
+          </div>
+        </section>
+
+        <div class="footnote">
+          Wireframe blueprint — reproduces the VACE Claims Edge demo. Screens marked “reconstructed” (Dashboard, All Clients, Client Detail) are inferred and to be confirmed against the live demo.
+        </div>
+      </main>
+    </div>
+  </div>
+  <button class="fab go-ai" aria-label="Ask AI">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var I = {
+    warn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>',
+    clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>',
+    card:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>',
+    user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>'
+  };
+
+  var alerts = [
+    {ico:'warn', box:'ico-amber', lb:'lb-amber', title:'Bill Smith – 93 days in Step 4', desc:'Client has exceeded the 60-day threshold for Step 4. Last contact was March 12. Onus is on client to provide documentation.', time:'2h ago'},
+    {ico:'warn', box:'ico-amber', lb:'lb-amber', title:'Robert King – 71 days in Step 3', desc:'Onus is currently on your team. No action recorded in 71 days. Immediate follow-up recommended.', time:'5h ago'},
+    {ico:'clock', box:'ico-clock', lb:'lb-clock', title:'Sandra Lee – No contact in 34 days', desc:'Client is in Step 3. Last interaction logged April 8. Approaching the 30-day contact threshold.', time:'1d ago'},
+    {ico:'clock', box:'ico-clock', lb:'lb-clock', title:'4 clients approaching Step 5 threshold', desc:'Marcus Bell, Tony Rivera, James Cho, and Patricia Vance will hit the 45-day limit within the next 7 days.', time:'1d ago'},
+    {ico:'check', box:'ico-green', lb:'', title:'James Porter advanced to Step 8', desc:'Advisor Donnie moved James Porter from Step 7 to Step 8. Client is progressing ahead of average timeline.', time:'2d ago'},
+    {ico:'card', box:'ico-blue', lb:'', title:'Payment milestone logged – Maria Torres', desc:'Initial payment recorded for Maria Torres. Client profile created and assigned to Darious.', time:'3d ago'},
+    {ico:'check', box:'ico-green', lb:'', title:'Michael Grant – Process Complete', desc:'Michael Grant has successfully completed all 11 steps. Total engagement: 9.3 months. Case closed.', time:'4d ago'},
+    {ico:'user', box:'ico-purple', lb:'', title:'New client signed up – Derek Walton', desc:'Derek Walton completed the intake form. Profile created, pending advisor assignment.', time:'5d ago'}
+  ];
+
+  function alertHTML(a){
+    return '<div class="alert-item '+a.lb+'">'+
+      '<div class="ico-box '+a.box+'">'+I[a.ico]+'</div>'+
+      '<div class="alert-body"><div class="alert-title">'+a.title+'</div><div class="alert-desc">'+a.desc+'</div></div>'+
+      '<div class="alert-time">'+a.time+'</div></div>';
+  }
+  document.getElementById('alert-list').innerHTML = alerts.map(alertHTML).join('');
+  document.getElementById('dash-alerts').innerHTML = alerts.slice(0,3).map(alertHTML).join('');
+
+  var pipe = [
+    ['Step 1',31],['Step 2',26],['Step 3',24],['Step 4',22],['Step 5',20],['Step 6',18],
+    ['Step 7',16],['Step 8',15],['Step 9',13],['Step 10',16],['Step 11',13]
+  ];
+  var maxc = 31;
+  document.getElementById('pipe').innerHTML = pipe.map(function(p,i){
+    var pct = Math.round(p[1]/maxc*100);
+    var col = i===3 ? 'linear-gradient(90deg,var(--gold-2),var(--gold))' : 'linear-gradient(90deg,#2a3550,#46577f)';
+    return '<div class="pipe-row"><div class="pipe-label">'+p[0]+'</div>'+
+      '<div class="pipe-track"><div class="pipe-fill" style="width:'+pct+'%;background:'+col+'"></div></div>'+
+      '<div class="pipe-count">'+p[1]+'</div></div>';
+  }).join('');
+
+  var statusPill = {'On Track':'pill-green','At Risk':'pill-amber','Overdue':'pill-red'};
+  var clients = [
+    ['Bill Smith',4,93,'Donnie','Mar 12','At Risk','Paid'],
+    ['Robert King',3,71,'Donnie','Apr 14','Overdue','Paid'],
+    ['Sandra Lee',3,34,'Darious','Apr 8','At Risk','Paid'],
+    ['Marcus Bell',5,41,'Darious','May 30','At Risk','Paid'],
+    ['Tony Rivera',5,39,'Donnie','Jun 1','At Risk','Paid'],
+    ['James Cho',5,42,'Darious','May 28','At Risk','Pending'],
+    ['Patricia Vance',5,40,'Donnie','May 31','At Risk','Paid'],
+    ['James Porter',8,12,'Donnie','Jun 20','On Track','Paid'],
+    ['Maria Torres',1,6,'Darious','Jun 21','On Track','Paid'],
+    ['Derek Walton',1,2,'—','Jun 22','On Track','Pending']
+  ];
+  document.getElementById('client-rows').innerHTML = clients.map(function(c){
+    var pct = Math.round(c[1]/11*100);
+    return '<tr data-client="'+c[0]+'">'+
+      '<td class="cell-name">'+c[0]+'</td>'+
+      '<td><div class="ministep"><span class="num">Step '+c[1]+' / 11</span><div class="mini-track"><div class="mini-fill" style="width:'+pct+'%"></div></div></div></td>'+
+      '<td class="num">'+c[2]+' days</td>'+
+      '<td>'+c[3]+'</td>'+
+      '<td>'+c[4]+'</td>'+
+      '<td><span class="pill '+statusPill[c[5]]+'">'+c[5]+'</span></td>'+
+      '<td><span class="pill '+(c[6]==='Paid'?'pill-green':'pill-gray')+'">'+c[6]+'</span></td></tr>';
+  }).join('');
+
+  var cur = 4, trk = '';
+  for(var s=1;s<=11;s++){
+    var cls = s<cur ? 'done' : (s===cur ? 'cur' : 'up');
+    var lbl = s<=3 ? 'Early' : (s<=7 ? 'Mid' : 'Final');
+    trk += '<div class="step '+cls+'"><div class="dot">'+s+'</div><div class="lbl">'+lbl+'</div></div>';
+  }
+  document.getElementById('tracker').innerHTML = trk;
+
+  var titles = {dashboard:'Dashboard',clients:'All Clients',detail:'Client Detail',alerts:'Alerts',ai:'AI Assistant',advisors:'Advisors',settings:'Settings'};
+  var navMap = {detail:'clients'};
+  function show(id){
+    document.querySelectorAll('.screen').forEach(function(s){s.classList.toggle('active', s.id===id);});
+    document.getElementById('screen-title').textContent = titles[id]||'';
+    var navTarget = navMap[id]||id;
+    document.querySelectorAll('.nav-item').forEach(function(n){n.classList.toggle('active', n.getAttribute('data-screen')===navTarget);});
+    window.scrollTo(0,0);
+  }
+  document.querySelectorAll('.nav-item').forEach(function(n){
+    n.addEventListener('click', function(){ show(n.getAttribute('data-screen')); });
+  });
+
+  function bind(sel, target){ document.querySelectorAll(sel).forEach(function(el){ el.addEventListener('click', function(e){ e.preventDefault(); show(target); }); }); }
+  bind('.go-ai','ai');
+  bind('.go-alerts','alerts');
+  bind('.go-clients','clients');
+  bind('.add-client','clients');
+
+  document.querySelectorAll('#client-rows tr').forEach(function(tr){
+    tr.addEventListener('click', function(){ show('detail'); });
+  });
+
+  document.getElementById('signin').addEventListener('click', function(){
+    document.getElementById('screen-login').style.display='none';
+    document.getElementById('app').classList.add('show');
+    show('dashboard');
+  });
+})();
+</script>

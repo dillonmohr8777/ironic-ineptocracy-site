@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VA Claims — Front-End Design Capabilities Starter Brief</title>
+<style>
+  /* ---------- Web fonts (non-blocking; falls back gracefully if engine can't fetch) ---------- */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+  /* ---------- Design tokens ---------- */
+  :root{
+    --navy-dark:#0F1626;   /* near-black navy */
+    --navy-slate:#3D456B;  /* slate navy */
+    --brick:#9E3B3B;       /* brick red */
+    --paper:#F5F6F8;       /* light paper */
+    --grey:#6B7280;        /* secondary text */
+    --ink:#1B2233;         /* body text on paper */
+    --line:#E2E5EB;        /* hairline */
+    --sans:"Inter", system-ui, -apple-system, Arial, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  /* ---------- Page setup ---------- */
+  @page{
+    size: Letter;
+    margin: 18mm 16mm 20mm 16mm;
+    @bottom-left{
+      content: "Momentum Digital";
+      font-family: var(--mono); font-size: 7.5pt; color: #9aa1ad;
+      letter-spacing: .04em;
+    }
+    @bottom-center{
+      content: "VA Claims — Front-End Design Capabilities";
+      font-family: var(--sans); font-size: 7.5pt; color: #9aa1ad;
+    }
+    @bottom-right{
+      content: "Page " counter(page) " of " counter(pages);
+      font-family: var(--mono); font-size: 7.5pt; color: #9aa1ad;
+    }
+  }
+  /* Cover page: no margin, no running footer */
+  @page cover{
+    margin: 0;
+    @bottom-left{ content: none; }
+    @bottom-center{ content: none; }
+    @bottom-right{ content: none; }
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family: var(--sans);
+    color: var(--ink);
+    font-size: 10.5pt;
+    line-height: 1.5;
+    -weasy-font-feature-settings: "kern";
+  }
+
+  /* ---------- COVER ---------- */
+  .cover{
+    page: cover;
+    background: var(--navy-dark);
+    color: #fff;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 0 24mm;
+  }
+  .cover::before{
+    /* subtle top band accent */
+    content:"";
+    position:absolute; top:0; left:0; right:0; height:8px;
+    background: linear-gradient(90deg, var(--navy-slate) 0%, var(--brick) 100%);
+  }
+  .cover::after{
+    content:"";
+    position:absolute; bottom:0; left:0; right:0; height:8px;
+    background: linear-gradient(90deg, var(--brick) 0%, var(--navy-slate) 100%);
+  }
+  .cover .brandline{
+    position:absolute; top:16mm; left:0; right:0;
+    font-family: var(--mono); font-size: 9pt; letter-spacing:.18em;
+    text-transform: uppercase; color:#aeb4c4;
+  }
+  .cover-logo{
+    width: 150px; height:auto; margin-bottom: 26px;
+    /* logo sits on dark bg -> baked-in dark background blends */
+  }
+  .cover h1{
+    font-size: 14pt; font-weight:600; letter-spacing:.32em; text-transform:uppercase;
+    margin:0 0 6px; color:#c9cedb;
+  }
+  .cover h2{
+    font-size: 30pt; font-weight:800; letter-spacing:-.01em;
+    margin:0 0 8px; line-height:1.1;
+  }
+  .cover .subtitle{
+    font-size: 12.5pt; color:#aeb4c4; font-weight:500; margin:0 0 30px;
+  }
+  .cover .draft-tag{
+    display:inline-block; font-family:var(--mono); font-size:8pt; letter-spacing:.14em;
+    text-transform:uppercase; color:#f0d3d3;
+    border:1px solid var(--brick); background: rgba(158,59,59,.18);
+    padding:5px 12px; border-radius:999px; margin-bottom:34px;
+  }
+  .cover .meta{
+    font-size:10pt; color:#c9cedb; line-height:1.9;
+  }
+  .cover .meta strong{ color:#fff; font-weight:600; }
+  .cover .tagline{
+    position:absolute; bottom:16mm; left:0; right:0;
+    font-size:9pt; color:#8b92a3; font-style:italic;
+  }
+
+  /* ---------- Generic content ---------- */
+  .page{ page-break-before: always; }
+  .section-label{
+    font-family:var(--mono); font-size:8.5pt; letter-spacing:.16em; text-transform:uppercase;
+    color: var(--brick); font-weight:600; margin:0 0 6px;
+  }
+  h2.title{
+    font-size:19pt; font-weight:800; color:var(--navy-dark); margin:0 0 4px; line-height:1.15;
+    letter-spacing:-.01em;
+  }
+  .rule{
+    height:3px; width:54px; background:var(--brick); border-radius:2px; margin:10px 0 18px;
+  }
+  h3{
+    font-size:12pt; font-weight:700; color:var(--navy-slate); margin:22px 0 6px;
+  }
+  p{ margin:0 0 10px; }
+  .muted{ color:var(--grey); }
+  a{ color:var(--navy-slate); }
+
+  ul{ margin:6px 0 12px; padding-left:18px; }
+  li{ margin:0 0 5px; }
+  li::marker{ color:var(--brick); }
+
+  /* ---------- Roadmap strip ---------- */
+  .roadmap{
+    display:flex; gap:6px; margin:14px 0 18px;
+  }
+  .phase{
+    flex:1; border-radius:7px; padding:11px 10px 12px; color:#fff;
+    background:var(--navy-slate);
+  }
+  .phase.p1{ background:#2A3150; }
+  .phase.p2{ background:var(--brick); }      /* highlight current phase */
+  .phase.p3{ background:#3D456B; }
+  .phase.p4{ background:#4B5377; }
+  .phase.p5{ background:#5A6288; }
+  .phase .pnum{
+    font-family:var(--mono); font-size:7.5pt; letter-spacing:.12em; text-transform:uppercase;
+    opacity:.85; display:block; margin-bottom:3px;
+  }
+  .phase .pname{ font-size:8.7pt; font-weight:700; line-height:1.25; display:block; margin-bottom:3px; }
+  .phase .pfocus{ font-size:7.6pt; line-height:1.3; opacity:.92; }
+  .phase.current{ box-shadow: inset 0 0 0 2px #fff; }
+  .phase-flag{
+    font-family:var(--mono); font-size:6.8pt; letter-spacing:.08em; text-transform:uppercase;
+    margin-top:6px; display:inline-block; background:rgba(255,255,255,.22);
+    padding:2px 6px; border-radius:4px;
+  }
+
+  /* ---------- Callout ---------- */
+  .callout{
+    background:var(--paper); border-left:4px solid var(--navy-slate);
+    border-radius:6px; padding:14px 16px; margin:14px 0;
+  }
+  .callout.brick{ border-left-color:var(--brick); }
+  .callout h4{
+    margin:0 0 6px; font-size:10.5pt; color:var(--navy-dark); font-weight:700;
+  }
+  .callout ul{ margin:6px 0 0; }
+
+  /* ---------- Capability cards ---------- */
+  .cards{
+    display:flex; flex-wrap:wrap; gap:11px; margin:14px 0;
+  }
+  .card{
+    flex:1 1 46%; min-width:230px;
+    border:1px solid var(--line); border-radius:9px; padding:13px 15px;
+    background:#fff; break-inside:avoid;
+  }
+  .card .ctag{
+    font-family:var(--mono); font-size:7.5pt; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--brick); font-weight:600;
+  }
+  .card h4{
+    margin:5px 0 5px; font-size:11pt; color:var(--navy-dark); font-weight:700;
+  }
+  .card p{ margin:0; font-size:9.3pt; color:#3a4253; line-height:1.45; }
+  .card.ai{ border-color:var(--brick); background:linear-gradient(180deg,#fdf6f6 0%,#fff 60%); }
+
+  /* ---------- Tables ---------- */
+  table{ width:100%; border-collapse:collapse; margin:12px 0; font-size:9.4pt; }
+  th{
+    text-align:left; background:var(--navy-dark); color:#fff; font-weight:600;
+    padding:8px 10px; font-size:8.6pt; letter-spacing:.03em;
+  }
+  td{ padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr:nth-child(even) td{ background:#fafbfc; }
+
+  /* ---------- TBD pill ---------- */
+  .tbd{
+    font-family:var(--mono); font-size:7.4pt; letter-spacing:.05em;
+    color:var(--brick); border:1px solid #e0bcbc; background:#fbeeee;
+    padding:1px 5px; border-radius:4px; white-space:nowrap;
+  }
+
+  /* ---------- Concept mock (Payment Watch) ---------- */
+  .pw-wrap{ display:flex; gap:11px; margin:12px 0; }
+  .pw-col{ flex:1; border:1px solid var(--line); border-radius:9px; overflow:hidden; }
+  .pw-head{ padding:9px 12px; color:#fff; font-weight:700; font-size:9.3pt; }
+  .pw-head.amber{ background:var(--navy-slate); }
+  .pw-head.red{ background:var(--brick); }
+  .pw-row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:8px 12px; border-bottom:1px solid var(--line); font-size:8.7pt;
+  }
+  .pw-row:last-child{ border-bottom:none; }
+  .pw-name{ font-weight:600; color:var(--navy-dark); }
+  .pw-sub{ font-size:7.6pt; color:var(--grey); }
+  .badge{
+    font-family:var(--mono); font-size:7pt; padding:2px 7px; border-radius:999px;
+    letter-spacing:.04em; font-weight:600;
+  }
+  .badge.timing{ background:#eef0f4; color:var(--navy-slate); }
+  .badge.timing.late{ background:#f7e3e3; color:var(--brick); }
+  .badge.paid{ background:#e6efe7; color:#3f7a4a; }
+  .badge.unpaid{ background:#f3f0e3; color:#8a7a2e; }
+
+  .leadin{ font-size:11pt; color:#3a4253; }
+  .small{ font-size:8.8pt; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="cover">
+  <div class="brandline">Momentum Digital &nbsp;·&nbsp; Custom Software Studio</div>
+  <img class="cover-logo" src="assets/va-claims-logo.jpeg" alt="VA Claims emblem">
+  <h1>VA Claims</h1>
+  <h2>Front-End Design Capabilities</h2>
+  <div class="subtitle">Phase 2 Starter Brief</div>
+  <div class="draft-tag">Draft — for review</div>
+  <div class="meta">
+    <div><strong>Prepared by:</strong> Dillon Mohr — Momentum Digital</div>
+    <div><strong>Prepared for:</strong> James — VA Claims</div>
+    <div><strong>Date:</strong> June 2026</div>
+  </div>
+  <div class="tagline">Custom software, digital growth, and ownership-first development.</div>
+</section>
+
+<!-- ============ SECTION 1 — ROADMAP PLACEMENT ============ -->
+<section class="page">
+  <div class="section-label">Section 01 · Orientation</div>
+  <h2 class="title">Where this fits in the roadmap</h2>
+  <div class="rule"></div>
+
+  <p class="leadin">This brief previews the front-end design direction for the VA Claims software so we can
+  align early. To set expectations clearly: <strong>front-end UI design and build are delivered in Phase 3</strong>
+  and refined in Phase 4. The current phase, <strong>Phase 2, is environment, tools, and core setup — it does not
+  include front-end design.</strong> Sharing direction now lets the Phase 2 groundwork be set up to support the
+  front-end we build next.</p>
+
+  <div class="roadmap">
+    <div class="phase p1">
+      <span class="pnum">Phase 1</span>
+      <span class="pname">Discovery &amp; Planning</span>
+      <span class="pfocus">Requirements, workflows, architecture, roadmap</span>
+    </div>
+    <div class="phase p2 current">
+      <span class="pnum">Phase 2 · Now</span>
+      <span class="pname">Environment &amp; Core Setup</span>
+      <span class="pfocus">Framework, data model, access &amp; permissions, tooling</span>
+      <span class="phase-flag">No front-end yet</span>
+    </div>
+    <div class="phase p3">
+      <span class="pnum">Phase 3</span>
+      <span class="pname">Core Build &amp; Features</span>
+      <span class="pfocus">Frontend + backend, dashboard, Payment Watch</span>
+      <span class="phase-flag">Front-end built</span>
+    </div>
+    <div class="phase p4">
+      <span class="pnum">Phase 4</span>
+      <span class="pname">Testing &amp; Optimization</span>
+      <span class="pfocus">QA, bug fixes, UX improvements, pre-launch</span>
+      <span class="phase-flag">UX refined</span>
+    </div>
+    <div class="phase p5">
+      <span class="pnum">Phase 5</span>
+      <span class="pname">Delivery &amp; Handoff</span>
+      <span class="pfocus">Final review, handoff, docs, launch support</span>
+    </div>
+  </div>
+
+  <p class="small muted">Phase focus areas above summarize the signed development roadmap. This document is a
+  design-direction preview only and does not restate or alter any contract, scope, or payment terms.</p>
+
+  <div class="callout">
+    <h4>What Phase 2 enables for the front-end</h4>
+    <p class="small">The setup work happening now directly shapes how cleanly the Phase 3 front-end comes together.
+    A few decisions worth making with the front-end in mind:</p>
+    <ul class="small">
+      <li><strong>Component-ready framework choice</strong> — selecting a framework that supports a reusable
+      component model so dashboard and Payment Watch views share consistent UI building blocks.</li>
+      <li><strong>Design-token support</strong> — structuring styling so brand colors, type, and spacing are
+      defined once and applied everywhere, keeping the UI consistent and easy to adjust.</li>
+      <li><strong>Auth &amp; roles the UI will respect</strong> — the user access and permissions planned in
+      Phase 2 define what each role sees; the admin and dashboard UI will render around those roles.</li>
+      <li><strong>Data structure the views bind to</strong> — the backend/database structure should expose the
+      fields the Payment Watch views need (e.g. C&amp;P exam date, day-count grouping, paid status).</li>
+    </ul>
+  </div>
+
+  <p class="small muted">In short: Phase 2 stands up the foundation; Phase 3 builds the front-end on top of it.
+  Aligning on direction now reduces rework later.</p>
+</section>
+
+<!-- ============ SECTION 2 — CAPABILITIES ============ -->
+<section class="page">
+  <div class="section-label">Section 02 · Capabilities</div>
+  <h2 class="title">Front-End Design Capabilities</h2>
+  <div class="rule"></div>
+
+  <p class="leadin">The front-end design skill set Dillon brings to the VA Claims build, spanning research-driven
+  UX, polished visual design, scalable design systems, and AI-assisted workflows that accelerate exploration and
+  handoff.</p>
+
+  <div class="cards">
+    <div class="card">
+      <span class="ctag">UI / UX Design</span>
+      <h4>User experience &amp; visual design</h4>
+      <p>End-to-end interface design — user flows, layout, hierarchy, and high-fidelity visual polish that makes
+      complex workflows feel simple and clear.</p>
+    </div>
+    <div class="card">
+      <span class="ctag">Design Systems</span>
+      <h4>Component libraries &amp; tokens</h4>
+      <p>Reusable component libraries and design tokens (color, type, spacing) so the product stays consistent and
+      scales cleanly as new features are added.</p>
+    </div>
+    <div class="card">
+      <span class="ctag">Responsive</span>
+      <h4>Mobile-first, responsive layouts</h4>
+      <p>Layouts that adapt across desktop, tablet, and phone, so internal staff and clients get a usable
+      experience on whatever device they reach for.</p>
+    </div>
+    <div class="card">
+      <span class="ctag">Prototyping</span>
+      <h4>Interactive prototypes</h4>
+      <p>Clickable prototypes to validate flows and gather feedback before development, reducing costly changes
+      later in the build.</p>
+    </div>
+    <div class="card">
+      <span class="ctag">Accessibility</span>
+      <h4>Accessible by design</h4>
+      <p>WCAG-minded design — readable contrast, clear focus states, larger touch targets, and legible type.
+      Especially important for a veteran and VA-adjacent audience.</p>
+    </div>
+    <div class="card">
+      <span class="ctag">Brand</span>
+      <h4>Brand-consistent UI</h4>
+      <p>Interfaces that carry the VA Claims identity consistently — a trustworthy, professional,
+      government-adjacent visual tone throughout the product.</p>
+    </div>
+    <div class="card ai">
+      <span class="ctag">AI-Assisted Design</span>
+      <h4>AI-accelerated front-end design</h4>
+      <p>Using AI to move faster — rapid generative mockups and explorations, AI-accelerated prototyping and
+      iteration, AI-assisted component generation, and copy/imagery exploration. The result is more directions
+      explored in less time and a faster design-to-build handoff. Human review keeps quality and brand fit on
+      track.</p>
+    </div>
+    <div class="card">
+      <span class="ctag">Handoff</span>
+      <h4>Design-to-development handoff</h4>
+      <p>Clean specs for the build — tokens, redlines, states, and component documentation so what's designed is
+      what gets shipped.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 — APPLIED TO VA CLAIMS ============ -->
+<section class="page">
+  <div class="section-label">Section 03 · Application</div>
+  <h2 class="title">Applied to the VA Claims software</h2>
+  <div class="rule"></div>
+
+  <p class="leadin">How these capabilities translate to the actual product. The concepts below are an early design
+  direction to react to — specifics are marked <span class="tbd">[TBD]</span> and to be confirmed with the team.</p>
+
+  <h3>Main dashboard</h3>
+  <p class="small">A clean, scannable home screen surfacing what staff need first: clients needing attention,
+  Payment Watch status at a glance, and quick navigation into cases. Calm layout, clear hierarchy, minimal visual
+  noise so the important items stand out. <span class="tbd">concept — to confirm</span></p>
+
+  <h3>Payment Watch view</h3>
+  <p class="small">The Payment Watch feature tracks clients after their C&amp;P exam in two groups. A clear
+  two-column layout separates the groups, with status badges, a manually started timer per client, and simple
+  paid / unpaid management. Concept layout below: <span class="tbd">concept — to confirm</span></p>
+
+  <div class="pw-wrap">
+    <div class="pw-col">
+      <div class="pw-head amber">60–120 days post C&amp;P exam</div>
+      <div class="pw-row">
+        <div><div class="pw-name">Client — sample</div><div class="pw-sub">Timer started · day 84</div></div>
+        <div><span class="badge timing">Day 84</span> <span class="badge unpaid">Unpaid</span></div>
+      </div>
+      <div class="pw-row">
+        <div><div class="pw-name">Client — sample</div><div class="pw-sub">Timer started · day 102</div></div>
+        <div><span class="badge timing">Day 102</span> <span class="badge paid">Paid</span></div>
+      </div>
+      <div class="pw-row">
+        <div><div class="pw-name">Client — sample</div><div class="pw-sub">Timer not started</div></div>
+        <div><span class="badge timing">Start timer</span></div>
+      </div>
+    </div>
+    <div class="pw-col">
+      <div class="pw-head red">121+ days post C&amp;P exam</div>
+      <div class="pw-row">
+        <div><div class="pw-name">Client — sample</div><div class="pw-sub">Timer started · day 131</div></div>
+        <div><span class="badge timing late">Day 131</span> <span class="badge unpaid">Unpaid</span></div>
+      </div>
+      <div class="pw-row">
+        <div><div class="pw-name">Client — sample</div><div class="pw-sub">Timer started · day 156</div></div>
+        <div><span class="badge timing late">Day 156</span> <span class="badge paid">Paid</span></div>
+      </div>
+      <div class="pw-row">
+        <div><div class="pw-name">Client — sample</div><div class="pw-sub">Flagged for review</div></div>
+        <div><span class="badge timing late">Day 174</span> <span class="badge unpaid">Unpaid</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="small muted">Concept only. Sample rows illustrate the layout — grouping rule (60–120 vs 121+ days),
+  manual timer start, day-count badges, and paid-status toggle reflect the described feature behavior.
+  Exact fields, thresholds, and actions <span class="tbd">[TBD]</span>.</p>
+
+  <h3>Client / case detail views</h3>
+  <p class="small">A focused per-client view: contact and case summary, C&amp;P exam date and current day-count,
+  Payment Watch status, paid history, and notes. Designed to keep the most-used actions one click away.
+  <span class="tbd">concept — to confirm</span></p>
+
+  <h3>Admin tools &amp; user roles</h3>
+  <p class="small">Admin and management UI built around the access and permissions structure set up in Phase 2 —
+  each role sees and can do only what its permissions allow. Clear, role-aware navigation and controls.
+  <span class="tbd">roles &amp; permissions — to confirm with Phase 2 plan</span></p>
+
+  <h3>Visual tone</h3>
+  <p class="small">An accessible, trustworthy, government-adjacent visual tone — calm navy and red accents drawn
+  from the VA Claims emblem, high contrast, and generous spacing to convey credibility and reduce cognitive load.</p>
+</section>
+
+<!-- ============ SECTION 4 — DELIVERABLES ============ -->
+<section class="page">
+  <div class="section-label">Section 04 · Deliverables</div>
+  <h2 class="title">Front-end deliverables Dillon can provide</h2>
+  <div class="rule"></div>
+
+  <p class="leadin">The concrete design artifacts available for the build. These map to the Phase 3 front-end build
+  and Phase 4 UX polish.</p>
+
+  <table>
+    <thead>
+      <tr><th style="width:34%">Deliverable</th><th style="width:46%">What it includes</th><th style="width:20%">Maps to</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Wireframes</strong></td><td>Low-fidelity layouts of key screens to agree structure and flow before visual design.</td><td>Phase 3 build</td></tr>
+      <tr><td><strong>High-fidelity mockups</strong></td><td>Polished, brand-applied screen designs for dashboard, Payment Watch, case detail, and admin.</td><td>Phase 3 build</td></tr>
+      <tr><td><strong>Clickable prototypes</strong></td><td>Interactive flows to validate usability and gather feedback before development.</td><td>Phase 3 build</td></tr>
+      <tr><td><strong>Design system / component spec</strong></td><td>Reusable components, states, and design tokens (color, type, spacing) for consistency at scale.</td><td>Phase 3 build</td></tr>
+      <tr><td><strong>AI-generated design explorations</strong></td><td>Rapid alternative directions and variations to explore options quickly and early.</td><td>Phase 3 build</td></tr>
+      <tr><td><strong>Design-to-dev handoff specs</strong></td><td>Tokens, redlines, measurements, and component documentation for accurate implementation.</td><td>Phase 3 → 4</td></tr>
+      <tr><td><strong>UX refinements</strong></td><td>Usability improvements and polish based on testing feedback ahead of launch.</td><td>Phase 4 polish</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout brick">
+    <h4>Note on timing</h4>
+    <p class="small">These deliverables are sequenced for Phase 3 (front-end build) and Phase 4 (UX improvements).
+    Producing direction and exploration now — during Phase 2 — is preparatory and helps the build start cleanly.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 — NEXT STEPS ============ -->
+<section class="page">
+  <div class="section-label">Section 05 · Next Steps</div>
+  <h2 class="title">Suggested next steps &amp; open questions</h2>
+  <div class="rule"></div>
+
+  <p class="leadin">A short list to align on before front-end design work ramps up.</p>
+
+  <h3>Next steps</h3>
+  <ul>
+    <li><strong>Confirm Phase 2 vs Phase 3 timing</strong> for design involvement — when front-end direction and
+    mockups should begin relative to the environment setup.</li>
+    <li><strong>Gather brand assets</strong> — logo files, colors, fonts, and any existing guidelines. A
+    <em>transparent / wordmark version of the logo</em> would help, since the current emblem has a dark baked-in
+    background that limits where it can be placed.</li>
+    <li><strong>Confirm target users and devices</strong> — primarily internal staff, clients/veterans, or both?
+    And which devices (desktop, tablet, phone) matter most?</li>
+    <li><strong>Confirm Phase 2 scope</strong> with the team so framework, data model, and access/permissions
+    decisions support the Phase 3 front-end.</li>
+  </ul>
+
+  <h3>Open questions</h3>
+  <ul>
+    <li>Payment Watch — exact day thresholds, timer behavior, and paid-status workflow. <span class="tbd">[TBD]</span></li>
+    <li>User roles and what each role should see in the dashboard and admin tools. <span class="tbd">[TBD]</span></li>
+    <li>Accessibility target — any specific WCAG level or compliance requirement to design to? <span class="tbd">[TBD]</span></li>
+    <li>Branding latitude — how closely should the UI follow the existing emblem palette? <span class="tbd">[TBD]</span></li>
+  </ul>
+
+  <div class="callout">
+    <h4>About this document</h4>
+    <p class="small">This is a <strong>starter draft</strong> prepared for review. It previews front-end design
+    direction and capabilities; it is not a contract, scope change, or final design spec. Items marked
+    <span class="tbd">[TBD]</span> and "concept — to confirm" will be refined together. Prepared by Dillon Mohr,
+    Momentum Digital, for James at VA Claims — June 2026.</p>
+  </div>
+</section>
+
+</body>
+</html>
