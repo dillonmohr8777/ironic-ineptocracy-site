@@ -1,0 +1,78 @@
+{
+  "id": "west7th",
+  "name": "PHILADELPHIA — WEST 7TH",
+  "subtitle": "Act I · The File Opens",
+  "size": [960, 544],
+  "bg_color": "#131318",
+  "player_spawn": [120, 280],
+  "decals": [
+    { "rect": [0, 128, 960, 32], "color": "#1d1d24", "note": "north sidewalk" },
+    { "rect": [0, 384, 960, 32], "color": "#1d1d24", "note": "south sidewalk" },
+    { "rect": [0, 160, 960, 224], "color": "#17171d", "note": "street" },
+    { "rect": [460, 160, 40, 224], "color": "#1a1a20", "note": "crosswalk" }
+  ],
+  "walls": [
+    { "rect": [0, -16, 960, 16] },
+    { "rect": [0, 544, 960, 16] },
+    { "rect": [-16, 0, 16, 544] },
+    { "rect": [960, 0, 16, 544] },
+    { "rect": [0, 0, 400, 128], "color": "#23232c", "label": "ROWHOUSES" },
+    { "rect": [432, 0, 528, 128], "color": "#262630", "label": "TRANSIT AUTHORITY" },
+    { "rect": [0, 416, 288, 128], "color": "#23232c", "label": "LAUNDROMAT" },
+    { "rect": [320, 416, 640, 128], "color": "#262630", "label": "BANKIT BRANCH" }
+  ],
+  "patches": [
+    {
+      "rect": [400, 0, 32, 128], "color": "#2a2a36",
+      "note": "the alley",
+      "encounter_rate": 0.14,
+      "table": [
+        { "species": "rumor", "weight": 35, "levels": [3, 5] },
+        { "species": "fine_print", "weight": 25, "levels": [3, 5] },
+        { "species": "talking_point", "weight": 20, "levels": [3, 5] },
+        { "species": "draft_notice", "weight": 15, "levels": [4, 6] },
+        { "species": "memory_hole", "weight": 5, "levels": [6, 6] }
+      ]
+    },
+    {
+      "rect": [520, 240, 176, 112], "color": "#222230",
+      "note": "steam over the grates",
+      "encounter_rate": 0.12,
+      "table": [
+        { "species": "rumor", "weight": 40, "levels": [2, 4] },
+        { "species": "talking_point", "weight": 30, "levels": [3, 5] },
+        { "species": "invoice", "weight": 15, "levels": [3, 5] },
+        { "species": "polished_concern", "weight": 10, "levels": [4, 6] },
+        { "species": "rough_draft", "weight": 5, "levels": [4, 6] }
+      ]
+    },
+    {
+      "rect": [96, 336, 144, 48], "color": "#222230",
+      "note": "outside the laundromat",
+      "encounter_rate": 0.10,
+      "table": [
+        { "species": "rumor", "weight": 50, "levels": [2, 4] },
+        { "species": "favor", "weight": 30, "levels": [3, 5] },
+        { "species": "fine_print", "weight": 20, "levels": [3, 5] }
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "id": "contact", "name": "Network Contact", "pos": [200, 200],
+      "color": "#e0a33c", "dialogue": "contact"
+    },
+    {
+      "id": "newsstand", "name": "Newsstand", "pos": [672, 200],
+      "color": "#3d6e8f", "dialogue": "newsstand"
+    },
+    {
+      "id": "green_eyed", "name": "???", "pos": [880, 280],
+      "color": "#3a5a40", "dialogue": "green_eyed",
+      "requires_flag": "starter_chosen"
+    }
+  ],
+  "exits": [
+    { "rect": [928, 240, 32, 64], "to": null, "message": "The route bends north toward Cambridge. The file is not ready. (End of vertical slice.)" }
+  ]
+}

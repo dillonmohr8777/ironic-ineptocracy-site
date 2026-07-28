@@ -1,0 +1,234 @@
+{
+  "receipt": {
+    "dex": 1, "name": "Receipt", "affinities": ["WITNESS"],
+    "base": { "resolve": 44, "pressure": 52, "insulation": 40, "tempo": 56 },
+    "learnset": { "1": ["paper_cut", "signal_jam"], "7": ["follow_receipts"], "13": ["cross_reference"] },
+    "evolves_to": "ledger", "evolve_note": "story: corroboration accumulates",
+    "glyph": "RCT", "color": "#e0a33c", "wild": false,
+    "epigraph": "Treat every slogan as a receipt. Ask what it bought, who paid for it."
+  },
+  "ledger": {
+    "dex": 2, "name": "Ledger", "affinities": ["WITNESS"],
+    "base": { "resolve": 62, "pressure": 72, "insulation": 58, "tempo": 66 },
+    "learnset": { "1": ["paper_cut", "signal_jam", "follow_receipts"], "13": ["cross_reference"] },
+    "evolves_to": "evidence_board", "evolve_note": "story: 20 species filed",
+    "glyph": "LGR", "color": "#e0a33c", "wild": false,
+    "epigraph": "Names missing where the money should be."
+  },
+  "evidence_board": {
+    "dex": 3, "name": "Evidence Board", "affinities": ["WITNESS"],
+    "base": { "resolve": 84, "pressure": 96, "insulation": 80, "tempo": 70 },
+    "learnset": { "1": ["paper_cut", "signal_jam", "follow_receipts", "cross_reference"] },
+    "glyph": "BRD", "color": "#e0a33c", "wild": false,
+    "epigraph": "MONEY, WAR, MEMORY, MEDIA, OFFICE, and GARNIER. Red string. One desk lamp."
+  },
+  "checksum": {
+    "dex": 4, "name": "Checksum", "affinities": ["WITNESS"],
+    "base": { "resolve": 48, "pressure": 44, "insulation": 52, "tempo": 50 },
+    "learnset": { "1": ["paper_cut", "cross_reference"], "9": ["follow_receipts"], "14": ["hot_meal"] },
+    "evolves_to": "counter_history", "evolve_note": "bond: 10 arguments without being discredited",
+    "glyph": "CHK", "color": "#e0a33c", "wild": false,
+    "epigraph": "Their friendship becomes one of the few records the machine cannot easily rewrite."
+  },
+  "counter_history": {
+    "dex": 5, "name": "Counter-History", "affinities": ["WITNESS"],
+    "base": { "resolve": 76, "pressure": 66, "insulation": 82, "tempo": 64 },
+    "learnset": { "1": ["paper_cut", "cross_reference", "follow_receipts", "hot_meal"] },
+    "glyph": "CTH", "color": "#e0a33c", "wild": false,
+    "epigraph": "A private counter history beneath the geopolitical noise."
+  },
+  "burner": {
+    "dex": 6, "name": "Burner", "affinities": ["WITNESS"],
+    "base": { "resolve": 40, "pressure": 50, "insulation": 36, "tempo": 72 },
+    "learnset": { "1": ["one_call", "paper_cut"], "8": ["signal_jam"], "13": ["follow_receipts"] },
+    "evolves_to": "encrypted_route", "evolve_note": "story: the Keshet route opens",
+    "glyph": "BRN", "color": "#e0a33c", "wild": false,
+    "epigraph": "Piercing green eyes, a burner phone, and the rare instinct to help before the paperwork can forbid it."
+  },
+  "encrypted_route": {
+    "dex": 7, "name": "Encrypted Route", "affinities": ["WITNESS"],
+    "base": { "resolve": 64, "pressure": 74, "insulation": 56, "tempo": 96 },
+    "learnset": { "1": ["one_call", "signal_jam", "follow_receipts", "paper_cut"] },
+    "glyph": "ENC", "color": "#e0a33c", "wild": false,
+    "epigraph": "Her father left memory, protocols, contacts, encrypted routes."
+  },
+  "rumor": {
+    "dex": 8, "name": "Rumor", "affinities": ["MEDIA"],
+    "base": { "resolve": 38, "pressure": 46, "insulation": 34, "tempo": 64 },
+    "learnset": { "1": ["static_burst"], "5": ["repetition"], "11": ["news_dump"] },
+    "evolves_to": "headline", "evolve_note": "level 12: repeated enough to set in type",
+    "evolve_level": 12,
+    "glyph": "RMR", "color": "#3d6e8f", "wild": true,
+    "epigraph": "Watch which words get repeated."
+  },
+  "headline": {
+    "dex": 9, "name": "Headline", "affinities": ["MEDIA"],
+    "base": { "resolve": 58, "pressure": 68, "insulation": 50, "tempo": 74 },
+    "learnset": { "1": ["static_burst", "repetition"], "11": ["news_dump"], "16": ["stay_on_message"] },
+    "evolves_to": "news_cycle", "evolve_note": "level 24: industrialized",
+    "evolve_level": 24,
+    "glyph": "HDL", "color": "#3d6e8f", "wild": true,
+    "epigraph": "The public version that arrives before the truth can stand up."
+  },
+  "news_cycle": {
+    "dex": 10, "name": "News Cycle", "affinities": ["MEDIA"],
+    "base": { "resolve": 78, "pressure": 88, "insulation": 68, "tempo": 84 },
+    "learnset": { "1": ["static_burst", "repetition", "news_dump", "stay_on_message"] },
+    "glyph": "CYC", "color": "#3d6e8f", "wild": true,
+    "epigraph": "The same story wearing new dates."
+  },
+  "talking_point": {
+    "dex": 11, "name": "Talking Point", "affinities": ["MEDIA"],
+    "base": { "resolve": 52, "pressure": 58, "insulation": 52, "tempo": 58 },
+    "learnset": { "1": ["stay_on_message", "repetition"], "9": ["news_dump"] },
+    "glyph": "TPT", "color": "#3d6e8f", "wild": true,
+    "epigraph": "Watch which costs are renamed."
+  },
+  "polished_concern": {
+    "dex": 12, "name": "Polished Concern", "affinities": ["MEDIA"],
+    "base": { "resolve": 60, "pressure": 44, "insulation": 66, "tempo": 48 },
+    "learnset": { "1": ["reasonable_tone", "static_burst"], "10": ["redact"] },
+    "glyph": "PLC", "color": "#3d6e8f", "wild": true,
+    "epigraph": "Sometimes it sounds like concern. That tone asks readers to relax."
+  },
+  "rough_draft": {
+    "dex": 13, "name": "Rough Draft", "affinities": ["MEMORY"],
+    "base": { "resolve": 42, "pressure": 40, "insulation": 42, "tempo": 58 },
+    "learnset": { "1": ["redact"], "6": ["revision"] },
+    "evolves_to": "official_story", "evolve_note": "story: processed by the machine",
+    "glyph": "DFT", "color": "#c9c9cf", "wild": true,
+    "epigraph": "First the event."
+  },
+  "official_story": {
+    "dex": 14, "name": "Official Story", "affinities": ["MEMORY"],
+    "base": { "resolve": 60, "pressure": 62, "insulation": 64, "tempo": 60 },
+    "learnset": { "1": ["redact", "revision"], "12": ["stay_on_message"] },
+    "evolves_to": "corrected_record", "evolve_note": "story: appears after a Corrected Version is accepted",
+    "glyph": "STY", "color": "#c9c9cf", "wild": true,
+    "epigraph": "Then the story."
+  },
+  "corrected_record": {
+    "dex": 15, "name": "Corrected Record", "affinities": ["MEMORY"],
+    "base": { "resolve": 82, "pressure": 84, "insulation": 88, "tempo": 62 },
+    "learnset": { "1": ["redact", "revision"], "14": ["clean_archive"] },
+    "glyph": "REC", "color": "#c9c9cf", "wild": false,
+    "epigraph": "The most dangerous record is the corrected one."
+  },
+  "memory_hole": {
+    "dex": 16, "name": "Memory Hole", "affinities": ["MEMORY"],
+    "base": { "resolve": 70, "pressure": 66, "insulation": 70, "tempo": 44 },
+    "learnset": { "1": ["redact", "clean_archive"] },
+    "glyph": "HOL", "color": "#c9c9cf", "wild": true,
+    "epigraph": "The archive is clean because someone got there first."
+  },
+  "favor": {
+    "dex": 17, "name": "Favor", "affinities": ["MONEY"],
+    "base": { "resolve": 40, "pressure": 42, "insulation": 44, "tempo": 60 },
+    "learnset": { "1": ["clause"], "6": ["cigar_meeting"] },
+    "evolves_to": "debt", "evolve_note": "level 14: access becomes dependence",
+    "evolve_level": 14,
+    "glyph": "FVR", "color": "#8a8a4a", "wild": true,
+    "epigraph": "Access first."
+  },
+  "debt": {
+    "dex": 18, "name": "Debt", "affinities": ["MONEY"],
+    "base": { "resolve": 62, "pressure": 64, "insulation": 68, "tempo": 56 },
+    "learnset": { "1": ["clause", "cigar_meeting"], "14": ["invoice_due"] },
+    "evolves_to": "dependency", "evolve_note": "story: inside donor rooms only",
+    "glyph": "DBT", "color": "#8a8a4a", "wild": true,
+    "epigraph": "Dependence second."
+  },
+  "dependency": {
+    "dex": 19, "name": "Dependency", "affinities": ["MONEY"],
+    "base": { "resolve": 86, "pressure": 88, "insulation": 94, "tempo": 48 },
+    "learnset": { "1": ["clause", "cigar_meeting", "invoice_due"], "20": ["make_departure_expensive"] },
+    "glyph": "DPD", "color": "#8a8a4a", "wild": false,
+    "epigraph": "Ownership after that."
+  },
+  "fine_print": {
+    "dex": 20, "name": "Fine Print", "affinities": ["MONEY"],
+    "base": { "resolve": 50, "pressure": 62, "insulation": 46, "tempo": 54 },
+    "learnset": { "1": ["clause"], "8": ["make_departure_expensive"] },
+    "glyph": "FPT", "color": "#8a8a4a", "wild": true,
+    "epigraph": "A donation is not a coup. The file becomes legible only when the steps are read together."
+  },
+  "invoice": {
+    "dex": 21, "name": "Invoice", "affinities": ["MONEY"],
+    "base": { "resolve": 56, "pressure": 70, "insulation": 40, "tempo": 62 },
+    "learnset": { "1": ["invoice_due"], "5": ["clause"] },
+    "glyph": "INV", "color": "#8a8a4a", "wild": true,
+    "epigraph": "People failing upward while the people below them inherit the invoice."
+  },
+  "draft_notice": {
+    "dex": 22, "name": "Draft Notice", "affinities": ["WAR"],
+    "base": { "resolve": 44, "pressure": 52, "insulation": 40, "tempo": 58 },
+    "learnset": { "1": ["selected_stamp"], "4": ["procedure"], "10": ["processing"] },
+    "evolves_to": "selected", "evolve_note": "story: processed by the Draft Machine",
+    "glyph": "DRN", "color": "#b3241f", "wild": true,
+    "epigraph": "Who gets protected?"
+  },
+  "selected": {
+    "dex": 23, "name": "Selected", "affinities": ["WAR"],
+    "base": { "resolve": 66, "pressure": 78, "insulation": 56, "tempo": 64 },
+    "learnset": { "1": ["selected_stamp", "procedure", "processing"] },
+    "evolves_to": "spent", "evolve_note": "story only; the game makes you watch the cost",
+    "glyph": "SEL", "color": "#b3241f", "wild": false,
+    "epigraph": "Who gets processed?"
+  },
+  "spent": {
+    "dex": 24, "name": "Spent", "affinities": ["WAR"],
+    "base": { "resolve": 80, "pressure": 98, "insulation": 64, "tempo": 56 },
+    "learnset": { "1": ["selected_stamp", "processing", "procedure"] },
+    "glyph": "SPT", "color": "#b3241f", "wild": false,
+    "epigraph": "Who gets spent?"
+  },
+  "emergency_speed_unit": {
+    "dex": 25, "name": "Emergency Speed", "affinities": ["WAR"],
+    "base": { "resolve": 46, "pressure": 58, "insulation": 38, "tempo": 92 },
+    "learnset": { "1": ["emergency_speed"], "6": ["processing"] },
+    "glyph": "EMG", "color": "#b3241f", "wild": true,
+    "epigraph": "Speed is useful because it makes moral questions look like delays."
+  },
+  "x9r": {
+    "dex": 26, "name": "x9R", "affinities": ["WAR", "MONEY"],
+    "base": { "resolve": 72, "pressure": 92, "insulation": 58, "tempo": 60 },
+    "learnset": { "1": ["faulty_by_design", "invoice_due"] },
+    "glyph": "X9R", "color": "#b3241f", "wild": false,
+    "epigraph": "An electric fire occurred from a faulty battery, killing 32 workers."
+  },
+  "form_28": {
+    "dex": 27, "name": "Form 28", "affinities": ["OFFICE"],
+    "base": { "resolve": 64, "pressure": 60, "insulation": 74, "tempo": 40 },
+    "learnset": { "1": ["authorization", "procedure"] },
+    "glyph": "F28", "color": "#cfc4a2", "wild": true,
+    "epigraph": "The memo does not explain the plot. It authorizes it."
+  },
+  "protected_failure": {
+    "dex": 28, "name": "Protected Failure", "affinities": ["OFFICE"],
+    "base": { "resolve": 78, "pressure": 64, "insulation": 86, "tempo": 36 },
+    "learnset": { "1": ["fail_upward", "procedure"], "8": ["authorization"] },
+    "glyph": "PRF", "color": "#cfc4a2", "wild": true,
+    "epigraph": "One reckless man is dangerous. A protected reckless man is government."
+  },
+  "neuroclick": {
+    "dex": 29, "name": "NeuroClick", "affinities": ["MEMORY", "MONEY"],
+    "base": { "resolve": 88, "pressure": 84, "insulation": 82, "tempo": 70 },
+    "learnset": { "1": ["redact", "clean_archive", "make_departure_expensive"] },
+    "glyph": "NCL", "color": "#c9c9cf", "wild": false,
+    "epigraph": "It gives forgetting a product shape."
+  },
+  "draft_machine": {
+    "dex": 30, "name": "The Draft Machine", "affinities": ["WAR", "OFFICE"],
+    "base": { "resolve": 96, "pressure": 88, "insulation": 90, "tempo": 44 },
+    "learnset": { "1": ["processing", "selected_stamp", "emergency_speed"] },
+    "glyph": "DMC", "color": "#b3241f", "wild": false,
+    "epigraph": "The machine breaks people before anyone names the villain."
+  },
+  "the_room": {
+    "dex": 31, "name": "The Room", "affinities": ["MONEY", "OFFICE"],
+    "base": { "resolve": 110, "pressure": 90, "insulation": 104, "tempo": 40 },
+    "learnset": { "1": ["make_departure_expensive", "cigar_meeting", "authorization", "clean_archive"] },
+    "glyph": "ROM", "color": "#8a8a4a", "wild": false,
+    "epigraph": "The mansion is not a house. It is a position."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "blank_affidavit": {
+    "name": "Blank Affidavit",
+    "kind": "filing", "rate": 1.0,
+    "desc": "A sworn page waiting for a fact. Used to file a wild Manifestation into the dossier."
+  },
+  "notarized_affidavit": {
+    "name": "Notarized Affidavit",
+    "kind": "filing", "rate": 1.5,
+    "desc": "The stamp makes it harder to dismiss. Improved filing rate."
+  },
+  "subpoena_form": {
+    "name": "Subpoena Form",
+    "kind": "filing", "rate": 2.0,
+    "desc": "Compels the appearance. The machine respects its own paperwork most of all."
+  },
+  "hot_meal_item": {
+    "name": "Hot Meal",
+    "kind": "restore", "percent": 0.5,
+    "desc": "Restores half of one Manifestation's Resolve. Sometimes safety is a front desk and a hot meal."
+  }
+}

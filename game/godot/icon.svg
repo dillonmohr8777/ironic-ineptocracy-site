@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect width="128" height="128" fill="#101014"/>
+  <path d="M20 36 h34 l8 10 h46 v52 a4 4 0 0 1 -4 4 H24 a4 4 0 0 1 -4 -4 z" fill="#d8c89a"/>
+  <rect x="30" y="60" width="52" height="6" fill="#101014"/>
+  <rect x="30" y="72" width="64" height="6" fill="#101014"/>
+  <rect x="30" y="84" width="40" height="6" fill="#101014"/>
+  <g transform="rotate(-12 88 84)">
+    <rect x="64" y="74" width="48" height="20" fill="none" stroke="#b3241f" stroke-width="3"/>
+    <text x="88" y="89" font-family="monospace" font-size="11" fill="#b3241f" text-anchor="middle">FILED</text>
+  </g>
+</svg>
