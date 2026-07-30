@@ -400,8 +400,8 @@ function render(article) {
     <script type="application/ld+json">${jsonLd(articleSchema)}</script>
     <script type="application/ld+json">${jsonLd(faqSchema)}</script>
     <script type="application/ld+json">${jsonLd(breadcrumbSchema)}</script>
-    <link rel="stylesheet" href="/assets/css/site.css?v=20260730-flag-seo4" />
-    <script defer src="/assets/js/site.js?v=20260730-flag-seo4"></script>
+    <link rel="stylesheet" href="/assets/css/site.css?v=20260730-home-flag-only" />
+    <script defer src="/assets/js/site.js?v=20260730-home-flag-only"></script>
     <script defer src="/_vercel/insights/script.js"></script>
     <meta name="ga4-measurement-id" content="G-H06CG798DT" />
     <script defer src="/assets/site-analytics.js"></script>

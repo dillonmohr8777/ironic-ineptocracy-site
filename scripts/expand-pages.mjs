@@ -639,8 +639,8 @@ for (const file of await walk(root)) {
     "https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
   );
   html = html
-    .replace(/\/assets\/css\/site\.css(?:\?[^"]*)?/g, "/assets/css/site.css?v=20260730-flag-seo4")
-    .replace(/\/assets\/js\/site\.js(?:\?[^"]*)?/g, "/assets/js/site.js?v=20260730-flag-seo4");
+    .replace(/\/assets\/css\/site\.css(?:\?[^"]*)?/g, "/assets/css/site.css?v=20260730-home-flag-only")
+    .replace(/\/assets\/js\/site\.js(?:\?[^"]*)?/g, "/assets/js/site.js?v=20260730-home-flag-only");
 
   const hasAuthoredFaq = html.includes("data-aeo-faq");
   html = html.replace("</head>", `${seoFoundationMarkup(type, pathname, !hasAuthoredFaq)}\n  </head>`);

@@ -35,7 +35,7 @@ Visitors move among the home file, book brief, world map, character dossiers, di
 - Name: *The Ironic Ineptocracy*.
 - Voice: satirical, confrontational, intelligent, funny, ominous, and specific.
 - The user explicitly wants the original heavy Impact-style homepage lettering restored.
-- Every major heading must continuously carry the moving American flag texture, supported by a larger flag field that visually bleeds down through the hero.
+- Only the homepage's main “Ineptocracy” heading may carry the moving American flag texture and flag-bleed field. Interior page titles, section headings, articles, and CTAs use the core paper, ink, red, and orange typography without the flag effect.
 - The user explicitly wants a much bolder, longer, more cinematic interface with deep shadows, layered 3D composition, scrolling transitions, disappearance/reveal behavior, motion, and swipe interactions.
 - Blog content must be visibly discoverable as Blog / Dispatches and answer real search, answer-engine, and generative-engine questions with clear sourcing.
 - Real character photography is binding source material.

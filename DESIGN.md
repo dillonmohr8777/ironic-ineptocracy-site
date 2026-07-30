@@ -121,7 +121,7 @@ The palette uses black as the room, bone as the evidence, red as institutional v
 
 **The Impact Means Impact Rule.** The display face appears at architectural scale. Small Impact headings are a failure of the system.
 
-**The Living Flag Rule.** Every major `h1` and `h2` continuously carries the American flag texture through its letterforms. A larger flag field bleeds through the hero behind it, but the typography keeps a hard black shadow and legible edge at every frame. Reduced-motion mode freezes the flag instead of removing the identity.
+**The Living Flag Rule.** The moving American flag texture and its larger bleeding field belong exclusively to the homepage's main `h1`. That first headline is the singular patriotic spectacle. Interior page titles, section headings, article headings, and CTAs return to solid paper or ink type so the effect never repeats or overwhelms the reading experience. Reduced-motion mode freezes the homepage flag instead of removing it.
 
 ## Layout
 

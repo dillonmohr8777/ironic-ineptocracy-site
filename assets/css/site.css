@@ -1093,7 +1093,7 @@ h3 {
   font-size: clamp(4.8rem, 9vw, 9.6rem);
 }
 
-.hero::before {
+.hero--home::before {
   content: "";
   position: absolute;
   inset: -5% -3% 0;
@@ -1126,11 +1126,7 @@ h3 {
   z-index: 0;
 }
 
-h1,
-h2,
-.cta-band h2,
-.case-sequence__header h2,
-.swipe-dossier__head h2 {
+.hero--home h1 {
   color: var(--paper);
   background-image: url("/images/american-flag-texture.svg");
   background-repeat: repeat-x;
@@ -2011,6 +2007,7 @@ h2,
 
 .dispatch-library h2 {
   max-width: 12ch;
+  color: #171310;
 }
 
 .dispatch-library__grid {
@@ -2452,35 +2449,27 @@ h2,
   .hero > .container,
   .hero > .container.split,
   .hero--home .hero__backdrop img,
-  .hero::before,
+  .hero--home::before,
   .evidence-stack,
   .swipe-card {
     transform: none !important;
     opacity: 1 !important;
   }
 
-  h1,
-  h2,
-  .cta-band h2,
-  .case-sequence__header h2,
-  .swipe-dossier__head h2 {
+  .hero--home h1 {
     animation: none !important;
     background-position: 50% 38% !important;
   }
 }
 
 @media (forced-colors: active) {
-  h1,
-  h2,
-  .cta-band h2,
-  .case-sequence__header h2,
-  .swipe-dossier__head h2 {
+  .hero--home h1 {
     background: none;
     -webkit-text-fill-color: currentColor;
     filter: none;
   }
 
-  .hero::before {
+  .hero--home::before {
     display: none;
   }
 }
