@@ -14,14 +14,17 @@
   var pixelId = metaContent("meta-pixel-id");
 
   if (ga4Id && /^G-[A-Z0-9]+$/.test(ga4Id)) {
-    var s = document.createElement("script");
-    s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + ga4Id;
-    document.head.appendChild(s);
     window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { window.dataLayer.push(arguments); };
-    window.gtag("js", new Date());
-    window.gtag("config", ga4Id, { send_page_view: true });
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    var existingGtag = document.querySelector('script[src*="googletagmanager.com/gtag/js?id=' + ga4Id + '"]');
+    if (!existingGtag) {
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + ga4Id;
+      document.head.appendChild(s);
+      window.gtag("js", new Date());
+      window.gtag("config", ga4Id, { send_page_view: true });
+    }
 
     // SPA route changes: re-fire page_view when the router pushes state.
     var push = history.pushState;
