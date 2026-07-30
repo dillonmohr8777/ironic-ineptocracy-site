@@ -11,6 +11,8 @@ const excluded = new Set([
   "node_modules",
   "scripts",
   "api",
+  "automation",
+  "growth",
   "README-DEPLOY.md",
   "extraction",
   "package.json",
@@ -38,6 +40,10 @@ for (const required of [
   "dossier/index.html",
   "dispatches/index.html",
   "dispatches/the-file-opens/index.html",
+  "dispatches/who-gets-spent/index.html",
+  "dispatches/the-memory-economy/index.html",
+  "dispatches/the-garnier-position/index.html",
+  "images/characters/mark.png",
   "reader-guide/index.html",
   "press/index.html"
 ]) {
