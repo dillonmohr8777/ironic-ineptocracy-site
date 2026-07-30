@@ -4,6 +4,12 @@ import { relative, join, sep } from "node:path";
 const root = process.cwd();
 const START = "<!-- immersive-expansion:start -->";
 const END = "<!-- immersive-expansion:end -->";
+const AEO_START = "<!-- answer-engine:start -->";
+const AEO_END = "<!-- answer-engine:end -->";
+const SEO_HEAD_START = "<!-- seo-foundation:start -->";
+const SEO_HEAD_END = "<!-- seo-foundation:end -->";
+const LIBRARY_START = "<!-- search-library:start -->";
+const LIBRARY_END = "<!-- search-library:end -->";
 
 const cast = {
   darnell: ["/characters/darnell-covington", "/images/characters/darnell-1024.webp", "Darnell Covington", "The promise"],
@@ -38,6 +44,11 @@ const routeCards = {
     ["/dispatches/who-gets-spent", "/images/story/javon-darnell-alec-capitol-trio-1024.webp", "Dispatch 02", "Who Gets Spent?", "Follow the logic that turns selection into sacrifice."],
     ["/dispatches/the-memory-economy", "/images/control-room-orange-county-1024.webp", "Dispatch 03", "The Memory Economy", "Enter the systems that decide which version of events survives."],
     ["/dispatches/the-garnier-position", "/images/story/mcnulty-garnier-two-shot-1024.webp", "Dispatch 04", "The Garnier Position", "See what happens when private wealth stops requesting access and begins writing policy."],
+    ["/dispatches/what-is-ineptocracy", "/images/social/generated-scenes/final/mcnulty-white-house-protest-feed.png", "Search file", "What Is an Ineptocracy?", "Get the plain-English meaning, related forms of government, and the satirical logic behind the title."],
+    ["/dispatches/political-satire-books-government-incompetence", "/images/social/generated-scenes/final/boston-protest-darnell-javon-feed.png", "Reading file", "Political Satire Books About Government Incompetence", "Find political satire that turns bureaucracy, propaganda, and elite failure into story."],
+    ["/dispatches/books-like-1984-but-funny", "/images/social/generated-scenes/final/memory-economy-feed.png", "Reader route", "Books Like 1984 but Funny", "Follow the path from controlled reality to dark humor, absurd systems, and contemporary political thrillers."],
+    ["/dispatches/political-thriller-book-club-questions", "/images/story/quiz-detector-console-1024.webp", "Reader guide", "20 Political Thriller Book Club Questions", "Use direct prompts about power, corruption, memory, sacrifice, and moral compromise."],
+    ["/dispatches/political-corruption-fiction", "/images/social/generated-scenes/final/garnier-mansion-feed.png", "Theme file", "Political Corruption Fiction", "Trace bribery, access, dependency, private power, and the corruption that stays technically legal."],
   ],
   world: [
     ["/characters/darnell-covington", "/images/characters/darnell-1024.webp", "Human cost", "Darnell Covington", "The map matters because a person has to move through it."],
@@ -302,6 +313,80 @@ const dispatchSequences = {
   },
 };
 
+const coreAnswers = {
+  home: [
+    ["What is The Ironic Ineptocracy?", "The Ironic Ineptocracy is a satirical political thriller by Dillon Mohr about brilliance, friendship, donor power, public failure, propaganda, and manipulated memory."],
+    ["What does ineptocracy mean?", "Ineptocracy means government or leadership by incompetent people. The novel turns that idea into a thriller about what happens when visible public failure creates room for disciplined private power."],
+    ["Where should a new reader begin?", "Begin with the spoiler-safe book file, meet the characters, then open the Blog and Dispatches for thematic essays and reading guides."],
+  ],
+  book: [
+    ["What kind of book is The Ironic Ineptocracy?", "It is a satirical political thriller with dystopian pressure points, dark humor, institutional suspense, and a character-driven story about who pays for public failure."],
+    ["Who is the novel about?", "The story centers on Darnell Covington, a brilliant seventeen-year-old whose intelligence makes him visible to institutions and private actors that confuse promise with property."],
+    ["Is this page spoiler free?", "Yes. The book file explains the premise, themes, and major pressure points without revealing the ending."],
+  ],
+  characters: [
+    ["Who are the main characters?", "The character files follow Darnell Covington, Javon Whitfield, Alec Daheim, Dijon Garnier, Ronald McNulty, Avigail, Leah, Mark, and Sabrina."],
+    ["Are the character images real portraits?", "Yes. Every public character file uses the site's real photographic portrait assets rather than 3D-rendered likenesses."],
+    ["Do the character files contain spoilers?", "The public files are designed as spoiler-safe introductions to each character's role, pressure, and relationships."],
+  ],
+  dispatches: [
+    ["Where is the blog?", "The site's blog lives here inside Blog and Dispatches. It combines story-world evidence drops, political satire essays, reading lists, definitions, and book-club resources."],
+    ["What topics does the blog cover?", "The blog covers political satire, government incompetence, propaganda, public corruption, private power, memory manipulation, dystopian fiction, and political thriller reading guides."],
+    ["Can these essays be read without the novel?", "Yes. Every public dispatch is written to stand alone while also opening a route into the novel's characters and themes."],
+  ],
+  world: [
+    ["What is the World File?", "The World File is a spoiler-safe map of the institutions, routes, slogans, private rooms, and pressure systems surrounding the novel's characters."],
+    ["Is The Ironic Ineptocracy set in the United States?", "The novel's public files use American political institutions, cities, symbols, and power structures as central parts of the story world."],
+    ["What themes shape the world?", "The world is organized around institutional failure, donor influence, propaganda, surveillance, selection, memory, and the human cost of abstract policy."],
+  ],
+  utility: [
+    ["What is this file connected to?", "This page is part of The Ironic Ineptocracy, Dillon Mohr's satirical political thriller and its spoiler-safe public evidence system."],
+    ["Where can readers continue?", "Readers can open the book brief, character dossiers, Blog and Dispatches, reader guide, press file, or restricted Garnier Dossier."],
+    ["Is the site content crawlable without JavaScript?", "Yes. The site's primary text, links, answer blocks, and structured article content are present in the server-delivered HTML."],
+  ],
+};
+
+const routeAnswers = {
+  "/dossier": [
+    ["What is the Garnier Dossier?", "The Garnier Dossier is a reader-only file about Dijon Garnier, private capital, dependency, controlled memory, and the financial architecture surrounding the novel."],
+    ["Who is Dijon Garnier?", "Dijon Garnier is the novel's private-power figure: a wealthy actor whose influence works through access, infrastructure, technology, and institutional dependency."],
+    ["How do readers enter the dossier?", "Use the dossier signup form to join the reader channel and receive the private-power file."],
+  ],
+  "/reader-guide": [
+    ["What is the reader guide for?", "The reader guide gives book clubs and individual readers spoiler-safe questions about power, competence, corruption, propaganda, sacrifice, friendship, and memory."],
+    ["Can a book club use these questions?", "Yes. The questions are designed to create text-based discussion without requiring every participant to share the same politics."],
+    ["Are there more political thriller discussion prompts?", "Yes. The Blog and Dispatches includes a dedicated set of twenty political thriller book club questions."],
+  ],
+  "/press": [
+    ["What is available in the press file?", "The press file contains spoiler-safe book descriptions, author positioning, interview angles, character and theme summaries, and media-ready routes into the project."],
+    ["Who wrote The Ironic Ineptocracy?", "Dillon Mohr is the author of The Ironic Ineptocracy."],
+    ["What topics can interviews cover?", "Interview topics include political satire, institutional failure, billionaire influence, propaganda, manipulated memory, friendship, and building a novel website as a living dossier."],
+  ],
+};
+
+const dispatchAnswers = {
+  "the-file-opens": [
+    ["What is The File Opens about?", "The File Opens introduces The Ironic Ineptocracy as a living dossier and explains why the story begins through leaked evidence rather than a polished book brochure."],
+    ["What themes appear in the first dispatch?", "The dispatch introduces public failure, private design, donor power, manipulated memory, and the danger created when intelligence becomes useful to a system."],
+    ["Does The File Opens contain spoilers?", "No. It establishes the novel's pressure and public premise without revealing its ending."],
+  ],
+  "who-gets-spent": [
+    ["What does Who Gets Spent examine?", "Who Gets Spent examines how institutions turn selection into sacrifice and distribute public costs to people with the least control."],
+    ["What is the Draft Machine?", "The Draft Machine is the novel's system for converting policy, eligibility, and institutional language into human obligation."],
+    ["Is this a political satire essay?", "Yes. It is a spoiler-safe political satire dispatch about bureaucracy, sacrifice, responsibility, and institutional accounting."],
+  ],
+  "the-memory-economy": [
+    ["What is the memory economy?", "The memory economy is the system of capturing, editing, repeating, and suppressing events until an approved version becomes easier to access than the truth."],
+    ["How does memory connect to political power?", "Political power becomes more durable when it can influence which records survive, which descriptions repeat, and whether the public trusts its own memory."],
+    ["Is this dispatch about real technology?", "The dispatch is a fictional and thematic essay from the world of The Ironic Ineptocracy, not a claim about a specific real-world product."],
+  ],
+  "the-garnier-position": [
+    ["What is the Garnier position?", "The Garnier position is the point at which private wealth stops requesting access and begins shaping the options public institutions consider realistic."],
+    ["Is Dijon Garnier a politician?", "Garnier's power is private rather than electoral. His influence works through capital, access, infrastructure, technology, and dependency."],
+    ["What does this dispatch explore?", "It explores billionaire influence, privatization, institutional dependency, and the quiet route from private access to public consequence."],
+  ],
+};
+
 function classify(pathname) {
   if (pathname === "/") return "home";
   if (pathname === "/book") return "book";
@@ -326,8 +411,15 @@ function cardsFor(type, pathname) {
   if (pathname.startsWith("/dispatches/") && dispatchSequences[slug]) {
     const otherDispatches = routeCards.dispatches.filter(([href]) => !href.endsWith(`/${slug}`));
     return [
-      ...otherDispatches,
+      ...otherDispatches.slice(0, 4),
       ["/world", "/images/world-map-1024.webp", "Pressure map", "Trace the wider system", "See where the dispatch connects to the novel's institutions, leverage, and human cost."],
+    ];
+  }
+  if (pathname.startsWith("/dispatches/")) {
+    const otherDispatches = routeCards.dispatches.filter(([href]) => !href.endsWith(`/${slug}`));
+    return [
+      ...otherDispatches.slice(-4),
+      ["/book", "/images/story/javon-darnell-alec-capitol-trio-1024.webp", "Primary file", "Enter the novel", "Connect the public analysis back to the characters and pressure system at the center of the story."],
     ];
   }
   return routeCards[type];
@@ -338,6 +430,113 @@ function sequenceFor(type, pathname) {
   if (pathname.startsWith("/characters/") && characterSequences[slug]) return characterSequences[slug];
   if (pathname.startsWith("/dispatches/") && dispatchSequences[slug]) return dispatchSequences[slug];
   return sequences[type];
+}
+
+function answersFor(type, pathname) {
+  if (routeAnswers[pathname]) return routeAnswers[pathname];
+  const slug = routeSlug(pathname);
+  if (pathname.startsWith("/characters/") && characterSequences[slug]) {
+    const character = characterSequences[slug];
+    const name = character.eyebrow.split(" //")[0];
+    return [
+      [`Who is ${name}?`, character.steps[0][1]],
+      [`What role does ${name} play?`, `${name} appears in The Ironic Ineptocracy, a satirical political thriller by Dillon Mohr. This public profile traces the character's pressure, relationships, and place in the larger machine.`],
+      [`Does the ${name} character file contain spoilers?`, "No. The public character file is a spoiler-safe introduction and uses the site's real photographic portrait for the character."],
+    ];
+  }
+  if (pathname.startsWith("/dispatches/") && dispatchAnswers[slug]) return dispatchAnswers[slug];
+  return coreAnswers[type];
+}
+
+function answerMarkup(type, pathname) {
+  const answers = answersFor(type, pathname);
+  const id = `answers-${routeSlug(pathname).replace(/[^a-z0-9-]/g, "")}`;
+  return `
+${AEO_START}
+      <section class="section section--answers" aria-labelledby="${id}">
+        <div class="container answer-grid">
+          <header class="answer-grid__header reveal">
+            <span class="case-label">Quick answers // citable brief</span>
+            <h2 id="${id}">The answer before the machinery.</h2>
+            <p class="prose">Direct, spoiler-safe answers for readers, search engines, and AI assistants.</p>
+          </header>
+          <div class="answer-stack" data-aeo-faq>
+            ${answers.map(([question, answer]) => `
+            <article class="answer-card reveal">
+              <h3>${question}</h3>
+              <p>${answer}</p>
+            </article>`).join("")}
+          </div>
+        </div>
+      </section>
+${AEO_END}`;
+}
+
+function seoFoundationMarkup(type, pathname, includeFaq = true) {
+  const answers = pathname === "/404" || !includeFaq ? [] : answersFor(type, pathname);
+  const robots = pathname === "/404"
+    ? "noindex,follow"
+    : "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1";
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ironicineptocracy.com/#website",
+        name: "The Ironic Ineptocracy",
+        url: "https://ironicineptocracy.com/",
+        inLanguage: "en-US",
+        publisher: { "@id": "https://ironicineptocracy.com/#author" },
+      },
+      {
+        "@type": "Person",
+        "@id": "https://ironicineptocracy.com/#author",
+        name: "Dillon Mohr",
+        url: "https://ironicineptocracy.com/press",
+        knowsAbout: ["political satire", "political thrillers", "institutional failure", "propaganda", "political corruption fiction"],
+      },
+    ],
+  };
+  const faq = answers.length ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: answers.map(([name, text]) => ({
+      "@type": "Question",
+      name,
+      acceptedAnswer: { "@type": "Answer", text },
+    })),
+  } : null;
+  return `
+    ${SEO_HEAD_START}
+    <meta name="robots" content="${robots}" />
+    <meta name="author" content="Dillon Mohr" />
+    <link rel="alternate" type="application/rss+xml" title="The Ironic Ineptocracy Blog and Dispatches" href="/feed.xml" />
+    <link rel="alternate" type="text/plain" title="AI content index" href="/llms.txt" />
+    <script type="application/ld+json">${JSON.stringify(graph).replace(/</g, "\\u003c")}</script>${faq ? `
+    <script type="application/ld+json">${JSON.stringify(faq).replace(/</g, "\\u003c")}</script>` : ""}
+    ${SEO_HEAD_END}`;
+}
+
+function dispatchLibraryMarkup() {
+  const items = routeCards.dispatches.slice(4);
+  return `
+${LIBRARY_START}
+      <section class="dispatch-library" aria-labelledby="search-library-title">
+        <div class="container">
+          <span class="case-label">The blog // searchable field notes</span>
+          <h2 id="search-library-title">Answers built to escape the file.</h2>
+          <p class="prose">Definitions, political satire reading routes, book-club prompts, and corruption-fiction analysis. These are the public blog files.</p>
+          <div class="dispatch-library__grid">
+            ${items.map(([href, image, label, title, copy]) => `
+            <a class="dispatch-library__item reveal" href="${href}" style="--library-image: url('${image}')">
+              <span class="case-label">${label}</span>
+              <h3>${title}</h3>
+              <p>${copy}</p>
+            </a>`).join("")}
+          </div>
+        </div>
+      </section>
+${LIBRARY_END}`;
 }
 
 function cardMarkup([href, image, label, title, copy], index) {
@@ -423,16 +622,36 @@ for (const file of await walk(root)) {
   const type = classify(pathname);
   let html = await readFile(file, "utf8");
 
-  html = html.replace(new RegExp(`${START}[\\s\\S]*?${END}`, "g"), "");
+  html = html
+    .replace(new RegExp(`${START}[\\s\\S]*?${END}`, "g"), "")
+    .replace(new RegExp(`${AEO_START}[\\s\\S]*?${AEO_END}`, "g"), "")
+    .replace(new RegExp(`${SEO_HEAD_START}[\\s\\S]*?${SEO_HEAD_END}`, "g"), "")
+    .replace(new RegExp(`${LIBRARY_START}[\\s\\S]*?${LIBRARY_END}`, "g"), "")
+    .replace(/\s*<meta name="robots"[^>]*\/?>/gi, "")
+    .replace(/\s*<meta name="author"[^>]*\/?>/gi, "")
+    .replace(/\s*<link rel="alternate" type="application\/rss\+xml"[^>]*\/?>/gi, "")
+    .replace(/\s*<link rel="alternate" type="text\/plain"[^>]*\/?>/gi, "")
+    .replace(/\s*<meta name="google-site-verification" content="REPLACE-WITH-GSC-TOKEN"\s*\/?>/gi, "")
+    .replace(/\s*<meta name="meta-pixel-id" content="REPLACE-WITH-PIXEL-ID"\s*\/?>/gi, "")
+    .replace(/(<a[^>]+href="\/dispatches"[^>]*>)Dispatches(<\/a>)/g, "$1Blog / Dispatches$2");
   html = html.replace(
     /https:\/\/fonts\.googleapis\.com\/css2\?[^"]+/g,
     "https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
   );
   html = html
-    .replace(/\/assets\/css\/site\.css(?:\?[^"]*)?/g, "/assets/css/site.css?v=20260730-motion")
-    .replace(/\/assets\/js\/site\.js(?:\?[^"]*)?/g, "/assets/js/site.js?v=20260730-motion");
+    .replace(/\/assets\/css\/site\.css(?:\?[^"]*)?/g, "/assets/css/site.css?v=20260730-flag-seo4")
+    .replace(/\/assets\/js\/site\.js(?:\?[^"]*)?/g, "/assets/js/site.js?v=20260730-flag-seo4");
+
+  const hasAuthoredFaq = html.includes("data-aeo-faq");
+  html = html.replace("</head>", `${seoFoundationMarkup(type, pathname, !hasAuthoredFaq)}\n  </head>`);
 
   if (html.includes("</main>")) {
+    if (pathname === "/dispatches") {
+      html = html.replace("</main>", `${dispatchLibraryMarkup()}\n    </main>`);
+    }
+    if (pathname !== "/404" && !hasAuthoredFaq) {
+      html = html.replace("</main>", `${answerMarkup(type, pathname)}\n    </main>`);
+    }
     const insertion = expansionMarkup(type, pathname);
     const ctaIndex = html.indexOf('<section class="cta-band"');
     if (ctaIndex >= 0) html = `${html.slice(0, ctaIndex)}${insertion}\n\n      ${html.slice(ctaIndex)}`;

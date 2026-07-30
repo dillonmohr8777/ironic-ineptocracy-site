@@ -11,9 +11,9 @@
     { "source": "/blog", "destination": "/dispatches", "permanent": true },
     { "source": "/blogs", "destination": "/dispatches", "permanent": true },
     { "source": "/essays", "destination": "/dispatches", "permanent": true },
-    { "source": "/blog/:path*", "destination": "/dispatches", "permanent": true },
-    { "source": "/blogs/:path*", "destination": "/dispatches", "permanent": true },
-    { "source": "/essays/:path*", "destination": "/dispatches", "permanent": true },
+    { "source": "/blog/:path*", "destination": "/dispatches/:path*", "permanent": true },
+    { "source": "/blogs/:path*", "destination": "/dispatches/:path*", "permanent": true },
+    { "source": "/essays/:path*", "destination": "/dispatches/:path*", "permanent": true },
     { "source": "/newsletter", "destination": "/dossier", "permanent": true }
   ],
   "headers": [
@@ -27,6 +27,24 @@
       "source": "/images/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=604800" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/feed.xml",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
       ]
     }
   ]

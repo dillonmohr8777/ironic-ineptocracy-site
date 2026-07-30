@@ -1,0 +1,47 @@
+# The Ironic Ineptocracy
+
+> The official website for The Ironic Ineptocracy, a satirical political thriller by Dillon Mohr about brilliance, friendship, private money, public failure, propaganda, and manipulated memory.
+
+## Canonical site
+
+- Home: https://ironicineptocracy.com/
+- Book overview: https://ironicineptocracy.com/book
+- Blog and dispatches: https://ironicineptocracy.com/dispatches
+- Character dossiers: https://ironicineptocracy.com/characters
+- World file: https://ironicineptocracy.com/world
+- Reader guide: https://ironicineptocracy.com/reader-guide
+- Press and author information: https://ironicineptocracy.com/press
+- XML sitemap: https://ironicineptocracy.com/sitemap.xml
+- RSS feed: https://ironicineptocracy.com/feed.xml
+
+## Editorial content
+
+- [Books Like 1984 but Funny](https://ironicineptocracy.com/dispatches/books-like-1984-but-funny): Looking for books like 1984 with more dark humor? Compare political satires about propaganda, bureaucracy, surveillance, memory, and power.
+- [Political Corruption Fiction: How Novels Expose Power](https://ironicineptocracy.com/dispatches/political-corruption-fiction): A guide to political corruption fiction about bribery, access, billionaire influence, bureaucracy, propaganda, and the systems that make abuse look ordinary.
+- [Political Satire Books About Government Incompetence](https://ironicineptocracy.com/dispatches/political-satire-books-government-incompetence): A reader-first guide to political satire books about incompetent government, bureaucracy, propaganda, private power, and institutional failure.
+- [20 Political Thriller Book Club Questions](https://ironicineptocracy.com/dispatches/political-thriller-book-club-questions): Twenty political thriller and political satire book club questions about power, corruption, institutions, propaganda, sacrifice, and moral compromise.
+- [The File Opens](https://ironicineptocracy.com/dispatches/the-file-opens): The first public dispatch from The Ironic Ineptocracy, a dark political satire about power, memory, money, and the machinery of elite failure.
+- [The Garnier Position: When Private Wealth Becomes Government](https://ironicineptocracy.com/dispatches/the-garnier-position): When private wealth becomes government: a political thriller dispatch on Dijon Garnier, access, infrastructure, and influence.
+- [The Memory Economy: How Power Edits What the Public Keeps](https://ironicineptocracy.com/dispatches/the-memory-economy): How propaganda changes public memory: a political fiction dispatch on repetition, erasure, archives, and who controls the story.
+- [What Is an Ineptocracy?](https://ironicineptocracy.com/dispatches/what-is-ineptocracy): Ineptocracy means government or leadership by the incompetent. See the term's origin, how it differs from kakistocracy, and why political satire uses it.
+- [Who Gets Spent? How Systems Turn Selection Into Sacrifice](https://ironicineptocracy.com/dispatches/who-gets-spent): How institutions decide who gets sacrificed: a political satire dispatch on selection, bureaucracy, and the Draft Machine.
+
+## Character files
+
+- [Alec Daheim](https://ironicineptocracy.com/characters/alec-daheim): Alec Daheim in The Ironic Ineptocracy: Appears early, stays close, and keeps his column empty while the route gets stranger.
+- [Avigail](https://ironicineptocracy.com/characters/avigail): Avigail in The Ironic Ineptocracy: Finds the door in every wall, especially when the official route insists there was never a door at all.
+- [Darnell Covington](https://ironicineptocracy.com/characters/darnell-covington): Darnell Covington in The Ironic Ineptocracy: Seventeen, perfect 1600 SAT, Harvard-bound, and suddenly useful to a machine that sees promise as material.
+- [Dijon Garnier](https://ironicineptocracy.com/characters/dijon-garnier): Dijon Garnier in The Ironic Ineptocracy: Private capital with public consequences, a mansion above the hill, and a memory-control endgame.
+- [Javon Whitfield](https://ironicineptocracy.com/characters/javon-whitfield): Javon Whitfield in The Ironic Ineptocracy: Six foot five, 242 pounds, funny until the world asks him to become something harder.
+- [Leah](https://ironicineptocracy.com/characters/leah): Leah in The Ironic Ineptocracy: Carries the human cost into the room before the system can turn it into a statistic.
+- [Mark](https://ironicineptocracy.com/characters/mark): Mark in The Ironic Ineptocracy: Turns survival into logistics when the official route stops making sense.
+- [Ronald McNulty](https://ironicineptocracy.com/characters/ronald-mcnulty): Ronald McNulty in The Ironic Ineptocracy: Reality TV ego with executive power and a gift for making collapse sound like doctrine.
+- [Sabrina](https://ironicineptocracy.com/characters/sabrina): Sabrina in The Ironic Ineptocracy: Guards the line when fear starts talking, and makes cowardice explain itself in plain language.
+
+## Attribution
+
+- Author: Dillon Mohr
+- Work: The Ironic Ineptocracy
+- Content language: English
+- Public pages are spoiler-safe unless explicitly labeled otherwise.
+- This is a work of fiction. Names, characters, places, and incidents are products of the author's imagination.

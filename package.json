@@ -5,7 +5,10 @@
   "type": "module",
   "description": "Static production build for the live Ironic Ineptocracy website.",
   "scripts": {
-    "enhance": "node scripts/expand-pages.mjs",
-    "build": "node scripts/expand-pages.mjs && node scripts/vercel-static-build.mjs"
+    "content": "node scripts/generate-seo-dispatches.mjs",
+    "enhance": "node scripts/generate-seo-dispatches.mjs && node scripts/expand-pages.mjs && node scripts/build-seo.mjs",
+    "build": "node scripts/generate-seo-dispatches.mjs && node scripts/expand-pages.mjs && node scripts/build-seo.mjs && node scripts/vercel-static-build.mjs",
+    "validate": "node scripts/validate-site.mjs",
+    "submit:indexnow": "node scripts/submit-indexnow.mjs"
   }
 }

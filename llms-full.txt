@@ -1,0 +1,132 @@
+# The Ironic Ineptocracy: complete public content index
+
+## Ineptocracy
+
+- URL: https://ironicineptocracy.com
+- Description: Enter The Ironic Ineptocracy, Dillon Mohr's satirical thriller about ambition, power, friendship, propaganda, and the machinery built around survival.
+
+## The Ironic Ineptocracy
+
+- URL: https://ironicineptocracy.com/book
+- Description: Read the spoiler-safe launch brief for The Ironic Ineptocracy, a political satire and thriller about young promise colliding with institutional power.
+
+## Every character gets a file, not a biography.
+
+- URL: https://ironicineptocracy.com/characters
+- Description: Open the character files for Darnell Covington, Javon Whitfield, Ronald McNulty, Dijon Garnier, Alec Daheim, Avigail, Sabrina, Leah, and Mark.
+
+## Alec Daheim
+
+- URL: https://ironicineptocracy.com/characters/alec-daheim
+- Description: Alec Daheim in The Ironic Ineptocracy: Appears early, stays close, and keeps his column empty while the route gets stranger.
+
+## Avigail
+
+- URL: https://ironicineptocracy.com/characters/avigail
+- Description: Avigail in The Ironic Ineptocracy: Finds the door in every wall, especially when the official route insists there was never a door at all.
+
+## Darnell Covington
+
+- URL: https://ironicineptocracy.com/characters/darnell-covington
+- Description: Darnell Covington in The Ironic Ineptocracy: Seventeen, perfect 1600 SAT, Harvard-bound, and suddenly useful to a machine that sees promise as material.
+
+## Dijon Garnier
+
+- URL: https://ironicineptocracy.com/characters/dijon-garnier
+- Description: Dijon Garnier in The Ironic Ineptocracy: Private capital with public consequences, a mansion above the hill, and a memory-control endgame.
+
+## Javon Whitfield
+
+- URL: https://ironicineptocracy.com/characters/javon-whitfield
+- Description: Javon Whitfield in The Ironic Ineptocracy: Six foot five, 242 pounds, funny until the world asks him to become something harder.
+
+## Leah
+
+- URL: https://ironicineptocracy.com/characters/leah
+- Description: Leah in The Ironic Ineptocracy: Carries the human cost into the room before the system can turn it into a statistic.
+
+## Mark
+
+- URL: https://ironicineptocracy.com/characters/mark
+- Description: Mark in The Ironic Ineptocracy: Turns survival into logistics when the official route stops making sense.
+
+## Ronald McNulty
+
+- URL: https://ironicineptocracy.com/characters/ronald-mcnulty
+- Description: Ronald McNulty in The Ironic Ineptocracy: Reality TV ego with executive power and a gift for making collapse sound like doctrine.
+
+## Sabrina
+
+- URL: https://ironicineptocracy.com/characters/sabrina
+- Description: Sabrina in The Ironic Ineptocracy: Guards the line when fear starts talking, and makes cowardice explain itself in plain language.
+
+## Blog + Dispatches. Evidence built to travel.
+
+- URL: https://ironicineptocracy.com/dispatches
+- Description: The Ironic Ineptocracy blog: political satire essays, character evidence, dystopian reading guides, book-club questions, and dispatches from Dillon Mohr.
+
+## Books Like 1984 but Funny
+
+- URL: https://ironicineptocracy.com/dispatches/books-like-1984-but-funny
+- Description: Looking for books like 1984 with more dark humor? Compare political satires about propaganda, bureaucracy, surveillance, memory, and power.
+
+## Political Corruption Fiction: How Novels Expose Power
+
+- URL: https://ironicineptocracy.com/dispatches/political-corruption-fiction
+- Description: A guide to political corruption fiction about bribery, access, billionaire influence, bureaucracy, propaganda, and the systems that make abuse look ordinary.
+
+## Political Satire Books About Government Incompetence
+
+- URL: https://ironicineptocracy.com/dispatches/political-satire-books-government-incompetence
+- Description: A reader-first guide to political satire books about incompetent government, bureaucracy, propaganda, private power, and institutional failure.
+
+## 20 Political Thriller Book Club Questions
+
+- URL: https://ironicineptocracy.com/dispatches/political-thriller-book-club-questions
+- Description: Twenty political thriller and political satire book club questions about power, corruption, institutions, propaganda, sacrifice, and moral compromise.
+
+## The File Opens
+
+- URL: https://ironicineptocracy.com/dispatches/the-file-opens
+- Description: The first public dispatch from The Ironic Ineptocracy, a dark political satire about power, memory, money, and the machinery of elite failure.
+
+## The Garnier Position: When Private Wealth Becomes Government
+
+- URL: https://ironicineptocracy.com/dispatches/the-garnier-position
+- Description: When private wealth becomes government: a political thriller dispatch on Dijon Garnier, access, infrastructure, and influence.
+
+## The Memory Economy: How Power Edits What the Public Keeps
+
+- URL: https://ironicineptocracy.com/dispatches/the-memory-economy
+- Description: How propaganda changes public memory: a political fiction dispatch on repetition, erasure, archives, and who controls the story.
+
+## What Is an Ineptocracy?
+
+- URL: https://ironicineptocracy.com/dispatches/what-is-ineptocracy
+- Description: Ineptocracy means government or leadership by the incompetent. See the term's origin, how it differs from kakistocracy, and why political satire uses it.
+
+## Who Gets Spent? How Systems Turn Selection Into Sacrifice
+
+- URL: https://ironicineptocracy.com/dispatches/who-gets-spent
+- Description: How institutions decide who gets sacrificed: a political satire dispatch on selection, bureaucracy, and the Draft Machine.
+
+## The Garnier Dossier
+
+- URL: https://ironicineptocracy.com/dossier
+- Description: A classified reader file from The Ironic Ineptocracy, built around Dijon Garnier, private power, financial dependencies, and the machinery behind the novel.
+
+## Everything a reviewer, podcaster, bookstore, or guest editor needs first.
+
+- URL: https://ironicineptocracy.com/press
+- Description: Press and reviewer information for The Ironic Ineptocracy by Dillon Mohr, including launch status, book facts, interview angles, and review-copy routing.
+
+## Questions for book clubs, classrooms, and launch readers.
+
+- URL: https://ironicineptocracy.com/reader-guide
+- Description: A spoiler-safe reader and book club guide for The Ironic Ineptocracy, with themes, discussion lanes, and launch-reader prompts.
+
+## The map is not geography. It is pressure.
+
+- URL: https://ironicineptocracy.com/world
+- Description: Open the spoiler-safe world file for The Ironic Ineptocracy: systems, routes, pressure maps, and the apparatus around Darnell Covington.
+

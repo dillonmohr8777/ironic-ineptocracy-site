@@ -3,127 +3,105 @@
   <url>
     <loc>https://ironicineptocracy.com</loc>
     <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://ironicineptocracy.com/book</loc>
     <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://ironicineptocracy.com/world</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ironicineptocracy.com/characters</loc>
     <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ironicineptocracy.com/characters/darnell-covington</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.78</priority>
-  </url>
-  <url>
-    <loc>https://ironicineptocracy.com/characters/javon-whitfield</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.78</priority>
-  </url>
-  <url>
-    <loc>https://ironicineptocracy.com/characters/ronald-mcnulty</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.78</priority>
-  </url>
-  <url>
-    <loc>https://ironicineptocracy.com/characters/dijon-garnier</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.78</priority>
   </url>
   <url>
     <loc>https://ironicineptocracy.com/characters/alec-daheim</loc>
     <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.78</priority>
   </url>
   <url>
     <loc>https://ironicineptocracy.com/characters/avigail</loc>
     <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.78</priority>
   </url>
   <url>
-    <loc>https://ironicineptocracy.com/characters/sabrina</loc>
+    <loc>https://ironicineptocracy.com/characters/darnell-covington</loc>
     <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://ironicineptocracy.com/characters/dijon-garnier</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://ironicineptocracy.com/characters/javon-whitfield</loc>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://ironicineptocracy.com/characters/leah</loc>
     <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.78</priority>
   </url>
   <url>
     <loc>https://ironicineptocracy.com/characters/mark</loc>
     <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.78</priority>
   </url>
   <url>
-    <loc>https://ironicineptocracy.com/dossier</loc>
+    <loc>https://ironicineptocracy.com/characters/ronald-mcnulty</loc>
     <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ironicineptocracy.com/characters/sabrina</loc>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://ironicineptocracy.com/dispatches</loc>
     <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.86</priority>
+  </url>
+  <url>
+    <loc>https://ironicineptocracy.com/dispatches/books-like-1984-but-funny</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://ironicineptocracy.com/dispatches/political-corruption-fiction</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://ironicineptocracy.com/dispatches/political-satire-books-government-incompetence</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://ironicineptocracy.com/dispatches/political-thriller-book-club-questions</loc>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://ironicineptocracy.com/dispatches/the-file-opens</loc>
     <lastmod>2026-07-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
-  </url>
-  <url>
-    <loc>https://ironicineptocracy.com/dispatches/who-gets-spent</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
-  </url>
-  <url>
-    <loc>https://ironicineptocracy.com/dispatches/the-memory-economy</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
   </url>
   <url>
     <loc>https://ironicineptocracy.com/dispatches/the-garnier-position</loc>
     <lastmod>2026-07-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://ironicineptocracy.com/dispatches/the-memory-economy</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://ironicineptocracy.com/dispatches/what-is-ineptocracy</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://ironicineptocracy.com/dispatches/who-gets-spent</loc>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://ironicineptocracy.com/dossier</loc>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://ironicineptocracy.com/press</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <lastmod>2026-07-30</lastmod>
   </url>
   <url>
     <loc>https://ironicineptocracy.com/reader-guide</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.72</priority>
+    <lastmod>2026-07-30</lastmod>
+  </url>
+  <url>
+    <loc>https://ironicineptocracy.com/world</loc>
+    <lastmod>2026-07-30</lastmod>
   </url>
 </urlset>

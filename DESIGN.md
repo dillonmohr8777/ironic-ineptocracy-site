@@ -121,6 +121,8 @@ The palette uses black as the room, bone as the evidence, red as institutional v
 
 **The Impact Means Impact Rule.** The display face appears at architectural scale. Small Impact headings are a failure of the system.
 
+**The Living Flag Rule.** Every major `h1` and `h2` continuously carries the American flag texture through its letterforms. A larger flag field bleeds through the hero behind it, but the typography keeps a hard black shadow and legible edge at every frame. Reduced-motion mode freezes the flag instead of removing the identity.
+
 ## Layout
 
 The site uses a 72rem reading container inside full-bleed scene fields. Vertical editorial flow remains primary. Selected sections become sticky stages with a pinned visual and changing copy; evidence galleries use horizontal scroll snap and conspicuous drag or swipe affordances. Desktop compositions may overlap by up to one grid column. Mobile collapses overlap into edge-to-edge layers while keeping native vertical scrolling intact.
@@ -157,6 +159,12 @@ Corners stay square or nearly square. Cards use clipped corners, borders, tape s
 - **Shadow Strategy:** Physical paper lift; never generic ambient glass.
 - **Border:** Hairline paper or red correction line.
 - **Internal Padding:** 24–40px depending on scale.
+
+### Answer Briefs
+
+- **Purpose:** Give search engines, answer engines, AI crawlers, and hurried readers a direct quotable answer before the long evidence trail.
+- **Structure:** Mono query label, one decisive answer, optional supporting facts, and a related-route link.
+- **Treatment:** Clipped evidence-paper geometry, red rule, registration marks, hard black/red offset shadows, and enough whitespace to read as an editorial artifact rather than a generic card.
 
 ### Inputs / Fields
 

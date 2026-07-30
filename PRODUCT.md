@@ -35,7 +35,9 @@ Visitors move among the home file, book brief, world map, character dossiers, di
 - Name: *The Ironic Ineptocracy*.
 - Voice: satirical, confrontational, intelligent, funny, ominous, and specific.
 - The user explicitly wants the original heavy Impact-style homepage lettering restored.
+- Every major heading must continuously carry the moving American flag texture, supported by a larger flag field that visually bleeds down through the hero.
 - The user explicitly wants a much bolder, longer, more cinematic interface with deep shadows, layered 3D composition, scrolling transitions, disappearance/reveal behavior, motion, and swipe interactions.
+- Blog content must be visibly discoverable as Blog / Dispatches and answer real search, answer-engine, and generative-engine questions with clear sourcing.
 - Real character photography is binding source material.
 
 ## Evidence on Hand
@@ -52,4 +54,5 @@ Visitors move among the home file, book brief, world map, character dossiers, di
 - Make the investigation itself the navigation model.
 - Turn every route into a meaningful next step, not a dead-end biography or brochure page.
 - Use movement to reveal relationships and evidence, never to obstruct reading.
+- Put a concise, quotable answer near the top of every indexable route, then support it with detailed evidence, FAQs, and internal links.
 - Preserve content truth and accessibility while delivering unusually high visual craft.
