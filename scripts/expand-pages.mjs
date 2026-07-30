@@ -428,6 +428,9 @@ for (const file of await walk(root)) {
     /https:\/\/fonts\.googleapis\.com\/css2\?[^"]+/g,
     "https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
   );
+  html = html
+    .replace(/\/assets\/css\/site\.css(?:\?[^"]*)?/g, "/assets/css/site.css?v=20260730-motion")
+    .replace(/\/assets\/js\/site\.js(?:\?[^"]*)?/g, "/assets/js/site.js?v=20260730-motion");
 
   if (html.includes("</main>")) {
     const insertion = expansionMarkup(type, pathname);
