@@ -1,6 +1,8 @@
 # Backlink outreach queue
 
-Status: researched and draft ready on July 30, 2026. No message has been sent.
+Status: the original reviewer queue below remains gated on final book assets. A separate earned editorial batch of 10 guest post pitches has been researched and saved as Gmail drafts on July 30, 2026. No message has been sent.
+
+Current send ready batch: [outreach-batch-01-2026-07-30.md](outreach-batch-01-2026-07-30.md)
 
 The site is pre release and the press page says reviewer assets are still coming soon. Do not send review pitches until the approved ARC or sample, final cover, exact release date, and preferred retailer link are available. Sending without those assets would waste the best first contact.
 
