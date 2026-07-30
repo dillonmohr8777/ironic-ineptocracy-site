@@ -22,6 +22,8 @@ ENDPOINT = "https://connect.composio.dev/mcp"
 PROPERTY = "properties/532537300"
 GA_ACCOUNT = "google_analytics_carlin-enlife"
 GMAIL_ACCOUNT = "gmail_agag-heugh"
+SEARCH_CONSOLE_ACCOUNT = "google_search_console_mooner-urban"
+SEARCH_CONSOLE_SITE = "https://ironicineptocracy.com/"
 RECIPIENT = "dillonmohr8777@gmail.com"
 LOG_PATH = Path(__file__).resolve().parent / "logs" / "last-run.json"
 
@@ -119,6 +121,22 @@ def report_call(start: str, end: str, *, dimensions: list[str] | None = None, me
     return {"tool_slug": "GOOGLE_ANALYTICS_RUN_REPORT", "account": GA_ACCOUNT, "arguments": args}
 
 
+def search_call(start: str, end: str, dimensions: list[str]) -> dict:
+    return {
+        "tool_slug": "GOOGLE_SEARCH_CONSOLE_SEARCH_ANALYTICS_QUERY",
+        "account": SEARCH_CONSOLE_ACCOUNT,
+        "arguments": {
+            "site_url": SEARCH_CONSOLE_SITE,
+            "start_date": start,
+            "end_date": end,
+            "dimensions": dimensions,
+            "search_type": "web",
+            "data_state": "final",
+            "row_limit": 10,
+        },
+    }
+
+
 def result_data(result: dict) -> dict:
     response = result.get("response", {})
     if not response.get("successful"):
@@ -144,6 +162,27 @@ def breakdown(data: dict, max_rows: int = 5) -> list[tuple[str, int]]:
     return output
 
 
+def search_totals(data: dict) -> dict[str, float]:
+    rows = data.get("rows", [])
+    if not rows:
+        return {"clicks": 0, "impressions": 0, "ctr": 0.0, "position": 0.0}
+    row = rows[0]
+    return {
+        "clicks": int(row.get("clicks", 0) or 0),
+        "impressions": int(row.get("impressions", 0) or 0),
+        "ctr": float(row.get("ctr", 0) or 0),
+        "position": float(row.get("position", 0) or 0),
+    }
+
+
+def search_pages(data: dict, max_rows: int = 5) -> list[tuple[str, int]]:
+    output: list[tuple[str, int]] = []
+    for row in data.get("rows", [])[:max_rows]:
+        label = (row.get("keys") or ["(not set)"])[0]
+        output.append((label, int(row.get("impressions", 0) or 0)))
+    return output
+
+
 def change(current: int, previous: int) -> str:
     if previous == 0:
         return "New data" if current else "No collected data yet"
@@ -160,7 +199,17 @@ def list_html(items: list[tuple[str, int]], unit: str) -> str:
     ) + "</ol>"
 
 
-def build_email(report_date: datetime, current: dict[str, int], previous: dict[str, int], pages: list[tuple[str, int]], sources: list[tuple[str, int]]) -> tuple[str, str]:
+def build_email(
+    report_date: datetime,
+    current: dict[str, int],
+    previous: dict[str, int],
+    pages: list[tuple[str, int]],
+    sources: list[tuple[str, int]],
+    search: dict[str, float],
+    search_page_rows: list[tuple[str, int]],
+    search_start: str,
+    search_end: str,
+) -> tuple[str, str]:
     date_label = report_date.strftime("%B %d, %Y")
     subject = f"Ironic Ineptocracy Analytics | {date_label}"
     tracking_note = ""
@@ -176,6 +225,13 @@ def build_email(report_date: datetime, current: dict[str, int], previous: dict[s
         f"<td style='width:25%;padding:12px;border:1px solid #dedbd3'><div style='font-size:12px;color:#6b7280'>{escape(label)}</div><div style='font-size:26px;font-weight:700;color:#111'>{value:,}</div><div style='font-size:12px;color:#6b7280'>{escape(delta)}</div></td>"
         for label, value, delta in metrics
     )
+    search_summary = (
+        f"<table role='presentation' style='width:100%;border-collapse:collapse'>"
+        f"<tr><td style='padding:10px;border:1px solid #dedbd3'><strong>{int(search['clicks']):,}</strong><br><span style='font-size:12px;color:#6b7280'>Search clicks</span></td>"
+        f"<td style='padding:10px;border:1px solid #dedbd3'><strong>{int(search['impressions']):,}</strong><br><span style='font-size:12px;color:#6b7280'>Impressions</span></td>"
+        f"<td style='padding:10px;border:1px solid #dedbd3'><strong>{search['ctr'] * 100:.1f} percent</strong><br><span style='font-size:12px;color:#6b7280'>Click rate</span></td>"
+        f"<td style='padding:10px;border:1px solid #dedbd3'><strong>{search['position']:.1f}</strong><br><span style='font-size:12px;color:#6b7280'>Average position</span></td></tr></table>"
+    )
     body = f"""<html><body style="margin:0;background:#f3f1eb;font-family:Arial,sans-serif;color:#171717">
 <div style="max-width:720px;margin:0 auto;padding:28px">
   <div style="background:#111;color:#fff;padding:24px">
@@ -190,6 +246,11 @@ def build_email(report_date: datetime, current: dict[str, int], previous: dict[s
     {list_html(pages, "views")}
     <h2 style="margin:28px 0 8px;font-size:19px">Top traffic sources, trailing seven days</h2>
     {list_html(sources, "sessions")}
+    <h2 style="margin:28px 0 8px;font-size:19px">Google Search visibility</h2>
+    <p style="margin:0 0 10px;color:#6b7280;font-size:12px">Final Search Console data from {search_start} through {search_end}. Search data normally arrives after a short delay.</p>
+    {search_summary}
+    <h2 style="margin:24px 0 8px;font-size:17px">Pages appearing in Google Search</h2>
+    {list_html(search_page_rows, "impressions")}
     <p style="margin:28px 0 0;color:#6b7280;font-size:12px">Source: GA4 property ironicineptocracy.com. Report dates follow America New York time.</p>
   </div>
 </div></body></html>"""
@@ -212,22 +273,38 @@ def main() -> int:
     report_date = now - timedelta(days=1)
     previous_date = report_date - timedelta(days=1)
     seven_days_ago = report_date - timedelta(days=6)
+    search_end_date = report_date - timedelta(days=3)
+    search_start_date = search_end_date - timedelta(days=27)
     session_id = initialize(api_key)
     calls = [
         report_call(report_date.strftime("%Y-%m-%d"), report_date.strftime("%Y-%m-%d")),
         report_call(previous_date.strftime("%Y-%m-%d"), previous_date.strftime("%Y-%m-%d")),
         report_call(seven_days_ago.strftime("%Y-%m-%d"), report_date.strftime("%Y-%m-%d"), dimensions=["pagePath"], metrics=["screenPageViews"]),
         report_call(seven_days_ago.strftime("%Y-%m-%d"), report_date.strftime("%Y-%m-%d"), dimensions=["sessionSource"], metrics=["sessions"]),
+        search_call(search_start_date.strftime("%Y-%m-%d"), search_end_date.strftime("%Y-%m-%d"), []),
+        search_call(search_start_date.strftime("%Y-%m-%d"), search_end_date.strftime("%Y-%m-%d"), ["page"]),
     ]
     results = execute(api_key, session_id, calls, "FETCHING_DAILY_ANALYTICS")
-    if len(results) != 4:
-        raise RuntimeError(f"Expected four analytics reports, received {len(results)}")
+    if len(results) != 6:
+        raise RuntimeError(f"Expected six analytics reports, received {len(results)}")
 
     current = totals(result_data(results[0]))
     previous = totals(result_data(results[1]))
     pages = breakdown(result_data(results[2]))
     sources = breakdown(result_data(results[3]))
-    subject, body = build_email(report_date, current, previous, pages, sources)
+    search = search_totals(result_data(results[4]))
+    search_page_rows = search_pages(result_data(results[5]))
+    subject, body = build_email(
+        report_date,
+        current,
+        previous,
+        pages,
+        sources,
+        search,
+        search_page_rows,
+        search_start_date.strftime("%B %d, %Y"),
+        search_end_date.strftime("%B %d, %Y"),
+    )
 
     sent = False
     message_id = None
@@ -266,6 +343,8 @@ def main() -> int:
                 "metrics": current,
                 "top_pages": pages,
                 "top_sources": sources,
+                "search_console": search,
+                "search_pages": search_page_rows,
             },
             indent=2,
         ),
