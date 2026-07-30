@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Static production build for the live Ironic Ineptocracy website.",
   "scripts": {
-    "build": "node scripts/vercel-static-build.mjs"
+    "enhance": "node scripts/expand-pages.mjs",
+    "build": "node scripts/expand-pages.mjs && node scripts/vercel-static-build.mjs"
   }
 }
