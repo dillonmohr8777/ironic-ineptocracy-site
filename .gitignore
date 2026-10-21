@@ -4,3 +4,6 @@ dist/
 .DS_Store
 automation/logs/
 __pycache__/
+
+# 117 MB launch video renders, keep out of the public repo
+launch-video/
