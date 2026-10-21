@@ -1,0 +1,61 @@
+{
+  "leak": {
+    "lines": [
+      { "speaker": "", "text": "The file was never supposed to open cleanly.", "source": "canon" },
+      { "speaker": "", "text": "It comes through damaged. Watermarked. Half redacted. Names missing where the money should be.", "source": "canon" },
+      { "speaker": "STRANGER", "text": "Don't look at me. Look at what I'm handing you.", "source": "adaptation" },
+      { "speaker": "STRANGER", "text": "If this file reached you cleanly, assume someone wanted it seen. If parts arrived damaged, assume the damage is evidence.", "source": "canon" },
+      { "speaker": "", "text": "The stranger is gone before you finish reading the first line. The folder is warm, like it has been carried a long way against someone's chest.", "source": "adaptation" },
+      { "speaker": "", "text": "Three loose pages slide out. Each one is evidence. Each one is willing to argue.", "source": "adaptation" }
+    ]
+  },
+  "starter_prompt": {
+    "prompt": "Which page do you file first?",
+    "options": [
+      {
+        "label": "A crumpled RECEIPT",
+        "species": "receipt",
+        "blurb": "Treat every slogan as a receipt. Ask what it bought, who paid for it."
+      },
+      {
+        "label": "A matched CHECKSUM",
+        "species": "checksum",
+        "blurb": "A friend remembers the version of you that a system has no use for."
+      },
+      {
+        "label": "A scuffed BURNER",
+        "species": "burner",
+        "blurb": "The rare instinct to help before the paperwork can forbid it."
+      }
+    ]
+  },
+  "starter_done": {
+    "lines": [
+      { "speaker": "", "text": "You file the page. It settles into the folder like it has been waiting for a witness.", "source": "adaptation" },
+      { "speaker": "", "text": "Not through a polished gate. Through a leak.", "source": "canon" },
+      { "speaker": "", "text": "THE FILE OPENS. (Walk into the static patches where the pressure is thick. Argue. File what you can. F5 saves.)", "source": "adaptation" }
+    ]
+  },
+  "contact": {
+    "lines": [
+      { "speaker": "NETWORK CONTACT", "text": "You're holding it wrong. Hold it like groceries. Files only look like files to people who are looking for files.", "source": "adaptation" },
+      { "speaker": "NETWORK CONTACT", "text": "Everyone keeps calling the system broken because that is easier than admitting parts of it work exactly as intended.", "source": "canon" },
+      { "speaker": "NETWORK CONTACT", "text": "There's a kid from this block. Harvard ballcap. Smartest file I never wanted to read. Keep his pages dry.", "source": "adaptation" },
+      { "speaker": "NETWORK CONTACT", "text": "Follow the receipts before you follow the speeches.", "source": "canon" }
+    ]
+  },
+  "newsstand": {
+    "lines": [
+      { "speaker": "NEWSSTAND", "text": "Every paper on the rack has the same front page. Different fonts. Same page.", "source": "adaptation" },
+      { "speaker": "NEWSSTAND", "text": "First the event. Then the story. Then the memory.", "source": "canon" },
+      { "speaker": "NEWSSTAND", "text": "The archive is clean because someone got there first.", "source": "canon" }
+    ]
+  },
+  "green_eyed": {
+    "lines": [
+      { "speaker": "", "text": "A man stands at the corner reading nothing. Green eyes. He has the patience of someone whose job is patience.", "source": "adaptation" },
+      { "speaker": "", "text": "SUBJECT WALKS WEST 7TH ALONE UNTIL A GREEN-EYED ASSET ENTERS THE CROWD.", "source": "canon" },
+      { "speaker": "", "text": "When you look again, the corner is just a corner. His column in your file stays empty.", "source": "adaptation" }
+    ]
+  }
+}
