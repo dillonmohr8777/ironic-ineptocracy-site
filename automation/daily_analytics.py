@@ -55,7 +55,7 @@ def post(payload: dict, api_key: str, session_id: str | None = None) -> tuple[di
     return (json.loads(body) if body.strip() else {}), next_session
 
 
-def initialize(api_key: str) -> str:
+def initialize(api_key: str) -> str | None:
     result, session_id = post(
         {
             "jsonrpc": "2.0",
@@ -69,13 +69,14 @@ def initialize(api_key: str) -> str:
         },
         api_key,
     )
-    if "error" in result or not session_id:
-        raise RuntimeError(f"Composio initialization failed: {result.get('error', 'missing session')}")
+    # Composio's MCP endpoint went stateless (Oct 2026): no Mcp-Session-Id header, so a missing session is fine.
+    if "error" in result:
+        raise RuntimeError(f"Composio initialization failed: {result['error']}")
     post({"jsonrpc": "2.0", "method": "notifications/initialized", "params": {}}, api_key, session_id)
     return session_id
 
 
-def execute(api_key: str, session_id: str, tools: list[dict], step: str) -> list[dict]:
+def execute(api_key: str, session_id: str | None, tools: list[dict], step: str) -> list[dict]:
     response, _ = post(
         {
             "jsonrpc": "2.0",
