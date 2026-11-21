@@ -29,10 +29,10 @@
     />
     <title>The Ironic Ineptocracy | A Satirical Thriller by Dillon Mohr</title>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"The Ironic Ineptocracy","description":"Enter The Ironic Ineptocracy, Dillon Mohr's satirical thriller about ambition, power, friendship, propaganda, and the machinery built around survival.","url":"https://ironicineptocracy.com","author":{"@type":"Person","name":"Dillon Mohr"},"image":"https://ironicineptocracy.com/images/social/ineptocracy-og.png","offers":{"@type":"Offer","availability":"https://schema.org/PreOrder","url":"https://ironicineptocracy.com"}}</script>
-    <link rel="stylesheet" href="/assets/css/site.css?v=20260730-home-flag-only" />
-    <script defer src="/assets/js/site.js?v=20260730-home-flag-only"></script>
+    <link rel="stylesheet" href="/assets/css/site.css?v=20261121-hyperreal" />
+    <script defer src="/assets/js/site.js?v=20261121-hyperreal"></script>
     <script defer src="/_vercel/insights/script.js"></script>
-  <meta name="ga4-measurement-id" content="G-H06CG798DT">
+    <meta name="ga4-measurement-id" content="G-H06CG798DT" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H06CG798DT"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -56,8 +56,8 @@
 
     <div class="classification-bar" aria-hidden="true">
       <div class="container">
-        <span>The Ironic Ineptocracy &mdash; Case 017</span>
-        <span>File // 01 &mdash; Home</span>
+        <span>The Ironic Ineptocracy // Case 017</span>
+        <span>File 01 // Interactive Cinema Dossier</span>
       </div>
     </div>
 
@@ -80,56 +80,739 @@
     </header>
 
     <main id="main">
-      <section class="hero hero--home" aria-labelledby="home-title">
+      <!-- 1. HYPERREAL CINEMA HERO (Living Flag exclusive to homepage H1) -->
+      <section class="hero hero--home hero--cinema" aria-labelledby="home-title">
         <div class="hero__backdrop" aria-hidden="true">
           <picture>
-            <source type="image/avif" srcset="/images/control-room-orange-county-1024.avif" />
-            <source type="image/webp" srcset="/images/control-room-orange-county-1024.webp" />
-            <img src="/images/control-room-orange-county.png" alt="Surveillance control room in Orange County." width="1680" height="944" fetchpriority="high" decoding="async" />
+            <source type="image/webp" srcset="/images/hyperreal/hero-cinema-keyart.webp" />
+            <img
+              src="/images/hyperreal/hero-cinema-keyart.jpg"
+              alt="A solitary figure inside a rain-lashed neoclassical marble control room illuminated by amber and crimson telemetry banks."
+              width="1376"
+              height="768"
+              fetchpriority="high"
+              decoding="async"
+            />
           </picture>
         </div>
+        <div class="cinema-rain" aria-hidden="true"></div>
+        <div class="cinema-brackets" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
         <span class="hero__stamp" aria-hidden="true">Case 017 &middot; File Open</span>
+
         <div class="container">
+          <div class="cinema-hud">
+            <div class="cinema-hud__left">
+              <span><i class="hud-dot" aria-hidden="true"></i>Case 017 // Active Feed</span>
+              <span>07 Public Subjects Unsealed</span>
+              <span>Tier-1 Spoiler Safe</span>
+            </div>
+            <button
+              class="hud-audio-btn"
+              type="button"
+              data-ambient-toggle
+              aria-pressed="false"
+            >
+              <span class="hud-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span data-ambient-label>Ambient Audio: Off</span>
+            </button>
+          </div>
+
           <p class="kicker kicker--signal">The Ironic</p>
           <h1 id="home-title">Ineptocracy</h1>
-          <p class="kicker">Darnell knew the test. America had another one waiting.</p>
-          <p class="deck">Smart kid. Bad year. Donor money, draft papers, and a government that did not lose the plot. It authored the plot, notarized the damage, and asked him to acquiesce while the invoice found his name.</p>
+          <p class="hero__tagline">Failure isn&rsquo;t an accident. It&rsquo;s policy.</p>
+          <p class="deck">Seventeen-year-old East Atlanta valedictorian Darnell Covington scored 1600 on the SAT and earned Harvard. He did not know the people running the country were shopping for promise they could own, sell, and bill under someone else&rsquo;s name.</p>
+
           <div class="hero__actions" aria-label="Primary actions">
-            <a class="btn btn--primary" href="/dispatches">Open the file</a>
-            <a class="btn btn--ghost" href="/world">World file</a>
+            <a class="btn btn--primary" href="#cast-select">Meet the Cast</a>
+            <a class="btn btn--ghost" href="#cast-select" data-auto-audition>Play Cast Voices</a>
+            <a class="btn btn--ghost" href="/dossier">Open Garnier Dossier</a>
+          </div>
+
+          <div class="cinema-telemetry" aria-hidden="true">
+            <span>2.39:1 Anamorphic // <strong>A Novel by Dillon Mohr</strong></span>
+            <span>Coords <strong>33.7490 N 84.3880 W &rarr; 42.3770 N 71.1167 W</strong></span>
+            <span><strong>08</strong> Neural Audio Files Live</span>
           </div>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="investigation-title">
-        <div class="container split">
-          <div class="reveal">
-            <span class="kicker">Story map</span>
-            <h2 id="investigation-title">The world of the novel</h2>
-            <p class="prose">Every stop makes Darnell pay a little more. The slogans get louder. The screens get cleaner. Obedience starts sounding like civic duty.</p>
-            <div class="terminal" aria-hidden="true">
-              <p>Freedom invoice &mdash; status past due</p>
-              <p>Freedom is not free. Processing fee applies.</p>
-              <p>Make America obedient again.</p>
+      <!-- 2. 2026 AAA CHARACTER SELECT & BIOMETRIC VOICE DECK -->
+      <section class="cast-deck" id="cast-select" aria-labelledby="cast-deck-title" data-cast-deck>
+        <div class="container">
+          <div class="cast-deck__head">
+            <div>
+              <span class="case-label">Biometric Cast Select // 07 Unsealed Subjects</span>
+              <h2 id="cast-deck-title">Every character enters with a file and a voice.</h2>
             </div>
-            <a class="btn btn--ghost" href="/world">See locked map</a>
+            <p class="cast-deck__meta">Select any subject below to inspect their dossier, biometric profile, approved lines, and live neural voice audition.</p>
           </div>
-          <figure class="figure-frame reveal">
-            <picture>
-              <source type="image/avif" srcset="/images/investigation-map-512.avif 512w, /images/investigation-map-1024.avif 1024w" sizes="(max-width: 56rem) 92vw, 40vw" />
-              <source type="image/webp" srcset="/images/investigation-map-512.webp 512w, /images/investigation-map-1024.webp 1024w" sizes="(max-width: 56rem) 92vw, 40vw" />
-              <img src="/images/investigation-map.png" width="399" height="344" alt="Investigation map of the novel's pressure points, marked with routes and redactions." loading="lazy" />
-            </picture>
-            <figcaption>Investigation map &mdash; obey &middot; secure &middot; comply</figcaption>
-          </figure>
+
+          <div class="cast-workspace">
+            <div class="cast-stage">
+              <div class="portrait-rig">
+                <div class="portrait-rig__plate">
+                  <picture>
+                    <source type="image/webp" data-stage-webp srcset="/images/hyperreal/char-darnell.webp" />
+                    <img
+                      data-stage-img
+                      src="/images/hyperreal/char-darnell.jpg"
+                      alt="Hyperreal cinema portrait of Darnell Covington wearing rain-flecked glasses in night rain."
+                      width="896"
+                      height="1200"
+                      decoding="async"
+                    />
+                  </picture>
+                  <div class="portrait-rig__hud" aria-hidden="true">
+                    <div class="portrait-rig__top">
+                      <span class="hud-badge" data-stage-file>FILE // BI-01</span>
+                      <span class="hud-badge hud-badge--red" data-stage-badge>TIER-1 UNSEALED</span>
+                    </div>
+                    <div class="portrait-rig__bottom">
+                      <span class="portrait-rig__callsign" data-stage-callsign>SUBJECT 01 // COVINGTON</span>
+                      <span data-stage-coords>ATL &rarr; HARVARD</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="voice-console"
+                data-deck-voice
+                data-audio-src="/audio/cast/darnell.mp3" data-duration="00:15"
+                aria-label="Character voice audition console"
+              >
+                <div class="voice-console__bar">
+                  <button class="voice-btn" type="button" data-voice-btn aria-pressed="false">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><polygon points="3,2 14,8 3,14"></polygon></svg>
+                    <span data-voice-btn-text>Play Voice Audition</span>
+                  </button>
+                  <canvas
+                    class="voice-scope"
+                    width="520"
+                    height="64"
+                    aria-label="Live audio frequency and oscilloscope visualizer"
+                  ></canvas>
+                  <span class="voice-time" data-voice-time>00:00 / 00:15</span>
+                </div>
+                <div class="voice-console__foot">
+                  <span class="voice-status" data-voice-status>Neural Voice Ready // Click to Audition</span>
+                  <p class="voice-line" data-voice-line>&ldquo;It&rsquo;s ironic how small our dorm is, despite this being the school everyone dreams of attending. The only B I ever got was in history, and history is about to catch up with me.&rdquo;</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="cast-intel" aria-live="polite">
+              <p class="cast-intel__origin" data-intel-origin>East Atlanta &rarr; Harvard // File BI-01</p>
+              <h3 class="cast-intel__name" data-intel-name>Darnell Covington</h3>
+              <div class="cast-intel__stats" data-intel-stats>
+                <span class="stat-chip">Age 17</span>
+                <span class="stat-chip">1600 SAT</span>
+                <span class="stat-chip">Valedictorian</span>
+                <span class="stat-chip">Reads Vonnegut</span>
+              </div>
+
+              <div class="bio-meters" aria-label="Subject dossier telemetry">
+                <div>
+                  <div class="bio-meter__row">
+                    <span class="bio-meter__label">Threat Index</span>
+                    <span class="bio-meter__val" data-meter-threat-val>72 / 100</span>
+                  </div>
+                  <div class="bio-meter__track">
+                    <div class="bio-meter__fill bio-meter__fill--threat" data-meter-threat style="--meter: 0.72"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="bio-meter__row">
+                    <span class="bio-meter__label">Loyalty Signal</span>
+                    <span class="bio-meter__val" data-meter-loyalty-val>91 / 100</span>
+                  </div>
+                  <div class="bio-meter__track">
+                    <div class="bio-meter__fill bio-meter__fill--loyalty" data-meter-loyalty style="--meter: 0.91"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="bio-meter__row">
+                    <span class="bio-meter__label">System Reach</span>
+                    <span class="bio-meter__val" data-meter-reach-val>34 / 100</span>
+                  </div>
+                  <div class="bio-meter__track">
+                    <div class="bio-meter__fill bio-meter__fill--reach" data-meter-reach style="--meter: 0.34"></div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="cast-intel__bio" data-intel-bio>Seventeen, East Atlanta. Valedictorian at a private school that is half a percent Black. Learned calculus at thirteen, scored 1600 on the SAT the morning after losing his grandmother, and walked into Harvard expecting merit to hold the line. Anxious, deadpan, and too observant to stay decorative.</p>
+
+              <blockquote class="cast-quote" data-intel-quote>&ldquo;Ironic how small our dorm is.&rdquo;</blockquote>
+
+              <div class="cast-intel__actions">
+                <a class="btn btn--primary" data-intel-link href="/characters/darnell-covington">Open full subject file</a>
+                <button class="btn btn--ghost" type="button" data-cast-next>Next subject &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="cast-roster-wrap">
+            <div class="cast-roster-label">
+              <span>Select Subject Roster (01 - 07)</span>
+              <span>Arrow Keys or Tap to Switch</span>
+            </div>
+            <div class="cast-roster" role="tablist" aria-label="Character selector roster">
+              <button
+                type="button"
+                class="roster-card"
+                role="tab"
+                aria-selected="true"
+                data-file="FILE // BI-01"
+                data-badge="TIER-1 UNSEALED"
+                data-callsign="SUBJECT 01 // COVINGTON"
+                data-coords="ATL -> HARVARD"
+                data-origin="East Atlanta -> Harvard // File BI-01"
+                data-name="Darnell Covington"
+                data-stats="Age 17 | 1600 SAT | Valedictorian | Reads Vonnegut"
+                data-threat="72"
+                data-loyalty="91"
+                data-reach="34"
+                data-bio="Seventeen, East Atlanta. Valedictorian at a private school that is half a percent Black. Learned calculus at thirteen, scored 1600 on the SAT the morning after losing his grandmother, and walked into Harvard expecting merit to hold the line. Anxious, deadpan, and too observant to stay decorative."
+                data-quote="&ldquo;Ironic how small our dorm is.&rdquo;"
+                data-href="/characters/darnell-covington"
+                data-cta="Open Darnell's file"
+                data-img-webp="/images/hyperreal/char-darnell.webp"
+                data-img-jpg="/images/hyperreal/char-darnell.jpg"
+                data-img-alt="Hyperreal cinema portrait of Darnell Covington wearing rain-flecked glasses in night rain."
+                data-audio-src="/audio/cast/darnell.mp3" data-duration="00:15"
+                data-audio-line="&ldquo;It's ironic how small our dorm is, despite this being the school everyone dreams of attending. I got a sixteen hundred on the SAT, the morning after my grandmother passed. The only B I ever got was in history, and history is about to catch up with me.&rdquo;"
+                data-voice-tag="Darnell Covington // Neural Voice Ready"
+              >
+                <span class="roster-card__media">
+                  <picture>
+                    <source type="image/webp" srcset="/images/hyperreal/char-darnell.webp" />
+                    <img src="/images/hyperreal/char-darnell.jpg" alt="Darnell Covington" width="896" height="1200" loading="lazy" />
+                  </picture>
+                  <span class="roster-card__num">01</span>
+                </span>
+                <span class="roster-card__info">
+                  <span class="roster-card__name">Darnell</span>
+                  <span class="roster-card__tag">Valedictorian</span>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="roster-card"
+                role="tab"
+                aria-selected="false"
+                data-file="FILE // QB-02"
+                data-badge="TIER-1 UNSEALED"
+                data-callsign="SUBJECT 02 // WHITFIELD"
+                data-coords="ROSEDALE MS -> HARVARD"
+                data-origin="Rosedale, Mississippi -> Harvard // File QB-02"
+                data-name="Javon Whitfield"
+                data-stats="6'5 / 242 lbs | 57 D1 Offers | Valedictorian | Future Senator"
+                data-threat="68"
+                data-loyalty="98"
+                data-reach="46"
+                data-bio="Darnell's roommate in a 300-square-foot Harvard dorm. Six foot five, 242-pound quarterback from Rosedale, Mississippi, also a valedictorian, with 57 Division I offers. Wants to become Mississippi's first Black senator since 1881. Loud, funny, quotes Fred Hampton and Medgar Evers, and trusts zero official explanations."
+                data-quote="&ldquo;The worst part is that it's beautiful. That's how they get you. They make oppression gorgeous.&rdquo;"
+                data-href="/characters/javon-whitfield"
+                data-cta="Open Javon's file"
+                data-img-webp="/images/hyperreal/char-javon.webp"
+                data-img-jpg="/images/hyperreal/char-javon.jpg"
+                data-img-alt="Hyperreal cinema portrait of Javon Whitfield beneath stadium floodlights in a crimson varsity jacket."
+                data-audio-src="/audio/cast/javon.mp3" data-duration="00:11"
+                data-audio-line="&ldquo;The worst part is that it's beautiful. That's how they get you. They make oppression gorgeous. You want to know what capitalism really looks like? Don't read a textbook. Just look up.&rdquo;"
+                data-voice-tag="Javon Whitfield // Neural Voice Ready"
+              >
+                <span class="roster-card__media">
+                  <picture>
+                    <source type="image/webp" srcset="/images/hyperreal/char-javon.webp" />
+                    <img src="/images/hyperreal/char-javon.jpg" alt="Javon Whitfield" width="896" height="1200" loading="lazy" />
+                  </picture>
+                  <span class="roster-card__num">02</span>
+                </span>
+                <span class="roster-card__info">
+                  <span class="roster-card__name">Javon</span>
+                  <span class="roster-card__tag">Mississippi QB</span>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="roster-card"
+                role="tab"
+                aria-selected="false"
+                data-file="FILE // AG-03"
+                data-badge="LANGLEY ROUTE"
+                data-callsign="SUBJECT 03 // DAHEIM"
+                data-coords="LANGLEY -> PHILADELPHIA"
+                data-origin="Langley -> Philadelphia // File D-09"
+                data-name="Alec Daheim"
+                data-stats="CIA Operative | 6'5 | Yale in 3 Years | 33 Passports"
+                data-threat="88"
+                data-loyalty="44"
+                data-reach="79"
+                data-bio="The man with piercing green eyes. At Darnell's graduation there were 197 graduates and Darnell knew every parent in the room except one. Six foot five, pilot's license, 33 passports, and far less subtle than Langley prefers: he tails a teenager into a Philadelphia bar and gets absorbed in the thirteenth inning of a Phillies game."
+                data-quote="&ldquo;Loyalty is a joke.&rdquo;"
+                data-href="/characters/alec-daheim"
+                data-cta="Open Alec's file"
+                data-img-webp="/images/hyperreal/char-alec.webp"
+                data-img-jpg="/images/hyperreal/char-alec.jpg"
+                data-img-alt="Hyperreal cinema portrait of Alec Daheim with piercing green eyes on a rain-slicked night street."
+                data-audio-src="/audio/cast/alec.mp3" data-duration="00:13"
+                data-audio-line="&ldquo;Thirty-three passports. Yale in three years. And somehow I'm stuck in a Philadelphia bar, watching the thirteenth inning of a Phillies game, tailing a seventeen-year-old from East Atlanta. Loyalty is a joke.&rdquo;"
+                data-voice-tag="Alec Daheim // Neural Voice Ready"
+              >
+                <span class="roster-card__media">
+                  <picture>
+                    <source type="image/webp" srcset="/images/hyperreal/char-alec.webp" />
+                    <img src="/images/hyperreal/char-alec.jpg" alt="Alec Daheim" width="896" height="1200" loading="lazy" />
+                  </picture>
+                  <span class="roster-card__num">03</span>
+                </span>
+                <span class="roster-card__info">
+                  <span class="roster-card__name">Alec</span>
+                  <span class="roster-card__tag">Green Eyes / CIA</span>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="roster-card"
+                role="tab"
+                aria-selected="false"
+                data-file="FILE // DG-04"
+                data-badge="PRIVATE CAPITAL"
+                data-callsign="SUBJECT 04 // GARNIER"
+                data-coords="TECCA // NEUROCLICK"
+                data-origin="French-Born Billionaire // Tecca, NeuroClick, BankIt"
+                data-name="Dijon Garnier"
+                data-stats="Richest Man Alive | Tecca | NeuroClick | BankIt"
+                data-threat="96"
+                data-loyalty="06"
+                data-reach="99"
+                data-bio="French-born, the richest man alive. Owns Tecca cars, BankIt, and NeuroClick, a brain device marketed as mercy. Awful public speaker who treats politics and war like a product launch. Garnier does not need the throne. He owns the room around it."
+                data-quote="&ldquo;Any good marketer knows you have to convince the consumer before they buy the product.&rdquo;"
+                data-href="/characters/dijon-garnier"
+                data-cta="Open Garnier's file"
+                data-img-webp="/images/hyperreal/char-garnier.webp"
+                data-img-jpg="/images/hyperreal/char-garnier.jpg"
+                data-img-alt="Hyperreal cinema portrait of billionaire Dijon Garnier in a black turtleneck beside floor-to-ceiling ocean glass."
+                data-audio-src="/audio/cast/garnier.mp3" data-duration="00:14"
+                data-audio-line="&ldquo;Any good marketer knows you have to convince the consumer before they buy the product. You're walking around like you swallowed a classified document whole. Memory is not merely personal. It is jurisdiction.&rdquo;"
+                data-voice-tag="Dijon Garnier // Neural Voice Ready"
+              >
+                <span class="roster-card__media">
+                  <picture>
+                    <source type="image/webp" srcset="/images/hyperreal/char-garnier.webp" />
+                    <img src="/images/hyperreal/char-garnier.jpg" alt="Dijon Garnier" width="896" height="1200" loading="lazy" />
+                  </picture>
+                  <span class="roster-card__num">04</span>
+                </span>
+                <span class="roster-card__info">
+                  <span class="roster-card__name">Garnier</span>
+                  <span class="roster-card__tag">The Architect</span>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="roster-card"
+                role="tab"
+                aria-selected="false"
+                data-file="FILE // EX-05"
+                data-badge="SILHOUETTE ONLY"
+                data-callsign="SUBJECT 05 // MCNULTY"
+                data-coords="PODIUM // EXECUTIVE"
+                data-origin="Fictional President // Six Bankruptcies"
+                data-name="Ronald McNulty"
+                data-stats="President | 6 Bankruptcies | Loves a Podium | Hates Losing"
+                data-threat="91"
+                data-loyalty="12"
+                data-reach="94"
+                data-bio="The fictional President at the loud center of the machine. Six bankruptcies, loves a podium, hates losing, and likes winners. McNulty gives institutional collapse a booming microphone while quieter operators write the contracts behind the stage lights."
+                data-quote="&ldquo;Victory by subtraction.&rdquo;"
+                data-href="/characters/ronald-mcnulty"
+                data-cta="Open McNulty's file"
+                data-img-webp="/images/hyperreal/char-mcnulty-podium.webp"
+                data-img-jpg="/images/hyperreal/char-mcnulty-podium.jpg"
+                data-img-alt="Dramatic backlit silhouette of fictional President Ronald McNulty behind a wooden podium facing arena camera flashes."
+                data-audio-src="/audio/cast/mcnulty.mp3" data-duration="00:13"
+                data-audio-line="&ldquo;Six bankruptcies, and they still put me behind this podium. Believe me, I like winners. We don't lose, folks. Victory by subtraction, frankly, nobody does it better.&rdquo;"
+                data-voice-tag="President McNulty // Podium Broadcast FX"
+              >
+                <span class="roster-card__media">
+                  <picture>
+                    <source type="image/webp" srcset="/images/hyperreal/char-mcnulty-podium.webp" />
+                    <img src="/images/hyperreal/char-mcnulty-podium.jpg" alt="President Ronald McNulty silhouetted at a podium" width="896" height="1200" loading="lazy" />
+                  </picture>
+                  <span class="roster-card__num">05</span>
+                </span>
+                <span class="roster-card__info">
+                  <span class="roster-card__name">McNulty</span>
+                  <span class="roster-card__tag">The Podium</span>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="roster-card"
+                role="tab"
+                aria-selected="false"
+                data-file="FILE // AV-06"
+                data-badge="TIER-1 UNSEALED"
+                data-callsign="SUBJECT 06 // AVIGAIL"
+                data-coords="FRONT DESK // THRESHOLD"
+                data-origin="Hotel Front Desk // Unimpressed Witness"
+                data-name="Avigail"
+                data-stats="Green Eyes | Front Desk | Zero Flattery | Sharp Instinct"
+                data-threat="54"
+                data-loyalty="84"
+                data-reach="61"
+                data-bio="A hotel front-desk clerk with piercing green eyes who refuses to be rushed, flattered, or intimidated by official posture. Practical, dry, and quick to clock the difference between real danger and theatrical authority."
+                data-quote="&ldquo;There are no rooms for the next six hours. Come back later.&rdquo;"
+                data-href="/characters/avigail"
+                data-cta="Open Avigail's file"
+                data-img-webp="/images/hyperreal/char-avigail.webp"
+                data-img-jpg="/images/hyperreal/char-avigail.jpg"
+                data-img-alt="Hyperreal cinema portrait of Avigail with green eyes beside a warm brass hotel front desk at night."
+                data-audio-src="/audio/cast/avigail.mp3" data-duration="00:09"
+                data-audio-line="&ldquo;There are no rooms for the next six hours. Come back later. I have no answer and absolutely no idea. Maybe that's the fun of it.&rdquo;"
+                data-voice-tag="Avigail // Neural Voice Ready"
+              >
+                <span class="roster-card__media">
+                  <picture>
+                    <source type="image/webp" srcset="/images/hyperreal/char-avigail.webp" />
+                    <img src="/images/hyperreal/char-avigail.jpg" alt="Avigail" width="896" height="1200" loading="lazy" />
+                  </picture>
+                  <span class="roster-card__num">06</span>
+                </span>
+                <span class="roster-card__info">
+                  <span class="roster-card__name">Avigail</span>
+                  <span class="roster-card__tag">Front Desk</span>
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="roster-card"
+                role="tab"
+                aria-selected="false"
+                data-file="FILE // DC-07"
+                data-badge="CORNELL CS"
+                data-callsign="SUBJECT 07 // COLE"
+                data-coords="CORNELL // SIGNAL TRACE"
+                data-origin="Cornell Computer Science // Digital Recon"
+                data-name="Dre Cole"
+                data-stats="Cornell CS | Javon's Best Friend | Finds Anyone | Night Shift"
+                data-threat="76"
+                data-loyalty="94"
+                data-reach="82"
+                data-bio="Javon Whitfield's best friend and a Cornell computer science prodigy who treats every sealed database like a minor inconvenience. Fast-talking, allergic to excuses, and the one person who can trace a phantom asset before the agencies realize anyone is looking back."
+                data-quote="&ldquo;What you need, fool, why are you always bothering me?&rdquo;"
+                data-href="/characters#dre-cole"
+                data-cta="View Dre in cast index"
+                data-img-webp="/images/hyperreal/char-dre.webp"
+                data-img-jpg="/images/hyperreal/char-dre.jpg"
+                data-img-alt="Hyperreal cinema portrait of Dre Cole smiling beside glowing late-night code monitors with studio headphones."
+                data-audio-src="/audio/cast/dre.mp3" data-duration="00:09"
+                data-audio-line="&ldquo;What you need, fool, why are you always bothering me? Send me the file. Give me two minutes on the keyboard and I can find anyone on this planet.&rdquo;"
+                data-voice-tag="Dre Cole // Encrypted Phone FX"
+              >
+                <span class="roster-card__media">
+                  <picture>
+                    <source type="image/webp" srcset="/images/hyperreal/char-dre.webp" />
+                    <img src="/images/hyperreal/char-dre.jpg" alt="Dre Cole" width="896" height="1200" loading="lazy" />
+                  </picture>
+                  <span class="roster-card__num">07</span>
+                </span>
+                <span class="roster-card__info">
+                  <span class="roster-card__name">Dre Cole</span>
+                  <span class="roster-card__tag">Cornell CS</span>
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
+      <!-- 3. THE FILM // 2026 HYPERREAL PROOF (Cold Open Viewer + Audio Reel + Tier-1 World Map) -->
+      <section class="film-proof" id="the-film" aria-labelledby="film-proof-title">
+        <div class="container">
+          <div class="film-proof__head">
+            <div>
+              <span class="case-label">The Film // 2026 Hyperreal Proof</span>
+              <h2 id="film-proof-title">Built to read like a thriller. Framed to shoot like a film.</h2>
+            </div>
+            <p class="cast-deck__meta">Explore the spoiler-safe Cold Open screenplay teaser, stream the full-cast audio reel, and trace the Tier-1 American pressure route.</p>
+          </div>
+
+          <!-- Full-Cast Audiobook Audition Reel + Narrator Briefing Strip -->
+          <div class="voice-console" data-voice-player data-audio-src="/audio/cast/cast-audition-reel.mp3" style="margin-bottom: 2rem;">
+            <div class="voice-console__bar">
+              <button class="voice-btn" type="button" data-voice-btn aria-pressed="false">
+                <svg viewBox="0 0 16 16" aria-hidden="true"><polygon points="3,2 14,8 3,14"></polygon></svg>
+                <span data-voice-btn-text>Play Full-Cast Reel</span>
+              </button>
+              <canvas class="voice-scope" width="520" height="64" aria-label="Full-cast audition reel waveform"></canvas>
+              <span class="voice-time" data-voice-time>00:00 / 02:08</span>
+            </div>
+            <div class="voice-console__foot">
+              <span class="voice-status" data-voice-status>Full-Cast Neural Audiobook Audition Reel // 7 Voices + Narrator // Tier-1 Spoiler Safe</span>
+              <p class="voice-line" data-voice-line>&ldquo;Ineptocracy: a system of government where the least capable lead. Failure isn&rsquo;t an accident. It&rsquo;s policy.&rdquo;</p>
+            </div>
+          </div>
+
+          <!-- Interactive Cold Open Fountain Screenplay Viewer -->
+          <div class="anamorphic-frame" data-script-viewer>
+            <div class="anamorphic-bar">
+              <span>CASE 017 // FEATURE SCRIPT TEASER (COLD OPEN)</span>
+              <button class="script-mode-btn" type="button" data-script-mode aria-pressed="false">Paper Script Mode</button>
+            </div>
+
+            <div class="script-tabs" role="tablist" aria-label="Cold Open script scenes">
+              <button class="script-tab" type="button" role="tab" aria-selected="true" data-script-tab="scene-1">01 // East Atlanta &amp; 1600 SAT</button>
+              <button class="script-tab" type="button" role="tab" aria-selected="false" data-script-tab="scene-2">02 // Pacific Coast (Garnier)</button>
+              <button class="script-tab" type="button" role="tab" aria-selected="false" data-script-tab="scene-3">03 // Philadelphia Tail</button>
+              <button class="script-tab" type="button" role="tab" aria-selected="false" data-script-tab="scene-4">04 // Harvard &amp; Langley</button>
+            </div>
+
+            <div class="script-page" id="cold-open-script-body">
+              <div class="script-scene" data-script-scene="scene-1">
+                <p class="sp-slug">FADE IN // EXTREME MACRO: 85MM ANAMORPHIC</p>
+                <p class="sp-action">A single bead of sweat forms at the hairline of a seventeen-year-old Black teenager. Slides past a faint razor nick. Hits the temple. SOUND: A human heartbeat hammering at 138 BPM inside an empty room.</p>
+                <p class="sp-action">PULL BACK across the wide, wired eyes of DARNELL COVINGTON (17, lean, sharp, anxious energy wound too tight).</p>
+                <p class="sp-note">ON-SCREEN DATA // DOSE: 30MG FOCUS PILL (FIRST EVER) | READING SPEED: 4.0 PAGES/MIN</p>
+                <p class="sp-slug" style="margin-top: 1.4rem;">INT. HOSPITAL TRAUMA BAY - EAST ATLANTA - LATER THAT NIGHT</p>
+                <p class="sp-action">Harsh fluorescent glare over scuffed linoleum. ROXANNE (84, Darnell&rsquo;s grandmother) lies pale beneath tangled IV lines after a fall at home. Across the glass, an exhausted ATTENDING PHYSICIAN holds a tablet up to Darnell&rsquo;s mother BRITTANY and younger sister TANA.</p>
+                <div class="sp-cue">
+                  <span class="sp-char">ATTENDING PHYSICIAN</span>
+                  <p class="sp-dial">Her Medicaid tier flagged the procedure code. Out of pocket, we&rsquo;re looking at one-fifty.</p>
+                </div>
+                <div class="sp-cue">
+                  <span class="sp-char">DARNELL</span>
+                  <p class="sp-dial">One hundred and fifty dollars?</p>
+                </div>
+                <div class="sp-cue">
+                  <span class="sp-char">ATTENDING PHYSICIAN</span>
+                  <p class="sp-dial">Thousand.</p>
+                </div>
+                <p class="sp-note">ON-SCREEN DATA // CRANIOTOMY ESTIMATE: $150,000 | COVERAGE: DENIED</p>
+                <p class="sp-action">A flat, piercing electronic tone cuts straight through the glass. BEEEEEEEEEEEEEEEEEEP. TITLE CARD (quiet white serif, center frame): <em>So it goes.</em></p>
+                <p class="sp-slug" style="margin-top: 1.4rem;">INT. COVINGTON FOYER - WEEKS LATER (DAY)</p>
+                <p class="sp-action">Darnell&rsquo;s trembling thumb tears open a heavy cream envelope. Macro rack-focus onto four black numerals: <strong>1600.</strong> Tilt down to his transcript behind the score sheet: straight A&rsquo;s down the page, except one stubborn stain near the bottom: AP U.S. HISTORY ........... B (88).</p>
+                <div class="sp-cue">
+                  <span class="sp-char">DARNELL (V.O.)</span>
+                  <p class="sp-dial">Only B I ever got. History never seemed practical.</p>
+                </div>
+                <p class="sp-trans">SMASH CUT TO:</p>
+              </div>
+
+              <div class="script-scene" data-script-scene="scene-2" hidden>
+                <p class="sp-slug">EXT. CLIFFSIDE GLASS ESTATE - PACIFIC COAST - DAY</p>
+                <p class="sp-action">White marble cantilevered over bright turquoise ocean. An infinity pool hangs over the drop like a dare.</p>
+                <p class="sp-action">Seated in crisp linen, swirling two fingers of bourbon without a drop of sweat, sits DIJON GARNIER (48, French-born, the richest man alive: Tecca, BankIt, NeuroClick). Polite. Unhurried. Chillingly calm.</p>
+                <p class="sp-action">Across the table sits a nervous Washington power broker nursing a glass of water.</p>
+                <div class="sp-cue">
+                  <span class="sp-char">POWER BROKER</span>
+                  <p class="sp-dial">You can&rsquo;t sell the American public on a mess like this, Dijon. Nobody buys it. Not this cycle.</p>
+                </div>
+                <p class="sp-action">Garnier stands. Walks to the glass rail overlooking sailboats hundreds of feet below. Smiles faintly.</p>
+                <div class="sp-cue">
+                  <span class="sp-char">GARNIER</span>
+                  <span class="sp-paren">(gentle French cadence)</span>
+                  <p class="sp-dial">You think politics is about votes. Politics is distribution. Any good marketer knows you have to convince the consumer before they buy the product.</p>
+                </div>
+                <p class="sp-trans">SMASH TO BLACK.</p>
+                <p class="sp-note">TITLE SLAM // THE IRONIC INEPTOCRACY // Failure is not an accident. It is policy with better lighting.</p>
+              </div>
+
+              <div class="script-scene" data-script-scene="scene-3" hidden>
+                <p class="sp-slug">EXT. PHILADELPHIA SIDE STREET - NIGHT (12:17 A.M.)</p>
+                <p class="sp-action">Humid summer air. Sodium lamps glinting off damp brick. Weeks after graduating valedictorian in front of 197 classmates, Darnell walks slowly past a quiet corner bar. He spent forty-seven minutes watching a black SUV hang behind him on the highway.</p>
+                <p class="sp-action">Parked illegally by the curb sits a matte-black unmarked van. Darnell glances through the bar&rsquo;s fogged front window and stops.</p>
+                <p class="sp-action">Sitting inside on a barstool is the exact 6&rsquo;5&rdquo; stranger from his graduation crowd: charcoal suit, Yale posture, piercing green eyes. A trained CIA field operative. He is not scanning the exits. His green eyes are locked in total, religious trance on the wall-mounted TV behind the taps.</p>
+                <div class="sp-cue">
+                  <span class="sp-char">SPORTS ANNOUNCER (O.S.)</span>
+                  <p class="sp-dial">Bottom of the thirteenth! Full count in Philadelphia, tying run on second!</p>
+                </div>
+                <p class="sp-action">The man leans forward over his whiskey glass like national security hangs on a slider.</p>
+                <div class="sp-cue">
+                  <span class="sp-char">DARNELL</span>
+                  <span class="sp-paren">(whispering)</span>
+                  <p class="sp-dial">No way.</p>
+                </div>
+                <p class="sp-action">Darnell creeps toward the black van&rsquo;s rear bumper to read the unmarked government plate. Pulls up his phone. A heavy shadow blots out the streetlamp behind him.</p>
+                <p class="sp-trans">CUT TO:</p>
+              </div>
+
+              <div class="script-scene" data-script-scene="scene-4" hidden>
+                <p class="sp-slug">INT. HARVARD FRESHMAN DORM ROOM - CAMBRIDGE - DAY</p>
+                <p class="sp-action">JAVON WHITFIELD (18, 6&rsquo;5&rdquo;, 242 pounds, quarterback out of Rosedale, Mississippi, 57 Division I offers) pushes the door open. They stand shoulder to shoulder in the threshold because two steps puts you against the far wall. Two twin beds. Two desks. Concrete block.</p>
+                <p class="sp-note">ON-SCREEN DATA // ROOM AREA: 300 SQ FT | UNIVERSITY ENDOWMENT: $53.2 BILLION</p>
+                <div class="sp-cue">
+                  <span class="sp-char">DARNELL</span>
+                  <p class="sp-dial">Ironic how small our dorm is, considering everybody works their whole life to get in here.</p>
+                </div>
+                <div class="sp-cue">
+                  <span class="sp-char">JAVON</span>
+                  <span class="sp-paren">(laughs loud, drops onto a squeaking mattress)</span>
+                  <p class="sp-dial">I&rsquo;m from Rosedale, Mississippi, dawg. I&rsquo;m used to small. Turned down fifty-seven offers to start right here, make the League, then go home as Mississippi&rsquo;s first Black senator since 1881.</p>
+                </div>
+                <p class="sp-slug" style="margin-top: 1.4rem;">INT. LANGLEY CORRIDOR - VIRGINIA - DAY</p>
+                <p class="sp-action">Sterile glass and polished marble. ALEC DAHEIM walks swiftly down a hallway gripping manila folders, jaw clenched tight. Smooth footsteps glide up beside his shoulder.</p>
+                <div class="sp-cue">
+                  <span class="sp-char">GARNIER</span>
+                  <p class="sp-dial">Loosen up, will you? You&rsquo;re walking around like you swallowed a classified document whole.</p>
+                </div>
+                <p class="sp-action">Hold on Alec&rsquo;s piercing green eyes reflecting in the glass.</p>
+                <p class="sp-trans">CUT TO BLACK.</p>
+              </div>
+            </div>
+
+            <div class="anamorphic-bar anamorphic-bar--bottom">
+              <span>2.39:1 // FOUNTAIN SHOOTING FORMAT // ZERO SPOILERS PAST ACT I</span>
+              <a class="text-link" href="/book">Open Full Book Brief <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+
+          <!-- Interactive Tier-1 Story World Map Progression -->
+          <div class="world-route" data-world-route>
+            <div class="world-route__map">
+              <div>
+                <span class="case-label">Tier-1 Story World Map // Interactive Pressure Route</span>
+                <svg class="route-svg" viewBox="0 0 640 310" role="img" aria-label="Interactive story route connecting Atlanta, Mississippi, Harvard and Boston, Philadelphia, and Langley">
+                  <rect x="0" y="0" width="640" height="310" fill="#050504" />
+                  <g stroke="rgba(243,238,226,0.06)" stroke-width="1">
+                    <line x1="0" y1="62" x2="640" y2="62" />
+                    <line x1="0" y1="124" x2="640" y2="124" />
+                    <line x1="0" y1="186" x2="640" y2="186" />
+                    <line x1="0" y1="248" x2="640" y2="248" />
+                    <line x1="128" y1="0" x2="128" y2="310" />
+                    <line x1="256" y1="0" x2="256" y2="310" />
+                    <line x1="384" y1="0" x2="384" y2="310" />
+                    <line x1="512" y1="0" x2="512" y2="310" />
+                  </g>
+                  <path class="route-path" d="M 92 232 L 224 218 L 538 78 L 434 142 L 352 178" />
+                  <path class="route-path-hot" d="M 224 218 L 538 78 L 434 142 L 352 178" opacity="0.55" />
+
+                  <g class="route-node" data-route-node="mississippi" tabindex="0" role="button" aria-label="Rosedale, Mississippi">
+                    <circle class="outer" cx="92" cy="232" r="18" />
+                    <circle class="core" cx="92" cy="232" r="5" />
+                    <text class="route-label" x="56" y="268">02 ROSEDALE MS</text>
+                  </g>
+                  <g class="route-node is-active" data-route-node="atlanta" tabindex="0" role="button" aria-label="East Atlanta">
+                    <circle class="outer" cx="224" cy="218" r="20" />
+                    <circle class="core" cx="224" cy="218" r="6" />
+                    <text class="route-label" x="184" y="256">01 ATLANTA</text>
+                  </g>
+                  <g class="route-node" data-route-node="harvard" tabindex="0" role="button" aria-label="Harvard and Boston">
+                    <circle class="outer" cx="538" cy="78" r="20" />
+                    <circle class="core" cx="538" cy="78" r="6" />
+                    <text class="route-label" x="462" y="50">03 HARVARD / BOSTON</text>
+                  </g>
+                  <g class="route-node" data-route-node="philadelphia" tabindex="0" role="button" aria-label="Philadelphia">
+                    <circle class="outer" cx="434" cy="142" r="18" />
+                    <circle class="core" cx="434" cy="142" r="5" />
+                    <text class="route-label" x="458" y="146">04 PHILADELPHIA</text>
+                  </g>
+                  <g class="route-node" data-route-node="langley" tabindex="0" role="button" aria-label="Langley">
+                    <circle class="outer" cx="352" cy="178" r="18" />
+                    <circle class="core" cx="352" cy="178" r="5" />
+                    <text class="route-label" x="306" y="214">05 LANGLEY</text>
+                  </g>
+                </svg>
+              </div>
+
+              <div class="route-stops" role="tablist" aria-label="Story locations">
+                <button
+                  type="button"
+                  class="route-stop-btn"
+                  role="tab"
+                  aria-selected="true"
+                  data-route-stop="atlanta"
+                  data-coords="STOP 01 // 33.7490 N, 84.3880 W"
+                  data-city="East Atlanta"
+                  data-subjects="Active: Darnell Covington, Alec Daheim"
+                  data-summary="Where Darnell Covington earns a 1600 SAT, graduates valedictorian at a school that is half a percent Black, and spots one uninvited pair of green eyes among 197 families."
+                  data-pressure="PRESSURE VECTOR // Merit draws attention faster than protection arrives."
+                >01 Atlanta</button>
+                <button
+                  type="button"
+                  class="route-stop-btn"
+                  role="tab"
+                  aria-selected="false"
+                  data-route-stop="mississippi"
+                  data-coords="STOP 02 // 33.8548 N, 91.0273 W"
+                  data-city="Rosedale, Mississippi"
+                  data-subjects="Active: Javon Whitfield"
+                  data-summary="Home of Javon Whitfield: 6'5, 242 pounds, valedictorian, 57 Division I offers, and determined to become Mississippi's first Black senator since 1881."
+                  data-pressure="PRESSURE VECTOR // Talent refuses to stay confined to an athletic highlight reel."
+                >02 Mississippi</button>
+                <button
+                  type="button"
+                  class="route-stop-btn"
+                  role="tab"
+                  aria-selected="false"
+                  data-route-stop="harvard"
+                  data-coords="STOP 03 // 42.3770 N, 71.1167 W"
+                  data-city="Harvard / Boston"
+                  data-subjects="Active: Darnell Covington, Javon Whitfield"
+                  data-summary="A 300-square-foot dorm at the most celebrated university in America. Two brilliant young men compare notes while slogans, donor money, and campus pressure close in outside."
+                  data-pressure="PRESSURE VECTOR // Access to the prestige door is not ownership of the hallway."
+                >03 Harvard / Boston</button>
+                <button
+                  type="button"
+                  class="route-stop-btn"
+                  role="tab"
+                  aria-selected="false"
+                  data-route-stop="philadelphia"
+                  data-coords="STOP 04 // 39.9526 N, 75.1652 W"
+                  data-city="Philadelphia"
+                  data-subjects="Active: Alec Daheim, Darnell Covington"
+                  data-summary="A late-night bar where a 6'5 CIA operative with 33 passports tails a seventeen-year-old and gets completely pulled into the thirteenth inning of a Phillies game."
+                  data-pressure="PRESSURE VECTOR // Even elite surveillance leaks when real human instinct intervenes."
+                >04 Philadelphia</button>
+                <button
+                  type="button"
+                  class="route-stop-btn"
+                  role="tab"
+                  aria-selected="false"
+                  data-route-stop="langley"
+                  data-coords="STOP 05 // 38.9517 N, 77.1467 W"
+                  data-city="Langley"
+                  data-subjects="Active: Alec Daheim, Dijon Garnier, Ronald McNulty"
+                  data-summary="Where intelligence briefings, private capital, and executive theatrics blur into one operating table. War gets packaged like a product launch with ads and PACs."
+                  data-pressure="PRESSURE VECTOR // Memory is not merely personal. It is jurisdiction."
+                >05 Langley</button>
+              </div>
+            </div>
+
+            <aside class="world-route__card" aria-live="polite">
+              <div>
+                <p class="world-route__coords" data-route-coords>STOP 01 // 33.7490 N, 84.3880 W</p>
+                <h3 class="world-route__city" data-route-city>East Atlanta</h3>
+                <p class="meta-note" data-route-subjects>Active: Darnell Covington, Alec Daheim</p>
+                <p class="prose" data-route-summary>Where Darnell Covington earns a 1600 SAT, graduates valedictorian at a school that is half a percent Black, and spots one uninvited pair of green eyes among 197 families.</p>
+              </div>
+              <div>
+                <p class="world-route__pressure" data-route-pressure>PRESSURE VECTOR // Merit draws attention faster than protection arrives.</p>
+                <p style="margin-top: 1.15rem; margin-bottom: 0;">
+                  <a class="btn btn--ghost" href="/world">Open Complete World File</a>
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. POWER MAP & EVIDENCE PLATE -->
       <section class="section section--tight" id="white-house-file" aria-labelledby="regime-title">
         <div class="container">
           <span class="kicker">Power map</span>
           <h2 id="regime-title">The machine breaks people before anyone names the villain.</h2>
-          <p class="prose">McNulty wants power with applause. Garnier wants disasters he can bill. The agencies keep their voices calm while Darnell gets routed through rooms he never entered.</p>
+          <p class="prose">McNulty wants power with applause. Garnier wants perception he can market. The agencies keep their voices calm while Darnell gets routed through rooms he never entered.</p>
           <div class="grid grid--3" role="list">
             <article class="card reveal" role="listitem">
               <div class="card__body">
@@ -141,44 +824,26 @@
             <article class="card reveal" role="listitem">
               <div class="card__body">
                 <span class="kicker">Donor Channel</span>
-                <h3>&ldquo;private government funding, no public disclosure.&rdquo;</h3>
-                <p class="excerpt">&ldquo;Just get it done, and the money is yours,&rdquo; Garnier demanded.</p>
+                <h3>War sold like a product launch.</h3>
+                <p class="excerpt">&ldquo;Dijon knew war was shaped by perception.&rdquo;</p>
               </div>
             </article>
             <article class="card reveal" role="listitem">
               <div class="card__body">
-                <span class="kicker">Body Count</span>
-                <h3>&ldquo;119 are now dead.&rdquo;</h3>
-                <p class="excerpt">&ldquo;An electric fire occurred from a faulty battery, killing 32 workers.&rdquo;</p>
+                <span class="kicker">Memory Layer</span>
+                <h3>NeuroClick marketed as mercy.</h3>
+                <p class="excerpt">Memory is not merely personal. It is jurisdiction.</p>
               </div>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="about-book" aria-labelledby="dossier-title">
-        <div class="container">
-          <span class="kicker">About the book</span>
-          <h2 id="dossier-title">A coming of age story inside the apparatus that calls its appetite order.</h2>
-          <div class="split">
-            <div class="prose reveal">
-              <p><em>The Ironic Ineptocracy</em> follows a brilliant kid through 36 chapters of friends, money, pressure, and public lies that keep getting bigger.</p>
-              <p>Darnell can see the life he wants. Javon sees the danger sooner. Alec keeps showing up where the file gets strange. The adults with power keep making every exit smaller.</p>
-              <p><a class="btn btn--primary" href="/book">Open the book file</a></p>
-            </div>
-            <aside class="terminal reveal" aria-label="Reader brief">
-              <p>Reader brief</p>
-              <p>The title lands like a joke until it starts sounding like a diagnosis. People at the top keep failing upward, and everyone else gets the bill.</p>
-            </aside>
           </div>
         </div>
       </section>
 
       <section class="section section--tight" aria-labelledby="capitol-evidence-title">
         <div class="container">
-          <span class="kicker">Story route</span>
+          <span class="kicker">Story route // Archival CRT plate</span>
           <h2 id="capitol-evidence-title">Each stop makes the file heavier.</h2>
-          <p class="prose">It starts with a school file. Then come the pressure points, the favors, and the people Darnell can barely afford to lose.</p>
+          <p class="prose">It starts with a school file in East Atlanta. Then come Harvard, the pressure points, the favors, and the people Darnell can barely afford to lose.</p>
           <div class="split">
             <div class="grid" aria-label="Evidence ledger">
               <article class="card reveal">
@@ -224,12 +889,12 @@
         </div>
       </section>
 
-<!-- immersive-expansion:start -->
+      <!-- immersive-expansion:start -->
       <section class="case-sequence" aria-labelledby="sequence-title-home">
         <div class="container case-sequence__grid">
           <div class="case-sequence__visual reveal" data-parallax>
             <figure class="evidence-stack">
-              <img src="/images/control-room-orange-county-1024.webp" alt="A surveillance control room filled with monitors and evidence feeds." loading="lazy" decoding="async" />
+              <img src="/images/hyperreal/hero-cinema-keyart.webp" alt="A rain-swept neoclassical control room filled with glowing crimson and amber telemetry banks." loading="lazy" decoding="async" />
               <figcaption>Evidence layer // scroll to examine</figcaption>
             </figure>
           </div>
@@ -250,7 +915,7 @@
               <span aria-hidden="true">02</span>
               <div>
                 <h3>The selection</h3>
-                <p>Draft papers turn opportunity into obligation while the country calls the pattern fair.</p>
+                <p>Institutions turn opportunity into obligation while the country calls the pattern fair.</p>
               </div>
             </article>
             <article class="sequence-step reveal" data-sequence-step>
@@ -278,89 +943,89 @@
             <h2 id="swipe-title-home">Follow the next pressure point.</h2>
           </div>
           <div class="swipe-controls" aria-label="Evidence carousel controls">
-            <button type="button" data-swipe-prev aria-label="Previous file">←</button>
+            <button type="button" data-swipe-prev aria-label="Previous file">&larr;</button>
             <span data-swipe-count aria-live="polite">01 / 05</span>
-            <button type="button" data-swipe-next aria-label="Next file">→</button>
+            <button type="button" data-swipe-next aria-label="Next file">&rarr;</button>
           </div>
         </div>
         <div class="swipe-rail" data-swipe-rail tabindex="0" aria-label="Related evidence files">
-
-              <article class="swipe-card depth-card reveal" data-depth-card>
-                <a class="swipe-card__media" href="/book" aria-label="Open Start with the charge">
-                  <img src="/images/story/javon-darnell-alec-capitol-trio-1024.webp" alt="Start with the charge evidence image." loading="lazy" decoding="async" />
-                  <span class="swipe-card__index" aria-hidden="true">01</span>
-                </a>
-                <div class="swipe-card__copy">
-                  <span class="case-label">Book file</span>
-                  <h3><a href="/book">Start with the charge</a></h3>
-                  <p>A spoiler-safe brief on the friends, the draft, the money, and the machinery closing around them.</p>
-                  <a class="text-link" href="/book">Open this file <span aria-hidden="true">→</span></a>
-                </div>
-              </article>
-              <article class="swipe-card depth-card reveal" data-depth-card>
-                <a class="swipe-card__media" href="/characters" aria-label="Open Meet the people in the file">
-                  <img src="/images/story/supporting-cast-dossier-1024.webp" alt="Meet the people in the file evidence image." loading="lazy" decoding="async" />
-                  <span class="swipe-card__index" aria-hidden="true">02</span>
-                </a>
-                <div class="swipe-card__copy">
-                  <span class="case-label">Character files</span>
-                  <h3><a href="/characters">Meet the people in the file</a></h3>
-                  <p>Real portrait dossiers connect the people who resist the machine to the people who profit from it.</p>
-                  <a class="text-link" href="/characters">Open this file <span aria-hidden="true">→</span></a>
-                </div>
-              </article>
-              <article class="swipe-card depth-card reveal" data-depth-card>
-                <a class="swipe-card__media" href="/world" aria-label="Open Trace the pressure">
-                  <img src="/images/world-map-1024.webp" alt="Trace the pressure evidence image." loading="lazy" decoding="async" />
-                  <span class="swipe-card__index" aria-hidden="true">03</span>
-                </a>
-                <div class="swipe-card__copy">
-                  <span class="case-label">World file</span>
-                  <h3><a href="/world">Trace the pressure</a></h3>
-                  <p>Follow the institutions, slogans, and private rooms that turn ordinary ambition into public damage.</p>
-                  <a class="text-link" href="/world">Open this file <span aria-hidden="true">→</span></a>
-                </div>
-              </article>
-              <article class="swipe-card depth-card reveal" data-depth-card>
-                <a class="swipe-card__media" href="/dispatches" aria-label="Open Read the evidence drops">
-                  <img src="/images/story/essays-dossier-desk-1024.webp" alt="Read the evidence drops evidence image." loading="lazy" decoding="async" />
-                  <span class="swipe-card__index" aria-hidden="true">04</span>
-                </a>
-                <div class="swipe-card__copy">
-                  <span class="case-label">Dispatches</span>
-                  <h3><a href="/dispatches">Read the evidence drops</a></h3>
-                  <p>Four spoiler-safe investigations translate the novel's systems into questions that follow readers home.</p>
-                  <a class="text-link" href="/dispatches">Open this file <span aria-hidden="true">→</span></a>
-                </div>
-              </article>
-              <article class="swipe-card depth-card reveal" data-depth-card>
-                <a class="swipe-card__media" href="/dossier" aria-label="Open Open the Garnier Dossier">
-                  <img src="/images/story/press-kit-desk-1024.webp" alt="Open the Garnier Dossier evidence image." loading="lazy" decoding="async" />
-                  <span class="swipe-card__index" aria-hidden="true">05</span>
-                </a>
-                <div class="swipe-card__copy">
-                  <span class="case-label">Restricted file</span>
-                  <h3><a href="/dossier">Open the Garnier Dossier</a></h3>
-                  <p>Enter the reader channel and unlock the private-power file at the center of the investigation.</p>
-                  <a class="text-link" href="/dossier">Open this file <span aria-hidden="true">→</span></a>
-                </div>
-              </article>
+          <article class="swipe-card depth-card reveal" data-depth-card>
+            <a class="swipe-card__media" href="/book" aria-label="Open Start with the charge">
+              <img src="/images/hyperreal/hero-cinema-keyart.webp" alt="Neoclassical control room key art for the book brief." loading="lazy" decoding="async" />
+              <span class="swipe-card__index" aria-hidden="true">01</span>
+            </a>
+            <div class="swipe-card__copy">
+              <span class="case-label">Book file</span>
+              <h3><a href="/book">Start with the charge</a></h3>
+              <p>A spoiler-safe brief on the friends, the pressure, the money, and the machinery closing around them.</p>
+              <a class="text-link" href="/book">Open this file <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+          <article class="swipe-card depth-card reveal" data-depth-card>
+            <a class="swipe-card__media" href="/characters" aria-label="Open Meet the people in the file">
+              <img src="/images/hyperreal/char-darnell.webp" alt="Hyperreal portrait of Darnell Covington for the cast dossiers." loading="lazy" decoding="async" />
+              <span class="swipe-card__index" aria-hidden="true">02</span>
+            </a>
+            <div class="swipe-card__copy">
+              <span class="case-label">Character files</span>
+              <h3><a href="/characters">Meet the people in the file</a></h3>
+              <p>Hyperreal portrait dossiers and live neural voice auditions connect every public player in Case 017.</p>
+              <a class="text-link" href="/characters">Open this file <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+          <article class="swipe-card depth-card reveal" data-depth-card>
+            <a class="swipe-card__media" href="/world" aria-label="Open Trace the pressure">
+              <img src="/images/world-map-1024.webp" alt="Trace the pressure world map evidence image." loading="lazy" decoding="async" />
+              <span class="swipe-card__index" aria-hidden="true">03</span>
+            </a>
+            <div class="swipe-card__copy">
+              <span class="case-label">World file</span>
+              <h3><a href="/world">Trace the pressure</a></h3>
+              <p>Follow the cities, slogans, and private rooms that turn ordinary ambition into public damage.</p>
+              <a class="text-link" href="/world">Open this file <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+          <article class="swipe-card depth-card reveal" data-depth-card>
+            <a class="swipe-card__media" href="/dispatches" aria-label="Open Read the evidence drops">
+              <img src="/images/story/essays-dossier-desk-1024.webp" alt="Read the evidence drops desk image." loading="lazy" decoding="async" />
+              <span class="swipe-card__index" aria-hidden="true">04</span>
+            </a>
+            <div class="swipe-card__copy">
+              <span class="case-label">Dispatches</span>
+              <h3><a href="/dispatches">Read the evidence drops</a></h3>
+              <p>Spoiler-safe essays translate the novel&rsquo;s systems into questions that follow readers home.</p>
+              <a class="text-link" href="/dispatches">Open this file <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+          <article class="swipe-card depth-card reveal" data-depth-card>
+            <a class="swipe-card__media" href="/dossier" aria-label="Open the Garnier Dossier">
+              <img src="/images/hyperreal/char-garnier.webp" alt="Hyperreal portrait of Dijon Garnier for the restricted dossier." loading="lazy" decoding="async" />
+              <span class="swipe-card__index" aria-hidden="true">05</span>
+            </a>
+            <div class="swipe-card__copy">
+              <span class="case-label">Restricted file</span>
+              <h3><a href="/dossier">Open the Garnier Dossier</a></h3>
+              <p>Enter the reader channel and unlock the private-power file at the center of the investigation.</p>
+              <a class="text-link" href="/dossier">Open this file <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
         </div>
       </section>
-<!-- immersive-expansion:end -->
+      <!-- immersive-expansion:end -->
 
+      <!-- 5. RESILIENT GARNIER DOSSIER CAPTURE WITH ON-PAGE PREVIEW -->
       <section class="cta-band" aria-labelledby="reader-brief-title">
         <div class="container" id="reader-brief">
           <span class="kicker kicker--signal">Classified reader file</span>
           <h2 id="reader-brief-title">Open the Garnier Dossier</h2>
-          <p>Dijon Garnier moves like infrastructure. Send the first file to this address.</p>
+          <p>Dijon Garnier does not need the throne. He owns the room around it. Enter your email to unlock the spoiler-safe pressure map immediately.</p>
           <form
             class="signup-form"
-            style="margin-inline: auto"
             data-signup="footer-garnier-dossier"
-            data-success="ACCESS GRANTED. The first file is queued."
-            data-error="TRANSMISSION FAILED. Check the address and try again."
-            data-pending="Opening the channel."
+            data-preview-target="home-garnier-preview"
+            data-success="ACCESS GRANTED. The Garnier Dossier is unlocked below."
+            data-error="TRANSMISSION FAILED. Check the email address and try again."
+            data-pending="Checking clearance."
             data-pending-label="Opening file"
             novalidate
             aria-label="Garnier Dossier access form"
@@ -375,11 +1040,30 @@
             <p class="form-status" role="status" aria-live="polite"></p>
             <p class="microcopy">No spam. No filler. Dispatches only.</p>
           </form>
-          <p><a href="https://www.goodreads.com/" target="_blank" rel="noopener noreferrer">Track on Goodreads</a></p>
+
+          <article id="home-garnier-preview" class="dossier-preview" data-dossier-preview hidden aria-label="Unlocked Garnier Dossier preview">
+            <div class="dossier-preview__meta">
+              <span>FILE // GARNIER DOSSIER (TIER-1 SPOILER SAFE)</span>
+              <span>CLEARANCE: READER ACCESS GRANTED</span>
+            </div>
+            <h3>Subject: Dijon Garnier</h3>
+            <p>French-born, the richest man alive. Controls Tecca, BankIt, and NeuroClick, a brain interface sold to the public as mercy. Treats war and politics like a product launch.</p>
+            <h4>The Five-Step Private Logic</h4>
+            <ol>
+              <li>Enter as assistance while institutions look exhausted.</li>
+              <li>Become indispensable through procurement and convenience.</li>
+              <li>Make departure too expensive for any official to explain.</li>
+              <li>Convert necessity into quiet compliance.</li>
+              <li>Rewrite the record as prudence.</li>
+            </ol>
+            <p><strong>Full file route:</strong> <a href="/dossier" style="color: #a71c16; font-weight: 700;">Continue to the full Garnier Dossier page &rarr;</a></p>
+          </article>
+
+          <p style="margin-top: 1.5rem;"><a href="https://www.goodreads.com/" target="_blank" rel="noopener noreferrer" style="color: #f3eee2;">Track on Goodreads</a></p>
         </div>
       </section>
 
-<!-- answer-engine:start -->
+      <!-- answer-engine:start -->
       <section class="section section--answers" aria-labelledby="answers-home">
         <div class="container answer-grid">
           <header class="answer-grid__header reveal">
@@ -388,7 +1072,6 @@
             <p class="prose">Direct, spoiler-safe answers for readers, search engines, and AI assistants.</p>
           </header>
           <div class="answer-stack" data-aeo-faq>
-
             <article class="answer-card reveal">
               <h3>What is The Ironic Ineptocracy?</h3>
               <p>The Ironic Ineptocracy is a satirical political thriller by Dillon Mohr about brilliance, friendship, donor power, public failure, propaganda, and manipulated memory.</p>
@@ -404,7 +1087,7 @@
           </div>
         </div>
       </section>
-<!-- answer-engine:end -->
+      <!-- answer-engine:end -->
     </main>
 
     <footer class="site-footer">
@@ -435,7 +1118,7 @@
               <li><a href="https://www.goodreads.com/" target="_blank" rel="noopener noreferrer">Track on Goodreads</a></li>
             </ul>
             <p class="meta-note" aria-hidden="true">
-              Deck 017 &middot; Galley &middot; pre release &middot; Eyes only &middot; 36 chapters &middot; four continents &middot; one very bad year
+              Deck 017 &middot; Case Open &middot; Eyes only &middot; Tier-1 Public File
             </p>
           </div>
         </div>
