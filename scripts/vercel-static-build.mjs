@@ -6,6 +6,7 @@ const root = process.cwd();
 const out = join(root, "dist");
 const excluded = new Set([
   ".git",
+  ".gitleaksignore",
   ".vercel",
   "dist",
   "node_modules",
