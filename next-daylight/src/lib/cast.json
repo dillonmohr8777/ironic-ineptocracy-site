@@ -1,0 +1,231 @@
+[
+  {
+    "name": "Darnell Covington",
+    "role": "The Valedictorian",
+    "slug": "darnell-covington",
+    "group": "Students & Allies",
+    "image": "/images/cast/char-darnell.webp",
+    "audio": "darnell",
+    "number": "01",
+    "bio": "Seventeen, East Atlanta. Valedictorian at a private school that is half a percent Black. Learned calculus at thirteen, scored 1600 on the SAT the morning after losing his grandmother, and walked into Harvard expecting merit to hold the line. Anxious, deadpan, and too observant to stay decorative.",
+    "quote": "“Ironic how small our dorm is.”",
+    "lead": "Seventeen, East Atlanta valedictorian, 1600 SAT, Harvard bound, and suddenly legible to people who confuse promise with property.",
+    "about": [
+      "Darnell Covington enters the novel with the kind of mind schools like to advertise and governments like to inventory. He is disciplined, observant, private, and young enough to believe that extraordinary work might still buy an honest future.",
+      "The cruelty of his position is that his excellence does not protect him. It makes him easier to locate. Perfect scores, institutional polish, and Ivy League proximity become coordinates inside a larger apparatus of race, class, surveillance, and national appetite."
+    ],
+    "themes": [
+      "excellence treated as property",
+      "visibility without protection",
+      "friendship as witness",
+      "ambition inside a rigged civic theater"
+    ],
+    "metrics": [72, 91, 34]
+  },
+  {
+    "name": "Javon Whitfield",
+    "role": "The Quarterback",
+    "slug": "javon-whitfield",
+    "group": "Students & Allies",
+    "image": "/images/cast/char-javon.webp",
+    "audio": "javon",
+    "number": "02",
+    "bio": "Darnell's roommate in a 300-square-foot Harvard dorm. Six foot five, 242-pound quarterback from Rosedale, Mississippi, also a valedictorian, with 57 Division I offers. Wants to become Mississippi's first Black senator since 1881. Loud, funny, quotes Fred Hampton and Medgar Evers, and trusts zero official explanations.",
+    "quote": "“The worst part is that it's beautiful. That's how they get you. They make oppression gorgeous.”",
+    "lead": "Six foot five, 242 pounds, 57 Division I offers, valedictorian, and a mind nobody gets to reduce to muscle.",
+    "about": [
+      "Javon Whitfield is Darnell’s counterweight and witness. He is enormous, hilarious, intellectually restless, and built with the kind of charisma that makes danger feel briefly survivable.",
+      "The public would rather understand him as a body. Quarterback frame, Mississippi dominance, impossible athletic promise. The novel refuses that cheap reading. Javon thinks fast, interrogates what other people miss, and uses humor as reconnaissance before the room realizes it has been searched."
+    ],
+    "themes": [
+      "friendship as evidence",
+      "athletic promise and extraction",
+      "political memory since 1881",
+      "loyalty under pressure"
+    ],
+    "metrics": [68, 98, 46]
+  },
+  {
+    "name": "Alec Daheim",
+    "role": "The Operative",
+    "slug": "alec-daheim",
+    "group": "Intelligence",
+    "image": "/images/cast/char-alec.webp",
+    "audio": "alec",
+    "number": "03",
+    "bio": "The man with piercing green eyes. At Darnell's graduation there were 197 graduates and Darnell knew every parent in the room except one. Six foot five, pilot's license, 33 passports, and far less subtle than Langley prefers: he tails a teenager into a Philadelphia bar and gets absorbed in the thirteenth inning of a Phillies game.",
+    "quote": "“Loyalty is a joke.”",
+    "lead": "Six foot five, piercing green eyes, Yale in three years, pilot’s license, 33 passports, and far less subtle than Langley prefers.",
+    "about": [
+      "Alec Daheim begins as an instrument of surveillance and force. His official shape is deliberate, physical, trained, and useful to men who prefer obedience with excellent posture.",
+      "The satire lands immediately because Alec is brilliant on paper yet unmistakably human in the field: a CIA operative who tails a teenager into a Philadelphia corner bar and locks into extra innings on the screen behind the taps."
+    ],
+    "themes": [
+      "surveillance and proximity",
+      "institutional obedience",
+      "loyalty as a trap",
+      "sealed assignments"
+    ],
+    "metrics": [88, 44, 79]
+  },
+  {
+    "name": "Dijon Garnier",
+    "role": "The Architect",
+    "slug": "dijon-garnier",
+    "group": "Power",
+    "image": "/images/cast/char-garnier.webp",
+    "audio": "garnier",
+    "number": "04",
+    "bio": "French-born, the richest man alive. Owns Tecca cars, BankIt, and NeuroClick, a brain device marketed as mercy. Awful public speaker who treats politics and war like a product launch. Garnier does not need the throne. He owns the room around it.",
+    "quote": "“Any good marketer knows you have to convince the consumer before they buy the product.”",
+    "lead": "French-born, the richest man alive, and private capital behaving like jurisdiction.",
+    "about": [
+      "Dijon Garnier is wealth after it stops requesting access and starts acting as if access were always owed. He owns Tecca, BankIt, and NeuroClick, and carries money as permission rather than ornament.",
+      "He is not a loud billionaire chasing applause. Applause fades. Dependency remains. Votes, memory, testimony, markets, and fear all become materials inside the same private architecture."
+    ],
+    "themes": [
+      "private capital as governance",
+      "war sold like a product launch",
+      "memory as jurisdiction",
+      "technological alibis sold as mercy"
+    ],
+    "metrics": [96, 6, 99]
+  },
+  {
+    "name": "Ronald McNulty",
+    "role": "The President",
+    "slug": "ronald-mcnulty",
+    "group": "Power",
+    "image": "/images/cast/char-mcnulty-podium.webp",
+    "audio": "mcnulty",
+    "number": "05",
+    "bio": "The fictional President at the loud center of the machine. Six bankruptcies, loves a podium, hates losing, and likes winners. McNulty gives institutional collapse a booming microphone while quieter operators write the contracts behind the stage lights.",
+    "quote": "“Victory by subtraction.”",
+    "lead": "Fictional President. Six bankruptcies, loves a podium, hates losing, and makes institutional collapse sound like stadium theater.",
+    "about": [
+      "Ronald McNulty is a fictional president who is not frightening because he is brilliant. He is frightening because the machinery around him keeps translating appetite into policy.",
+      "He lives in spectacle, grievance, and repetition. The country keeps waiting for depth where there is only instinct, branding, and a room full of operators willing to launder impulse into doctrine."
+    ],
+    "themes": [
+      "spectacle politics",
+      "executive vanity",
+      "failing upward with protection",
+      "obedience branding"
+    ],
+    "metrics": [91, 12, 94]
+  },
+  {
+    "name": "Avigail",
+    "role": "The Gatekeeper",
+    "slug": "avigail",
+    "group": "Students & Allies",
+    "image": "/images/cast/char-avigail.webp",
+    "audio": "avigail",
+    "number": "06",
+    "bio": "A hotel front-desk clerk with piercing green eyes who refuses to be rushed, flattered, or intimidated by official posture. Practical, dry, and quick to clock the difference between real danger and theatrical authority.",
+    "quote": "“There are no rooms for the next six hours. Come back later.”",
+    "lead": "A hotel front-desk clerk with piercing green eyes who is thoroughly unimpressed by urgency, flattery, or badges.",
+    "about": [
+      "Avigail enters through a front desk, which matters because the novel rarely treats safety as a grand event. Sometimes safety is a room key, a sharp read of posture, and a clerk deciding that the frightened person in front of her still counts as human.",
+      "Her intelligence is practical rather than ornamental. She clocks hesitation, fear, and scripted lies within seconds."
+    ],
+    "themes": [
+      "practical intelligence",
+      "unimpressed clarity under pressure",
+      "thresholds and unofficial refuge",
+      "dry humor against institutional theater"
+    ],
+    "metrics": [54, 84, 61]
+  },
+  {
+    "name": "Dre Cole",
+    "role": "The Prodigy",
+    "slug": "dre-cole",
+    "group": "Students & Allies",
+    "image": "/images/cast/char-dre.webp",
+    "audio": "dre",
+    "number": "07",
+    "bio": "Javon Whitfield's best friend and a Cornell computer science prodigy who treats every sealed database like a minor inconvenience. Fast-talking, allergic to excuses, and the one person who can trace a phantom asset before the agencies realize anyone is looking back.",
+    "quote": "“What you need, fool, why are you always bothering me?”",
+    "lead": "Javon Whitfield's best friend and a Cornell computer science prodigy who treats every sealed database like a minor inconvenience. Fast-talking, allergic to excuses, and the one person who can trace a phantom asset before the agencies realize anyone is looking back.",
+    "about": [
+      "Javon Whitfield's best friend and a Cornell computer science prodigy who treats every sealed database like a minor inconvenience. Fast-talking, allergic to excuses, and the one person who can trace a phantom asset before the agencies realize anyone is looking back."
+    ],
+    "themes": [
+      "Cornell CS",
+      "Javon's Best Friend",
+      "Finds Anyone",
+      "Night Shift"
+    ],
+    "metrics": [76, 94, 82]
+  },
+  {
+    "name": "Sabrina",
+    "role": "The Field Operative",
+    "slug": "sabrina",
+    "group": "Intelligence",
+    "image": "/images/cast/char-sabrina.webp",
+    "audio": "sabrina",
+    "number": "08",
+    "bio": "Field trained, profane, suspicious, and impossible to intimidate with official theater. Brings hard operational instinct and dry Midwestern wit to a group running from machinery she already knows from the inside.",
+    "quote": "“Manufactured obedience always arrives wearing the shape of personal choice.”",
+    "lead": "Blue eyes returned from gray, a Midwestern accent under fire, and a gun hand that knows obedience can be manufactured.",
+    "about": [
+      "Sabrina is not a decorative blonde in the corner of a violent story. She is field trained, profane, suspicious, and intimate with the kind of work that leaves people alive but altered.",
+      "Her presence carries the horror of control at the bodily level. The novel can talk about propaganda, public memory, and state violence, but Sabrina makes the question more invasive. What happens when command is no longer merely political and begins to move through the nervous system?"
+    ],
+    "themes": [
+      "neural coercion",
+      "field loyalty",
+      "manufactured obedience",
+      "love under operational damage"
+    ],
+    "metrics": [81, 89, 67]
+  },
+  {
+    "name": "Leah",
+    "role": "The Pilot",
+    "slug": "leah",
+    "group": "Intelligence",
+    "image": "/images/cast/char-leah.webp",
+    "audio": "leah",
+    "number": "09",
+    "bio": "Avigail's oldest friend, carrying inherited protocols, coded routes, and the quiet nerve to move people across dark water when official channels turn into a trap.",
+    "quote": "“Come alone or with ghosts, but come quiet.”",
+    "lead": "A black file, a buried vessel, and the nerve to pilot people through a silence that could kill them.",
+    "about": [
+      "Leah Atar carries the novel's secret architecture into view. She is not introduced to soften the story. She arrives with access, grief, technical inheritance, and a hatred of living inside a country where flags can make captivity sound noble.",
+      "Her father left memory, protocols, contacts, encrypted routes, and the sort of buried contingency that only makes sense when loyalty has already become morally insufficient."
+    ],
+    "themes": [
+      "inherited disobedience",
+      "escape logistics",
+      "friendship under surveillance",
+      "home as wound"
+    ],
+    "metrics": [74, 92, 71]
+  },
+  {
+    "name": "Mark",
+    "role": "The Signal Engineer",
+    "slug": "mark",
+    "group": "Intelligence",
+    "image": "/images/cast/char-mark.webp",
+    "audio": "mark",
+    "number": "10",
+    "bio": "A prosthetic arm, a bad attitude, and a basement built for breaking signals without breaking people.",
+    "quote": "A prosthetic arm, a bad attitude, and a basement built for breaking signals without breaking people.",
+    "lead": "A prosthetic arm, a bad attitude, and a basement built for breaking signals without breaking people.",
+    "about": [
+      "Mark is what survival looks like after official employment curdles into private preparation. He does not arrive with polish. He arrives with locks, equipment, suspicion, and a cabin that refuses to be only a cabin.",
+      "Role in the novel"
+    ],
+    "themes": [
+      "signal interference",
+      "survival engineering",
+      "exile after service",
+      "practical paranoia"
+    ],
+    "metrics": [0, 0, 0]
+  }
+]

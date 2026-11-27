@@ -1,0 +1,111 @@
+{
+  "book": [
+    [
+      "01 // Perception",
+      "War Sold Like a Product",
+      "Campaign ads, donor PACs, and staged outrage marketed with the calm discipline of a launch deck."
+    ],
+    [
+      "02 // Jurisdiction",
+      "NeuroClick",
+      "A brain device pitched to an exhausted public as mercy while turning memory itself into infrastructure."
+    ],
+    [
+      "03 // Private Capital",
+      "The Donor Room",
+      "Billionaire Dijon Garnier does not need the podium. He finances the corridors surrounding it."
+    ]
+  ],
+  "world": [
+    [
+      "Origin file",
+      "East Atlanta to Harvard",
+      "Darnell Covington enters the story with a mind sharp enough to open doors and a country eager to decide what that mind is for."
+    ],
+    [
+      "Friendship file",
+      "Javon Whitfield",
+      "Javon reads people faster than Darnell reads systems. Their friendship becomes one of the few records the machine cannot rewrite."
+    ],
+    [
+      "Donor file",
+      "Dijon Garnier",
+      "Garnier does not need to rule in public. He buys routes, installs dependencies, and lets institutions call the result stability."
+    ],
+    [
+      "Agency file",
+      "Alec Daheim",
+      "Alec moves through the intelligence layer where surveillance, duty, and dark comedy collide."
+    ],
+    [
+      "Memory file",
+      "NeuroClick",
+      "The technology layer turns forgetting into convenience and correction into a civic service with a clean interface."
+    ],
+    [
+      "Public file",
+      "The Ineptocracy",
+      "The title starts as an insult and becomes a structure: people failing upward while everyone below inherits the invoice."
+    ]
+  ],
+  "reader": [
+    [
+      "Before reading",
+      "What does the title make you expect about power, competence, and blame?"
+    ],
+    [
+      "Through Harvard",
+      "How does Darnell’s promise become a trap before he names the system?"
+    ],
+    [
+      "Behind the slogans",
+      "Where does patriotism stop being language and start becoming coercion?"
+    ],
+    [
+      "Inside the memory economy",
+      "What kind of victory is possible after memory itself becomes contested?"
+    ]
+  ],
+  "facts": [
+    ["Title", "The Ironic Ineptocracy"],
+    ["Author", "Dillon Mohr"],
+    [
+      "Category",
+      "Satirical political thriller, dark political fiction, and coming of age novel"
+    ],
+    [
+      "Release status",
+      "Manuscript in active revision; the author is writing the climax. The reader list is open for early readers, reviewers, podcasters, and booksellers."
+    ],
+    [
+      "Core promise",
+      "A brilliant young man enters a country where donor money, draft pressure, surveillance language, and public incompetence keep tightening around him."
+    ]
+  ],
+  "press": [
+    "The Ironic Ineptocracy is a satirical political thriller about brilliance, friendship, private money, public failure, and the machinery that turns incompetence into authority.",
+    "Darnell Covington can see the life he wants. Javon Whitfield sees danger gathering around the room. Dijon Garnier sees a country that can be bought, routed, and corrected. The novel follows the pressure as ambition becomes evidence and the official story keeps changing."
+  ],
+  "dispatches": [
+    [
+      "The File Opens",
+      "The title sounds like a joke until the file starts reading like a diagnosis."
+    ],
+    [
+      "Who Gets Spent",
+      "The machine does not ask who is guilty. It asks who can be processed."
+    ],
+    [
+      "The Memory Economy",
+      "Power does not only want the event. It wants the version of the event people are allowed to keep."
+    ],
+    [
+      "The Garnier Position",
+      "Garnier does not need the throne. He owns the room around it."
+    ]
+  ],
+  "dossier": [
+    "Power rarely arrives under its own name. It arrives as funding, access, convenience, policy, and memory.",
+    "The Garnier Dossier is an in-world pressure map of Dijon Garnier, the French-born billionaire behind Tecca, BankIt, and NeuroClick. Enter your address below to unlock the file immediately."
+  ]
+}
