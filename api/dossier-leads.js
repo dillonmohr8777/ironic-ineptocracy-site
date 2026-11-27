@@ -13,6 +13,13 @@
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+class DeliveryError extends Error {
+  constructor(status) {
+    super("Signup delivery rejected");
+    this.status = status;
+  }
+}
+
 function readConfig() {
   return {
     mailerliteKey: process.env.MAILERLITE_API_KEY?.trim() || null,
@@ -44,8 +51,7 @@ async function sendToMailerLite(lead, config) {
     body: JSON.stringify(body),
   });
   if (!res.ok && res.status !== 409) {
-    const detail = await res.text().catch(() => "");
-    throw new Error(`MailerLite ${res.status}: ${detail.slice(0, 300)}`);
+    throw new DeliveryError(res.status);
   }
 }
 
@@ -57,8 +63,7 @@ async function sendToWebhook(lead, config) {
     redirect: "follow",
   });
   if (!res.ok) {
-    const detail = await res.text().catch(() => "");
-    throw new Error(`Webhook ${res.status}: ${detail.slice(0, 300)}`);
+    throw new DeliveryError(res.status);
   }
 }
 
@@ -111,7 +116,7 @@ export default async function handler(req, res) {
   };
 
   if (!config.mailerliteKey && !config.webhookUrl) {
-    console.error("dossier-leads: no delivery target configured", { email: lead.email });
+    console.error("dossier-leads: no delivery target configured");
     res.status(503).json({
       ok: false,
       error: "Signup is temporarily offline. Please try again soon.",
@@ -127,7 +132,7 @@ export default async function handler(req, res) {
       await sendToMailerLite(lead, config);
       delivered = true;
     } catch (err) {
-      failures.push(String(err));
+      failures.push({ target: "mailerlite", status: err instanceof DeliveryError ? err.status : null });
     }
   }
   if (config.webhookUrl) {
@@ -135,7 +140,7 @@ export default async function handler(req, res) {
       await sendToWebhook(lead, config);
       delivered = true;
     } catch (err) {
-      failures.push(String(err));
+      failures.push({ target: "webhook", status: err instanceof DeliveryError ? err.status : null });
     }
   }
 
