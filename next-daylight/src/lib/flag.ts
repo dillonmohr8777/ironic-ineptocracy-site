@@ -1,36 +1,6 @@
-/* A material-space cloth study. Coordinates are measured on a 1000 × 640 print bed.
-   The trailing edge twists out of plane; the ink mesh samples the same moving hem. */
-export const BED = [1000, 640];
-export function cloth(u: number, v: number, t: number, w = 0) {
-  const a =
-    11.55 * u + 1.64 * v + 0.94 * Math.sin(v * 3.1 + u * 4.3) - t * 0.72;
-  const k = 0.43 + 0.57 * u,
-    fly = Math.pow(u, 3),
-    slack = Math.sin(5.9 * u - 0.44 * t + 2.1 * v);
-  const shear = 29 * u + 6 * v + 2.3 * Math.sin(5 * v + 7 * u) - 0.82 * t;
-  const pleat =
-    Math.sin(a) + 0.31 * Math.sin(2 * a + 0.83 * v) + 0.115 * Math.sin(shear);
-  return [
-    36 +
-      879 * u +
-      k * (48 * Math.sin(a + 0.9) + 16 * Math.sin(2 * a + 0.97)) +
-      v * (10 + 25 * slack) +
-      fly * 13 * Math.sin(9 * v - t),
-    158 +
-      65 * fly +
-      v * (307 + 21 * slack) -
-      u * 84 +
-      37 * Math.sin(u * 4.1 + 0.5) +
-      k * (43 * pleat + 12 * slack) +
-      fly * (13 + w * 6) * Math.sin(8 * v + 3 * u - t * 1.1) +
-      w * k * 8 * Math.sin(a),
-    145 * k * pleat +
-      32 * slack +
-      13 * Math.sin(shear) * Math.cos(v * 4 - u) +
-      8 * Math.sin(24 * u - 7 * v - 0.69 * t) -
-      17 * v,
-  ];
-}
+/* The Bleeding Standard. All geometry is derived from one material-space surface.
+   Units: 1000 × 640 print bed, seconds. Nothing is downloaded by the renderer. */
+export const PRINT_PHASE = 1.12;
 export function material() {
   const c = document.createElement("canvas");
   c.width = 1900;
@@ -39,13 +9,13 @@ export function material() {
   let seed = 1709;
   const rand = () =>
     (seed = (Math.imul(1664525, seed) + 1013904223) >>> 0) / 4294967296;
-  g.fillStyle = "#efede3";
+  g.fillStyle = "#f7f2e9";
   g.fillRect(0, 0, 1900, 1000);
   for (let i = 0; i < 13; i += 2) {
-    g.fillStyle = i % 4 ? "#a0261f" : "#b81d18";
+    g.fillStyle = i % 4 ? "#b1231c" : "#b81d18";
     g.fillRect(0, (i * 1000) / 13, 1900, 1000 / 13 + 0.35);
   }
-  g.fillStyle = "#17253b";
+  g.fillStyle = "#13203a";
   g.fillRect(0, 0, 760, 7000 / 13);
   g.fillStyle = "#f0ecdd";
   for (let j = 0; j < 9; j++)
@@ -70,7 +40,7 @@ export function material() {
     g.fillStyle = `rgba(255,250,224,${rand() * 0.2})`;
     g.fillRect(x, 0, 0.85, 1000);
   }
-  for (let i = 0; i < 160000; i++) {
+  for (let i = 0; i < 68000; i++) {
     g.fillStyle = i % 2 ? "rgba(255,247,222,.16)" : "rgba(28,19,16,.12)";
     g.fillRect(
       rand() * 1900,
@@ -95,240 +65,127 @@ export function material() {
   }
   return c;
 }
-const body = `vec3 cloth(vec2 uv,float t){float u=uv.x,v=uv.y;float a=11.55*u+1.64*v+.94*sin(v*3.1+u*4.3)-t*.72;float k=.43+.57*u,e=pow(u,3.),s=sin(5.9*u-.44*t+2.1*v);float sh=29.*u+6.*v+2.3*sin(5.*v+7.*u)-.82*t;float f=sin(a)+.31*sin(2.*a+.83*v)+.115*sin(sh);return vec3(36.+879.*u+k*(48.*sin(a+.9)+16.*sin(2.*a+.97))+v*(10.+25.*s)+e*13.*sin(9.*v-t),158.+65.*e+v*(307.+21.*s)-u*84.+37.*sin(u*4.1+.5)+k*(43.*f+12.*s)+e*(13.+wind*6.)*sin(8.*v+3.*u-t*1.1)+wind*k*8.*sin(a),145.*k*f+32.*s+13.*sin(sh)*cos(v*4.-u)+8.*sin(24.*u-7.*v-.69*t)-17.*v);}
-vec4 project(vec3 p){return vec4((15.+.965*p.x)/500.-1.,1.-p.y/320.,-p.z*.002,1.);}`;
+// A slack catenary with three travelling wave trains. Both lateral displacement
+// and out-of-plane lift vanish at the hoist, including the gust contribution.
+const surface = `
+uniform float time, wind, focus, sweep;
+vec3 cloth(vec2 st, float t) {
+  float u=st.x, v=st.y, edge=u*u*u;
+  float pin=smoothstep(0.,.21,u), k=pin*(.54+.46*u);
+  float packet=exp(-9.*(u-focus)*(u-focus));
+  float a=11.55*u+1.88*v+.91*sin(3.1*v+4.3*u)-.87*t + wind*packet*(.32*sweep-.21);
+  float b=5.8*u+2.05*v-.49*t, c=29.*u+5.7*v+2.1*sin(5.*v+7.*u)-1.12*t;
+  float pleat=sin(a)+.29*sin(2.*a+.83*v)+.09*sin(c);
+  float gust=wind*packet*sin(16.*u+1.8*v-1.8*t+sweep);
+  float x=47.+850.*u + v*(15.+pin*19.*sin(b)) - 8.*sin(3.14159*v)
+        + k*(51.*sin(a+.95)+13.*sin(2.*a+1.06))+edge*13.*sin(8.6*v-t);
+  float y=156.+310.*v + pin*(33.*sin(4.18*u+.43)+23.*v*sin(b))-92.*u+61.*edge
+        + k*(44.*pleat+12.*sin(b)+8.*gust)+edge*15.*sin(8.*v+3.*u-1.08*t);
+  float z=-16.*v+k*(130.*pleat+29.*sin(b)+11.*sin(c)*cos(4.*v-u)+19.*gust)
+        +edge*10.*sin(23.*u-8.*v-.71*t);
+  return vec3(x,y,z);
+}
+vec4 project(vec3 p) {return vec4((16.+.966*p.x)/500.-1.,1.-p.y/320.,-p.z*.0024,1.);}
+`;
 const vert = `#version 300 es
-precision highp float;layout(location=0) in vec2 uv;uniform float time,wind;out vec2 st;out vec3 normal;out float depth;${body}
-void main(){st=uv;vec3 p=cloth(uv,time);normal=normalize(cross(cloth(uv+vec2(.0008,0),time)-p,cloth(uv+vec2(0,.0008),time)-p));depth=p.z;gl_Position=project(p);}`;
+precision highp float;
+layout(location=0) in vec2 uv;
+out vec2 st;out vec3 normal;out float depth;
+${surface}
+void main(){vec3 p=cloth(uv,time);st=uv;depth=p.z;
+normal=normalize(cross(cloth(uv+vec2(.001,0),time)-p,cloth(uv+vec2(0,.001),time)-p));gl_Position=project(p);}`;
 const frag = `#version 300 es
-precision highp float;in vec2 st;in vec3 normal;in float depth;uniform sampler2D textile;out vec4 outColor;
-float hash(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}
-void main(){float wear=hash(vec2(floor(st.y*920.),2.));if(st.x>1.-.0015-.005*wear-.004*pow(sin(st.y*49.),8.)) discard;
-vec3 n=normalize(normal);vec3 l=normalize(vec3(-.45,-.58,.78));float diffuse=max(.0,dot(n,l));float spec=pow(max(.0,dot(n,normalize(l+vec3(0,0,1)))),18.);
-float ao=.85+.15*smoothstep(-105.,36.,depth);float fibers=pow(max(0.,sin(st.x*561.+2.*sin(st.x*89.))),10.);vec2 dye=st;dye.y-=smoothstep(.63,.99,st.y)*fibers*(.003+.010*pow(sin(31.*st.x),4.));vec3 pigment=texture(textile,dye).rgb;float yarn=.006*(hash(floor(st*vec2(1800.,980.)))-.5);vec3 color=pigment*(.48+.68*diffuse)*ao+(.092*spec+yarn)*vec3(1.,.96,.85);outColor=vec4(color,1.);}`;
+precision highp float;
+in vec2 st;in vec3 normal;in float depth;uniform sampler2D textile;out vec4 color;
+float hash(float n){return fract(sin(n*127.1)*4375.5453);}
+void main(){
+  float wear=.002+.0035*hash(floor(st.y*950.))+.004*pow(abs(sin(st.y*46.)),8.);
+  if(st.x>1.-wear) discard;
+  vec3 n=normalize(normal); if(n.z<0.) n=-n;
+  vec3 l=normalize(vec3(-.52,-.54,.78)),h=normalize(l+vec3(0,0,1));
+  float d=clamp(dot(n,l),0.,1.),valley=1.-smoothstep(-100.,54.,depth);
+  float shine=pow(max(dot(n,h),0.),22.), nap=pow(1.-abs(n.z),3.);
+  // Pigment follows longitudinal yarn, not screen coordinates, along lower hems.
+  vec2 uv=st;float fiber=pow(.5+.5*sin(uv.x*817.+2.*sin(uv.x*113.)),10.);
+  uv.y-=smoothstep(.46,.98,st.y)*fiber*(.002+.011*valley+.004*pow(sin(30.*uv.x),4.));
+  vec3 dye=texture(textile,uv).rgb;float flax=smoothstep(.57,.86,dye.g);
+  float ao=1.-.215*valley*(1.-.45*d);
+  vec3 lit=dye*(.52+.61*d)*ao;
+  lit+=vec3(1.,.91,.74)*(.062*shine+.021*nap+flax*.064*max(0.,-dot(n,l)));
+  color=vec4(lit,1.);
+}`;
 const inkVert = `#version 300 es
-precision highp float;layout(location=0) in vec4 attr;layout(location=1) in vec2 more;uniform float time,wind;out float side,down,seed;${body}
-void main(){float drop=step(1.5,attr.y);float d=mix(attr.y,1.,drop),s=more.y;float flight=fract(time*.36+s);vec3 root=cloth(vec2(attr.x,.996),time-d*.25-drop*flight*.70);float len=min(615.-root.y,attr.w*(.88+.12*sin(.65*time+s)));float radius=more.x*(.23+.77*pow(1.-d,2.4))*(.84+.16*sin(d*22.+s));root.x+=d*(2.8*sin(s+d*5.)+2.*sin(11.*d+s)) + attr.z*radius;root.y+=d*len;if(drop>.5){float z=attr.y-2.;root.y+=1.+flight*flight*min(48.,623.-root.y)+z*3.5;root.x+=attr.z*1.1*sin(z*3.14159);d=.72+.27*z;}side=attr.z;down=d;seed=s;gl_Position=project(root);}`;
+precision highp float;
+layout(location=0) in vec4 attr;layout(location=1) in vec3 more;
+out vec2 uv;out float seed,mode,opacity;
+${surface}
+vec3 thread(float u,float d,float len,float t,float s){
+  vec3 q=cloth(vec2(u,.996),t-.34*d*d);float valley=1.-smoothstep(-100.,85.,q.z);
+  q.y+=d*min(593.-q.y,len*(.72+.28*valley)*(.93+.07*sin(.69*t+s)));
+  q.x+=d*(1.8*sin(s+d*5.1)+1.1*sin(d*10.+s))+d*d*wind*1.6;
+  return q;
+}
+void main(){float u=attr.x,d=attr.y,side=attr.z,len=attr.w,rad=more.x,s=more.y;mode=more.z;seed=s;opacity=1.;uv=vec2(side,d);
+  vec3 p=thread(u,d,len,time,s);
+  if(mode<.5){float pulse=.5+.5*cos(d*20.-time*2.+s);
+    p.x+=side*rad*((.18+.82*pow(1.-d,2.7))*(.72+.28*pulse)+.12*exp(-1000.*(d-.97)*(d-.97)));
+  } else {
+    // Each droplet remembers the point it left, even as the hem moves away.
+    float cycle=3.5+.9*fract(s),phase=mod(time+s,cycle),fall=.85+.35*fract(s*.62);
+    float launch=time-phase; vec3 tip=thread(u,1.,len,launch,s);
+    vec2 drift=vec2(2.2*sin(s),min(42.+28.*fract(s*.48),619.-tip.y));
+    if(mode<1.5){float f=clamp(phase/fall,0.,1.);p=tip; p.xy+=drift*vec2(f,f*f);
+      p.y+=rad*(.72+f*.6)*(d-.5);p.x+=side*rad*.40*sin(d*3.14159);
+      opacity=smoothstep(0.,.14,f)*(1.-smoothstep(.90,1.,f));
+    } else {float age=phase-fall;float wick=smoothstep(0.,1.2,age);p=tip;p.xy+=drift;
+      p.xy+=vec2(side,(d-.5)*2.)*vec2(2.4+3.8*wick,1.4+1.7*wick);opacity=step(0.,age)*(1.-smoothstep(.1,cycle-fall,age));}
+  }gl_Position=project(p);
+}`;
 const inkFrag = `#version 300 es
-precision highp float;in float side,down,seed;uniform float time;out vec4 outColor;void main(){float grain=fract(sin(dot(floor(gl_FragCoord.xy),vec2(14.17,78.23)))*4375.5);float a=(1.-smoothstep(.15,1.,abs(side)))*(.34+.45*fract(seed*2.72))*(.74+.26*grain)*(1.-smoothstep(.93,1.,down));float flow=.60+.40*smoothstep(-.8,.9,sin(18.*down-seed-time*1.6));outColor=vec4(mix(vec3(.61,.065,.046),vec3(.72,.12,.07),down),a*flow);}`;
-export function trails() {
-  let k = 120;
-  const r = () => (k = (Math.imul(k, 1664525) + 1013904223) >>> 0) / 4294967296;
-  const out: number[][] = [];
-  for (const [u, l, n] of [
-    [0.035, 46, 5],
-    [0.165, 118, 9],
-    [0.29, 146, 13],
-    [0.38, 65, 4],
-    [0.565, 143, 9],
-    [0.71, 64, 4],
-    [0.84, 37, 6],
-    [0.94, 58, 3],
-  ])
-    for (let j = 0; j < n; j++)
-      out.push([
-        u + (r() - 0.5) * 0.047,
-        l * (0.16 + 0.84 * r()),
-        1.6 + 6.8 * r(),
-        40 * r(),
-      ]);
-  return out;
-}
-export function webRenderer(canvas: HTMLCanvasElement, tex: HTMLCanvasElement) {
-  const gl = canvas.getContext("webgl2", {
-    alpha: true,
-    antialias: true,
-    premultipliedAlpha: true,
-    powerPreference: "low-power",
-  });
-  if (!gl) return null;
-  const buffers: WebGLBuffer[] = [],
-    progs: WebGLProgram[] = [],
-    vaos: WebGLVertexArrayObject[] = [];
-  function program(a: string, b: string) {
-    const p = gl!.createProgram()!;
-    for (const [type, src] of [
-      [gl!.VERTEX_SHADER, a],
-      [gl!.FRAGMENT_SHADER, b],
-    ] as const) {
-      const sh = gl!.createShader(type)!;
-      gl!.shaderSource(sh, src);
-      gl!.compileShader(sh);
-      if (!gl!.getShaderParameter(sh, gl!.COMPILE_STATUS))
-        throw Error(gl!.getShaderInfoLog(sh) || "Material compilation failed");
-      gl!.attachShader(p, sh);
-      gl!.deleteShader(sh);
-    }
-    gl!.linkProgram(p);
-    if (!gl!.getProgramParameter(p, gl!.LINK_STATUS))
-      throw Error("Material link failed");
-    progs.push(p);
-    return p;
-  }
-  const clothP = program(vert, frag),
-    inkP = program(inkVert, inkFrag);
-  const w = 174,
-    h = 94,
-    uv = [],
-    ix = [];
-  for (let y = 0; y <= h; y++)
-    for (let x = 0; x <= w; x++) uv.push(x / w, y / h);
-  for (let y = 0; y < h; y++)
-    for (let x = 0; x < w; x++) {
-      const i = y * (w + 1) + x;
-      ix.push(i, i + 1, i + w + 1, i + 1, i + w + 2, i + w + 1);
-    }
-  function vao() {
-    const v = gl!.createVertexArray()!;
-    vaos.push(v);
-    gl!.bindVertexArray(v);
-    return v;
-  }
-  function buf(target: number, data: Float32Array | Uint16Array) {
-    const b = gl!.createBuffer()!;
-    buffers.push(b);
-    gl!.bindBuffer(target, b);
-    gl!.bufferData(target, data, gl!.STATIC_DRAW);
-  }
-  const cv = vao();
-  buf(gl.ARRAY_BUFFER, new Float32Array(uv));
-  gl.enableVertexAttribArray(0);
-  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
-  buf(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(ix));
-  const texture = gl.createTexture();
-  gl.bindTexture(gl.TEXTURE_2D, texture);
-  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, tex);
-  gl.generateMipmap(gl.TEXTURE_2D);
-  gl.texParameteri(
-    gl.TEXTURE_2D,
-    gl.TEXTURE_MIN_FILTER,
-    gl.LINEAR_MIPMAP_LINEAR,
-  );
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-  const iv = vao(),
-    ribbons = [];
-  for (const [u, len, rad, s] of trails())
-    for (let j = 0; j < 18; j++)
-      for (const [z, side] of [
-        [0, -1],
-        [0, 1],
-        [1, -1],
-        [1, -1],
-        [0, 1],
-        [1, 1],
-      ])
-        ribbons.push(u, (j + z) / 18, side, len, rad, s);
-  for (const [u, len, rad, s] of trails().filter((_, i) => i % 4 === 0))
-    for (let j = 0; j < 6; j++)
-      for (const [z, side] of [
-        [0, -1],
-        [0, 1],
-        [1, -1],
-        [1, -1],
-        [0, 1],
-        [1, 1],
-      ])
-        ribbons.push(u, 2 + (j + z) / 6, side, len, rad, s);
-  buf(gl.ARRAY_BUFFER, new Float32Array(ribbons));
-  for (let a = 0; a < 2; a++) {
-    gl.enableVertexAttribArray(a);
-    gl.vertexAttribPointer(a, a ? 2 : 4, gl.FLOAT, false, 24, a ? 16 : 0);
-  }
-  const loc = progs.map((p) =>
-    ["time", "wind"].map((n) => gl.getUniformLocation(p, n)),
-  );
-  return {
-    draw(t: number, w: number) {
-      gl.viewport(0, 0, canvas.width, canvas.height);
-      gl.clearColor(0, 0, 0, 0);
-      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-      gl.useProgram(inkP);
-      gl.uniform1f(loc[1][0], t);
-      gl.uniform1f(loc[1][1], w);
-      gl.bindVertexArray(iv);
-      gl.disable(gl.DEPTH_TEST);
-      gl.enable(gl.BLEND);
-      gl.blendFuncSeparate(
-        gl.SRC_ALPHA,
-        gl.ONE_MINUS_SRC_ALPHA,
-        gl.ONE,
-        gl.ONE_MINUS_SRC_ALPHA,
-      );
-      gl.drawArrays(gl.TRIANGLES, 0, ribbons.length / 6);
-      gl.disable(gl.BLEND);
-      gl.enable(gl.DEPTH_TEST);
-      gl.useProgram(clothP);
-      gl.uniform1f(loc[0][0], t);
-      gl.uniform1f(loc[0][1], w);
-      gl.bindVertexArray(cv);
-      gl.drawElements(gl.TRIANGLES, ix.length, gl.UNSIGNED_SHORT, 0);
-    },
-    dispose() {
-      for (const v of vaos) gl.deleteVertexArray(v);
-      for (const b of buffers) gl.deleteBuffer(b);
-      for (const p of progs) gl.deleteProgram(p);
-      gl.deleteTexture(texture);
-    },
-  };
-}
-// Affine triangular patches retain the 50 woven stars, even without WebGL.
-export function paperRenderer(c: HTMLCanvasElement, mat: HTMLCanvasElement) {
-  const g = c.getContext("2d")!,
-    inks = trails();
-  return {
-    draw(t: number, w: number) {
-      g.setTransform(c.width / 1000, 0, 0, c.height / 640, 0, 0);
-      g.clearRect(0, 0, 1000, 640);
-      g.translate(15, 0);
-      g.scale(0.965, 1);
-      for (const [u, len, r, s] of inks) {
-        const [x, y] = cloth(u, 1, t, w);
-        g.fillStyle = "rgba(153,37,29,.54)";
-        g.beginPath();
-        g.moveTo(x - r, y - 2);
-        g.quadraticCurveTo(x, y + len * 0.4, x + Math.sin(s) * 2, y + len);
-        g.quadraticCurveTo(x + 2, y + len * 0.23, x + r, y - 2);
-        g.fill();
-      }
-      const nx = 42,
-        ny = 16;
-      for (let i = 0; i < nx; i++)
-        for (let j = 0; j < ny; j++) {
-          const u = i / nx,
-            v = j / ny;
-          for (const f of [0, 1]) {
-            const a = cloth(u + f / nx, v + f / ny, t, w),
-              b = cloth(u + (1 - f) / nx, v + f / ny, t, w),
-              d = cloth(u + f / nx, v + (1 - f) / ny, t, w);
-            g.save();
-            g.beginPath();
-            g.moveTo(a[0], a[1]);
-            g.lineTo(b[0], b[1]);
-            g.lineTo(d[0], d[1]);
-            g.closePath();
-            g.clip();
-            const sx = ((1 - 2 * f) * mat.width) / nx,
-              sy = ((1 - 2 * f) * mat.height) / ny;
-            g.transform(
-              (b[0] - a[0]) / sx,
-              (b[1] - a[1]) / sx,
-              (d[0] - a[0]) / sy,
-              (d[1] - a[1]) / sy,
-              a[0],
-              a[1],
-            );
-            g.drawImage(
-              mat,
-              -(u + f / nx) * mat.width,
-              -(v + f / ny) * mat.height,
-            );
-            g.fillStyle = `rgba(30,25,20,${Math.max(0, 0.13 - ((b[2] - a[2]) / (1 - 2 * f)) * 0.009)})`;
-            g.fillRect(-mat.width, -mat.height, mat.width * 2, mat.height * 2);
-            g.restore();
-          }
-        }
-    },
-    dispose() {},
-  };
+precision highp float;
+in vec2 uv;in float seed,mode,opacity;out vec4 color;uniform float time;
+void main(){float w=abs(uv.x),d=uv.y;
+  float a=(1.-smoothstep(.16,1.,w))*(.51+.33*fract(seed*.61));
+  float load=.5+.5*sin(15.*d-1.66*time+seed);
+  a*=.78+.22*load;
+  if(mode<.5)a*=1.-.62*smoothstep(.88,1.,d);
+  if(mode>1.5){float r=length(vec2(uv.x,2.*d-1.));a=.20*(1.-smoothstep(.15,.99,r))+.08*exp(-80.*(r-.69)*(r-.69));}
+  color=vec4(mix(vec3(.722,.114,.094),vec3(.561,.067,.051),.26+.65*load),a*opacity);
+}`;
+const yarnVert=`#version 300 es
+precision highp float;layout(location=0) in vec4 yarn;out vec2 st;out float shade;
+${surface}
+void main(){float v=yarn.x,d=yarn.y,s=yarn.w;st=vec2(.984,v);vec3 p=cloth(st,time);float l=3.+16.*fract(s*7.3);
+  p+=d*(cloth(vec2(.997,v),time)-p);p.x+=d*l;p.y+=d*d*(4.8*sin(s+time)+1.)+yarn.z*(.66-.55*d);p.z+=1.;
+  shade=.69+.25*fract(s);gl_Position=project(p);}`;
+const yarnFrag=`#version 300 es
+precision highp float;in vec2 st;in float shade;uniform sampler2D textile;out vec4 color;
+void main(){color=vec4(texture(textile,st).rgb*shade,1.);}`;
+function seeded(n:number){return ()=> (n=(Math.imul(1664525,n)+1013904223)>>>0)/4294967296;}
+export function webRenderer(canvas:HTMLCanvasElement){
+  const gl=canvas.getContext('webgl2',{alpha:true,antialias:true,premultipliedAlpha:true,powerPreference:'low-power'});if(!gl)return null;
+  const buffers:WebGLBuffer[]=[],arrays:WebGLVertexArrayObject[]=[],programs:WebGLProgram[]=[];
+  function compile(v:string,f:string){const p=gl!.createProgram()!;programs.push(p);
+    for(const [type,src] of [[gl!.VERTEX_SHADER,v],[gl!.FRAGMENT_SHADER,f]] as const){const sh=gl!.createShader(type)!;gl!.shaderSource(sh,src);gl!.compileShader(sh);if(!gl!.getShaderParameter(sh,gl!.COMPILE_STATUS))throw Error(gl!.getShaderInfoLog(sh)??'Shader compilation');gl!.attachShader(p,sh);gl!.deleteShader(sh)}
+    gl!.linkProgram(p);if(!gl!.getProgramParameter(p,gl!.LINK_STATUS))throw Error(gl!.getProgramInfoLog(p)??'Shader link');
+    const loc=['time','wind','focus','sweep'].map(n=>gl!.getUniformLocation(p,n));return (values:number[])=>{gl!.useProgram(p);loc.forEach((l,i)=>gl!.uniform1f(l,values[i]))};}
+  function buffer(target:number,data:Float32Array|Uint16Array){const b=gl!.createBuffer()!;buffers.push(b);gl!.bindBuffer(target,b);gl!.bufferData(target,data,gl!.STATIC_DRAW);}
+  function vao(data:number[],sizes:number[]){const v=gl!.createVertexArray()!;arrays.push(v);gl!.bindVertexArray(v);buffer(gl!.ARRAY_BUFFER,new Float32Array(data));const stride=sizes.reduce((s,n)=>s+n,0)*4;let offset=0;sizes.forEach((n,i)=>{gl!.enableVertexAttribArray(i);gl!.vertexAttribPointer(i,n,gl!.FLOAT,false,stride,offset);offset+=n*4});return v;}
+  const textile=compile(vert,frag), ink=compile(inkVert,inkFrag), yarn=compile(yarnVert,yarnFrag);
+  const nx=158,ny=78,uv:number[]=[],ix:number[]=[];
+  for(let y=0;y<=ny;y++)for(let x=0;x<=nx;x++)uv.push(x/nx,y/ny);
+  for(let y=0;y<ny;y++)for(let x=0;x<nx;x++){const i=y*(nx+1)+x;ix.push(i,i+1,i+nx+1,i+1,i+nx+2,i+nx+1)}
+  const cloth=vao(uv,[2]);buffer(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array(ix));
+  const tex=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tex);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,material());gl.generateMipmap(gl.TEXTURE_2D);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+  const quad=[[0,-1],[0,1],[1,-1],[1,-1],[0,1],[1,1]],r=seeded(120),ribbons:number[]=[],fibers:number[]=[];
+  for(const [center,length,count] of [[.035,45,3],[.16,111,7],[.285,138,8],[.392,60,4],[.565,143,7],[.715,71,4],[.84,41,4],[.94,58,4]]){
+    for(let j=0;j<count;j++){const u=center+(r()-.5)*.041,len=length*(.19+.81*r()),rad=1.5+4.6*r(),s=40*r();
+      for(const [mode,steps] of [[0,20],...(j===0||j===4?[[1,8],[2,1]]:[])])for(let k=0;k<steps;k++)for(const [z,side] of quad)ribbons.push(u,(k+z)/steps,side,len,rad,s,mode);}}
+  for(let j=0;j<165;j++){const v=r(),s=r()*39;for(let k=0;k<4;k++)for(const [z,side] of quad)fibers.push(v,(k+z)/4,side,s)}
+  const trails=vao(ribbons,[4,3]),fray=vao(fibers,[4]);
+  return {draw(t:number,w=0,f=.5,d=0){const values=[t,w,f,d];gl.viewport(0,0,canvas.width,canvas.height);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+    gl.disable(gl.DEPTH_TEST);gl.enable(gl.BLEND);gl.blendFuncSeparate(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA,gl.ONE,gl.ONE_MINUS_SRC_ALPHA);ink(values);gl.bindVertexArray(trails);gl.drawArrays(gl.TRIANGLES,0,ribbons.length/7);
+    gl.disable(gl.BLEND);gl.enable(gl.DEPTH_TEST);textile(values);gl.bindVertexArray(cloth);gl.drawElements(gl.TRIANGLES,ix.length,gl.UNSIGNED_SHORT,0);yarn(values);gl.bindVertexArray(fray);gl.drawArrays(gl.TRIANGLES,0,fibers.length/4);
+  },dispose(){arrays.forEach(v=>gl.deleteVertexArray(v));buffers.forEach(b=>gl.deleteBuffer(b));programs.forEach(p=>gl.deleteProgram(p));gl.deleteTexture(tex);}};
 }

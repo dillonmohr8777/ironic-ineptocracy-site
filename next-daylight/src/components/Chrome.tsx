@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
+import { useAudioChannel } from "@/lib/audio";
 import { Icon, Mark } from "./Icon";
 const links = [
   ["The book", "/book/"],
@@ -14,6 +15,7 @@ export function Header() {
   const dialog = useRef<HTMLDialogElement>(null),
     audio = useRef<HTMLAudioElement>(null),
     [sound, soundOn] = useState(false);
+  useAudioChannel(audio);
   return (
     <>
       <a className="skip" href="#main">
@@ -37,7 +39,7 @@ export function Header() {
           </nav>
           <div className="mast-actions">
             <button
-              className="score"
+              className="score" aria-pressed={sound}
               aria-label={`${sound ? "Mute" : "Play"} ambient daylight score`}
               onClick={async () => {
                 const a = audio.current!;

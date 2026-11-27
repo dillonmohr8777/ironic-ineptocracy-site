@@ -1,11 +1,11 @@
-import { deliver } from "../../services/dossier-leads";
-type Env = { DOSSIER_LEADS_URL?: string; DOSSIER_LEADS_TOKEN?: string };
+import { deliver, health, type LeadEnv } from "../../services/dossier-leads";
+export function onRequestGet({env}:{env:LeadEnv}) { return Response.json(health(env), {headers:{"Cache-Control":"no-store"}}); }
 export async function onRequestPost({
   request,
   env,
 }: {
   request: Request;
-  env: Env;
+  env: LeadEnv;
 }) {
   const origin = request.headers.get("origin");
   if (origin && origin !== new URL(request.url).origin)
@@ -21,11 +21,7 @@ export async function onRequestPost({
   } catch {
     return Response.json({ ok: false }, { status: 400 });
   }
-  const [status, result] = await deliver(
-    body,
-    env.DOSSIER_LEADS_URL,
-    env.DOSSIER_LEADS_TOKEN,
-  );
+  const [status, result] = await deliver(body, env);
   return Response.json(result, {
     status,
     headers: { "Cache-Control": "no-store" },

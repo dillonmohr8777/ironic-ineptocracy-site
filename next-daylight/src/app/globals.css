@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./fonts.css";
 :root {
   --paper: #fafaf7;
   --white: #fff;
@@ -8,9 +9,9 @@
   --strong: #cac9c0;
   --red: #b81d18;
   --navy: #13203a;
-  --ser: var(--display), Georgia, serif;
-  --sb: var(--sans), Arial, sans-serif;
-  --mb: var(--mono), monospace;
+  --ser: "Instrument Serif", Georgia, serif;
+  --sb: "Plus Jakarta Sans", Arial, sans-serif;
+  --mb: "IBM Plex Mono", monospace;
   color-scheme: light;
 }
 * {

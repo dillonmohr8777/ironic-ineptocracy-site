@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
+import { useAudioChannel } from "@/lib/audio";
 import { Icon } from "./Icon";
 export function Voice({
   src,
@@ -16,6 +17,7 @@ export function Voice({
     [err, fail] = useState(false),
     [current, at] = useState(0),
     [dur, duration] = useState(0);
+  useAudioChannel(a);
   const fmt = (n: number) =>
     `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2, "0")}`;
   useEffect(
@@ -89,9 +91,6 @@ export function Voice({
       el.pause();
       return;
     }
-    document.querySelectorAll("audio").forEach((m) => {
-      if (m !== el) m.pause();
-    });
     try {
       if (!audioCtx.current) {
         const ac = new AudioContext();
@@ -109,7 +108,7 @@ export function Voice({
     await el.play().catch(() => fail(true));
   }
   return (
-    <div className="voice">
+    <div className="voice" data-playing={playing}>
       <button
         onClick={toggle}
         aria-label={`${playing ? "Pause" : "Play"} ${label}`}
@@ -128,7 +127,7 @@ export function Voice({
         ref={a}
         src={"/audio/" + src + ".mp3"}
         preload="metadata"
-        onPlay={() => set(true)}
+        onPlay={() => { set(true); fail(false); }}
         onPause={() => set(false)}
         onEnded={() => set(false)}
         onTimeUpdate={(e) => at(e.currentTarget.currentTime)}

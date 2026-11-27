@@ -1,6 +1,7 @@
 import { CastGallery } from "@/components/Cast";
 import { Folio } from "@/components/Folio";
-export const metadata = { title: "The cast index" };
+import { edition } from "@/lib/publication";
+export const metadata = edition("/characters/", "The cast index", "Meet ten subjects of Dillon Mohr’s political thriller through portrait studies, voice auditions, and spoiler-safe public records.");
 export default function Characters() {
   return (
     <div className="shell sub">

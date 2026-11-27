@@ -1,50 +1,146 @@
 {
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "trailingSlash": true,
   "redirects": [
-    { "source": "/characters/abigail", "destination": "/characters/avigail", "permanent": true },
-    { "source": "/ask", "destination": "/characters", "permanent": true },
-    { "source": "/quiz", "destination": "/book", "permanent": true },
-    { "source": "/quiz/:path*", "destination": "/book", "permanent": true },
-    { "source": "/characters/newman", "destination": "/characters", "permanent": true },
-    { "source": "/blog/the-file-opens", "destination": "/dispatches/the-file-opens", "permanent": true },
-    { "source": "/blogs/the-file-opens", "destination": "/dispatches/the-file-opens", "permanent": true },
-    { "source": "/essays/the-file-opens", "destination": "/dispatches/the-file-opens", "permanent": true },
-    { "source": "/blog", "destination": "/dispatches", "permanent": true },
-    { "source": "/blogs", "destination": "/dispatches", "permanent": true },
-    { "source": "/essays", "destination": "/dispatches", "permanent": true },
-    { "source": "/blog/:path*", "destination": "/dispatches/:path*", "permanent": true },
-    { "source": "/blogs/:path*", "destination": "/dispatches/:path*", "permanent": true },
-    { "source": "/essays/:path*", "destination": "/dispatches/:path*", "permanent": true },
-    { "source": "/newsletter", "destination": "/dossier", "permanent": true }
+    {
+      "source": "/characters/abigail/",
+      "destination": "/characters/avigail/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ask/",
+      "destination": "/characters/",
+      "statusCode": 301
+    },
+    {
+      "source": "/quiz/",
+      "destination": "/book/",
+      "statusCode": 301
+    },
+    {
+      "source": "/quiz/:path*/",
+      "destination": "/book/",
+      "statusCode": 301
+    },
+    {
+      "source": "/characters/newman/",
+      "destination": "/characters/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/the-file-opens/",
+      "destination": "/dispatches/the-file-opens/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blogs/the-file-opens/",
+      "destination": "/dispatches/the-file-opens/",
+      "statusCode": 301
+    },
+    {
+      "source": "/essays/the-file-opens/",
+      "destination": "/dispatches/the-file-opens/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/",
+      "destination": "/dispatches/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blogs/",
+      "destination": "/dispatches/",
+      "statusCode": 301
+    },
+    {
+      "source": "/essays/",
+      "destination": "/dispatches/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/:path*/",
+      "destination": "/dispatches/:path*/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blogs/:path*/",
+      "destination": "/dispatches/:path*/",
+      "statusCode": 301
+    },
+    {
+      "source": "/essays/:path*/",
+      "destination": "/dispatches/:path*/",
+      "statusCode": 301
+    },
+    {
+      "source": "/newsletter/",
+      "destination": "/dossier/",
+      "statusCode": 301
+    }
   ],
   "headers": [
     {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
+    },
+    {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
       ]
     },
     {
       "source": "/images/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
       ]
     },
     {
       "source": "/sitemap.xml",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
       ]
     },
     {
       "source": "/feed.xml",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
       ]
     },
     {
       "source": "/llms.txt",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
       ]
     }
   ]

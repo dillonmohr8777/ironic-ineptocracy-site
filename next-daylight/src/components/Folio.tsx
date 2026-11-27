@@ -7,7 +7,7 @@ export function Folio({ label }: { label: string }) {
         {label}
       </span>
       <span>
-        CASE 017 <b>—</b> TIER 01
+        CASE 017 <b>/</b> TIER 01
       </span>
     </div>
   );

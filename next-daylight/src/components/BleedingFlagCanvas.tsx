@@ -1,112 +1,37 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { material, webRenderer, paperRenderer } from "@/lib/flag";
+import { PRINT_PHASE, webRenderer } from "@/lib/flag";
 import { Icon } from "./Icon";
 export default function BleedingFlagCanvas() {
-  const host = useRef<HTMLDivElement>(null),
-    [paused, setPaused] = useState(false),
-    ctrl = useRef<(p: boolean) => void>(() => {});
-  useEffect(() => {
-    const el = host.current!;
-    let c = document.createElement("canvas");
-    const mat = material();
-    let engine;
-    try {
-      engine = webRenderer(c, mat);
-    } catch {}
-    const renderer = engine ? "webgl2" : "paper";
-    if (!engine) {
-      c = document.createElement("canvas");
-      engine = paperRenderer(c, mat);
-    }
-    const render = engine;
-    c.setAttribute("aria-hidden", "true");
-    el.appendChild(c);
-    el.dataset.renderer = renderer;
-    let t = 1.1,
-      id = 0,
-      prev = 0,
-      seen = false,
-      wind = 0,
-      target = 0;
-    const mq = matchMedia("(prefers-reduced-motion: reduce)");
-    let stop = mq.matches;
-    setPaused(stop);
-    function draw() {
-      render.draw(t, wind);
-      el.dataset.ready = "true";
-    }
-    function tick(now: number) {
-      id = 0;
-      if (stop || !seen || document.hidden) return;
-      t += prev ? Math.min((now - prev) / 1000, 0.06) : 0;
-      prev = now;
-      wind += (target + Math.min(scrollY / 1500, 0.7) - wind) * 0.035;
-      draw();
-      id = requestAnimationFrame(tick);
-    }
-    function sync() {
-      cancelAnimationFrame(id);
-      prev = 0;
-      if (seen && !stop && !document.hidden) id = requestAnimationFrame(tick);
-    }
-    ctrl.current = (p) => {
-      stop = p;
-      sync();
-    };
-    function reduced() {
-      stop = mq.matches;
-      setPaused(stop);
-      sync();
-    }
-    function move(e: PointerEvent) {
-      const r = el.getBoundingClientRect();
-      target =
-        1.2 -
-        Math.min(
-          1.1,
-          Math.hypot(
-            (e.clientX - r.left) / r.width - 0.5,
-            (e.clientY - r.top) / r.height - 0.5,
-          ) * 2,
-        );
-    }
-    function leave() {
-      target = 0;
-    }
-    const ro = new ResizeObserver(() => {
-      const d = Math.min(devicePixelRatio, 2);
-      c.width = Math.max(1, Math.round(el.clientWidth * d));
-      c.height = Math.max(1, Math.round(el.clientHeight * d));
-      draw();
-    });
-    ro.observe(el);
-    const io = new IntersectionObserver((entries) => {
-      seen = entries[0].isIntersecting;
-      sync();
-    });
-    io.observe(el);
-    el.addEventListener("pointermove", move);
-    el.addEventListener("pointerleave", leave);
-    document.addEventListener("visibilitychange", sync);
-    mq.addEventListener("change", reduced);
-    return () => {
-      cancelAnimationFrame(id);
-      ro.disconnect();
-      io.disconnect();
-      document.removeEventListener("visibilitychange", sync);
-      mq.removeEventListener("change", reduced);
-      el.removeEventListener("pointermove", move);
-      el.removeEventListener("pointerleave", leave);
-      c.remove();
-      render.dispose();
-    };
-  }, []);
+  const host=useRef<HTMLDivElement>(null), ctrl=useRef<(p:boolean)=>void>(()=>{});
+  const [paused,setPaused]=useState(false), [unavailable,setUnavailable]=useState(false);
+  useEffect(()=>{
+    const el=host.current!,canvas=document.createElement('canvas'),mq=matchMedia('(prefers-reduced-motion: reduce)');
+    let render:ReturnType<typeof webRenderer>=null,t=PRINT_PHASE,stop=mq.matches,seen=false,raf=0,last=0,wind=0,target=0,focus=.5,tx=.5,sweep=0,dir=0;
+    canvas.setAttribute('aria-hidden','true');setPaused(stop);el.dataset.renderer='print';
+    function size(){if(!render)return;const d=Math.min(2,devicePixelRatio);canvas.width=Math.max(1,Math.round(el.clientWidth*d));canvas.height=Math.max(1,Math.round(el.clientHeight*d));render.draw(t,wind,focus,sweep)}
+    function init(){if(render)return true;try{render=webRenderer(canvas)}catch{render=null}if(!render){setUnavailable(true);return false}
+      el.append(canvas);size();el.dataset.ready='true';el.dataset.renderer='webgl2';return true;}
+    function tick(now:number){raf=0;if(stop||!seen||document.hidden||!render)return;
+      const dt=last?Math.min(.18,(now-last)/1000):0,k=1-Math.exp(-4*dt);last=now;t+=dt;
+      wind+=(target+Math.min(scrollY/1000,.64)-wind)*k;focus+=(tx-focus)*k;sweep+=(dir-sweep)*k;dir*=Math.exp(-3*dt);
+      render.draw(t,wind,focus,sweep);raf=requestAnimationFrame(tick)}
+    function sync(){cancelAnimationFrame(raf);last=0;if(!stop&&seen&&!document.hidden&&init())raf=requestAnimationFrame(tick)}
+    ctrl.current=p=>{stop=p;setPaused(p);sync()};
+    function preference(){stop=mq.matches;setPaused(stop);if(stop){t=PRINT_PHASE;wind=target=sweep=dir=0;tx=focus=.5;size()}sync()}
+    function move(e:PointerEvent){const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      dir=Math.max(-1,Math.min(1,(x-tx)*21));tx=Math.max(0,Math.min(1,x));target=Math.max(0,1.16-Math.hypot(x-.5,(y-.5)*1.4))*(e.buttons?1.65:1.05)}
+    function leave(){target=dir=0}function lost(e:Event){e.preventDefault();cancelAnimationFrame(raf);stop=true;setUnavailable(true);el.dataset.ready='false';el.dataset.renderer='print'}
+    const ro=new ResizeObserver(size);ro.observe(el);const io=new IntersectionObserver(es=>{seen=es[0].isIntersecting;sync()});io.observe(el);
+    el.addEventListener('pointermove',move,{passive:true});el.addEventListener('pointerdown',move,{passive:true});el.addEventListener('pointerleave',leave);canvas.addEventListener('webglcontextlost',lost);
+    document.addEventListener('visibilitychange',sync);mq.addEventListener('change',preference);
+    return ()=>{cancelAnimationFrame(raf);ro.disconnect();io.disconnect();el.removeEventListener('pointermove',move);el.removeEventListener('pointerdown',move);el.removeEventListener('pointerleave',leave);canvas.removeEventListener('webglcontextlost',lost);document.removeEventListener('visibilitychange',sync);mq.removeEventListener('change',preference);render?.dispose();canvas.remove();delete el.dataset.ready};
+  },[]);
   return (
     <figure className="flag-study">
       <div className="plate-top micro">
         <span>
-          <b className="live-dot" /> LIVE ARTWORK
+          <b className="live-dot" /> {unavailable || paused ? "MUSEUM PRINT" : "LIVE ARTWORK"}
         </span>
         <span>FIG. 01 / 06</span>
       </div>
@@ -140,13 +65,11 @@ export default function BleedingFlagCanvas() {
         </div>
         <button
           className="pill"
-          onClick={() => {
-            ctrl.current(!paused);
-            setPaused(!paused);
-          }}
+          disabled={unavailable}
+          onClick={() => ctrl.current(!paused)}
         >
           <Icon name={paused ? "play" : "pause"} size={12} />
-          {paused ? "Resume Motion" : "Pause Motion"}
+          {unavailable ? "Static print" : paused ? "Resume Motion" : "Pause Motion"}
         </button>
       </figcaption>
     </figure>

@@ -7,8 +7,11 @@
   "scripts": {
     "content": "node scripts/generate-seo-dispatches.mjs",
     "enhance": "node scripts/generate-seo-dispatches.mjs && node scripts/expand-pages.mjs && node scripts/build-seo.mjs",
-    "build": "node scripts/generate-seo-dispatches.mjs && node scripts/expand-pages.mjs && node scripts/build-seo.mjs && node scripts/vercel-static-build.mjs",
+    "build": "node scripts/vercel-static-build.mjs",
     "validate": "node scripts/validate-site.mjs",
     "submit:indexnow": "node scripts/submit-indexnow.mjs"
+  },
+  "engines": {
+    "node": ">=20.9.0"
   }
 }

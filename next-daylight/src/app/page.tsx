@@ -5,16 +5,20 @@ import { Reader } from "@/components/Reader";
 import { Atlas } from "@/components/Atlas";
 import { Request } from "@/components/Request";
 import { Icon } from "@/components/Icon";
+import { edition, homeTitle, summary, origin, site, card } from "@/lib/publication";
+import { StructuredData } from "@/components/StructuredData";
+export const metadata = edition("/", homeTitle, summary);
 export default function Home() {
   return (
     <div className="shell">
+      <StructuredData value={{ "@context": "https://schema.org", "@type": "Book", "@id": origin + "/#book", name: site, author: { "@type": "Person", name: "Dillon Mohr" }, url: origin + "/book/", description: summary, inLanguage: "en-US", genre: ["Political satire", "Political thriller"], image: card.url }} />
       <div className="folio micro">
         <span>
           <i className="folio-cross">✳</i> THE PUBLIC ARCHIVE <b>/</b> CASE NO.
           017
         </span>
         <span>
-          VOL. 01 <b>—</b> DAYLIGHT EDITION
+          VOL. 01 <b>/</b> DAYLIGHT EDITION
         </span>
       </div>
       <section className="hero">

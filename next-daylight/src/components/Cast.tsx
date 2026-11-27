@@ -85,7 +85,7 @@ export function CastDeck() {
           <img
             loading="lazy"
             src={s.image}
-            alt={s.name + " — archival cast portrait"}
+            alt={s.name + " / archival cast portrait"}
             width="896"
             height="1200"
           />

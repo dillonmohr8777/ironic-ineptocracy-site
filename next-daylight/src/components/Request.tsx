@@ -1,94 +1,16 @@
 "use client";
-import { useRef, useState } from "react";
+import { useState, type FormEvent } from "react";
 import { Icon } from "./Icon";
-export function Request() {
-  const [status, set] = useState(""),
-    [busy, wait] = useState(false);
-  const form = useRef<HTMLFormElement>(null);
-  return (
-    <section className="access" id="request">
-      <div className="folder-tab micro">
-        <Icon name="folder" size={15} /> FILE DG–04
-      </div>
-      <div className="request-content">
-        <div>
-          <span className="micro over">
-            <b />
-            06 / DOSSIER ACCESS
-          </span>
-          <h2>
-            The Garnier
-            <br />
-            <em>Dossier.</em>
-          </h2>
-          <p>
-            Private capital. Public policy. Request the reader file on the man
-            who confuses ownership with jurisdiction.
-          </p>
-        </div>
-        <form
-          ref={form}
-          onSubmit={async (e) => {
-            e.preventDefault();
-            if (busy) return;
-            if (process.env.NEXT_PUBLIC_DOSSIER_BACKEND !== "enabled") {
-              set(
-                "Preview edition — no address was sent or saved. The public subject file is open below.",
-              );
-              return;
-            }
-            wait(true);
-            set("");
-            try {
-              const email = new FormData(form.current!).get("email");
-              const r = await fetch("/api/dossier-leads", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, source: "public-archive" }),
-              });
-              if (
-                !r.ok ||
-                !r.headers.get("content-type")?.includes("application/json")
-              )
-                throw Error();
-              const result = await r.json();
-              if (result.ok !== true && result.success !== true) throw Error();
-              set("Request received. Your dossier request is on file.");
-              form.current?.reset();
-            } catch {
-              set(
-                "The request could not be confirmed. Try again later or read the public file below.",
-              );
-            } finally {
-              wait(false);
-            }
-          }}
-        >
-          <label htmlFor="request-email" className="micro">
-            READER’S EMAIL ADDRESS
-          </label>
-          <input
-            name="email"
-            id="request-email"
-            type="email"
-            placeholder="you@example.com"
-            autoComplete="email"
-            required
-            maxLength={254}
-          />
-          <button className="btn primary" disabled={busy}>
-            {busy ? "Requesting…" : "Request the dossier"}
-            <Icon name="right" size={16} />
-          </button>
-          {status && (
-            <div className="form-status" role="status">
-              {status}{" "}
-              <a href="/characters/dijon-garnier/">Read Garnier’s file ↗</a>
-            </div>
-          )}
-          <small className="micro">TIER 01 / SPOILER-SAFE READER FILE</small>
-        </form>
-      </div>
-    </section>
-  );
+export function Request({compact=false}:{compact?:boolean}) {
+  const [status,set]=useState<"idle"|"sending"|"received"|"offline">("idle");
+  const jump=compact?"#dossier-reader":"/dossier/#dossier-reader";
+  async function submit(e:FormEvent<HTMLFormElement>){
+    e.preventDefault(); if(status==="sending")return; const form=e.currentTarget;set("sending");
+    try {
+      const res=await fetch("/api/dossier-leads",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:new FormData(form).get("email"),source:"public-archive",project:"The Ironic Ineptocracy",pageUrl:location.href}),signal:AbortSignal.timeout(12000)});
+      if(!res.ok || (await res.json()).ok!==true)throw Error("Unconfirmed");
+      form.reset();set("received");window.gtag?.("event", "generate_lead", {event_category:"dossier",event_label:"garnier_dossier"});
+    } catch { set("offline"); }
+  }
+  return <section className={compact?"delivery-card":"access"} id="request"><div className="folder-tab micro"><Icon name="folder" size={15}/> {compact?"REQUEST SLIP":"FILE DG–04"}</div><div className="request-content"><div><span className="micro over"><b/>{compact?"READER SERVICES":"06 / DOSSIER ACCESS"}</span>{compact?<h2>Request the file.</h2>:<h2>The Garnier<br/><em>Dossier.</em></h2>}<p>{compact?"Leave your address for dossier correspondence. All seven leaves are open to read here.":"Private capital. Public policy. Request the reader file on the man who confuses ownership with jurisdiction."}</p></div><form onSubmit={submit}><label htmlFor="request-email" className="micro">READER’S EMAIL ADDRESS</label><input id="request-email" name="email" type="email" required placeholder="you@example.com" autoComplete="email" maxLength={254}/><button className="btn primary" disabled={status==="sending"}>{status==="sending"?"Requesting…":"Request the dossier"}<Icon name="right" size={16}/></button><div role="status" aria-live="polite">{(status==="received"||status==="offline")&&<p className="form-status">{status==="received"?"Request received. Your reader file is open.":"Email delivery could not be confirmed. You can read the entire file now."} <a href={jump}>Open the full Garnier Dossier →</a></p>}</div><a className="direct-read" href={jump}>Read without email →</a></form></div></section>;
 }

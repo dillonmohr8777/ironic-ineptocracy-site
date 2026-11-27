@@ -4,6 +4,7 @@ import { Stats } from "@/components/Cast";
 import { Folio } from "@/components/Folio";
 import { Voice } from "@/components/Voice";
 import { Icon } from "@/components/Icon";
+import { edition } from "@/lib/publication";
 type Params = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -12,7 +13,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Params) {
   const { slug } = await params;
   const s = cast.find((s) => s.slug === slug);
-  return { title: s?.name, description: s?.lead };
+  if (!s) notFound();
+  return edition(`/characters/${slug}/`, s.name, s.lead);
 }
 export default async function Profile({ params }: Params) {
   const { slug } = await params;

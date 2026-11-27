@@ -1,48 +1,17 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "./Icon";
-export function Redaction() {
-  const [open, set] = useState(false),
-    x = useRef(0),
-    dragged = useRef(false);
-  return (
-    <section className="redaction" aria-label="Declassify the premise">
-      <div className="red-label">
-        <span className="micro over">
-          <b /> THE PREMISE
-        </span>
-        <span className="micro red-sub">EXTRACT / 001</span>
-      </div>
-      <p>
-        Power rarely arrives{" "}
-        <button
-          className={"censor " + (open ? "unsealed" : "")}
-          aria-expanded={open}
-          aria-label={open ? "Redact premise" : "Reveal redacted premise"}
-          onPointerDown={(e) => {
-            x.current = e.clientX;
-            dragged.current = false;
-            e.currentTarget.setPointerCapture(e.pointerId);
-          }}
-          onPointerMove={(e) => {
-            if (e.buttons && Math.abs(e.clientX - x.current) > 12) {
-              set(true);
-              dragged.current = true;
-            }
-          }}
-          onClick={() => {
-            if (!dragged.current) set(!open);
-          }}
-        >
-          <span>under its own name.</span>
-        </button>
-      </p>
-      <button className="red-action micro" onClick={() => set(!open)}>
-        <Icon name="peel" size={15} />
-        {open ? "REDACT EXTRACT" : "PEEL TO REVEAL"}
-      </button>
-    </section>
-  );
+// Verbatim, spoiler-safe lines from the public Garnier Dossier.
+const extracts = [
+  ["Power rarely arrives", "under its own name."],
+  ["He does not sell domination.", "He sells relief from disorder."],
+  ["Read every private room", "as a public clue."],
+  ["It is not a biography.", "It is a pressure map."],
+];
+export function Redaction(){
+  const [i, select]=useState(0), [open,seal]=useState(false), x=useRef(0), dragged=useRef(false);
+  const turn=()=>{select((i+1)%extracts.length);seal(false);dragged.current=false};
+  return <section className="redaction" aria-label="Public dossier extracts"><div className="red-label"><span className="micro over"><b/> THE PREMISE</span><button className="red-sub micro" onClick={turn} aria-label={`Next extract, current extract ${i+1} of 4`}>EXTRACT 00{i+1} <span aria-hidden="true">↻</span></button></div><p aria-live="polite">{extracts[i][0]} <button className={"censor "+(open?"unsealed":"")} aria-expanded={open} aria-label={open?"Reseal extract":"Peel to reveal extract"} onPointerDown={e=>{x.current=e.clientX;dragged.current=false;e.currentTarget.setPointerCapture(e.pointerId)}} onPointerMove={e=>{if(e.buttons&&Math.abs(e.clientX-x.current)>12){seal(true);dragged.current=true}}} onClick={e=>{if(!dragged.current||e.detail===0)seal(!open);dragged.current=false}}><span aria-hidden={!open}>{extracts[i][1]}</span></button></p><button className="red-action micro" onClick={()=>seal(!open)} aria-expanded={open}><Icon name="peel" size={16}/>{open?"RESEAL EXTRACT":"PEEL TO REVEAL"}</button></section>;
 }
 const plates = [
   ["01", "The atrium", "hero-daylight"],
@@ -68,7 +37,7 @@ export function Gallery() {
         num="02"
         label="LOCATION STUDIES"
         title="Architecture of power"
-        note="PLATES 01 — 03"
+        note="PLATES 01 - 03"
       />
       <div className="plate-gallery">
         <figure>

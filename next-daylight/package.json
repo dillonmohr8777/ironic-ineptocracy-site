@@ -2,7 +2,7 @@
   "name": "ineptocracy-public-archive",
   "private": true,
   "scripts": {
-    "build": "next build && node scripts/finish-export.mjs",
+    "build": "node scripts/edition-files.mjs && next build && node scripts/finish-export.mjs",
     "dev": "next dev",
     "typecheck": "tsc --noEmit"
   },
@@ -18,5 +18,8 @@
     "@types/react-dom": "^19",
     "tailwindcss": "^4",
     "@tailwindcss/postcss": "^4"
+  },
+  "engines": {
+    "node": ">=20.9.0"
   }
 }

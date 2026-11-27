@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 import briefs from "@/lib/briefs.json";
 import { Folio } from "@/components/Folio";
-import { Request } from "@/components/Request";
+import { Dossier } from "@/components/Dossier";
 import { Reader } from "@/components/Reader";
 import { Atlas } from "@/components/Atlas";
 import { Voice } from "@/components/Voice";
 import { Icon } from "@/components/Icon";
+import { edition } from "@/lib/publication";
 const pages: Record<string, [string, string, string, string]> = {
   book: [
     "Book file",
@@ -25,12 +26,6 @@ const pages: Record<string, [string, string, string, string]> = {
     "Power rarely arrives under its own name. It arrives as funding, access, convenience, policy, and memory.",
     "/images/cast/char-garnier.webp",
   ],
-  dispatches: [
-    "Field correspondence",
-    "Dispatches",
-    "Four entries from the public record. Each opens a different pressure point.",
-    "plate-capitol-daylight",
-  ],
   press: [
     "For the record",
     "Press room",
@@ -49,7 +44,9 @@ export const generateStaticParams = () =>
   Object.keys(pages).map((section) => ({ section }));
 type P = { params: Promise<{ section: string }> };
 export async function generateMetadata({ params }: P) {
-  return { title: pages[(await params).section]?.[1] };
+  const { section } = await params;
+  const p = pages[section]; if (!p) notFound();
+  return edition(`/${section}/`, p[1], p[2]);
 }
 function List({ rows, title }: { rows: string[][]; title: string }) {
   return (
@@ -77,6 +74,7 @@ export default async function Page({ params }: P) {
   const { section } = await params,
     p = pages[section];
   if (!p) notFound();
+  if (section === "dossier") return <Dossier />;
   return (
     <div className="shell sub">
       <Folio label={p[0].toUpperCase()} />
@@ -93,10 +91,6 @@ export default async function Page({ params }: P) {
           <p>{p[2]}</p>
           {section === "book" ? (
             <Voice src="narrator-premise" label="Narrator’s premise" />
-          ) : section === "dossier" ? (
-            <a className="btn primary" href="#request">
-              Request access <Icon name="right" size={16} />
-            </a>
           ) : (
             <span className="micro brief-ed">
               THE DAYLIGHT EDITION / VOLUME 01
@@ -138,35 +132,6 @@ export default async function Page({ params }: P) {
             rows={briefs.world.map((r) => r.slice(1))}
           />
         </>
-      )}
-      {section === "dossier" && (
-        <>
-          <Request />
-          <article className="reading-grid">
-            <div>
-              <span className="micro over">
-                <b />
-                SUBJECT DG–04
-              </span>
-              <h2>Public mask.</h2>
-            </div>
-            <div className="prose">
-              <p>
-                The Garnier Dossier maps Dijon Garnier, the French-born
-                billionaire behind Tecca, BankIt, and NeuroClick. His public
-                language is order and mercy. His private logic is ownership and
-                jurisdiction.
-              </p>
-              <Voice src="garnier" label="Garnier’s voice file" />
-              <a className="text-link" href="/characters/dijon-garnier/">
-                Read the subject profile <Icon name="up" size={15} />
-              </a>
-            </div>
-          </article>
-        </>
-      )}
-      {section === "dispatches" && (
-        <List rows={briefs.dispatches} title="Evidence drops" />
       )}
       {section === "reader-guide" && (
         <List rows={briefs.reader} title="For discussion" />
