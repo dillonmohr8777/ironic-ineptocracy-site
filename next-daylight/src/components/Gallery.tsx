@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { useWorld, usePaused } from "@/lib/useWorld";
+import type { WorldMode } from "@/lib/worldMode";
 import { Icon } from "./Icon";
 // Verbatim, spoiler-safe lines from the public Garnier Dossier.
 const extracts = [
@@ -18,18 +20,22 @@ const plates = [
   ["02", "Harvard Yard", "plate-harvard-daylight"],
   ["03", "Capitol colonnade", "plate-capitol-daylight"],
 ];
-export function Gallery() {
+export function Gallery({ films }: { films: Record<WorldMode,string|null> }) {
+  const mode=useWorld(), paused=usePaused(), [failed,setFailed]=useState('');
+  const preferred=films[mode], fallback=!preferred||failed===preferred, daylight='/video/hero-daylight-loop.mp4', src=fallback?daylight:preferred;
+  const want=useRef(false);
   const [i, sel] = useState(0),
     [playing, set] = useState(false);
   const vid = useRef<HTMLVideoElement>(null);
+  useEffect(()=>{if(paused){want.current=false;vid.current?.pause();}},[paused]);
   useEffect(() => {
     const v = vid.current;
     if (!v) return;
     const ob = new IntersectionObserver((es) => {
-      if (!es[0].isIntersecting) v.pause();
+      if (!es[0].isIntersecting) {want.current=false;v.pause();}
     });
     ob.observe(v);
-    return () => ob.disconnect();
+    const hide=()=>{if(document.hidden){want.current=false;v.pause()}}; document.addEventListener("visibilitychange",hide);return () => {ob.disconnect();document.removeEventListener("visibilitychange",hide)};
   }, [i]);
   return (
     <section className="gallery act" id="plates">
@@ -45,13 +51,16 @@ export function Gallery() {
             {i === 0 ? (
               <video
                 ref={vid}
-                src="/video/hero-daylight-loop.mp4"
-                poster="/images/editorial/hero-daylight.webp"
+                src={src}
+                data-grade={fallback?mode:'native'}
+                onError={()=>{if(preferred && src!==daylight)setFailed(preferred);else{want.current=false;set(false);}}}
+                onLoadedData={()=>{if(want.current&&!paused)void vid.current?.play().catch(()=>set(false))}}
+                poster={mode === "midnight" ? "/images/editorial/hero-midnight.webp" : mode === "dusk" ? "/images/editorial/hero-dusk.webp" : "/images/editorial/hero-daylight.webp"}
                 preload="none"
                 muted
                 loop
                 playsInline
-                aria-label="Sunlit marble atrium"
+                aria-label={`${mode} location film: the atrium`}
                 onPlay={() => set(true)}
                 onPause={() => set(false)}
               />
@@ -63,13 +72,13 @@ export function Gallery() {
               />
             )}
             <span className="photo-tag micro">
-              PLATE {plates[i][0]} / DAYLIGHT
+              PLATE {plates[i][0]} / {i===0?mode.toUpperCase():"DAYLIGHT"}
             </span>
             {i === 0 && (
               <button
                 className="pill video-btn"
                 onClick={() => {
-                  if (playing) vid.current?.pause();
+                  want.current=!playing; if (playing) vid.current?.pause();
                   else vid.current?.play().catch(() => {});
                 }}
               >
@@ -99,7 +108,7 @@ export function Gallery() {
                 className={j === i ? "selected" : ""}
                 aria-pressed={j === i}
                 onClick={() => {
-                  sel(j);
+                  want.current=false;sel(j);
                   set(false);
                 }}
               >

@@ -2,9 +2,11 @@ import { notFound } from "next/navigation";
 import cast from "@/lib/cast.json";
 import { Stats } from "@/components/Cast";
 import { Folio } from "@/components/Folio";
+import { StructuredData } from "@/components/StructuredData";
 import { Voice } from "@/components/Voice";
 import { Icon } from "@/components/Icon";
-import { edition } from "@/lib/publication";
+import { edition, origin } from "@/lib/publication";
+import { bookId, breadcrumbs, characterPath, graph } from "@/lib/schema";
 type Params = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -14,7 +16,7 @@ export async function generateMetadata({ params }: Params) {
   const { slug } = await params;
   const s = cast.find((s) => s.slug === slug);
   if (!s) notFound();
-  return edition(`/characters/${slug}/`, s.name, s.lead);
+  return edition(`/characters/${slug}/`, `${s.name}: ${s.role}`, s.lead, false, [s.name, `${s.name} The Ironic Ineptocracy`, s.role, "The Ironic Ineptocracy character", ...s.themes]);
 }
 export default async function Profile({ params }: Params) {
   const { slug } = await params;
@@ -23,8 +25,24 @@ export default async function Profile({ params }: Params) {
   if (!s) notFound();
   const prev = cast[(idx + 9) % 10],
     next = cast[(idx + 1) % 10];
+  const path = characterPath(slug);
+  const personSchema = graph(
+    {
+      "@type": "Person",
+      "@id": origin + path + "#person",
+      name: s.name,
+      jobTitle: s.role,
+      description: s.lead,
+      url: origin + path,
+      image: origin + s.image,
+      additionalType: "https://schema.org/FictionalCharacter",
+      subjectOf: { "@id": bookId },
+    },
+    breadcrumbs(path, ["The cast index", "/characters/"], [s.name, path]),
+  );
   return (
     <div className="shell sub">
+      <StructuredData value={personSchema} />
       <Folio label={"SUBJECT " + s.number} />
       <div className="profile-grid">
         <figure>
@@ -53,7 +71,7 @@ export default async function Profile({ params }: Params) {
           </h1>
           <p className="tagline">{s.role}</p>
           <p className="intro">{s.lead}</p>
-          <Voice src={s.audio} label="Subject voice audition" />
+          <div id="audition"><Voice src={s.audio} label="Subject voice audition" /></div>
           <Stats subject={s} />
         </div>
       </div>

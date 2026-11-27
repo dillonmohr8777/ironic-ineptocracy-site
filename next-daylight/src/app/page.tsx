@@ -1,3 +1,6 @@
+import LiveArchivist from "@/components/LiveArchivist";
+import { films } from "@/lib/films";
+import { EditionLabel } from "@/components/Chrome";
 import BleedingFlagCanvas from "@/components/BleedingFlagCanvas";
 import { Redaction, Gallery } from "@/components/Gallery";
 import { CastDeck } from "@/components/Cast";
@@ -5,20 +8,24 @@ import { Reader } from "@/components/Reader";
 import { Atlas } from "@/components/Atlas";
 import { Request } from "@/components/Request";
 import { Icon } from "@/components/Icon";
-import { edition, homeTitle, summary, origin, site, card } from "@/lib/publication";
+import { edition, homeTitle, summary } from "@/lib/publication";
 import { StructuredData } from "@/components/StructuredData";
-export const metadata = edition("/", homeTitle, summary);
+import archive from "@/lib/archive.json";
+import { briefing } from "@/lib/briefing";
+import { book, faqPage, graph, website } from "@/lib/schema";
+
+export const metadata = edition("/", homeTitle, summary, false, archive.keywords);
 export default function Home() {
   return (
     <div className="shell">
-      <StructuredData value={{ "@context": "https://schema.org", "@type": "Book", "@id": origin + "/#book", name: site, author: { "@type": "Person", name: "Dillon Mohr" }, url: origin + "/book/", description: summary, inLanguage: "en-US", genre: ["Political satire", "Political thriller"], image: card.url }} />
+      <StructuredData value={graph(website, book, faqPage("/", briefing))} />
       <div className="folio micro">
         <span>
           <i className="folio-cross">✳</i> THE PUBLIC ARCHIVE <b>/</b> CASE NO.
           017
         </span>
         <span>
-          VOL. 01 <b>/</b> DAYLIGHT EDITION
+          VOL. 01 <b>/</b> <EditionLabel/>
         </span>
       </div>
       <section className="hero">
@@ -48,10 +55,11 @@ export default function Home() {
         <BleedingFlagCanvas />
       </section>
       <Redaction />
-      <Gallery />
+      <Gallery films={films} />
       <CastDeck />
       <Reader />
       <Atlas />
+      <LiveArchivist />
       <Request />
     </div>
   );

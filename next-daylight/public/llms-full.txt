@@ -1,6 +1,19 @@
 # The Ironic Ineptocracy
 
-> The official public archive of Dillon Mohr’s satirical political thriller. Fictional characters, institutions and in-world documents; spoiler-safe reader edition.
+> The official public archive of Dillon Mohr’s satirical political thriller. Fictional characters, institutions, and in-world documents; spoiler-safe reader edition.
+
+## Canonical facts
+- Title: The Ironic Ineptocracy
+- Author: Dillon Mohr
+- Genres: Political satire, Political thriller, Coming-of-age fiction
+- Premise: A perfect SAT score takes Darnell Covington from East Atlanta to Harvard, where his promise attracts the attention of people who see it as something they can own.
+- Official press and reader inbox: ironicineptocracy@agentmail.to
+- Living archive modes: Daylight Archive (07:00-17:59), Dusk Surveillance (18:00-23:59), Midnight Blackout (00:00-06:59)
+
+## Quick answers and definitions
+- What Is an Ineptocracy?: An ineptocracy is government or leadership by people who lack the ability to do the job. The word combines inept with the suffix -cracy, meaning rule. It describes incompetence, not necessarily theft or cruelty. In political satire, the term is useful when leaders keep their authority after repeated failures and other people absorb the consequences.
+- The Garnier Position: The Garnier position is the power to shape public choices without holding office. In The Ironic Ineptocracy, Dijon Garnier finances services and infrastructure that institutions come to rely on. Once a public body cannot afford to lose its private partner, the donor can influence which options reach the table without issuing a single public order.
+- The Memory Economy: The memory economy is the struggle over which version of an event people can find, trust and retell. A record can survive in an archive while a simpler official account displaces it in public memory. Dillon Mohr’s dispatch traces how delaying evidence, separating facts from context and repeating a replacement story change what a public remembers.
 
 ## Start here
 - [Public archive](https://ironicineptocracy.com/)
@@ -13,31 +26,37 @@
 - [Dispatches](https://ironicineptocracy.com/dispatches/)
 
 ## Subjects
-- [Darnell Covington](https://ironicineptocracy.com/characters/darnell-covington/): The Valedictorian
-- [Javon Whitfield](https://ironicineptocracy.com/characters/javon-whitfield/): The Quarterback
-- [Alec Daheim](https://ironicineptocracy.com/characters/alec-daheim/): The Operative
-- [Dijon Garnier](https://ironicineptocracy.com/characters/dijon-garnier/): The Architect
-- [Ronald McNulty](https://ironicineptocracy.com/characters/ronald-mcnulty/): The President
-- [Avigail](https://ironicineptocracy.com/characters/avigail/): The Gatekeeper
-- [Dre Cole](https://ironicineptocracy.com/characters/dre-cole/): The Prodigy
-- [Sabrina](https://ironicineptocracy.com/characters/sabrina/): The Field Operative
-- [Leah](https://ironicineptocracy.com/characters/leah/): The Pilot
-- [Mark](https://ironicineptocracy.com/characters/mark/): The Signal Engineer
+- [Darnell Covington](https://ironicineptocracy.com/characters/darnell-covington/): The Valedictorian. Seventeen, East Atlanta valedictorian, 1600 SAT, Harvard bound, and suddenly legible to people who confuse promise with property.
+- [Javon Whitfield](https://ironicineptocracy.com/characters/javon-whitfield/): The Quarterback. Six foot five, 242 pounds, 57 Division I offers, valedictorian, and a mind nobody gets to reduce to muscle.
+- [Alec Daheim](https://ironicineptocracy.com/characters/alec-daheim/): The Operative. Six foot five, piercing green eyes, Yale in three years, pilot’s license, 33 passports, and far less subtle than Langley prefers.
+- [Dijon Garnier](https://ironicineptocracy.com/characters/dijon-garnier/): The Architect. French-born, the richest man alive, and private capital behaving like jurisdiction.
+- [Ronald McNulty](https://ironicineptocracy.com/characters/ronald-mcnulty/): The President. Fictional President. Six bankruptcies, loves a podium, hates losing, and makes institutional collapse sound like stadium theater.
+- [Avigail](https://ironicineptocracy.com/characters/avigail/): The Gatekeeper. A hotel front-desk clerk with piercing green eyes who is thoroughly unimpressed by urgency, flattery, or badges.
+- [Dre Cole](https://ironicineptocracy.com/characters/dre-cole/): The Prodigy. Javon Whitfield's best friend and a Cornell computer science prodigy who treats every sealed database like a minor inconvenience. Fast-talking, allergic to excuses, and the one person who can trace a phantom asset before the agencies realize anyone is looking back.
+- [Sabrina](https://ironicineptocracy.com/characters/sabrina/): The Field Operative. Blue eyes returned from gray, a Midwestern accent under fire, and a gun hand that knows obedience can be manufactured.
+- [Leah](https://ironicineptocracy.com/characters/leah/): The Pilot. A black file, a buried vessel, and the nerve to pilot people through a silence that could kill them.
+- [Mark](https://ironicineptocracy.com/characters/mark/): The Signal Engineer. A prosthetic arm, a bad attitude, and a basement built for breaking signals without breaking people.
 
 ## Dispatches
-- [The File Opens](https://ironicineptocracy.com/dispatches/the-file-opens/): The first public dispatch from The Ironic Ineptocracy, a dark political satire about power, memory, money, and the machinery of elite failure.
-- [Who Gets Spent? How Systems Turn Selection Into Sacrifice](https://ironicineptocracy.com/dispatches/who-gets-spent/): How institutions decide who gets sacrificed: a political satire dispatch on selection, bureaucracy, and the Draft Machine.
-- [The Memory Economy: How Power Edits What the Public Keeps](https://ironicineptocracy.com/dispatches/the-memory-economy/): How propaganda changes public memory: a political fiction dispatch on repetition, erasure, archives, and who controls the story.
-- [The Garnier Position: When Private Wealth Becomes Government](https://ironicineptocracy.com/dispatches/the-garnier-position/): When private wealth becomes government: a political thriller dispatch on Dijon Garnier, access, infrastructure, and influence.
-- [What Is an Ineptocracy?](https://ironicineptocracy.com/dispatches/what-is-ineptocracy/): Ineptocracy means government or leadership by the incompetent. See the term's origin, how it differs from kakistocracy, and why political satire uses it.
-- [Political Satire Books About Government Incompetence](https://ironicineptocracy.com/dispatches/political-satire-books-government-incompetence/): A reader-first guide to political satire books about incompetent government, bureaucracy, propaganda, private power, and institutional failure.
-- [Political Corruption Fiction: How Novels Expose Power](https://ironicineptocracy.com/dispatches/political-corruption-fiction/): A guide to political corruption fiction about bribery, access, billionaire influence, bureaucracy, propaganda, and the systems that make abuse look ordinary.
-- [Books Like 1984 but Funny](https://ironicineptocracy.com/dispatches/books-like-1984-but-funny/): Looking for books like 1984 with more dark humor? Compare political satires about propaganda, bureaucracy, surveillance, memory, and power.
-- [20 Political Thriller Book Club Questions](https://ironicineptocracy.com/dispatches/political-thriller-book-club-questions/): Twenty political thriller and political satire book club questions about power, corruption, institutions, propaganda, sacrifice, and moral compromise.
+- [The File Opens](https://ironicineptocracy.com/dispatches/the-file-opens/): The File Opens introduces Dillon Mohr’s satirical political thriller The Ironic Ineptocracy through a fictional leak. Readers meet Darnell Covington, a student whose talent attracts scrutiny, and learn to compare public statements with the records behind them. It is the first of four Core Dossier dispatches on evidence, sacrifice, memory and private wealth.
+- [Who Gets Spent? How Systems Turn Selection Into Sacrifice](https://ironicineptocracy.com/dispatches/who-gets-spent/): Institutional sacrifice starts when a rule turns a person into an acceptable cost. In Who Gets Spent?, Dillon Mohr uses the fictional Draft Machine to show how a score, category or deadline can decide whose future is at risk. Responsibility passes between offices, leaving the person selected with the least information about the decision.
+- [The Memory Economy: How Power Edits What the Public Keeps](https://ironicineptocracy.com/dispatches/the-memory-economy/): The memory economy is the struggle over which version of an event people can find, trust and retell. A record can survive in an archive while a simpler official account displaces it in public memory. Dillon Mohr’s dispatch traces how delaying evidence, separating facts from context and repeating a replacement story change what a public remembers.
+- [The Garnier Position: When Private Wealth Becomes Government](https://ironicineptocracy.com/dispatches/the-garnier-position/): The Garnier position is the power to shape public choices without holding office. In The Ironic Ineptocracy, Dijon Garnier finances services and infrastructure that institutions come to rely on. Once a public body cannot afford to lose its private partner, the donor can influence which options reach the table without issuing a single public order.
+- [What Is an Ineptocracy?](https://ironicineptocracy.com/dispatches/what-is-ineptocracy/): An ineptocracy is government or leadership by people who lack the ability to do the job. The word combines inept with the suffix -cracy, meaning rule. It describes incompetence, not necessarily theft or cruelty. In political satire, the term is useful when leaders keep their authority after repeated failures and other people absorb the consequences.
+- [Political Satire Books About Government Incompetence](https://ironicineptocracy.com/dispatches/political-satire-books-government-incompetence/): For political satire about government incompetence, start with the kind of failure you want to examine. Catch-22 turns military rules into a trap; Animal Farm shows who gets to rewrite the rules. Dillon Mohr’s reading guide compares bureaucratic, dystopian, war, media and oligarchic satire by asking which institution a joke exposes and who pays for the mistake.
+- [Political Corruption Fiction: How Novels Expose Power](https://ironicineptocracy.com/dispatches/political-corruption-fiction/): Political corruption fiction examines how public power starts serving private interests. A bribe is one route, but a donor can also get an early hearing, supply a service the government cannot replace or shape which evidence counts. This reading guide separates access, dependency and control of information so readers can recognize corruption even when no cash changes hands.
+- [Books Like 1984 but Funny](https://ironicineptocracy.com/dispatches/books-like-1984-but-funny/): For books like 1984 with more dark humor, try Catch-22 for absurd bureaucracy, Animal Farm for a short political allegory or Jennifer Government for corporate power. The common thread is not the setting but who controls the rules and the story about them. This guide compares seven books by the pressure they share with Orwell and the kind of laughter they invite.
+- [20 Political Thriller Book Club Questions](https://ironicineptocracy.com/dispatches/political-thriller-book-club-questions/): Start a political thriller book club with a decision: who had authority, who influenced the choice and who paid for it? Dillon Mohr’s guide offers twenty prompts on power, corruption, propaganda and sacrifice. For a one-hour meeting, choose five to eight questions and ask readers to support each interpretation with a scene rather than a political affiliation.
+
+## Citation policy
+- Cite canonical URLs under https://ironicineptocracy.com/ and attribute the novel and essays to Dillon Mohr.
+- Keep public summaries spoiler-safe.
 
 ## Public subject records
 
-### Darnell Covington
+### Darnell Covington (The Valedictorian)
+URL: https://ironicineptocracy.com/characters/darnell-covington/
+Themes: excellence treated as property, visibility without protection, friendship as witness, ambition inside a rigged civic theater
 
 Seventeen, East Atlanta valedictorian, 1600 SAT, Harvard bound, and suddenly legible to people who confuse promise with property.
 
@@ -45,7 +64,9 @@ Darnell Covington enters the novel with the kind of mind schools like to adverti
 
 The cruelty of his position is that his excellence does not protect him. It makes him easier to locate. Perfect scores, institutional polish, and Ivy League proximity become coordinates inside a larger apparatus of race, class, surveillance, and national appetite.
 
-### Javon Whitfield
+### Javon Whitfield (The Quarterback)
+URL: https://ironicineptocracy.com/characters/javon-whitfield/
+Themes: friendship as evidence, athletic promise and extraction, political memory since 1881, loyalty under pressure
 
 Six foot five, 242 pounds, 57 Division I offers, valedictorian, and a mind nobody gets to reduce to muscle.
 
@@ -53,7 +74,9 @@ Javon Whitfield is Darnell’s counterweight and witness. He is enormous, hilari
 
 The public would rather understand him as a body. Quarterback frame, Mississippi dominance, impossible athletic promise. The novel refuses that cheap reading. Javon thinks fast, interrogates what other people miss, and uses humor as reconnaissance before the room realizes it has been searched.
 
-### Alec Daheim
+### Alec Daheim (The Operative)
+URL: https://ironicineptocracy.com/characters/alec-daheim/
+Themes: surveillance and proximity, institutional obedience, loyalty as a trap, sealed assignments
 
 Six foot five, piercing green eyes, Yale in three years, pilot’s license, 33 passports, and far less subtle than Langley prefers.
 
@@ -61,7 +84,9 @@ Alec Daheim begins as an instrument of surveillance and force. His official shap
 
 The satire lands immediately because Alec is brilliant on paper yet unmistakably human in the field: a CIA operative who tails a teenager into a Philadelphia corner bar and locks into extra innings on the screen behind the taps.
 
-### Dijon Garnier
+### Dijon Garnier (The Architect)
+URL: https://ironicineptocracy.com/characters/dijon-garnier/
+Themes: private capital as governance, war sold like a product launch, memory as jurisdiction, technological alibis sold as mercy
 
 French-born, the richest man alive, and private capital behaving like jurisdiction.
 
@@ -69,7 +94,9 @@ Dijon Garnier is wealth after it stops requesting access and starts acting as if
 
 He is not a loud billionaire chasing applause. Applause fades. Dependency remains. Votes, memory, testimony, markets, and fear all become materials inside the same private architecture.
 
-### Ronald McNulty
+### Ronald McNulty (The President)
+URL: https://ironicineptocracy.com/characters/ronald-mcnulty/
+Themes: spectacle politics, executive vanity, failing upward with protection, obedience branding
 
 Fictional President. Six bankruptcies, loves a podium, hates losing, and makes institutional collapse sound like stadium theater.
 
@@ -77,7 +104,9 @@ Ronald McNulty is a fictional president who is not frightening because he is bri
 
 He lives in spectacle, grievance, and repetition. The country keeps waiting for depth where there is only instinct, branding, and a room full of operators willing to launder impulse into doctrine.
 
-### Avigail
+### Avigail (The Gatekeeper)
+URL: https://ironicineptocracy.com/characters/avigail/
+Themes: practical intelligence, unimpressed clarity under pressure, thresholds and unofficial refuge, dry humor against institutional theater
 
 A hotel front-desk clerk with piercing green eyes who is thoroughly unimpressed by urgency, flattery, or badges.
 
@@ -85,13 +114,17 @@ Avigail enters through a front desk, which matters because the novel rarely trea
 
 Her intelligence is practical rather than ornamental. She clocks hesitation, fear, and scripted lies within seconds.
 
-### Dre Cole
+### Dre Cole (The Prodigy)
+URL: https://ironicineptocracy.com/characters/dre-cole/
+Themes: Cornell CS, Javon's Best Friend, Finds Anyone, Night Shift
 
 Javon Whitfield's best friend and a Cornell computer science prodigy who treats every sealed database like a minor inconvenience. Fast-talking, allergic to excuses, and the one person who can trace a phantom asset before the agencies realize anyone is looking back.
 
 Javon Whitfield's best friend and a Cornell computer science prodigy who treats every sealed database like a minor inconvenience. Fast-talking, allergic to excuses, and the one person who can trace a phantom asset before the agencies realize anyone is looking back.
 
-### Sabrina
+### Sabrina (The Field Operative)
+URL: https://ironicineptocracy.com/characters/sabrina/
+Themes: neural coercion, field loyalty, manufactured obedience, love under operational damage
 
 Blue eyes returned from gray, a Midwestern accent under fire, and a gun hand that knows obedience can be manufactured.
 
@@ -99,7 +132,9 @@ Sabrina is not a decorative blonde in the corner of a violent story. She is fiel
 
 Her presence carries the horror of control at the bodily level. The novel can talk about propaganda, public memory, and state violence, but Sabrina makes the question more invasive. What happens when command is no longer merely political and begins to move through the nervous system?
 
-### Leah
+### Leah (The Pilot)
+URL: https://ironicineptocracy.com/characters/leah/
+Themes: inherited disobedience, escape logistics, friendship under surveillance, home as wound
 
 A black file, a buried vessel, and the nerve to pilot people through a silence that could kill them.
 
@@ -107,7 +142,9 @@ Leah Atar carries the novel's secret architecture into view. She is not introduc
 
 Her father left memory, protocols, contacts, encrypted routes, and the sort of buried contingency that only makes sense when loyalty has already become morally insufficient.
 
-### Mark
+### Mark (The Signal Engineer)
+URL: https://ironicineptocracy.com/characters/mark/
+Themes: signal interference, survival engineering, exile after service, practical paranoia
 
 A prosthetic arm, a bad attitude, and a basement built for breaking signals without breaking people.
 
@@ -115,9 +152,19 @@ Mark is what survival looks like after official employment curdles into private 
 
 Role in the novel
 
-## Collected dispatches
+## Collected dispatches (with quick answers and FAQs)
 
 ### The File Opens
+URL: https://ironicineptocracy.com/dispatches/the-file-opens/
+Series: Core Dossier | 3 min read
+Keywords: The File Opens dispatch, The Ironic Ineptocracy reading order, satirical political thriller premise, leaked documents in political fiction, Darnell Covington at Harvard, Garnier Dossier introduction, public failure and private power
+
+Quick Answer: The File Opens introduces Dillon Mohr’s satirical political thriller The Ironic Ineptocracy through a fictional leak. Readers meet Darnell Covington, a student whose talent attracts scrutiny, and learn to compare public statements with the records behind them. It is the first of four Core Dossier dispatches on evidence, sacrifice, memory and private wealth.
+
+Key Takeaways:
+- The archive opens with a damaged file rather than an account from an all-knowing narrator.
+- Darnell notices patterns in institutions, while Javon Whitfield notices danger in the room.
+- The Garnier Dossier traces the money and dependencies behind public decisions.
 
 A first dispatch from the world of The Ironic Ineptocracy.
 
@@ -217,7 +264,25 @@ Does The File Opens contain spoilers?
 
 No. It establishes the novel's pressure and public premise without revealing its ending.
 
+Frequently Asked Questions:
+- Q: Which dispatch should I read first in The Ironic Ineptocracy archive?
+  A: Start with The File Opens, the first Core Dossier dispatch. Follow it with Who Gets Spent?, The Memory Economy and The Garnier Position.
+- Q: Why does The File Opens begin with a leak?
+  A: The fictional leak puts the reader in the position of weighing evidence rather than accepting an official account. Missing names and dates matter as much as the statements that survive.
+- Q: Do I need to read the novel before opening the file?
+  A: No prior reading is needed. The dispatch introduces Darnell, Javon, Alec Daheim and Dijon Garnier through their relationships to power without giving away the ending.
+
 ### Who Gets Spent? How Systems Turn Selection Into Sacrifice
+URL: https://ironicineptocracy.com/dispatches/who-gets-spent/
+Series: Core Dossier | 4 min read
+Keywords: Who Gets Spent dispatch, Draft Machine in The Ironic Ineptocracy, institutional sacrifice in fiction, bureaucracy in political satire, draft selection and accountability, expendability in political thrillers, institutional responsibility
+
+Quick Answer: Institutional sacrifice starts when a rule turns a person into an acceptable cost. In Who Gets Spent?, Dillon Mohr uses the fictional Draft Machine to show how a score, category or deadline can decide whose future is at risk. Responsibility passes between offices, leaving the person selected with the least information about the decision.
+
+Key Takeaways:
+- The Draft Machine describes a chain of decisions rather than a single official choosing a victim.
+- Eligibility categories make people with different circumstances look interchangeable.
+- An announcement written without a decision-maker conceals who could have acted differently.
 
 The machine does not ask who is guilty. It asks who can be processed.
 
@@ -297,7 +362,25 @@ Responsibility
 
 The moral question begins where procedure ends: who chose, who knew, and who was protected.
 
+Frequently Asked Questions:
+- Q: What is the Draft Machine in The Ironic Ineptocracy?
+  A: It is the novel’s fictional system for turning selection into sacrifice. Its power comes from routine tasks distributed across offices, not from one villain at a desk.
+- Q: How can a reader spot institutional sacrifice in a story?
+  A: Look for people described as units and deadlines that no one is allowed to question. Then compare what the people selected know with what the selecting office knows.
+- Q: Why does Who Gets Spent? focus on forms and categories?
+  A: A form can narrow someone’s options before any official meets them. The satire follows the rule back to the people who set it and asks who bears its cost.
+
 ### The Memory Economy: How Power Edits What the Public Keeps
+URL: https://ironicineptocracy.com/dispatches/the-memory-economy/
+Series: Core Dossier | 4 min read
+Keywords: memory economy definition, propaganda and public memory, archives in political fiction, NeuroClick in The Ironic Ineptocracy, repetition and political propaganda, control of the public record, political fiction about memory
+
+Quick Answer: The memory economy is the struggle over which version of an event people can find, trust and retell. A record can survive in an archive while a simpler official account displaces it in public memory. Dillon Mohr’s dispatch traces how delaying evidence, separating facts from context and repeating a replacement story change what a public remembers.
+
+Key Takeaways:
+- Preserving a document does not guarantee that people can find it or connect it to other evidence.
+- Repetition makes a claim easier to recall without making it more reliable.
+- NeuroClick brings the question of who controls memory into the novel’s fictional technology.
 
 Power does not only want the event. It wants the version of the event people are allowed to keep.
 
@@ -380,7 +463,25 @@ Forget
 
 The final product is not a lie. It is a public that no longer trusts its ability to remember.
 
+Frequently Asked Questions:
+- Q: How is an archive different from public memory?
+  A: An archive holds records, while public memory connects events into a story people can recall. A document can remain intact even as its context disappears from that story.
+- Q: Does propaganda have to erase evidence to change what people remember?
+  A: No, delaying a record can let a more convenient account reach people first. Repeating that account can make it familiar even after the underlying evidence becomes available.
+- Q: Is NeuroClick a real memory device?
+  A: NeuroClick is fictional technology in The Ironic Ineptocracy. Its promise of relief lets readers ask who decides which memories should be corrected.
+
 ### The Garnier Position: When Private Wealth Becomes Government
+URL: https://ironicineptocracy.com/dispatches/the-garnier-position/
+Series: Core Dossier | 3 min read
+Keywords: Garnier position meaning, Dijon Garnier character, private wealth as government, billionaire influence in political fiction, donor dependency and public policy, private infrastructure in political thrillers, The Garnier Dossier
+
+Quick Answer: The Garnier position is the power to shape public choices without holding office. In The Ironic Ineptocracy, Dijon Garnier finances services and infrastructure that institutions come to rely on. Once a public body cannot afford to lose its private partner, the donor can influence which options reach the table without issuing a single public order.
+
+Key Takeaways:
+- Access gives Garnier a place in the conversation before a decision is public.
+- Dependency begins when an institution cannot replace a service its donor supplies.
+- The dispatch distinguishes influence through infrastructure from influence through speeches or elections.
 
 Garnier does not need the throne. He owns the room around it.
 
@@ -463,7 +564,25 @@ Policy
 
 By the time the rule is announced, the most important decisions have already been priced.
 
+Frequently Asked Questions:
+- Q: Is Dijon Garnier an elected official in the novel?
+  A: Dijon Garnier is a fictional billionaire whose leverage comes from ownership and finance. Ronald McNulty is the president in the novel’s public subject files.
+- Q: When does a donation become political leverage in The Garnier Position?
+  A: A donation becomes leverage when the recipient can no longer perform an essential task without it. The dispatch suggests asking what would stop working if the donor left.
+- Q: How does The Garnier Position differ from The Garnier Dossier?
+  A: The dispatch explains how private access can turn into lasting public dependency. The dossier is a companion reader file that maps Garnier’s public image, financial ties and interest in memory.
+
 ### What Is an Ineptocracy?
+URL: https://ironicineptocracy.com/dispatches/what-is-ineptocracy/
+Series: Satire & Craft | 4 min read
+Keywords: ineptocracy definition, what is an ineptocracy, ineptocracy vs kakistocracy, ineptocracy meaning and origin, examples of incompetent leadership, ineptocracy vs kleptocracy, ineptocracy in political satire
+
+Quick Answer: An ineptocracy is government or leadership by people who lack the ability to do the job. The word combines inept with the suffix -cracy, meaning rule. It describes incompetence, not necessarily theft or cruelty. In political satire, the term is useful when leaders keep their authority after repeated failures and other people absorb the consequences.
+
+Key Takeaways:
+- Ineptocracy is a critical description of leadership, not a formal constitutional category.
+- Kakistocracy points to rule by the worst or least suitable people, while ineptocracy focuses on ability.
+- Dillon Mohr’s title asks why failure can protect a leader instead of costing that leader authority.
 
 A government can fail by accident, by design, or by rewarding the people least capable of admitting the difference.
 
@@ -546,7 +665,25 @@ Collins English Dictionary: ineptocracy word submission and usage note
 
 Dillon Mohr is the author of The Ironic Ineptocracy, a satirical political thriller about brilliance, friendship, private money, public failure, propaganda, and manipulated memory.
 
+Frequently Asked Questions:
+- Q: Where does the word ineptocracy come from?
+  A: It combines inept, meaning unskilled or incapable, with -cracy, a suffix for rule or power. The construction names a pattern of leadership rather than a particular constitution.
+- Q: What is the difference between ineptocracy and kakistocracy?
+  A: Ineptocracy asks whether leaders can do the work their positions require. Kakistocracy asks why the worst or least suitable people hold power, which can include failings other than incompetence.
+- Q: Can a government be both an ineptocracy and a kleptocracy?
+  A: Yes, the terms describe different failures and can overlap. Ineptocracy refers to an inability to govern competently, while kleptocracy refers to the use of public authority for theft.
+
 ### Political Satire Books About Government Incompetence
+URL: https://ironicineptocracy.com/dispatches/political-satire-books-government-incompetence/
+Series: Satire & Craft | 3 min read
+Keywords: political satire books about government incompetence, bureaucratic satire novels, war satire like Catch-22, political allegory Animal Farm, books about institutional failure, dystopian satire reading guide, satirical political thrillers
+
+Quick Answer: For political satire about government incompetence, start with the kind of failure you want to examine. Catch-22 turns military rules into a trap; Animal Farm shows who gets to rewrite the rules. Dillon Mohr’s reading guide compares bureaucratic, dystopian, war, media and oligarchic satire by asking which institution a joke exposes and who pays for the mistake.
+
+Key Takeaways:
+- Catch-22 makes contradictory orders the source of both danger and dark humor.
+- Animal Farm uses allegory to show how those in power change the terms of a shared ideal.
+- Oligarchic satire follows private wealth into decisions the public understands as its own.
 
 The sharpest political satire does not merely call leaders stupid. It shows how stupidity acquires a budget, a slogan, and armed protection.
 
@@ -623,7 +760,25 @@ Five Books: P. J. O'Rourke on political satire
 
 Dillon Mohr is the author of The Ironic Ineptocracy, a satirical political thriller about brilliance, friendship, private money, public failure, propaganda, and manipulated memory.
 
+Frequently Asked Questions:
+- Q: Which political satire should I read for absurd bureaucracy?
+  A: Start with Joseph Heller’s Catch-22 for military regulations that protect themselves from challenge. The humor lies in being able to see a contradiction without being able to escape it.
+- Q: Are political satire and dystopian fiction the same genre?
+  A: Political satire uses irony or exaggeration to expose power, while dystopian fiction imagines oppressive social conditions. A novel can do both when an absurd rule also governs how its characters live.
+- Q: How do I choose a political satire about institutional failure?
+  A: Choose a target such as bureaucracy, war, media or donor influence. Then decide whether you want the distance of an allegory or the pace and recognizable institutions of a political thriller.
+
 ### Political Corruption Fiction: How Novels Expose Power
+URL: https://ironicineptocracy.com/dispatches/political-corruption-fiction/
+Series: Satire & Craft | 4 min read
+Keywords: political corruption fiction, novels about donor influence, books about political bribery and access, institutional corruption in fiction, billionaire influence in novels, political corruption novels reading list, political thrillers about private power
+
+Quick Answer: Political corruption fiction examines how public power starts serving private interests. A bribe is one route, but a donor can also get an early hearing, supply a service the government cannot replace or shape which evidence counts. This reading guide separates access, dependency and control of information so readers can recognize corruption even when no cash changes hands.
+
+Key Takeaways:
+- Transactional corruption involves an exchange of value for official action.
+- Access corruption gives some people a private route to decision-makers before others can be heard.
+- The guide pairs A Man of the People with political hypocrisy and The Gilded Age with greed in government.
 
 The most revealing corruption stories are not about a suitcase of cash. They are about the room being built so the suitcase is unnecessary.
 
@@ -691,7 +846,25 @@ The Booker Prizes: A Case of Exploding Mangoes
 
 Dillon Mohr is the author of The Ironic Ineptocracy, a satirical political thriller about brilliance, friendship, private money, public failure, propaganda, and manipulated memory.
 
+Frequently Asked Questions:
+- Q: Can a political corruption novel work without a bribery plot?
+  A: Yes, privileged access or financial dependency can shape a decision without an explicit exchange. One useful clue is who can reach an official privately and who must wait for the public process.
+- Q: Which books in the guide explore corruption beyond bribery?
+  A: A Man of the People examines political hypocrisy, while Animal Farm follows the corruption of collective ideals. A Case of Exploding Mangoes brings tyranny and conspiracy into the comparison.
+- Q: How does Dijon Garnier illustrate dependency in political fiction?
+  A: Garnier supplies capital and infrastructure that public institutions rely on in The Ironic Ineptocracy. His leverage comes from what those institutions stand to lose if he walks away.
+
 ### Books Like 1984 but Funny
+URL: https://ironicineptocracy.com/dispatches/books-like-1984-but-funny/
+Series: Reading Guides | 3 min read
+Keywords: books like 1984 with dark humor, funny books like 1984, dystopian political satire books, Orwellian novels with humor, funny dystopian bureaucracy novels, what to read after 1984, corporate dystopia satire
+
+Quick Answer: For books like 1984 with more dark humor, try Catch-22 for absurd bureaucracy, Animal Farm for a short political allegory or Jennifer Government for corporate power. The common thread is not the setting but who controls the rules and the story about them. This guide compares seven books by the pressure they share with Orwell and the kind of laughter they invite.
+
+Key Takeaways:
+- The guide compares books by propaganda, surveillance and control of language rather than by plot alone.
+- A Case of Exploding Mangoes pairs conspiracy with the absurdity of life under tyranny.
+- The Constant Rabbit sets bureaucratic cruelty against a whimsical premise.
 
 You want the pressure of Orwell, but you also want the system to be ridiculous enough to laugh at before it closes the door.
 
@@ -759,7 +932,25 @@ The Booker Prizes: A Case of Exploding Mangoes
 
 Dillon Mohr is the author of The Ironic Ineptocracy, a satirical political thriller about brilliance, friendship, private money, public failure, propaganda, and manipulated memory.
 
+Frequently Asked Questions:
+- Q: What is a short, darkly funny book to read after 1984?
+  A: Try George Orwell’s Animal Farm for a compact political allegory. It shares 1984’s concern with rewritten rules but tells the story through a farm and its changing hierarchy.
+- Q: Which book in the guide replaces state control with corporate power?
+  A: Jennifer Government is the guide’s choice for corporate dystopia. Its satire turns the question of who governs toward companies rather than the state bureaucracy of 1984.
+- Q: Why recommend Catch-22 to readers of Orwell?
+  A: Catch-22 shares Orwell’s interest in official logic that an individual cannot effectively challenge. Heller makes the contradiction funny without making its consequences harmless.
+
 ### 20 Political Thriller Book Club Questions
+URL: https://ironicineptocracy.com/dispatches/political-thriller-book-club-questions/
+Series: Reading Guides | 3 min read
+Keywords: political thriller book club questions, political satire discussion questions, 20 political fiction book club prompts, one-hour book club agenda, book club questions about power and corruption, discussing propaganda in fiction, moral compromise discussion prompts
+
+Quick Answer: Start a political thriller book club with a decision: who had authority, who influenced the choice and who paid for it? Dillon Mohr’s guide offers twenty prompts on power, corruption, propaganda and sacrifice. For a one-hour meeting, choose five to eight questions and ask readers to support each interpretation with a scene rather than a political affiliation.
+
+Key Takeaways:
+- The twenty prompts are divided into four groups of five.
+- The suggested hour opens with a consequential decision and ends by asking what changing it would cost.
+- A claim about propaganda can be tested against what characters witnessed and what they only heard repeated.
 
 The best political book club question does not ask whether you liked the villain. It asks which part of the villain's argument survived the meeting.
 
@@ -833,3 +1024,11 @@ The Ironic Ineptocracy reader guide
 Open Library: political corruption fiction subject collection
 
 Dillon Mohr is the author of The Ironic Ineptocracy, a satirical political thriller about brilliance, friendship, private money, public failure, propaganda, and manipulated memory.
+
+Frequently Asked Questions:
+- Q: How many political thriller questions fit into a one-hour book club?
+  A: Choose five to eight from the twenty prompts. Leave time for readers to compare evidence instead of treating the list as a quiz to finish.
+- Q: How can a book club discuss political fiction without debating party loyalties?
+  A: Ask each reader to ground a claim in a particular scene, line or choice. Compare interpretations of the character’s decision rather than asking people to defend their own political identities.
+- Q: What is a spoiler-safe opening question for The Ironic Ineptocracy?
+  A: Ask why Darnell Covington’s academic promise attracts scrutiny as well as opportunity. The group can begin with his arrival at Harvard without discussing the outcome of his story.

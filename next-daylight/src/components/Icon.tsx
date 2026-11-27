@@ -60,7 +60,7 @@ export function Icon({ name, size = 18 }: { name: string; size?: number }) {
 export function Mark() {
   return (
     <svg className="mark" viewBox="0 0 36 36" aria-hidden="true">
-      <g fill="#B81D18">
+      <g fill="var(--signal, #b81d18)">
         <path d="M1 7 12 4l14 3 9-3v6l-9 3-14-3-11 3zM1 17l11-3 14 3 9-3v6l-9 3-14-3-11 3zM1 27l11-3 14 3 9-3v6l-9 3-14-3-11 3z" />
       </g>
     </svg>

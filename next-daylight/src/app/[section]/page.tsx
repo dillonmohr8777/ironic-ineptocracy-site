@@ -1,41 +1,64 @@
 import { notFound } from "next/navigation";
 import briefs from "@/lib/briefs.json";
+import { inbox } from "@/lib/contact";
+import { ArchiveFAQ } from "@/components/ArchiveFAQ";
+import { EditionLabel } from "@/components/Chrome";
 import { Folio } from "@/components/Folio";
 import { Dossier } from "@/components/Dossier";
 import { Reader } from "@/components/Reader";
 import { Atlas } from "@/components/Atlas";
+import { StructuredData } from "@/components/StructuredData";
 import { Voice } from "@/components/Voice";
 import { Icon } from "@/components/Icon";
 import { edition } from "@/lib/publication";
+import { book, breadcrumbs, faqPage, graph, type Answer } from "@/lib/schema";
+const sectionKeywords: Record<string, string[]> = {
+  book: ["The Ironic Ineptocracy book", "Dillon Mohr novel", "satirical political thriller", "NeuroClick fiction", "Darnell Covington", "political satire novel"],
+  world: ["The Ironic Ineptocracy world map", "East Atlanta to Harvard", "Washington DC political fiction", "Dijon Garnier Tecca BankIt", "NeuroClick worldbuilding"],
+  dossier: ["The Garnier Dossier", "Dijon Garnier", "political thriller reader dossier", "Tecca BankIt NeuroClick", "The Ironic Ineptocracy free reader file"],
+  press: ["The Ironic Ineptocracy press kit", "Dillon Mohr author press room", "satirical political thriller review copy", "ironicineptocracy@agentmail.to"],
+  "reader-guide": ["The Ironic Ineptocracy reader guide", "political thriller book club questions", "satirical political fiction discussion guide", "classroom reading companion"],
+};
+const sectionFaqs: Partial<Record<string, readonly Answer[]>> = {
+  book: [
+    { q: "What is The Ironic Ineptocracy about?", a: "A perfect SAT score takes Darnell Covington from East Atlanta to Harvard, where his talent draws the attention of people who see promise as property. The novel blends political satire, political thriller tension, and dark humor around private capital and public memory." },
+    { q: "Who wrote The Ironic Ineptocracy?", a: "The Ironic Ineptocracy is written by Dillon Mohr. The manuscript is in active revision while the author finishes the climax, and readers can explore ten character files, nine dispatches, and The Garnier Dossier online." },
+    { q: "Where should new readers start in the public archive?", a: "Start with The Garnier Dossier for an interactive seven-leaf pressure map, listen to the narrator premise on this page, or open The File Opens in Dispatches." },
+  ],
+  "reader-guide": [
+    { q: "Is this reader guide spoiler-safe for book clubs?", a: "Yes. Every prompt on the reader guide and across the public archive focuses on early character choices, institutional pressure, and thematic questions without revealing the ending." },
+    { q: "How many questions should a book club cover in one meeting?", a: "Pick five to eight prompts from this guide and the twenty-question dispatch in Dispatches, grounding each point in a specific scene or institutional choice." },
+  ],
+};
 const pages: Record<string, [string, string, string, string]> = {
   book: [
     "Book file",
     "The book",
-    "A country losing the ability to tell competence from authority.",
+    "Explore Dillon Mohr's satirical political thriller The Ironic Ineptocracy: a country losing the ability to tell competence from authority.",
     "hero-daylight",
   ],
   world: [
     "Field geography",
     "The world",
-    "The map is not geography. It is pressure.",
+    "Explore the interactive pressure map of The Ironic Ineptocracy from East Atlanta and Harvard Yard to Washington, D.C. and the private donor rooms.",
     "plate-harvard-daylight",
   ],
   dossier: [
     "Restricted reader file",
     "The Garnier Dossier",
-    "Power rarely arrives under its own name. It arrives as funding, access, convenience, policy, and memory.",
+    "Power rarely arrives under its own name. Read all seven open leaves mapping Dijon Garnier, Tecca, BankIt, and NeuroClick.",
     "/images/cast/char-garnier.webp",
   ],
   press: [
     "For the record",
     "Press room",
-    "Book facts, release status, and a spoiler-safe briefing for reviewers, podcasters, and booksellers.",
+    "Book facts, release status, official press contact (ironicineptocracy@agentmail.to), and a spoiler-safe briefing for reviewers, podcasters, and booksellers.",
     "hero-daylight",
   ],
   "reader-guide": [
     "Reading companion",
     "Reader guide",
-    "Questions for book clubs, classrooms, and launch readers.",
+    "Spoiler-safe political thriller discussion prompts and reading companion questions for book clubs, classrooms, and launch readers.",
     "plate-harvard-daylight",
   ],
 };
@@ -46,7 +69,7 @@ type P = { params: Promise<{ section: string }> };
 export async function generateMetadata({ params }: P) {
   const { section } = await params;
   const p = pages[section]; if (!p) notFound();
-  return edition(`/${section}/`, p[1], p[2]);
+  return edition(`/${section}/`, p[1], p[2], false, sectionKeywords[section]);
 }
 function List({ rows, title }: { rows: string[][]; title: string }) {
   return (
@@ -75,8 +98,14 @@ export default async function Page({ params }: P) {
     p = pages[section];
   if (!p) notFound();
   if (section === "dossier") return <Dossier />;
+  const path = `/${section}/`;
+  const faqs = sectionFaqs[section];
+  const nodes: Record<string, unknown>[] = [breadcrumbs(path, [p[1], path])];
+  if (section === "book" || section === "press") nodes.unshift(book);
+  if (faqs) nodes.push(faqPage(path, faqs));
   return (
     <div className="shell sub">
+      <StructuredData value={graph(...nodes)} />
       <Folio label={p[0].toUpperCase()} />
       <section className="brief-hero">
         <div>
@@ -93,7 +122,7 @@ export default async function Page({ params }: P) {
             <Voice src="narrator-premise" label="Narrator’s premise" />
           ) : (
             <span className="micro brief-ed">
-              THE DAYLIGHT EDITION / VOLUME 01
+              <EditionLabel/> / VOLUME 01
             </span>
           )}
         </div>
@@ -122,6 +151,7 @@ export default async function Page({ params }: P) {
         <>
           <List title="Book briefs" rows={briefs.book.map((r) => r.slice(1))} />
           <Reader />
+          {faqs && <ArchiveFAQ entries={faqs} />}
         </>
       )}
       {section === "world" && (
@@ -134,7 +164,10 @@ export default async function Page({ params }: P) {
         </>
       )}
       {section === "reader-guide" && (
-        <List rows={briefs.reader} title="For discussion" />
+        <>
+          <List rows={briefs.reader} title="For discussion" />
+          {faqs && <ArchiveFAQ entries={faqs} />}
+        </>
       )}
       {section === "press" && (
         <>
@@ -145,6 +178,7 @@ export default async function Page({ params }: P) {
               {briefs.press.map((t) => (
                 <p key={t}>{t}</p>
               ))}
+              <p>Press, review copies &amp; reader correspondence: <a className="contact" href={`mailto:${inbox}`}>{inbox}</a></p>
               <a href="/dossier/" className="text-link">
                 Open the reader briefing <Icon name="right" size={15} />
               </a>

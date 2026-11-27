@@ -94,8 +94,16 @@ out vec2 st;out vec3 normal;out float depth;
 ${surface}
 void main(){vec3 p=cloth(uv,time);st=uv;depth=p.z;
 normal=normalize(cross(cloth(uv+vec2(.001,0),time)-p,cloth(uv+vec2(0,.001),time)-p));gl_Position=project(p);}`;
+const lighting = `uniform float uMode, uFlicker;
+vec3 exposure(vec3 linen, vec3 n, float depth){
+ float rim=pow(clamp(1.-abs(n.z),0.,1.),2.);float ridge=smoothstep(-68.,78.,depth);
+ vec3 sodium=linen*vec3(.85,.68,.55)*(.71+.23*ridge)+vec3(.21,.12,.055)*rim;
+ float key=.54+.39*uFlicker,drop=1.-uFlicker;
+ vec3 cold=linen*vec3(.62,.75,.69)*key*(.74+.26*ridge)+vec3(.11,.045,.029)*(drop+rim*.27)+vec3(.21,.023,.009)*drop*(1.-ridge)*.7;
+ return mix(mix(linen,sodium,smoothstep(0.,1.,uMode)),cold,smoothstep(1.,2.,uMode));}`;
 const frag = `#version 300 es
 precision highp float;
+${lighting}
 in vec2 st;in vec3 normal;in float depth;uniform sampler2D textile;out vec4 color;
 float hash(float n){return fract(sin(n*127.1)*4375.5453);}
 void main(){
@@ -112,7 +120,7 @@ void main(){
   float ao=1.-.215*valley*(1.-.45*d);
   vec3 lit=dye*(.52+.61*d)*ao;
   lit+=vec3(1.,.91,.74)*(.062*shine+.021*nap+flax*.064*max(0.,-dot(n,l)));
-  color=vec4(lit,1.);
+  color=vec4(exposure(lit,n,depth),1.);
 }`;
 const inkVert = `#version 300 es
 precision highp float;
@@ -143,6 +151,7 @@ void main(){float u=attr.x,d=attr.y,side=attr.z,len=attr.w,rad=more.x,s=more.y;m
 }`;
 const inkFrag = `#version 300 es
 precision highp float;
+${lighting}
 in vec2 uv;in float seed,mode,opacity;out vec4 color;uniform float time;
 void main(){float w=abs(uv.x),d=uv.y;
   float a=(1.-smoothstep(.16,1.,w))*(.51+.33*fract(seed*.61));
@@ -150,7 +159,10 @@ void main(){float w=abs(uv.x),d=uv.y;
   a*=.78+.22*load;
   if(mode<.5)a*=1.-.62*smoothstep(.88,1.,d);
   if(mode>1.5){float r=length(vec2(uv.x,2.*d-1.));a=.20*(1.-smoothstep(.15,.99,r))+.08*exp(-80.*(r-.69)*(r-.69));}
-  color=vec4(mix(vec3(.722,.114,.094),vec3(.561,.067,.051),.26+.65*load),a*opacity);
+  vec3 pigment=mix(vec3(.722,.114,.094),vec3(.561,.067,.051),.26+.65*load);
+  float wet=(1.-smoothstep(.02,.40,abs(uv.x+.30)))*load;
+  pigment=mix(pigment,vec3(.49,.079,.052)+vec3(.33,.14,.09)*wet*uFlicker+.16*(1.-uFlicker)*vec3(1,.06,.03),smoothstep(0.,1.,uMode));
+  color=vec4(pigment,min(1.,a*(1.+.6*smoothstep(0.,1.,uMode)))*opacity);
 }`;
 const yarnVert=`#version 300 es
 precision highp float;layout(location=0) in vec4 yarn;out vec2 st;out float shade;
@@ -159,8 +171,9 @@ void main(){float v=yarn.x,d=yarn.y,s=yarn.w;st=vec2(.984,v);vec3 p=cloth(st,tim
   p+=d*(cloth(vec2(.997,v),time)-p);p.x+=d*l;p.y+=d*d*(4.8*sin(s+time)+1.)+yarn.z*(.66-.55*d);p.z+=1.;
   shade=.69+.25*fract(s);gl_Position=project(p);}`;
 const yarnFrag=`#version 300 es
-precision highp float;in vec2 st;in float shade;uniform sampler2D textile;out vec4 color;
-void main(){color=vec4(texture(textile,st).rgb*shade,1.);}`;
+precision highp float;${lighting}
+in vec2 st;in float shade;uniform sampler2D textile;out vec4 color;
+void main(){color=vec4(exposure(texture(textile,st).rgb*shade,vec3(0,0,1),0.),1.);}`;
 function seeded(n:number){return ()=> (n=(Math.imul(1664525,n)+1013904223)>>>0)/4294967296;}
 export function webRenderer(canvas:HTMLCanvasElement){
   const gl=canvas.getContext('webgl2',{alpha:true,antialias:true,premultipliedAlpha:true,powerPreference:'low-power'});if(!gl)return null;
@@ -168,7 +181,7 @@ export function webRenderer(canvas:HTMLCanvasElement){
   function compile(v:string,f:string){const p=gl!.createProgram()!;programs.push(p);
     for(const [type,src] of [[gl!.VERTEX_SHADER,v],[gl!.FRAGMENT_SHADER,f]] as const){const sh=gl!.createShader(type)!;gl!.shaderSource(sh,src);gl!.compileShader(sh);if(!gl!.getShaderParameter(sh,gl!.COMPILE_STATUS))throw Error(gl!.getShaderInfoLog(sh)??'Shader compilation');gl!.attachShader(p,sh);gl!.deleteShader(sh)}
     gl!.linkProgram(p);if(!gl!.getProgramParameter(p,gl!.LINK_STATUS))throw Error(gl!.getProgramInfoLog(p)??'Shader link');
-    const loc=['time','wind','focus','sweep'].map(n=>gl!.getUniformLocation(p,n));return (values:number[])=>{gl!.useProgram(p);loc.forEach((l,i)=>gl!.uniform1f(l,values[i]))};}
+    const loc=['time','wind','focus','sweep','uMode','uFlicker'].map(n=>gl!.getUniformLocation(p,n));return (values:number[])=>{gl!.useProgram(p);loc.forEach((l,i)=>gl!.uniform1f(l,values[i]))};}
   function buffer(target:number,data:Float32Array|Uint16Array){const b=gl!.createBuffer()!;buffers.push(b);gl!.bindBuffer(target,b);gl!.bufferData(target,data,gl!.STATIC_DRAW);}
   function vao(data:number[],sizes:number[]){const v=gl!.createVertexArray()!;arrays.push(v);gl!.bindVertexArray(v);buffer(gl!.ARRAY_BUFFER,new Float32Array(data));const stride=sizes.reduce((s,n)=>s+n,0)*4;let offset=0;sizes.forEach((n,i)=>{gl!.enableVertexAttribArray(i);gl!.vertexAttribPointer(i,n,gl!.FLOAT,false,stride,offset);offset+=n*4});return v;}
   const textile=compile(vert,frag), ink=compile(inkVert,inkFrag), yarn=compile(yarnVert,yarnFrag);
@@ -184,7 +197,7 @@ export function webRenderer(canvas:HTMLCanvasElement){
       for(const [mode,steps] of [[0,20],...(j===0||j===4?[[1,8],[2,1]]:[])])for(let k=0;k<steps;k++)for(const [z,side] of quad)ribbons.push(u,(k+z)/steps,side,len,rad,s,mode);}}
   for(let j=0;j<165;j++){const v=r(),s=r()*39;for(let k=0;k<4;k++)for(const [z,side] of quad)fibers.push(v,(k+z)/4,side,s)}
   const trails=vao(ribbons,[4,3]),fray=vao(fibers,[4]);
-  return {draw(t:number,w=0,f=.5,d=0){const values=[t,w,f,d];gl.viewport(0,0,canvas.width,canvas.height);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+  return {draw(t:number,w=0,f=.5,d=0,mode=0,flicker=1){const values=[t,w,f,d,mode,flicker];gl.viewport(0,0,canvas.width,canvas.height);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
     gl.disable(gl.DEPTH_TEST);gl.enable(gl.BLEND);gl.blendFuncSeparate(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA,gl.ONE,gl.ONE_MINUS_SRC_ALPHA);ink(values);gl.bindVertexArray(trails);gl.drawArrays(gl.TRIANGLES,0,ribbons.length/7);
     gl.disable(gl.BLEND);gl.enable(gl.DEPTH_TEST);textile(values);gl.bindVertexArray(cloth);gl.drawElements(gl.TRIANGLES,ix.length,gl.UNSIGNED_SHORT,0);yarn(values);gl.bindVertexArray(fray);gl.drawArrays(gl.TRIANGLES,0,fibers.length/4);
   },dispose(){arrays.forEach(v=>gl.deleteVertexArray(v));buffers.forEach(b=>gl.deleteBuffer(b));programs.forEach(p=>gl.deleteProgram(p));gl.deleteTexture(tex);}};

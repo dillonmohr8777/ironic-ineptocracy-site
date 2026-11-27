@@ -106,7 +106,7 @@ export function Atlas() {
                 <path
                   d="M24 0H0V24"
                   fill="none"
-                  stroke="#dedcd2"
+                  stroke="var(--hair)"
                   strokeWidth=".65"
                 />
               </pattern>
@@ -116,15 +116,15 @@ export function Atlas() {
               <path
                 d={p}
                 key={j}
-                fill="#e9e8df"
-                stroke="#fff"
+                fill="var(--map-land)"
+                stroke="var(--paper)"
                 strokeWidth="1"
               />
             ))}
             <polyline
               points={stops.map((_, j) => xy(j).join(",")).join(" ")}
               fill="none"
-              stroke="#a83228"
+              stroke="var(--red)"
               strokeWidth="1.4"
               strokeDasharray="4 4"
             />
@@ -146,8 +146,8 @@ export function Atlas() {
               >
                 <circle
                   r={i === j ? 10 : 6.5}
-                  fill={i === j ? "#ad241e" : "#13203a"}
-                  stroke="#fff"
+                  fill={i === j ? "var(--red)" : "var(--navy)"}
+                  stroke="var(--paper)"
                   strokeWidth="2"
                 />
                 <title>{t[0]}</title>
